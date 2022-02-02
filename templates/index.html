@@ -1,0 +1,10 @@
+<h1>This is the index page.</h1>
+<h2>This should be filled with a basic search engine</h2>
+
+<h2>Test Data:</h2>
+{% for d in data %}
+<h3>ID: {{ d._id }}</h3>
+<h3>Song Lyrics: {{ d.song_lyrics }}</h3> 
+{% else %}
+<h3>No song lyrics found!</h3>
+{% endfor %}
