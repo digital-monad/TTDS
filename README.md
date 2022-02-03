@@ -12,6 +12,13 @@ Group coursework for the Text Technologies for Data Science course.
 - Create a Pull Request on GitHub and request for a reviewer
 - 1 Reviewer should review your code; if approved - it should be then merged into main branch
 
+## Local Host Setup (Anaconda)
+1. `conda env create -f environment.yml`
+2. Test run `python app.py`
+3. Go to `settings.ini` file and update password - refer to MSTeams Wiki if needed
+    - This is absolutely needed to prevent freely exposing API keys and passwords
+4. Install MongoDB Compass for better visualization
+
 ## Local Host Setup
 1. Ensure MongoDB is installed on your computer
 2. Install MongoDB Compass for better visualization

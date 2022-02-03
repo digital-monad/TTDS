@@ -1,0 +1,6 @@
+name: ttds
+dependencies:
+  - python=3.9.5
+  - flask
+  - pymongo
+  - dnspython
