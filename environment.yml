@@ -4,3 +4,7 @@ dependencies:
   - flask
   - pymongo
   - dnspython
+  - pandas
+  - spotipy
+  - bs4
+  - lyricsgenius
