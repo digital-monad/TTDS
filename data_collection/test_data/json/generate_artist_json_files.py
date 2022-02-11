@@ -1,9 +1,4 @@
 # This file is used to search for artists with names starting with 'A'
-import pandas as pd
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-from bs4 import BeautifulSoup
-import requests
 import lyricsgenius as lg
 import os
 
@@ -19,7 +14,7 @@ genius = lg.Genius(temporary_client_access_token,
                    retries=10)
 
 current_path = os.path.dirname(__file__)
-file = os.path.normpath(current_path + os.sep + os.pardir + os.sep + 'albums_text' + os.sep + 'artists_a')
+file = os.path.normpath(current_path + os.sep + os.pardir + os.sep + 'albums_text' + os.sep + 'artists_b')
 
 artist_list = list()
 
