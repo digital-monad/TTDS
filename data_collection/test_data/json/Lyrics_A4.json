@@ -1,0 +1,3400 @@
+{
+ "alternate_names": [
+  "\u0412\u043b\u0430\u0434 \u0411\u0443\u043c\u0430\u0433\u0430 (Vlad Bumaga)"
+ ],
+ "api_path": "/artists/1857449",
+ "description": {
+  "plain": "?"
+ },
+ "facebook_name": null,
+ "followers_count": 2,
+ "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+ "id": 1857449,
+ "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+ "instagram_name": null,
+ "is_meme_verified": false,
+ "is_verified": false,
+ "name": "A4",
+ "translation_artist": false,
+ "twitter_name": null,
+ "url": "https://genius.com/artists/A4",
+ "current_user_metadata": {
+  "permissions": [
+   "view_activity_stream"
+  ],
+  "excluded_permissions": [
+   "edit",
+   "edit_images",
+   "edit_names",
+   "edit_anything",
+   "merge",
+   "sort_artist_songs",
+   "follow",
+   "view_contribution_opportunities",
+   "edit_translation_artist",
+   "see_short_id"
+  ],
+  "interactions": {
+   "following": false
+  }
+ },
+ "description_annotation": {
+  "_type": "referent",
+  "annotator_id": 11232070,
+  "annotator_login": "uspekhneizbezhen",
+  "api_path": "/referents/24479746",
+  "classification": "needs_exegesis",
+  "fragment": "A4",
+  "id": 24479746,
+  "is_description": true,
+  "path": "/24479746/A4/A4",
+  "range": {
+   "content": "A4"
+  },
+  "song_id": null,
+  "url": "https://genius.com/24479746/A4/A4",
+  "verified_annotator_ids": [],
+  "annotatable": {
+   "api_path": "/artists/1857449",
+   "context": null,
+   "id": 1857449,
+   "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+   "link_title": "A4",
+   "title": "A4",
+   "type": "Artist",
+   "url": "https://genius.com/artists/A4"
+  },
+  "annotations": [
+   {
+    "api_path": "/annotations/24479746",
+    "body": {
+     "plain": ""
+    },
+    "comment_count": 0,
+    "community": true,
+    "custom_preview": null,
+    "has_voters": false,
+    "id": 24479746,
+    "pinned": false,
+    "share_url": "https://genius.com/24479746",
+    "source": null,
+    "state": "needs_exegesis",
+    "url": "https://genius.com/24479746/A4/A4",
+    "verified": false,
+    "votes_total": 0,
+    "current_user_metadata": {
+     "permissions": [],
+     "excluded_permissions": [
+      "vote",
+      "edit",
+      "cosign",
+      "uncosign",
+      "destroy",
+      "accept",
+      "reject",
+      "see_unreviewed",
+      "clear_votes",
+      "propose_edit_to",
+      "pin_to_profile",
+      "unpin_from_profile",
+      "update_source",
+      "edit_custom_preview",
+      "create_comment"
+     ],
+     "interactions": {
+      "cosign": false,
+      "pyong": false,
+      "vote": null
+     },
+     "iq_by_action": {}
+    },
+    "authors": [
+     {
+      "attribution": 1.0,
+      "pinned_role": null,
+      "user": {
+       "api_path": "/users/11232070",
+       "avatar": {
+        "tiny": {
+         "url": "https://s3.amazonaws.com/filepicker-images-rapgenius/ikc01qvmfy",
+         "bounding_box": {
+          "width": 16,
+          "height": 16
+         }
+        },
+        "thumb": {
+         "url": "https://s3.amazonaws.com/filepicker-images-rapgenius/ikc01qvmfy",
+         "bounding_box": {
+          "width": 32,
+          "height": 32
+         }
+        },
+        "small": {
+         "url": "https://s3.amazonaws.com/filepicker-images-rapgenius/ikc01qvmfy",
+         "bounding_box": {
+          "width": 100,
+          "height": 100
+         }
+        },
+        "medium": {
+         "url": "https://s3.amazonaws.com/filepicker-images-rapgenius/ikc01qvmfy",
+         "bounding_box": {
+          "width": 300,
+          "height": 400
+         }
+        }
+       },
+       "header_image_url": "https://s3.amazonaws.com/filepicker-images-rapgenius/2kegxr5cdij",
+       "human_readable_role_for_display": "Editor",
+       "id": 11232070,
+       "iq": 227245,
+       "login": "uspekhneizbezhen",
+       "name": "uspekhneizbezhen",
+       "role_for_display": "editor",
+       "url": "https://genius.com/uspekhneizbezhen",
+       "current_user_metadata": {
+        "permissions": [],
+        "excluded_permissions": [
+         "follow"
+        ],
+        "interactions": {
+         "following": false
+        }
+       }
+      }
+     }
+    ],
+    "cosigned_by": [],
+    "rejection_comment": null,
+    "verified_by": null
+   }
+  ]
+ },
+ "user": null,
+ "songs": [
+  {
+   "annotation_count": 3,
+   "api_path": "/songs/5990591",
+   "artist_names": "A4",
+   "full_title": "KIDS by\u00a0A4",
+   "header_image_thumbnail_url": "https://images.genius.com/3553d87f7c27b79f517c6891b55ed994.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/3553d87f7c27b79f517c6891b55ed994.1000x1000x1.jpg",
+   "id": 5990591,
+   "lyrics_owner_id": 10751420,
+   "lyrics_state": "complete",
+   "path": "/A4-kids-lyrics",
+   "pyongs_count": null,
+   "song_art_image_thumbnail_url": "https://images.genius.com/3553d87f7c27b79f517c6891b55ed994.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/3553d87f7c27b79f517c6891b55ed994.1000x1000x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 30,
+    "iq_earners": 28,
+    "transcribers": 8,
+    "unreviewed_annotations": 3,
+    "verified_annotations": 0,
+    "hot": false,
+    "pageviews": 155387
+   },
+   "title": "KIDS",
+   "title_with_featured": "KIDS",
+   "url": "https://genius.com/A4-kids-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/1857449",
+    "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+    "id": 1857449,
+    "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A4",
+    "url": "https://genius.com/artists/A4"
+   },
+   "apple_music_id": null,
+   "apple_music_player_url": "https://genius.com/songs/5990591/apple_music_player",
+   "description": {
+    "plain": "\u0422\u0440\u0435\u0442\u0438\u0439 \u0442\u0440\u0435\u043a \u0412\u043b\u0430\u0434\u0430 \u0438 \u043f\u0435\u0440\u0432\u044b\u0439 \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0432\u044b\u0441\u0442\u0440\u0435\u043b\u0438\u043b \u0432 \u0441\u0435\u0442\u0438. \u0418\u0437\u043d\u0430\u0447\u0430\u043b\u044c\u043d\u043e \u0412\u043b\u0430\u0434 \u0441\u0434\u0435\u043b\u0430\u043b \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0439 \u0441\u043d\u0438\u043f\u043f\u0435\u0442 \u0442\u0440\u0435\u043a\u0430, \u043f\u043e\u0441\u043b\u0435 \u0447\u0435\u0433\u043e \u043e\u043d \u0441\u0442\u0430\u043b \u043e\u0434\u043d\u0438\u043c \u0438\u0437 \u0441\u0430\u043c\u044b\u0445 \u043f\u043e\u043f\u0443\u043b\u044f\u0440\u043d\u044b\u0445 \u043d\u0430 \u0440\u0443\u0441\u0441\u043a\u043e\u043c \u0422\u0438\u043a-\u0422\u043e\u043a\u0435."
+   },
+   "embed_content": "<div id='rg_embed_link_5990591' class='rg_embed_link' data-song-id='5990591'>Read <a href='https://genius.com/A4-kids-lyrics'>\u201cKIDS\u201d by A4</a> on Genius</div> <script crossorigin src='//genius.com/songs/5990591/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2020-09-26",
+   "release_date_for_display": "September 26, 2020",
+   "current_user_metadata": {
+    "permissions": [
+     "see_pageviews",
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": {
+    "api_path": "/albums/681015",
+    "cover_art_url": "https://images.genius.com/a5e998b3ef1c0e4a50a8967fd2fd2bb4.1000x1000x1.jpg",
+    "full_title": "\u0414\u0415\u0422\u0421\u041a\u0418\u0415 \u041f\u0415\u0421\u041d\u0418 (CHILDREN\u2019S SONGS) by A4",
+    "id": 681015,
+    "name": "\u0414\u0415\u0422\u0421\u041a\u0418\u0415 \u041f\u0415\u0421\u041d\u0418 (CHILDREN\u2019S SONGS)",
+    "url": "https://genius.com/albums/A4/Childrens-songs",
+    "artist": {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   },
+   "custom_performances": [
+    {
+     "label": "Label",
+     "artists": [
+      {
+       "api_path": "/artists/2069743",
+       "header_image_url": "https://images.genius.com/a34443f091657998418cfd6d1254f0d2.1000x1000x1.jpg",
+       "id": 2069743,
+       "image_url": "https://images.genius.com/a34443f091657998418cfd6d1254f0d2.1000x1000x1.jpg",
+       "is_meme_verified": false,
+       "is_verified": false,
+       "name": "DNK Music",
+       "url": "https://genius.com/artists/Dnk-music"
+      }
+     ]
+    }
+   ],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 10907275,
+    "annotator_login": "p4fu",
+    "api_path": "/referents/20891619",
+    "classification": "unreviewed",
+    "fragment": "KIDS",
+    "id": 20891619,
+    "is_description": true,
+    "path": "/20891619/A4-kids/Kids",
+    "range": {
+     "content": "KIDS"
+    },
+    "song_id": 5990591,
+    "url": "https://genius.com/20891619/A4-kids/Kids",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/5990591",
+     "client_timestamps": {
+      "updated_by_human_at": 1639094431,
+      "lyrics_updated_at": 1639094431
+     },
+     "context": "A4",
+     "id": 5990591,
+     "image_url": "https://images.genius.com/3553d87f7c27b79f517c6891b55ed994.1000x1000x1.jpg",
+     "link_title": "KIDS by\u00a0A4",
+     "title": "KIDS",
+     "type": "Song",
+     "url": "https://genius.com/A4-kids-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/20891619",
+      "body": {
+       "plain": "\u0422\u0440\u0435\u0442\u0438\u0439 \u0442\u0440\u0435\u043a \u0412\u043b\u0430\u0434\u0430 \u0438 \u043f\u0435\u0440\u0432\u044b\u0439 \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0432\u044b\u0441\u0442\u0440\u0435\u043b\u0438\u043b \u0432 \u0441\u0435\u0442\u0438. \u0418\u0437\u043d\u0430\u0447\u0430\u043b\u044c\u043d\u043e \u0412\u043b\u0430\u0434 \u0441\u0434\u0435\u043b\u0430\u043b \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0439 \u0441\u043d\u0438\u043f\u043f\u0435\u0442 \u0442\u0440\u0435\u043a\u0430, \u043f\u043e\u0441\u043b\u0435 \u0447\u0435\u0433\u043e \u043e\u043d \u0441\u0442\u0430\u043b \u043e\u0434\u043d\u0438\u043c \u0438\u0437 \u0441\u0430\u043c\u044b\u0445 \u043f\u043e\u043f\u0443\u043b\u044f\u0440\u043d\u044b\u0445 \u043d\u0430 \u0440\u0443\u0441\u0441\u043a\u043e\u043c \u0422\u0438\u043a-\u0422\u043e\u043a\u0435."
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": true,
+      "id": 20891619,
+      "pinned": false,
+      "share_url": "https://genius.com/20891619",
+      "source": null,
+      "state": "pending",
+      "url": "https://genius.com/20891619/A4-kids/Kids",
+      "verified": false,
+      "votes_total": 4,
+      "current_user_metadata": {
+       "permissions": [
+        "create_comment"
+       ],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/10907275",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/5ed12ad1d371a14ff78af812a8b85604",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/5ed12ad1d371a14ff78af812a8b85604",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/5ed12ad1d371a14ff78af812a8b85604",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/5ed12ad1d371a14ff78af812a8b85604",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/avatars/medium/5ed12ad1d371a14ff78af812a8b85604",
+         "human_readable_role_for_display": "Contributor",
+         "id": 10907275,
+         "iq": 314,
+         "login": "p4fu",
+         "name": "p4fu",
+         "role_for_display": "contributor",
+         "url": "https://genius.com/p4fu",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=MF_cYq4EixU"
+    }
+   ],
+   "producer_artists": [
+    {
+     "api_path": "/artists/1675137",
+     "header_image_url": "https://images.genius.com/e308b1bc9eeb159ecfa9d807d715f095.1000x1000x1.jpg",
+     "id": 1675137,
+     "image_url": "https://images.genius.com/e308b1bc9eeb159ecfa9d807d715f095.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": true,
+     "name": "SLAVA MARLOW",
+     "url": "https://genius.com/artists/Slava-marlow",
+     "iq": 169
+    }
+   ],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": [
+      {
+       "annotation_count": 4,
+       "api_path": "/songs/7077288",
+       "artist_names": "\u0414\u0415\u0422\u0418 RAVE (DETI RAVE)",
+       "full_title": "\u0421\u0410\u041c\u042b\u0419 \u041d\u041e\u0412\u042b\u0419 (THE NEWEST) by\u00a0\u0414\u0415\u0422\u0418\u00a0RAVE (DETI RAVE)",
+       "header_image_thumbnail_url": "https://images.genius.com/699d71dce3ce5c4d8355e7565c3bcd46.300x300x1.png",
+       "header_image_url": "https://images.genius.com/699d71dce3ce5c4d8355e7565c3bcd46.1000x1000x1.png",
+       "id": 7077288,
+       "lyrics_owner_id": 11232070,
+       "lyrics_state": "complete",
+       "path": "/Rave-deti-rave-the-newest-lyrics",
+       "pyongs_count": null,
+       "song_art_image_thumbnail_url": "https://images.genius.com/699d71dce3ce5c4d8355e7565c3bcd46.300x300x1.png",
+       "song_art_image_url": "https://images.genius.com/699d71dce3ce5c4d8355e7565c3bcd46.1000x1000x1.png",
+       "stats": {
+        "unreviewed_annotations": 4,
+        "hot": false
+       },
+       "title": "\u0421\u0410\u041c\u042b\u0419 \u041d\u041e\u0412\u042b\u0419 (THE NEWEST)",
+       "title_with_featured": "\u0421\u0410\u041c\u042b\u0419 \u041d\u041e\u0412\u042b\u0419 (THE NEWEST)",
+       "url": "https://genius.com/Rave-deti-rave-the-newest-lyrics",
+       "primary_artist": {
+        "api_path": "/artists/1651140",
+        "header_image_url": "https://images.genius.com/8e2e56caedc827f4bb293d83bacae902.1000x710x1.jpg",
+        "id": 1651140,
+        "image_url": "https://images.genius.com/89ef27df30d7bc43df81d105ead39d2b.1000x1000x1.jpg",
+        "is_meme_verified": false,
+        "is_verified": true,
+        "name": "\u0414\u0415\u0422\u0418 RAVE (DETI RAVE)",
+        "url": "https://genius.com/artists/Rave-deti-rave",
+        "iq": 3733
+       }
+      }
+     ]
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": [
+      {
+       "annotation_count": 0,
+       "api_path": "/songs/7306902",
+       "artist_names": "FEOFILOV",
+       "full_title": "KIDS by\u00a0FEOFILOV",
+       "header_image_thumbnail_url": "https://images.genius.com/196a1829fc4cd7f0d6d5b088fdbdb869.300x300x1.jpg",
+       "header_image_url": "https://images.genius.com/196a1829fc4cd7f0d6d5b088fdbdb869.500x500x1.jpg",
+       "id": 7306902,
+       "lyrics_owner_id": 12958174,
+       "lyrics_state": "complete",
+       "path": "/Feofilov-kids-lyrics",
+       "pyongs_count": null,
+       "song_art_image_thumbnail_url": "https://images.genius.com/196a1829fc4cd7f0d6d5b088fdbdb869.300x300x1.jpg",
+       "song_art_image_url": "https://images.genius.com/196a1829fc4cd7f0d6d5b088fdbdb869.500x500x1.jpg",
+       "stats": {
+        "unreviewed_annotations": 0,
+        "hot": false
+       },
+       "title": "KIDS",
+       "title_with_featured": "KIDS",
+       "url": "https://genius.com/Feofilov-kids-lyrics",
+       "primary_artist": {
+        "api_path": "/artists/1982542",
+        "header_image_url": "https://images.genius.com/6f223d2a39e2f311a47f820de541469c.1000x563x1.jpg",
+        "id": 1982542,
+        "image_url": "https://images.genius.com/3182f52f34d1bfff83e04ab5c7202e19.1000x1000x1.png",
+        "is_meme_verified": false,
+        "is_verified": true,
+        "name": "FEOFILOV",
+        "url": "https://genius.com/artists/Feofilov",
+        "iq": 2022
+       }
+      }
+     ]
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": [
+      {
+       "annotation_count": 0,
+       "api_path": "/songs/6798286",
+       "artist_names": "Rat TV",
+       "full_title": "KIDS [Right Version] by\u00a0Rat\u00a0TV",
+       "header_image_thumbnail_url": "https://images.genius.com/1522574684f0ba6294cb18c8e21f722e.300x300x1.jpg",
+       "header_image_url": "https://images.genius.com/1522574684f0ba6294cb18c8e21f722e.500x500x1.jpg",
+       "id": 6798286,
+       "lyrics_owner_id": 11090788,
+       "lyrics_state": "complete",
+       "path": "/Rat-tv-kids-right-version-lyrics",
+       "pyongs_count": null,
+       "song_art_image_thumbnail_url": "https://images.genius.com/1522574684f0ba6294cb18c8e21f722e.300x300x1.jpg",
+       "song_art_image_url": "https://images.genius.com/1522574684f0ba6294cb18c8e21f722e.500x500x1.jpg",
+       "stats": {
+        "unreviewed_annotations": 0,
+        "hot": false
+       },
+       "title": "KIDS [Right Version]",
+       "title_with_featured": "KIDS [Right Version]",
+       "url": "https://genius.com/Rat-tv-kids-right-version-lyrics",
+       "primary_artist": {
+        "api_path": "/artists/2491803",
+        "header_image_url": "https://images.genius.com/fd08b935a92db223c0f102c92d26044b.1000x164x1.jpg",
+        "id": 2491803,
+        "image_url": "https://images.genius.com/804b4c1657663b100961efbf3ef9be66.176x176x1.jpg",
+        "is_meme_verified": false,
+        "is_verified": true,
+        "name": "Rat TV",
+        "url": "https://genius.com/artists/Rat-tv",
+        "iq": 121
+       }
+      }
+     ]
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/1267272",
+     "header_image_url": "https://images.genius.com/db0d20acd7f4d2cebbc26a042b0b7d57.720x884x1.jpg",
+     "id": 1267272,
+     "image_url": "https://images.genius.com/1edcea93261e2e266c532ce204ba92da.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": true,
+     "name": "MORGENSHTERN",
+     "url": "https://genius.com/artists/Morgenshtern",
+     "iq": 100
+    }
+   ],
+   "artist": "A4",
+   "lyrics": "KIDS Lyrics\n\n\u2014 \u0412\u0441\u0435\u043c \u043f\u0440\u0438\u0432\u0435\u0442! \u041c\u0435\u043d\u044f \u0437\u043e\u0432\u0443\u0442 \u0412\u043b\u0430\u0434 \u04104, \u0413\u043b\u0435\u043d\u0442, \u041a\u043e\u0431\u044f\u043a\u043e\u0432!\n\u0418 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u0442\u0435, \u044d\u0442\u043e (\u0421\u0442\u0430\u0432\u044c\u0442\u0435 \u043b\u0430\u0439\u043a\u0438, \u043f\u043e\u0434\u043f\u0438\u0441\u044b\u0432\u0430\u0439\u0442\u0435\u0441\u044c \u043d\u0430 \u043a\u0430\u043d\u0430\u043b, \u0434\u0430!) \u043c\u043e\u0439 \u043f\u0435\u0440\u0432\u044b\u0439 \u0445\u0438\u0442, \u0434\u0430\n\u0425\u0430-\u0445\u0430, \u043f\u043e\u0434\u043f\u0438\u0441\u0447\u0438\u043a\u0438, \u044f \u0432\u0430\u0441 \u043b\u044e\u0431\u043b\u044e! \u041f\u043e\u0433\u043d\u0430\u043b\u0438!\n\n\u042d\u0442\u043e Lambo, (\u0412\u0440\u0443\u043c-\u0432\u0440\u0443\u043c) \u0430 \u044d\u0442\u043e \u0413\u0435\u043b\u0438\u043a\n(\u0412\u043b\u0430\u0434 \u2014 \u044d\u0442\u043e) \u0412\u043b\u0430\u0434 \u2014 \u044d\u0442\u043e \u0431\u0443\u043c\u0430\u0433\u0430, \u0430 \u0431\u0443\u043c\u0430\u0433\u0430 \u2014 \u044d\u0442\u043e \u0434\u0435\u043d\u044c\u0433\u0438\n(\u0412\u0438-\u0438!) \u042d\u0442\u043e Lambo, (\u0412\u0440\u0443\u043c-\u0432\u0440\u0443\u043c) \u0430 \u044d\u0442\u043e \u0413\u0435\u043b\u0438\u043a\n(\u0412\u043b\u0430\u0434 \u2014 \u044d\u0442\u043e) \u0412\u043b\u0430\u0434 \u2014 \u044d\u0442\u043e \u0431\u0443\u043c\u0430\u0433\u0430, \u0430 \u0431\u0443\u043c\u0430\u0433\u0430 \u2014 \u044d\u0442\u043e \u0434\u0435\u043d\u044c\u0433\u0438\n\nHello, kids! (Hello, kids!) \u042f \u043c\u043e\u043b\u043e\u0434\u043e\u0439 \u043f\u0440\u0438\u043d\u0446 (Hello)\n\u042f \u0441\u0438\u044f\u044e \u044f\u0440\u043a\u043e, \u0431\u0443\u0434\u0442\u043e \u0442\u043e\u043b\u043f\u044b \u0434\u0435\u0442\u0441\u043a\u0438\u0445 \u043b\u0438\u0446\n\u0420\u0430\u0434\u043e\u0441\u0442\u0438 \u043d\u0430 \u043b\u0438\u0446\u0430\u0445 (\u041b\u0438\u0446\u0430\u0445), \u0431\u0443\u0434\u0435\u043c \u0432\u0435\u0441\u0435\u043b\u0438\u0442\u044c\u0441\u044f (\u0415)\n\u0410 \u0435\u0441\u043b\u0438 \u043a\u043d\u043e\u043f\u043a\u0430 \u043a\u0440\u0430\u0441\u043d\u0430\u044f, \u0435\u0439 \u043d\u0430\u0434\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c\u0441\u044f (\u041d\u0430 \u0441\u0435\u0440\u0443\u044e)\n\n\u0413\u043b\u0435\u043d\u0442, \u041a\u043e\u0431\u044f\u043a\u043e\u0432, \u0413\u043b\u0435\u043d\u0442 (\u0412\u043b\u0430\u0434 \u0411\u0443\u043c\u0430\u0433\u0430)\n\u0413\u043b\u0435\u043d\u0442, \u041a\u043e\u0431\u044f\u043a\u043e\u0432, \u0413\u043b\u0435\u043d\u0442 (\u0412\u043b\u0430\u0434 \u0411\u0443\u043c\u0430\u0433\u0430)\n\u0413\u043b\u0435\u043d\u0442, \u041a\u043e\u0431\u044f\u043a\u043e\u0432, \u0413\u043b\u0435\u043d\u0442 (\u0412\u043b\u0430\u0434 \u0411\u0443\u043c\u0430\u0433\u0430)\n\u0410 \u0432\u044b \u0441\u043e\u0432\u0441\u0435\u043c \u0437\u0430\u0431\u044b\u043b\u0438, \u043a\u0430\u043a \u043b\u0435\u0442\u0430\u0435\u0442 \u043c\u043e\u044f Lambo\n\n(\u0412\u0438-\u0438!) \u042d\u0442\u043e Lambo, (\u0412\u0440\u0443\u043c-\u0432\u0440\u0443\u043c) \u0430 \u044d\u0442\u043e \u0413\u0435\u043b\u0438\u043a\n(\u0412\u043b\u0430\u0434 \u2014 \u044d\u0442\u043e) \u0412\u043b\u0430\u0434 \u2014 \u044d\u0442\u043e \u0431\u0443\u043c\u0430\u0433\u0430, \u0430 \u0431\u0443\u043c\u0430\u0433\u0430 \u2014 \u044d\u0442\u043e \u0434\u0435\u043d\u044c\u0433\u0438\n(\u0412\u0438-\u0438!) \u042d\u0442\u043e Lambo, (\u0412\u0440\u0443\u043c-\u0432\u0440\u0443\u043c) \u0430 \u044d\u0442\u043e \u0413\u0435\u043b\u0438\u043a\n(\u0412\u043b\u0430\u0434 \u2014 \u044d\u0442\u043e) \u0412\u043b\u0430\u0434 \u2014 \u044d\u0442\u043e \u0431\u0443\u043c\u0430\u0433\u0430, \u0430 \u0431\u0443\u043c\u0430\u0433\u0430 \u2014 \u044d\u0442\u043e \u0434\u0435\u043d\u044c\u0433\u0438\n\u0413\u043b\u0435\u043d\u0442, \u041a\u043e\u0431\u044f\u043a\u043e\u0432, \u0413\u043b\u0435\u043d\u0442 (\u0412\u043b\u0430\u0434 \u0411\u0443\u043c\u0430\u0433\u0430)\n\u0413\u043b\u0435\u043d\u0442, \u041a\u043e\u0431\u044f\u043a\u043e\u0432, \u0413\u043b\u0435\u043d\u0442 (\u0412\u043b\u0430\u0434 \u0411\u0443\u043c\u0430\u0433\u0430)\n\u0413\u043b\u0435\u043d\u0442, \u041a\u043e\u0431\u044f\u043a\u043e\u0432, \u0413\u043b\u0435\u043d\u0442 (\u0412\u043b\u0430\u0434 \u0411\u0443\u043c\u0430\u0433\u0430)\n\u0410 \u0442\u044b \u0441\u043a\u043e\u0440\u0435\u0439 \u0431\u0435\u0433\u0438, \u043d\u0430\u0436\u043c\u0438 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0443 \u00ab\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f\u00bbEmbed"
+  },
+  {
+   "annotation_count": 3,
+   "api_path": "/songs/5990595",
+   "artist_names": "A4",
+   "full_title": "#1 by\u00a0A4",
+   "header_image_thumbnail_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+   "id": 5990595,
+   "lyrics_owner_id": 6453239,
+   "lyrics_state": "complete",
+   "path": "/A4-1-lyrics",
+   "pyongs_count": null,
+   "song_art_image_thumbnail_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 18,
+    "iq_earners": 17,
+    "transcribers": 4,
+    "unreviewed_annotations": 3,
+    "verified_annotations": 0,
+    "hot": false,
+    "pageviews": 21503
+   },
+   "title": "#1",
+   "title_with_featured": "#1",
+   "url": "https://genius.com/A4-1-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/1857449",
+    "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+    "id": 1857449,
+    "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A4",
+    "url": "https://genius.com/artists/A4"
+   },
+   "apple_music_id": null,
+   "apple_music_player_url": "https://genius.com/songs/5990595/apple_music_player",
+   "description": {
+    "plain": "?"
+   },
+   "embed_content": "<div id='rg_embed_link_5990595' class='rg_embed_link' data-song-id='5990595'>Read <a href='https://genius.com/A4-1-lyrics'>\u201c#1\u201d by A4</a> on Genius</div> <script crossorigin src='//genius.com/songs/5990595/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2020-09-26",
+   "release_date_for_display": "September 26, 2020",
+   "current_user_metadata": {
+    "permissions": [
+     "see_pageviews",
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": {
+    "api_path": "/albums/681015",
+    "cover_art_url": "https://images.genius.com/a5e998b3ef1c0e4a50a8967fd2fd2bb4.1000x1000x1.jpg",
+    "full_title": "\u0414\u0415\u0422\u0421\u041a\u0418\u0415 \u041f\u0415\u0421\u041d\u0418 (CHILDREN\u2019S SONGS) by A4",
+    "id": 681015,
+    "name": "\u0414\u0415\u0422\u0421\u041a\u0418\u0415 \u041f\u0415\u0421\u041d\u0418 (CHILDREN\u2019S SONGS)",
+    "url": "https://genius.com/albums/A4/Childrens-songs",
+    "artist": {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   },
+   "custom_performances": [
+    {
+     "label": "Label",
+     "artists": [
+      {
+       "api_path": "/artists/2069743",
+       "header_image_url": "https://images.genius.com/a34443f091657998418cfd6d1254f0d2.1000x1000x1.jpg",
+       "id": 2069743,
+       "image_url": "https://images.genius.com/a34443f091657998418cfd6d1254f0d2.1000x1000x1.jpg",
+       "is_meme_verified": false,
+       "is_verified": false,
+       "name": "DNK Music",
+       "url": "https://genius.com/artists/Dnk-music"
+      }
+     ]
+    }
+   ],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 6453239,
+    "annotator_login": "Vlad2D",
+    "api_path": "/referents/20936112",
+    "classification": "needs_exegesis",
+    "fragment": "#1",
+    "id": 20936112,
+    "is_description": true,
+    "path": "/20936112/A4-1/1",
+    "range": {
+     "content": "#1"
+    },
+    "song_id": 5990595,
+    "url": "https://genius.com/20936112/A4-1/1",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/5990595",
+     "client_timestamps": {
+      "updated_by_human_at": 1643918849,
+      "lyrics_updated_at": 1643918849
+     },
+     "context": "A4",
+     "id": 5990595,
+     "image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+     "link_title": "#1 by\u00a0A4",
+     "title": "#1",
+     "type": "Song",
+     "url": "https://genius.com/A4-1-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/20936112",
+      "body": {
+       "plain": ""
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": false,
+      "id": 20936112,
+      "pinned": false,
+      "share_url": "https://genius.com/20936112",
+      "source": null,
+      "state": "needs_exegesis",
+      "url": "https://genius.com/20936112/A4-1/1",
+      "verified": false,
+      "votes_total": 0,
+      "current_user_metadata": {
+       "permissions": [],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview",
+        "create_comment"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/6453239",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/a8ede2496c03b701241e9cc450eaafb0",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/a8ede2496c03b701241e9cc450eaafb0",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/a8ede2496c03b701241e9cc450eaafb0",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/a8ede2496c03b701241e9cc450eaafb0",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/2270a72e95bb6f6bba3c8ef13b34ae83.1000x250x1.jpg",
+         "human_readable_role_for_display": "Editor",
+         "id": 6453239,
+         "iq": 279817,
+         "login": "Vlad2D",
+         "name": "Vlad2D",
+         "role_for_display": "editor",
+         "url": "https://genius.com/Vlad2D",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=V4bDKZ4uviY"
+    }
+   ],
+   "producer_artists": [
+    {
+     "api_path": "/artists/1675137",
+     "header_image_url": "https://images.genius.com/e308b1bc9eeb159ecfa9d807d715f095.1000x1000x1.jpg",
+     "id": 1675137,
+     "image_url": "https://images.genius.com/e308b1bc9eeb159ecfa9d807d715f095.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": true,
+     "name": "SLAVA MARLOW",
+     "url": "https://genius.com/artists/Slava-marlow",
+     "iq": 169
+    }
+   ],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": [
+      {
+       "annotation_count": 0,
+       "api_path": "/songs/6912503",
+       "artist_names": "Rat TV",
+       "full_title": "#1 [Right Version] by\u00a0Rat\u00a0TV",
+       "header_image_thumbnail_url": "https://images.genius.com/1522574684f0ba6294cb18c8e21f722e.300x300x1.jpg",
+       "header_image_url": "https://images.genius.com/1522574684f0ba6294cb18c8e21f722e.500x500x1.jpg",
+       "id": 6912503,
+       "lyrics_owner_id": 11090788,
+       "lyrics_state": "complete",
+       "path": "/Rat-tv-1-right-version-lyrics",
+       "pyongs_count": null,
+       "song_art_image_thumbnail_url": "https://images.genius.com/1522574684f0ba6294cb18c8e21f722e.300x300x1.jpg",
+       "song_art_image_url": "https://images.genius.com/1522574684f0ba6294cb18c8e21f722e.500x500x1.jpg",
+       "stats": {
+        "unreviewed_annotations": 0,
+        "hot": false
+       },
+       "title": "#1 [Right Version]",
+       "title_with_featured": "#1 [Right Version]",
+       "url": "https://genius.com/Rat-tv-1-right-version-lyrics",
+       "primary_artist": {
+        "api_path": "/artists/2491803",
+        "header_image_url": "https://images.genius.com/fd08b935a92db223c0f102c92d26044b.1000x164x1.jpg",
+        "id": 2491803,
+        "image_url": "https://images.genius.com/804b4c1657663b100961efbf3ef9be66.176x176x1.jpg",
+        "is_meme_verified": false,
+        "is_verified": true,
+        "name": "Rat TV",
+        "url": "https://genius.com/artists/Rat-tv",
+        "iq": 121
+       }
+      },
+      {
+       "annotation_count": 0,
+       "api_path": "/songs/7476596",
+       "artist_names": "Yanekirachestno",
+       "full_title": "Million #1 by\u00a0Yanekirachestno",
+       "header_image_thumbnail_url": "https://images.genius.com/48ff1a4a5bc77890560cc650332e6d39.300x300x1.jpg",
+       "header_image_url": "https://images.genius.com/48ff1a4a5bc77890560cc650332e6d39.355x355x1.jpg",
+       "id": 7476596,
+       "lyrics_owner_id": 7568596,
+       "lyrics_state": "complete",
+       "path": "/Yanekirachestno-million-1-lyrics",
+       "pyongs_count": null,
+       "song_art_image_thumbnail_url": "https://images.genius.com/48ff1a4a5bc77890560cc650332e6d39.300x300x1.jpg",
+       "song_art_image_url": "https://images.genius.com/48ff1a4a5bc77890560cc650332e6d39.355x355x1.jpg",
+       "stats": {
+        "unreviewed_annotations": 0,
+        "hot": false
+       },
+       "title": "Million #1",
+       "title_with_featured": "Million #1",
+       "url": "https://genius.com/Yanekirachestno-million-1-lyrics",
+       "primary_artist": {
+        "api_path": "/artists/2890231",
+        "header_image_url": "https://images.genius.com/8a33d7c2ad6205d4e86cee00fc88290a.900x1000x1.jpg",
+        "id": 2890231,
+        "image_url": "https://images.genius.com/f921867e1ba6de136a13472354fe5f11.1000x1000x1.jpg",
+        "is_meme_verified": false,
+        "is_verified": false,
+        "name": "Yanekirachestno",
+        "url": "https://genius.com/artists/Yanekirachestno"
+       }
+      }
+     ]
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/1267272",
+     "header_image_url": "https://images.genius.com/db0d20acd7f4d2cebbc26a042b0b7d57.720x884x1.jpg",
+     "id": 1267272,
+     "image_url": "https://images.genius.com/1edcea93261e2e266c532ce204ba92da.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": true,
+     "name": "MORGENSHTERN",
+     "url": "https://genius.com/artists/Morgenshtern",
+     "iq": 100
+    }
+   ],
+   "artist": "A4",
+   "lyrics": "#1 Lyrics\n\n\u041d\u043e\u043c\u0435\u0440 1 (\u0415), \u044f \u043d\u0435 \u043f\u043e\u0431\u0435\u0434\u0438\u043c (\u041d\u0435\u0442)\n\u0417\u0430\u0431\u0438\u0440\u0430\u044e \u0442\u0440\u0435\u043d\u0434\u044b, \u043d\u0438\u043a\u043e\u043c\u0443 \u043d\u0435 \u043e\u0431\u043e\u0439\u0442\u0438 (\u041d\u0435\u0442)\n\u0411\u0440\u044e\u043b\u0438\u043a\u0438 \u0442\u0430\u043d\u0446\u0443\u044e\u0442 \u043d\u0430 \u0437\u0430\u043f\u044f\u0441\u0442\u044c\u0435 \u0438 \u0446\u0435\u043f\u0438 (Ice)\n\u042f \u043d\u043e\u043c\u0435\u0440 1 (\u0415), \u0441\u0430\u043b\u044e\u0442 YT (Hi)\n\u041d\u043e\u043c\u0435\u0440 1 (\u0415), \u044f \u043d\u0435 \u043f\u043e\u0431\u0435\u0434\u0438\u043c (\u041d\u0435\u0442)\n\u0417\u0430\u0431\u0438\u0440\u0430\u044e \u0442\u0440\u0435\u043d\u0434\u044b, \u043d\u0438\u043a\u043e\u043c\u0443 \u043d\u0435 \u043e\u0431\u043e\u0439\u0442\u0438 (\u041d\u0435-\u0430)\n\u0411\u0440\u044e\u043b\u0438\u043a\u0438 \u0442\u0430\u043d\u0446\u0443\u044e\u0442 \u043d\u0430 \u0437\u0430\u043f\u044f\u0441\u0442\u044c\u0435 \u0438 \u0446\u0435\u043f\u0438 (Dance)\n\u042f \u043d\u043e\u043c\u0435\u0440 1 (\u041e \u0434\u0430), \u0445\u0430\u0445, \u0441\u0430\u043b\u044e\u0442 YT (Hi)\n\n\u0421\u0443\u043c\u043a\u0430 Louis V (V), \u0442\u0440\u0438 \u0442\u044b\u0441\u044f\u0447\u0438 \u0431\u0430\u0447\u0435\u0439 (\u0423)\n\u0417\u0430\u0439\u0434\u044f \u043d\u0430 \u043a\u0430\u043d\u0430\u043b, \u0442\u044b \u043d\u0430\u0431\u043b\u044e\u0434\u0430\u0435\u0448\u044c \u0431\u043e\u0433\u0430\u0447\u0435\u0439 (Cash)\nAudemars Piguet (\u0415), \u0432\u0441\u0451 \u044d\u0442\u043e \u043d\u0430 \u043c\u043d\u0435 (\u041d\u0430 \u043c\u043d\u0435)\n\u041f\u0440\u0438\u0442\u0432\u043e\u0440\u044f\u044e\u0441\u044c \u0431\u0435\u0434\u043d\u044b\u043c, \u0442\u0438\u043f\u0430 \u044f \u0442\u0430\u043a\u043e\u0439, \u043a\u0430\u043a \u0442\u044b (\u0425\u0430)\n\u042f \u0434\u0430\u0436\u0435 \u043d\u0435\u0434\u0430\u0432\u043d\u043e, \u043f\u043e\u043c\u043d\u044e, \u0437\u0430\u0445\u043e\u0434\u0438\u043b \u0432 \u043c\u0435\u0442\u0440\u043e (\u0410\u0433\u0430)\n\u0427\u0442\u043e\u0431\u044b \u043f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u043d\u0430 \u0431\u0430\u043d\u043d\u0435\u0440 \u0441\u043e \u0441\u0432\u043e\u0438\u043c \u043b\u0438\u0446\u043e\u043c (\u041e \u0434\u0430)\n\u0421\u0430\u043b\u044e\u0442\u0443\u044e Fanta (Fanta), \u0446\u0432\u0435\u0442\u0430, \u0431\u0443\u0434\u0442\u043e Lambo (Lambo)\n\u0423 \u0431\u043e\u043b\u044c\u0448\u043e\u0433\u043e \u043c\u0430\u043b\u044c\u0447\u0438\u043a\u0430 \u043e\u0433\u0440\u043e\u043c\u043d\u044b\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442\u044b (Cash)\n\u0428\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u0438 \u0434\u043e\u0441\u0442\u0430\u043b\u0438, \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u043e \u043c\u0435\u043d\u044f \u043f\u0430\u043b\u044f\u0442 (\u0424\u0443)\n\u0423\u043b\u0435\u0442\u0435\u043b \u043e\u0442 \u043d\u0438\u0445 \u0431\u0438\u0437\u043d\u0435\u0441-\u043a\u043b\u0430\u0441\u0441\u043e\u043c \u043d\u0430 \u0411\u0430\u043b\u0438 (\u0429\u0443\u0445)\n\u0414\u0435\u0432\u043e\u0447\u043a\u0430 \u043c\u043e\u044f \u2014 \u043a\u0440\u0430\u0441\u043e\u0442\u043a\u0430, \u0442\u043e\u0436\u0435 \u043f\u043e\u043f\u0443\u043b\u044f\u0440\u043d\u0430 (\u0423)\n\u041f\u0435\u0440\u0432\u0430\u044f \u043b\u044e\u0431\u043e\u0432\u044c, \u043a\u0443\u043f\u0438\u043b \u0435\u0439 Porsche \u2014 \u043f\u044f\u0442\u0451\u0440\u043a\u0430 \u043b\u044f\u043c\u043e\u0432 (\u041f\u044f\u0442\u044c)\n\u0413\u043e\u0432\u043e\u0440\u0438\u0442\u0435, \u0442\u0438\u043f\u0430 \u0432\u0435\u0441\u044c \u043a\u043e\u043d\u0442\u0435\u043d\u0442 \u043c\u043e\u0439 \u2014 \u044d\u0442\u043e \u0437\u0430\u043f\u0430\u0434 (\u0427\u0451?)\n\u0417\u0430\u043f\u0430\u0434\u043d\u044b\u0435 \u0442\u043e\u0436\u0435 \u0442\u044b\u0440\u044f\u0442 \u0443 \u043c\u0435\u043d\u044f \u0444\u043e\u0440\u043c\u0430\u0442\u044b (\u0424\u0430\u043a\u0442\u044b)\n\u042f \u043d\u0435 \u0432\u0438\u0436\u0443 \u0445\u0435\u0439\u0442\u0430 \u0447\u0435\u0440\u0435\u0437 \u0442\u043e\u043d\u0435\u0440 \u0441\u0432\u043e\u0435\u0439 \u041b\u0430\u043c\u0431\u044b (\u041b\u0430\u043c\u0431\u044b)\n\u042f \u0443\u0441\u044b\u043d\u043e\u0432\u0438\u043b YouTube, \u0437\u043e\u0432\u0438\u0442\u0435 \u043c\u0435\u043d\u044f: \u00ab\u041f\u0430\u043f\u0430\u00bb (Daddy)\n\u041d\u043e\u043c\u0435\u0440 1 (\u0415), \u044f \u043d\u0435 \u043f\u043e\u0431\u0435\u0434\u0438\u043c (\u041d\u0435\u0442)\n\u0417\u0430\u0431\u0438\u0440\u0430\u044e \u0442\u0440\u0435\u043d\u0434\u044b, \u043d\u0438\u043a\u043e\u043c\u0443 \u043d\u0435 \u043e\u0431\u043e\u0439\u0442\u0438 (\u041d\u0435\u0442)\n\u0411\u0440\u044e\u043b\u0438\u043a\u0438 \u0442\u0430\u043d\u0446\u0443\u044e\u0442 \u043d\u0430 \u0437\u0430\u043f\u044f\u0441\u0442\u044c\u0435 \u0438 \u0446\u0435\u043f\u0438 (Ice)\n\u042f \u043d\u043e\u043c\u0435\u0440 1 (\u0415), \u0441\u0430\u043b\u044e\u0442 YT (Hi)\n\u041d\u043e\u043c\u0435\u0440 1 (\u0415), \u044f \u043d\u0435 \u043f\u043e\u0431\u0435\u0434\u0438\u043c (\u041d\u0435\u0442)\n\u0417\u0430\u0431\u0438\u0440\u0430\u044e \u0442\u0440\u0435\u043d\u0434\u044b, \u043d\u0438\u043a\u043e\u043c\u0443 \u043d\u0435 \u043e\u0431\u043e\u0439\u0442\u0438 (\u041d\u0435-\u0430)\n\u0411\u0440\u044e\u043b\u0438\u043a\u0438 \u0442\u0430\u043d\u0446\u0443\u044e\u0442 \u043d\u0430 \u0437\u0430\u043f\u044f\u0441\u0442\u044c\u0435 \u0438 \u0446\u0435\u043f\u0438 (Dance)\n\u042f \u043d\u043e\u043c\u0435\u0440 1 (\u041e \u0434\u0430), \u0445\u0430\u0445, \u0441\u0430\u043b\u044e\u0442 YT (Hi)Embed"
+  },
+  {
+   "annotation_count": 3,
+   "api_path": "/songs/5989616",
+   "artist_names": "A4",
+   "full_title": "\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there) by\u00a0A4",
+   "header_image_thumbnail_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+   "id": 5989616,
+   "lyrics_owner_id": 4105156,
+   "lyrics_state": "complete",
+   "path": "/A4-somewhere-there-lyrics",
+   "pyongs_count": null,
+   "song_art_image_thumbnail_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 17,
+    "iq_earners": 17,
+    "transcribers": 2,
+    "unreviewed_annotations": 3,
+    "verified_annotations": 0,
+    "hot": false,
+    "pageviews": 8880
+   },
+   "title": "\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there)",
+   "title_with_featured": "\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there)",
+   "url": "https://genius.com/A4-somewhere-there-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/1857449",
+    "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+    "id": 1857449,
+    "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A4",
+    "url": "https://genius.com/artists/A4"
+   },
+   "apple_music_id": null,
+   "apple_music_player_url": "https://genius.com/songs/5989616/apple_music_player",
+   "description": {
+    "plain": "?"
+   },
+   "embed_content": "<div id='rg_embed_link_5989616' class='rg_embed_link' data-song-id='5989616'>Read <a href='https://genius.com/A4-somewhere-there-lyrics'>\u201c\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there)\u201d by A4</a> on Genius</div> <script crossorigin src='//genius.com/songs/5989616/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2020-09-26",
+   "release_date_for_display": "September 26, 2020",
+   "current_user_metadata": {
+    "permissions": [
+     "see_pageviews",
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": {
+    "api_path": "/albums/681015",
+    "cover_art_url": "https://images.genius.com/a5e998b3ef1c0e4a50a8967fd2fd2bb4.1000x1000x1.jpg",
+    "full_title": "\u0414\u0415\u0422\u0421\u041a\u0418\u0415 \u041f\u0415\u0421\u041d\u0418 (CHILDREN\u2019S SONGS) by A4",
+    "id": 681015,
+    "name": "\u0414\u0415\u0422\u0421\u041a\u0418\u0415 \u041f\u0415\u0421\u041d\u0418 (CHILDREN\u2019S SONGS)",
+    "url": "https://genius.com/albums/A4/Childrens-songs",
+    "artist": {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   },
+   "custom_performances": [
+    {
+     "label": "Label",
+     "artists": [
+      {
+       "api_path": "/artists/2069743",
+       "header_image_url": "https://images.genius.com/a34443f091657998418cfd6d1254f0d2.1000x1000x1.jpg",
+       "id": 2069743,
+       "image_url": "https://images.genius.com/a34443f091657998418cfd6d1254f0d2.1000x1000x1.jpg",
+       "is_meme_verified": false,
+       "is_verified": false,
+       "name": "DNK Music",
+       "url": "https://genius.com/artists/Dnk-music"
+      }
+     ]
+    }
+   ],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 150540,
+    "annotator_login": "Grand_Bafometz",
+    "api_path": "/referents/22134374",
+    "classification": "needs_exegesis",
+    "fragment": "\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there)",
+    "id": 22134374,
+    "is_description": true,
+    "path": "/22134374/A4-somewhere-there/Somewhere-there",
+    "range": {
+     "content": "\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there)"
+    },
+    "song_id": 5989616,
+    "url": "https://genius.com/22134374/A4-somewhere-there/Somewhere-there",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/5989616",
+     "client_timestamps": {
+      "updated_by_human_at": 1633207465,
+      "lyrics_updated_at": 1633207465
+     },
+     "context": "A4",
+     "id": 5989616,
+     "image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+     "link_title": "\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there) by\u00a0A4",
+     "title": "\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there)",
+     "type": "Song",
+     "url": "https://genius.com/A4-somewhere-there-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/22134374",
+      "body": {
+       "plain": ""
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": false,
+      "id": 22134374,
+      "pinned": false,
+      "share_url": "https://genius.com/22134374",
+      "source": null,
+      "state": "needs_exegesis",
+      "url": "https://genius.com/22134374/A4-somewhere-there/Somewhere-there",
+      "verified": false,
+      "votes_total": 0,
+      "current_user_metadata": {
+       "permissions": [],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview",
+        "create_comment"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/150540",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/5d7bd06d04b83337ab53e5bf333bca09",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/5d7bd06d04b83337ab53e5bf333bca09",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/5d7bd06d04b83337ab53e5bf333bca09",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/5d7bd06d04b83337ab53e5bf333bca09",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/c6b67afb5b299d7c5cd8b4a00d0838e5.1000x400x1.jpg",
+         "human_readable_role_for_display": "Moderator",
+         "id": 150540,
+         "iq": 332885,
+         "login": "Grand_Bafometz",
+         "name": "Sergey Sharapov",
+         "role_for_display": "moderator",
+         "url": "https://genius.com/Grand_Bafometz",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=Kgx7YVSbZPM"
+    }
+   ],
+   "producer_artists": [
+    {
+     "api_path": "/artists/1675137",
+     "header_image_url": "https://images.genius.com/e308b1bc9eeb159ecfa9d807d715f095.1000x1000x1.jpg",
+     "id": 1675137,
+     "image_url": "https://images.genius.com/e308b1bc9eeb159ecfa9d807d715f095.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": true,
+     "name": "SLAVA MARLOW",
+     "url": "https://genius.com/artists/Slava-marlow",
+     "iq": 169
+    }
+   ],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": [
+      {
+       "annotation_count": 5,
+       "api_path": "/songs/4092332",
+       "artist_names": "THRILL PILL (Ft. \u0415\u0413\u041e\u0420 \u041a\u0420\u0418\u0414 (EGOR KREED) & MORGENSHTERN)",
+       "full_title": "\u0413\u0440\u0443\u0441\u0442\u043d\u0430\u044f \u041f\u0435\u0441\u043d\u044f (Sad Song) by\u00a0THRILL\u00a0PILL (Ft.\u00a0\u0415\u0413\u041e\u0420\u00a0\u041a\u0420\u0418\u0414 (EGOR KREED) & MORGENSHTERN)",
+       "header_image_thumbnail_url": "https://images.genius.com/e39f91b9cb9802fbce708aaff1602bf5.300x300x1.jpg",
+       "header_image_url": "https://images.genius.com/e39f91b9cb9802fbce708aaff1602bf5.1000x1000x1.jpg",
+       "id": 4092332,
+       "lyrics_owner_id": 5805262,
+       "lyrics_state": "complete",
+       "path": "/Thrill-pill-sad-song-lyrics",
+       "pyongs_count": 114,
+       "song_art_image_thumbnail_url": "https://images.genius.com/1ce829dffdde8ea76cfcf2f6e871b12d.300x300x1.jpg",
+       "song_art_image_url": "https://images.genius.com/1ce829dffdde8ea76cfcf2f6e871b12d.1000x1000x1.jpg",
+       "stats": {
+        "unreviewed_annotations": 1,
+        "hot": false,
+        "pageviews": 917130
+       },
+       "title": "\u0413\u0440\u0443\u0441\u0442\u043d\u0430\u044f \u041f\u0435\u0441\u043d\u044f (Sad Song)",
+       "title_with_featured": "\u0413\u0440\u0443\u0441\u0442\u043d\u0430\u044f \u041f\u0435\u0441\u043d\u044f (Sad Song) (Ft.\u00a0\u0415\u0413\u041e\u0420\u00a0\u041a\u0420\u0418\u0414 (EGOR KREED) & MORGENSHTERN)",
+       "url": "https://genius.com/Thrill-pill-sad-song-lyrics",
+       "primary_artist": {
+        "api_path": "/artists/1009099",
+        "header_image_url": "https://images.genius.com/ff520f3bfed24336c336a4668f6d1875.1000x665x1.jpg",
+        "id": 1009099,
+        "image_url": "https://images.genius.com/864a9e8b22800b931c3de9a8f15b826d.665x665x1.jpg",
+        "is_meme_verified": false,
+        "is_verified": true,
+        "name": "THRILL PILL",
+        "url": "https://genius.com/artists/Thrill-pill",
+        "iq": 113
+       }
+      }
+     ]
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": [
+      {
+       "annotation_count": 5,
+       "api_path": "/songs/4092332",
+       "artist_names": "THRILL PILL (Ft. \u0415\u0413\u041e\u0420 \u041a\u0420\u0418\u0414 (EGOR KREED) & MORGENSHTERN)",
+       "full_title": "\u0413\u0440\u0443\u0441\u0442\u043d\u0430\u044f \u041f\u0435\u0441\u043d\u044f (Sad Song) by\u00a0THRILL\u00a0PILL (Ft.\u00a0\u0415\u0413\u041e\u0420\u00a0\u041a\u0420\u0418\u0414 (EGOR KREED) & MORGENSHTERN)",
+       "header_image_thumbnail_url": "https://images.genius.com/e39f91b9cb9802fbce708aaff1602bf5.300x300x1.jpg",
+       "header_image_url": "https://images.genius.com/e39f91b9cb9802fbce708aaff1602bf5.1000x1000x1.jpg",
+       "id": 4092332,
+       "lyrics_owner_id": 5805262,
+       "lyrics_state": "complete",
+       "path": "/Thrill-pill-sad-song-lyrics",
+       "pyongs_count": 114,
+       "song_art_image_thumbnail_url": "https://images.genius.com/1ce829dffdde8ea76cfcf2f6e871b12d.300x300x1.jpg",
+       "song_art_image_url": "https://images.genius.com/1ce829dffdde8ea76cfcf2f6e871b12d.1000x1000x1.jpg",
+       "stats": {
+        "unreviewed_annotations": 1,
+        "hot": false,
+        "pageviews": 917130
+       },
+       "title": "\u0413\u0440\u0443\u0441\u0442\u043d\u0430\u044f \u041f\u0435\u0441\u043d\u044f (Sad Song)",
+       "title_with_featured": "\u0413\u0440\u0443\u0441\u0442\u043d\u0430\u044f \u041f\u0435\u0441\u043d\u044f (Sad Song) (Ft.\u00a0\u0415\u0413\u041e\u0420\u00a0\u041a\u0420\u0418\u0414 (EGOR KREED) & MORGENSHTERN)",
+       "url": "https://genius.com/Thrill-pill-sad-song-lyrics",
+       "primary_artist": {
+        "api_path": "/artists/1009099",
+        "header_image_url": "https://images.genius.com/ff520f3bfed24336c336a4668f6d1875.1000x665x1.jpg",
+        "id": 1009099,
+        "image_url": "https://images.genius.com/864a9e8b22800b931c3de9a8f15b826d.665x665x1.jpg",
+        "is_meme_verified": false,
+        "is_verified": true,
+        "name": "THRILL PILL",
+        "url": "https://genius.com/artists/Thrill-pill",
+        "iq": 113
+       }
+      }
+     ]
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/1267272",
+     "header_image_url": "https://images.genius.com/db0d20acd7f4d2cebbc26a042b0b7d57.720x884x1.jpg",
+     "id": 1267272,
+     "image_url": "https://images.genius.com/1edcea93261e2e266c532ce204ba92da.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": true,
+     "name": "MORGENSHTERN",
+     "url": "https://genius.com/artists/Morgenshtern",
+     "iq": 100
+    }
+   ],
+   "artist": "A4",
+   "lyrics": "\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c (Somewhere there) Lyrics\n\n\u042d\u0439\n\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c \u043f\u043e \u041c\u0438\u043d\u0441\u043a\u0443 \u0435\u0434\u0435\u0442 (\u0415\u0434\u0435\u0442)\n\u041d\u043e\u0432\u044b\u0439 \u0441\u0435\u0440\u0435\u0431\u0440\u0438\u0441\u0442\u044b\u0439 \u0413\u0435\u043b\u0438\u043a (\u0413\u0435\u043b\u0438\u043a)\n\u041c\u043e\u043b\u043e\u0434\u044b\u0435 \u0431\u0438\u0437\u043d\u0435\u0441\u043c\u0435\u043d\u044b (\u041c\u044d\u043d\u044b)\n\u0421\u0430\u043b\u044e\u0442\u0443\u044e \u0432\u0441\u0435\u043c, \u043a\u0442\u043e \u043d\u0435 \u0432\u0435\u0440\u0438\u043b (\u042d-\u043e)\n\u041f\u043e\u0437\u0430\u0434\u0438 \u0434\u0430\u0432\u043d\u043e \u0442\u0430\u043c \u0431\u0435\u0434\u043d\u043e\u0441\u0442\u044c (\u0411\u0435\u0434\u043d\u043e\u0441\u0442\u044c)\n\u0412\u043f\u0435\u0440\u0435\u0434\u0438 \u0442\u0430\u043a \u043c\u043d\u043e\u0433\u043e \u0434\u0435\u043b\u0430\u0442\u044c (\u0414\u0435\u043b\u0430\u0442\u044c)\n\u041d\u043e \u044f \u043d\u0435 \u0441\u043c\u043e\u0442\u0440\u044e \u043d\u0430 \u0432\u0440\u0435\u043c\u044f\n\u0412\u0435\u0434\u044c \u044f \u0431\u043e\u044e\u0441\u044c \u043e\u0441\u043b\u0435\u043f\u043d\u0443\u0442\u044c\n\n\u0421\u0430\u043b\u044e\u0442\u0443\u044e \u0442\u0435\u043c, \u043a\u0442\u043e \u043d\u0435 \u0432\u0435\u0440\u0438\u043b (\u0421\u0430\u043b\u044e\u0442)\n\u0414\u0435\u0442\u0441\u043a\u0438\u0439 \u043a\u043e\u043d\u0442\u0435\u043d\u0442, \u043d\u043e \u043d\u0435 \u0434\u0435\u0442\u0441\u043a\u0438\u0435 \u0434\u0435\u043d\u044c\u0433\u0438 (\u0415-\u0435)\n\u0414\u0430\u0436\u0435 \u043f\u0430\u043f\u0430 \u043d\u0435 \u0432\u0435\u0440\u0438\u043b, Lambo \u2014 \u043e\u0440\u0430\u043d\u0436\u0435\u0432\u044b\u0439 \u043f\u0435\u043f\u0435\u043b\n\u0422\u0435\u043f\u0435\u0440\u044c \u043c\u043d\u0435 \u043d\u0435 \u0431\u044b\u0432\u0430\u0435\u0442 \u0433\u0440\u0443\u0441\u0442\u043d\u043e (\u041d\u0438\u043a\u043e\u0433\u0434\u0430)\n\u0412 \u043a\u0430\u0440\u043c\u0430\u043d\u0435 \u043d\u0435 \u0431\u044b\u0432\u0430\u0435\u0442 \u043f\u0443\u0441\u0442\u043e (\u041d\u0438\u043a\u043e\u0433\u0434\u0430)\n\u041d\u0430 \u043c\u043d\u0435 \u043b\u0443\u0447\u0448\u0438\u0435 \u0431\u0440\u0435\u043d\u0434\u044b\n\u041c\u044b \u043a\u0443\u0448\u0430\u0435\u043c \u0434\u043e\u0440\u043e\u0433\u043e, \u043a\u0443\u0448\u0430\u0435\u043c \u0432\u043a\u0443\u0441\u043d\u043e (\u041d\u044f\u043c-\u043d\u044f\u043c)\n\u0421\u0430\u043b\u044e\u0442\u0443\u044e, \u043f\u043e\u043c\u043d\u044e \u043e\u0442\u043a\u0443\u0434\u0430 \u0432\u044b\u043b\u0435\u0437 (\u0425\u0430\u0439)\n\u0421\u0430\u043b\u044e\u0442\u0443\u044e, \u043d\u043e \u0432 \u0441\u043e\u043b\u043e \u044d\u0442\u0443 \u0442\u0435\u043c\u0443 \u0432\u044b\u0432\u0435\u0437 (\u0421\u0430\u043c)\n\u0421\u0435\u0440\u0435\u0431\u0440\u044f\u043d\u043a\u0430, \u043d\u043e \u0449\u0430\u0441 \u0437\u043e\u043b\u043e\u0442\u0430\u044f \u0431\u0438\u0440\u0436\u0430\n\u0425\u043e\u0447\u0435\u0448\u044c \u0444\u043e\u0442\u043e, \u0431\u0440\u043e? \u042f \u044d\u0442\u043e \u043d\u0435\u043d\u0430\u0432\u0438\u0436\u0443 (\u041d\u0435-\u043d\u0435)\n\u042f \u0434\u0435\u043b\u0430\u044e \u0434\u0435\u043d\u044c\u0433\u0438 \u0438 \u0446\u0438\u0444\u0440\u044b \u043d\u0435 \u0432\u0440\u0443\u0442\n\u041a\u0430\u043a \u0431\u044b \u0432\u0430\u043c \u0442\u043e \u043d\u0435 \u043d\u0440\u0430\u0432\u0438\u0442\u0441\u044f (\u0412\u0430\u043c \u0442\u043e \u043d\u0435 \u043d\u0440\u0430\u0432\u0438\u0442\u0441\u044f)\n\u042f \u0441\u0442\u044b\u0440\u0438\u043b \u0432\u0441\u0451 \u0441 \u0437\u0430\u043f\u0430\u0434\u0430 (\u0418 \u0447\u0442\u043e?)\n\u041a\u0430\u043a\u0430\u044f \u0432\u0430\u043c \u0440\u0430\u0437\u043d\u0438\u0446\u0430 (\u0415-\u043e)\n\u0413\u0434\u0435-\u0442\u043e \u0442\u0430\u043c \u043f\u043e \u041c\u0438\u043d\u0441\u043a\u0443 \u0435\u0434\u0435\u0442 (\u0415\u0434\u0435\u0442)\n\u041d\u043e\u0432\u044b\u0439 \u0441\u0435\u0440\u0435\u0431\u0440\u0438\u0441\u0442\u044b\u0439 \u0413\u0435\u043b\u0438\u043a (\u0413\u0435\u043b\u0438\u043a)\n\u041c\u043e\u043b\u043e\u0434\u044b\u0435 \u0431\u0438\u0437\u043d\u0435\u0441\u043c\u0435\u043d\u044b (\u041c\u044d\u043d\u044b)\n\u0421\u0430\u043b\u044e\u0442\u0443\u044e \u0432\u0441\u0435\u043c, \u043a\u0442\u043e \u043d\u0435 \u0432\u0435\u0440\u0438\u043b (\u042d-\u043e)\n\u041f\u043e\u0437\u0430\u0434\u0438 \u0434\u0430\u0432\u043d\u043e \u0442\u0430\u043c \u0431\u0435\u0434\u043d\u043e\u0441\u0442\u044c (\u0411\u0435\u0434\u043d\u043e\u0441\u0442\u044c)\n\u0412\u043f\u0435\u0440\u0435\u0434\u0438 \u0442\u0430\u043a \u043c\u043d\u043e\u0433\u043e \u0434\u0435\u043b\u0430\u0442\u044c (\u0414\u0435\u043b\u0430\u0442\u044c)\n\u041d\u043e \u044f \u043d\u0435 \u0441\u043c\u043e\u0442\u0440\u044e \u043d\u0430 \u0432\u0440\u0435\u043c\u044f\n\u0412\u0435\u0434\u044c \u044f \u0431\u043e\u044e\u0441\u044c \u043e\u0441\u043b\u0435\u043f\u043d\u0443\u0442\u044c\n\n\u041e\u0441\u043b\u0435\u043f\u043d\u0443\u0442\u044c, \u043e\u0441\u043b\u0435\u043f\u043d\u0443\u0442\u044c, \u043e\u0441\u043b\u0435\u043f\u043d\u0443\u0442\u044c\n\u0412\u0435\u0434\u044c \u044f \u0431\u043e\u044e\u0441\u044c \u043e\u0441\u043b\u0435\u043f\u043d\u0443\u0442\u044cEmbed"
+  },
+  {
+   "annotation_count": 2,
+   "api_path": "/songs/5990593",
+   "artist_names": "A4",
+   "full_title": "Views by\u00a0A4",
+   "header_image_thumbnail_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+   "id": 5990593,
+   "lyrics_owner_id": 4105156,
+   "lyrics_state": "complete",
+   "path": "/A4-views-lyrics",
+   "pyongs_count": null,
+   "song_art_image_thumbnail_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 20,
+    "iq_earners": 19,
+    "transcribers": 5,
+    "unreviewed_annotations": 2,
+    "verified_annotations": 0,
+    "hot": false,
+    "pageviews": 8574
+   },
+   "title": "Views",
+   "title_with_featured": "Views",
+   "url": "https://genius.com/A4-views-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/1857449",
+    "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+    "id": 1857449,
+    "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A4",
+    "url": "https://genius.com/artists/A4"
+   },
+   "apple_music_id": null,
+   "apple_music_player_url": "https://genius.com/songs/5990593/apple_music_player",
+   "description": {
+    "plain": "?"
+   },
+   "embed_content": "<div id='rg_embed_link_5990593' class='rg_embed_link' data-song-id='5990593'>Read <a href='https://genius.com/A4-views-lyrics'>\u201cViews\u201d by A4</a> on Genius</div> <script crossorigin src='//genius.com/songs/5990593/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2020-09-26",
+   "release_date_for_display": "September 26, 2020",
+   "current_user_metadata": {
+    "permissions": [
+     "see_pageviews",
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": {
+    "api_path": "/albums/681015",
+    "cover_art_url": "https://images.genius.com/a5e998b3ef1c0e4a50a8967fd2fd2bb4.1000x1000x1.jpg",
+    "full_title": "\u0414\u0415\u0422\u0421\u041a\u0418\u0415 \u041f\u0415\u0421\u041d\u0418 (CHILDREN\u2019S SONGS) by A4",
+    "id": 681015,
+    "name": "\u0414\u0415\u0422\u0421\u041a\u0418\u0415 \u041f\u0415\u0421\u041d\u0418 (CHILDREN\u2019S SONGS)",
+    "url": "https://genius.com/albums/A4/Childrens-songs",
+    "artist": {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   },
+   "custom_performances": [
+    {
+     "label": "Additional Vocals",
+     "artists": [
+      {
+       "api_path": "/artists/2245753",
+       "header_image_url": "https://images.genius.com/3326bbd87e4213c6c3b5e31930dcac30.1000x667x1.jpg",
+       "id": 2245753,
+       "image_url": "https://images.genius.com/bd219f08fd758a500b0463892c8c0f4d.651x651x1.jpg",
+       "is_meme_verified": false,
+       "is_verified": false,
+       "name": "\u041a\u041e\u0411\u042f\u041a\u041e\u0412 (KOBYAKOV)",
+       "url": "https://genius.com/artists/Kobyakov"
+      }
+     ]
+    },
+    {
+     "label": "Label",
+     "artists": [
+      {
+       "api_path": "/artists/2069743",
+       "header_image_url": "https://images.genius.com/a34443f091657998418cfd6d1254f0d2.1000x1000x1.jpg",
+       "id": 2069743,
+       "image_url": "https://images.genius.com/a34443f091657998418cfd6d1254f0d2.1000x1000x1.jpg",
+       "is_meme_verified": false,
+       "is_verified": false,
+       "name": "DNK Music",
+       "url": "https://genius.com/artists/Dnk-music"
+      }
+     ]
+    }
+   ],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 4105156,
+    "annotator_login": "Thirteenth3",
+    "api_path": "/referents/20891625",
+    "classification": "needs_exegesis",
+    "fragment": "Views",
+    "id": 20891625,
+    "is_description": true,
+    "path": "/20891625/A4-views/Views",
+    "range": {
+     "content": "Views"
+    },
+    "song_id": 5990593,
+    "url": "https://genius.com/20891625/A4-views/Views",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/5990593",
+     "client_timestamps": {
+      "updated_by_human_at": 1643918638,
+      "lyrics_updated_at": 1643918638
+     },
+     "context": "A4",
+     "id": 5990593,
+     "image_url": "https://images.genius.com/684cb22df7ab86194018585e6eafbd53.1000x1000x1.jpg",
+     "link_title": "Views by\u00a0A4",
+     "title": "Views",
+     "type": "Song",
+     "url": "https://genius.com/A4-views-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/20891625",
+      "body": {
+       "plain": ""
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": false,
+      "id": 20891625,
+      "pinned": false,
+      "share_url": "https://genius.com/20891625",
+      "source": null,
+      "state": "needs_exegesis",
+      "url": "https://genius.com/20891625/A4-views/Views",
+      "verified": false,
+      "votes_total": 0,
+      "current_user_metadata": {
+       "permissions": [],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview",
+        "create_comment"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/4105156",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/f5aa06bbb6ef2c737e71aac0b34b4e71",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/f5aa06bbb6ef2c737e71aac0b34b4e71",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/f5aa06bbb6ef2c737e71aac0b34b4e71",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/f5aa06bbb6ef2c737e71aac0b34b4e71",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/a59403ac1cce5e17f026a7e870ae8161.1000x600x1.jpg",
+         "human_readable_role_for_display": "Editor",
+         "id": 4105156,
+         "iq": 110981,
+         "login": "Thirteenth3",
+         "name": "Sakkada",
+         "role_for_display": "editor",
+         "url": "https://genius.com/Thirteenth3",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=VDlIyynf8V4"
+    }
+   ],
+   "producer_artists": [
+    {
+     "api_path": "/artists/1675137",
+     "header_image_url": "https://images.genius.com/e308b1bc9eeb159ecfa9d807d715f095.1000x1000x1.jpg",
+     "id": 1675137,
+     "image_url": "https://images.genius.com/e308b1bc9eeb159ecfa9d807d715f095.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": true,
+     "name": "SLAVA MARLOW",
+     "url": "https://genius.com/artists/Slava-marlow",
+     "iq": 169
+    }
+   ],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/1267272",
+     "header_image_url": "https://images.genius.com/db0d20acd7f4d2cebbc26a042b0b7d57.720x884x1.jpg",
+     "id": 1267272,
+     "image_url": "https://images.genius.com/1edcea93261e2e266c532ce204ba92da.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": true,
+     "name": "MORGENSHTERN",
+     "url": "https://genius.com/artists/Morgenshtern",
+     "iq": 100
+    }
+   ],
+   "artist": "A4",
+   "lyrics": "Views Lyrics\n\n\u04104 \u2014 \u044f, \u04104 \u2014 \u044f\n\u041e\u043a\u0435\u0439, \u0443\u0433\u0443-\u0443\u0433\u0443\n\u041e\u043a\u0435\u0439\n\u042d\u0439-\u044d\u0439\n\n\u041b\u044f\u0440\u0434\u044b views \u043d\u0430 \u0442\u0443\u0431\u0435 (\u043c\u043d\u0435 \u043c\u0430\u043b\u043e)\n\u0426\u0435\u043f\u044c \u043d\u0430 \u0448\u0435\u0435 \u2014 \u044d\u0442\u043e \u041a\u0443\u0431\u0430 (\u041a\u0443\u0431\u0430)\n\u042f \u2014 \u0422\u0438\u043c\u043e\u043d, \u0442\u044b \u2014 \u041f\u0443\u043c\u0431\u0430 (\u041f\u0443\u043c\u0431\u0430)\n\u041b\u044f\u043c\u044b, \u0431\u0430\u043a\u0441, \u043a\u0443\u043f\u044e\u0440\u044b (\u041e, \u0434\u0430)\n\u041b\u044f\u0440\u0434\u044b views \u043d\u0430 \u0442\u0443\u0431\u0435 (\u043c\u043d\u0435 \u043c\u0430\u043b\u043e)\n\u0426\u0435\u043f\u044c \u043d\u0430 \u0448\u0435\u0435 \u2014 \u044d\u0442\u043e \u041a\u0443\u0431\u0430 (\u041a\u0443\u0431\u0430)\n\u042f \u2014 \u0422\u0438\u043c\u043e\u043d, \u0442\u044b \u2014 \u041f\u0443\u043c\u0431\u0430 (\u041f\u0443\u043c\u0431\u0430)\n\u041b\u044f\u043c\u044b, \u0431\u0430\u043a\u0441, \u043a\u0443\u043f\u044e\u0440\u044b (\u041e, \u0434\u0430)\n\n\u041d\u0435\u0442, \u043d\u0435\u0442, \u043d\u0435 \u0445\u0432\u0430\u0442\u0438\u0442\n\u041d\u0435\u0442, \u043d\u0435\u0442, \u043d\u0435 \u0445\u0432\u0430\u0442\u0438\u0442\nDone \u0432\u0441\u0435 \u044d\u0442\u0438 \u0437\u0430\u0434\u0430\u0447\u0438\n\u042f \u043f\u043e\u0440\u043e\u0432\u043d\u044f\u043b \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u044b \u0438 \u043f\u0430\u0447\u043a\u0438\n\u0414\u0435\u043d\u044c\u0433\u0438 \u2014 \u043a\u0443\u0447\u043a\u0438, \u043d\u043e \u0431\u0443\u0434\u0442\u043e \u0431\u044b \u043c\u0430\u043b\u044c\u0447\u0438\u043a (Cash-cash)\n\u0422\u043e\u043b\u044c\u043a\u043e \u0441\u0430\u043c \u044f \u043d\u0435 \u0432\u0435\u0440\u044e \u0432 \u0443\u0434\u0430\u0447\u0443\n\u0421 \u043a\u0430\u0436\u0434\u044b\u043c \u0433\u043e\u0434\u043e\u043c \u043c\u044b \u0442\u043e\u043b\u044c\u043a\u043e \u0431\u043e\u0433\u0430\u0447\u0435\n\u0427\u0443\u0432\u0441\u0442\u0432\u0443\u044e \u0432\u0441\u0435\u0445 \u0442\u0435\u0445, \u043a\u0442\u043e \u0441\u043e \u043c\u043d\u043e\u0439 \u0444\u0430\u043b\u044c\u0448\u0438\u0432\n(\u041e, \u0434\u0430)\n\u042d\u0439, \u043b\u044f\u0440\u0434\u044b views \u043d\u0430 \u0442\u0443\u0431\u0435 (\u043c\u043d\u0435 \u043c\u0430\u043b\u043e)\n\u0426\u0435\u043f\u044c \u043d\u0430 \u0448\u0435\u0435 \u2014 \u044d\u0442\u043e \u041a\u0443\u0431\u0430 (\u041a\u0443\u0431\u0430)\n\u042f \u2014 \u0422\u0438\u043c\u043e\u043d, \u0442\u044b \u2014 \u041f\u0443\u043c\u0431\u0430 (\u041f\u0443\u043c\u0431\u0430)\n\u041b\u044f\u043c\u044b, \u0431\u0430\u043a\u0441, \u043a\u0443\u043f\u044e\u0440\u044b (\u041e, \u0434\u0430)\n\u041b\u044f\u0440\u0434\u044b views \u043d\u0430 \u0442\u0443\u0431\u0435 (\u043c\u043d\u0435 \u043c\u0430\u043b\u043e)\n\u0426\u0435\u043f\u044c \u043d\u0430 \u0448\u0435\u0435 \u2014 \u044d\u0442\u043e \u041a\u0443\u0431\u0430 (\u041a\u0443\u0431\u0430)\n\u042f \u2014 \u0422\u0438\u043c\u043e\u043d, \u0442\u044b \u2014 \u041f\u0443\u043c\u0431\u0430 (\u041f\u0443\u043c\u0431\u0430)\n\u041b\u044f\u043c\u044b, \u0431\u0430\u043a\u0441, \u043a\u0443\u043f\u044e\u0440\u044b (\u041e, \u0434\u0430)\n\n\u0415\u0449\u0451, \u0435\u0449\u0451, \u0435\u0449\u0451, \u0435\u0449\u0451, \u0435\u0449\u0451\n\u0411\u043e\u043b\u044c\u0448\u0435 money \u043d\u0430 \u0441\u0447\u0451\u0442 (\u0415\u0449\u0451)\n\u0411\u043e\u043b\u044c\u0448\u0435 views \u043d\u0430 \u0441\u0447\u0451\u0442 (\u0415\u0449\u0451)\n\u0427\u0435\u043a\u0438, \u043b\u044e\u043a\u0441-\u0430\u0432\u0442\u043e \u0432 \u043d\u0430\u0431\u043e\u0440\u0447\u0438\u043a (\u0415\u0449\u0451)\n\u0427\u0435\u043a\u0438, \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430\u0432\u0435\u0440\u0445, \u043a\u0430\u043a \u043b\u0451\u0442\u0447\u0438\u043a\n\u0427\u0435\u043a\u0438, \u0441\u043d\u0451\u0441 \u043d\u043e\u0433\u043e\u0439 \u0437\u0430\u0431\u043e\u0440\u0447\u0438\u043a (\u0415\u0449\u0451)\n\u0427\u0435\u043a\u0438, \u043f\u0430\u043f\u0430 \u044e\u0442\u0443\u0431\u0430 \u043d\u0430 \u043c\u0435\u0441\u0442\u0435 (\u0425\u0430\u0439)\n\u041b\u0430\u0439\u043a \u0438 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u0447\u0438\u043a\n\n(\u041e, \u0434\u0430)\n\u042d\u0439, \u043b\u044f\u0440\u0434\u044b views \u043d\u0430 \u0442\u0443\u0431\u0435 (\u043c\u043d\u0435 \u043c\u0430\u043b\u043e)\n\u0426\u0435\u043f\u044c \u043d\u0430 \u0448\u0435\u0435 \u2014 \u044d\u0442\u043e \u041a\u0443\u0431\u0430 (\u041a\u0443\u0431\u0430)\n\u042f \u2014 \u0422\u0438\u043c\u043e\u043d, \u0442\u044b \u2014 \u041f\u0443\u043c\u0431\u0430 (\u041f\u0443\u043c\u0431\u0430)\n\u041b\u044f\u043c\u044b, \u0431\u0430\u043a\u0441, \u043a\u0443\u043f\u044e\u0440\u044b (\u041e, \u0434\u0430)\n\u041b\u044f\u0440\u0434\u044b views \u043d\u0430 \u0442\u0443\u0431\u0435 (\u043c\u043d\u0435 \u043c\u0430\u043b\u043e)\n\u0426\u0435\u043f\u044c \u043d\u0430 \u0448\u0435\u0435 \u2014 \u044d\u0442\u043e \u041a\u0443\u0431\u0430 (\u041a\u0443\u0431\u0430)\n\u042f \u2014 \u0422\u0438\u043c\u043e\u043d, \u0442\u044b \u2014 \u041f\u0443\u043c\u0431\u0430 (\u041f\u0443\u043c\u0431\u0430)\n\u041b\u044f\u043c\u044b, \u0431\u0430\u043a\u0441, \u043a\u0443\u043f\u044e\u0440\u044b (\u041e, \u0434\u0430)\n\u04104 \u2014 \u044f, \u04104 \u2014 \u044f\n\u041e\u043a\u0435\u0439, \u0443\u0433\u0443-\u0443\u0433\u0443Embed"
+  },
+  {
+   "annotation_count": 0,
+   "api_path": "/songs/4634380",
+   "artist_names": "\u041a\u0430\u0442\u044f \u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina) (Ft. A4)",
+   "full_title": "\u041e\u0433\u043e\u043d\u044c (Fire) by\u00a0\u041a\u0430\u0442\u044f\u00a0\u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina) (Ft.\u00a0A4)",
+   "header_image_thumbnail_url": "https://images.genius.com/f6899927511df66d49b0eb959b899a33.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/f6899927511df66d49b0eb959b899a33.443x443x1.jpg",
+   "id": 4634380,
+   "lyrics_owner_id": 7626096,
+   "lyrics_state": "complete",
+   "path": "/Katya-adushkina-fire-lyrics",
+   "pyongs_count": null,
+   "song_art_image_thumbnail_url": "https://images.genius.com/f6899927511df66d49b0eb959b899a33.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/f6899927511df66d49b0eb959b899a33.443x443x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 3,
+    "iq_earners": 3,
+    "transcribers": 1,
+    "unreviewed_annotations": 0,
+    "verified_annotations": 0,
+    "hot": false
+   },
+   "title": "\u041e\u0433\u043e\u043d\u044c (Fire)",
+   "title_with_featured": "\u041e\u0433\u043e\u043d\u044c (Fire) (Ft.\u00a0A4)",
+   "url": "https://genius.com/Katya-adushkina-fire-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/1548218",
+    "header_image_url": "https://images.genius.com/04259515e19ca1ff3875bb09c415df42.1000x252x1.jpg",
+    "id": 1548218,
+    "image_url": "https://images.genius.com/a08f33d9236c92485447bf01df72cc40.532x532x1.jpg",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "\u041a\u0430\u0442\u044f \u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina)",
+    "url": "https://genius.com/artists/Katya-adushkina"
+   },
+   "apple_music_id": "1458847205",
+   "apple_music_player_url": "https://genius.com/songs/4634380/apple_music_player",
+   "description": {
+    "plain": "?"
+   },
+   "embed_content": "<div id='rg_embed_link_4634380' class='rg_embed_link' data-song-id='4634380'>Read <a href='https://genius.com/Katya-adushkina-fire-lyrics'>\u201c\u041e\u0433\u043e\u043d\u044c (Fire)\u201d by \u041a\u0430\u0442\u044f\u00a0\u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina)</a> on Genius</div> <script crossorigin src='//genius.com/songs/4634380/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2019-04-19",
+   "release_date_for_display": "April 19, 2019",
+   "current_user_metadata": {
+    "permissions": [
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "see_pageviews",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": {
+    "api_path": "/albums/537398",
+    "cover_art_url": "https://images.genius.com/f6899927511df66d49b0eb959b899a33.443x443x1.jpg",
+    "full_title": ".\u0410\u041d\u0414\u041e (.ENOLA) by \u041a\u0430\u0442\u044f \u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina)",
+    "id": 537398,
+    "name": ".\u0410\u041d\u0414\u041e (.ENOLA)",
+    "url": "https://genius.com/albums/Katya-adushkina/Enola",
+    "artist": {
+     "api_path": "/artists/1548218",
+     "header_image_url": "https://images.genius.com/04259515e19ca1ff3875bb09c415df42.1000x252x1.jpg",
+     "id": 1548218,
+     "image_url": "https://images.genius.com/a08f33d9236c92485447bf01df72cc40.532x532x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "\u041a\u0430\u0442\u044f \u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina)",
+     "url": "https://genius.com/artists/Katya-adushkina"
+    }
+   },
+   "custom_performances": [],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 7626096,
+    "annotator_login": "jamesforbetty",
+    "api_path": "/referents/17402760",
+    "classification": "needs_exegesis",
+    "fragment": "\u041e\u0433\u043e\u043d\u044c (Fire)",
+    "id": 17402760,
+    "is_description": true,
+    "path": "/17402760/Katya-adushkina-fire/Fire",
+    "range": {
+     "content": "\u041e\u0433\u043e\u043d\u044c (Fire)"
+    },
+    "song_id": 4634380,
+    "url": "https://genius.com/17402760/Katya-adushkina-fire/Fire",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/4634380",
+     "client_timestamps": {
+      "updated_by_human_at": 1582288429,
+      "lyrics_updated_at": 1560678683
+     },
+     "context": "\u041a\u0430\u0442\u044f \u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina)",
+     "id": 4634380,
+     "image_url": "https://images.genius.com/f6899927511df66d49b0eb959b899a33.443x443x1.jpg",
+     "link_title": "\u041e\u0433\u043e\u043d\u044c (Fire) by\u00a0\u041a\u0430\u0442\u044f\u00a0\u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina) (Ft.\u00a0A4)",
+     "title": "\u041e\u0433\u043e\u043d\u044c (Fire)",
+     "type": "Song",
+     "url": "https://genius.com/Katya-adushkina-fire-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/17402760",
+      "body": {
+       "plain": ""
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": false,
+      "id": 17402760,
+      "pinned": false,
+      "share_url": "https://genius.com/17402760",
+      "source": null,
+      "state": "needs_exegesis",
+      "url": "https://genius.com/17402760/Katya-adushkina-fire/Fire",
+      "verified": false,
+      "votes_total": 0,
+      "current_user_metadata": {
+       "permissions": [],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview",
+        "create_comment"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/7626096",
+         "avatar": {
+          "tiny": {
+           "url": "https://s3.amazonaws.com/filepicker-images-rapgenius/62hs0kgoysa",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://s3.amazonaws.com/filepicker-images-rapgenius/62hs0kgoysa",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://s3.amazonaws.com/filepicker-images-rapgenius/62hs0kgoysa",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://s3.amazonaws.com/filepicker-images-rapgenius/62hs0kgoysa",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://s3.amazonaws.com/filepicker-images-rapgenius/aazjzf02w68",
+         "human_readable_role_for_display": "Contributor",
+         "id": 7626096,
+         "iq": 2471,
+         "login": "jamesforbetty",
+         "name": "jamesforbetty",
+         "role_for_display": "contributor",
+         "url": "https://genius.com/jamesforbetty",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [
+    {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   ],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=MX_qG-V9aMs"
+    }
+   ],
+   "producer_artists": [
+    {
+     "api_path": "/artists/1757687",
+     "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "id": 1757687,
+     "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "\u041a\u0438\u0440\u0438\u043b\u043b (Mickey) \u041c\u0430\u0442\u044e\u0448\u0435\u043d\u043a\u043e (Kirill Matushenko)",
+     "url": "https://genius.com/artists/Mickey-kirill-matushenko"
+    }
+   ],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    },
+    {
+     "api_path": "/artists/1548218",
+     "header_image_url": "https://images.genius.com/04259515e19ca1ff3875bb09c415df42.1000x252x1.jpg",
+     "id": 1548218,
+     "image_url": "https://images.genius.com/a08f33d9236c92485447bf01df72cc40.532x532x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "\u041a\u0430\u0442\u044f \u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina)",
+     "url": "https://genius.com/artists/Katya-adushkina"
+    },
+    {
+     "api_path": "/artists/1857430",
+     "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "id": 1857430,
+     "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "\u041a\u0438\u0440\u0438\u043b\u043b \u0414\u0438\u0434\u0435\u043d\u043e\u043a (Kirill Didenok)",
+     "url": "https://genius.com/artists/Kirill-didenok"
+    }
+   ],
+   "artist": "\u041a\u0430\u0442\u044f \u0410\u0434\u0443\u0448\u043a\u0438\u043d\u0430 (Katya Adushkina)",
+   "lyrics": "\u041e\u0433\u043e\u043d\u044c (Fire) Lyrics\n\u042f \u043a\u0430\u043a \u043e\u0433\u043e\u043d\u044c \u0437\u0430\u0433\u043e\u0440\u0430\u044e\u0441\u044c\n\u041f\u043e\u043a\u0430 \u0432\u0441\u0435 \u0432\u043e\u043a\u0440\u0443\u0433 \u0437\u0430\u0433\u043e\u0440\u0430\u044e\u0442\n\u042f \u0436\u0435 \u043a\u0430\u043a \u043e\u0433\u043e\u043d\u044c \u0437\u0430\u0436\u0438\u0433\u0430\u044e\n\u041c\u043d\u0435 \u043d\u0435 \u043d\u0443\u0436\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u0435, \u044f \u0437\u043d\u0430\u044e\n\n\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u0434\u0430\u0440\u044e \u0441\u0442\u0438\u043b\u044c\n\u0411\u0443\u0434\u0442\u043e \u0431\u0440\u0435\u043d\u0434!\nI got! I got! I got! I got it!\n\u042f \u0436\u0438\u0432\u0443, \u043a\u0430\u043a \u0445\u043e\u0447\u0443\n\u042d\u0442\u043e \u0442\u0440\u0435\u043d\u0434!\nI want! I want! I want it!\n\n\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u0434\u0430\u0440\u044e \u0441\u0442\u0438\u043b\u044c\n\u0411\u0443\u0434\u0442\u043e \u0431\u0440\u0435\u043d\u0434!\nI got! I got! I got! I got it!\n\u042f \u0436\u0438\u0432\u0443, \u043a\u0430\u043a \u0445\u043e\u0447\u0443\n\u042d\u0442\u043e \u0442\u0440\u0435\u043d\u0434!\n\n\u0412\u0441\u0435 \u0440\u0430\u0437\u0431\u0440\u043e\u0441\u0430\u043d\u044b \u043f\u043e \u0442\u043e\u0447\u043a\u0430\u043c \u043d\u0430 \u0437\u0435\u043c\u043b\u0435\n\u0415\u0435 \u0441\u0435\u0440\u0434\u0446\u0435\u0431\u0438\u0435\u043d\u0438\u0435 \u0432\u043e \u043c\u043d\u0435\n\u0422\u0430\u043a \u043c\u0430\u043b\u043e \u043d\u0430\u0434\u043e, \u0447\u0442\u043e\u0431\u044b \u043b\u0435\u0442\u0435\u0442\u044c\n\u041c\u0430\u043c\u0430, \u043d\u0435 \u0432\u043e\u043b\u043d\u0443\u0439\u0441\u044f \u0437\u0440\u044f\n\u0412\u0441\u0435 \u043f\u043e\u0431\u0435\u0434\u044b \u0434\u043b\u044f \u0442\u0435\u0431\u044f\n\u042d\u0442\u043e\u0442 \u0433\u043e\u0440\u043e\u0434 \u043d\u0435 \u0434\u043b\u044f \u0441\u043d\u0430\n\u042d\u0442\u043e \u043f\u0440\u043e\u0441\u0442\u043e \u043c\u043e\u0439 life style\n\u0414\u0430, \u0438 \u0434\u043e \u0440\u0430\u0441\u0441\u0432\u0435\u0442\u0430 \u0432\u0441\u0435 \u0447\u0435\u0441\u0442\u043d\u043e\n\n\u042f \u043e\u043f\u044f\u0442\u044c \u043d\u0430\u0434\u0435\u043d\u0443 Prada, \u0435\u0441\u043b\u0438 \u044d\u0442\u043e \u043d\u0430\u0434\u043e\n\u041a\u0430\u043a \u043f\u043b\u0438\u0442\u043a\u0430 \u0448\u043e\u043a\u043e\u043b\u0430\u0434\u0430 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u043d\u0438\u043c\u0443\n\u041f\u0438\u043d\u0430\u044e \u0432 \u043c\u0430\u0439\u043a\u0435 Gucci, \u044f \u0440\u0430\u0437\u0433\u043e\u043d\u044f\u044e \u0442\u0443\u0447\u0438\n\u0417\u0430\u0431\u0435\u0439 \u043d\u0430 \u0432\u0441\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b, \u043d\u0438\u043a\u0442\u043e \u043d\u0430\u0441 \u043d\u0435 \u043a\u0440\u0443\u0447\u0435\n\n\u042f \u043a\u0430\u043a \u043e\u0433\u043e\u043d\u044c \u0437\u0430\u0433\u043e\u0440\u0430\u044e\u0441\u044c\n\u041f\u043e\u043a\u0430 \u0432\u0441\u0435 \u0432\u043e\u043a\u0440\u0443\u0433 \u0437\u0430\u0433\u043e\u0440\u0430\u044e\u0442\n\u042f \u0436\u0435 \u043a\u0430\u043a \u043e\u0433\u043e\u043d\u044c \u0437\u0430\u0436\u0438\u0433\u0430\u044e\n\u041c\u043d\u0435 \u043d\u0435 \u043d\u0443\u0436\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u0435, \u044f \u0437\u043d\u0430\u044e\n\n\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u0434\u0430\u0440\u044e \u0441\u0442\u0438\u043b\u044c\n\u0411\u0443\u0434\u0442\u043e \u0431\u0440\u0435\u043d\u0434!\nI got! I got! I got! I got it!\n\u042f \u0436\u0438\u0432\u0443, \u043a\u0430\u043a \u0445\u043e\u0447\u0443\n\u042d\u0442\u043e \u0442\u0440\u0435\u043d\u0434!\nI want! I want! I want it!\n\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u0434\u0430\u0440\u044e \u0441\u0442\u0438\u043b\u044c\n\u0411\u0443\u0434\u0442\u043e \u0431\u0440\u0435\u043d\u0434!\nI got! I got! I got! I got it!\n\u042f \u0436\u0438\u0432\u0443, \u043a\u0430\u043a \u0445\u043e\u0447\u0443\n\u042d\u0442\u043e \u0442\u0440\u0435\u043d\u0434!\n\u041c\u043e\u044f \u0436\u0438\u0437\u043d\u044c \u0431\u0443\u0434\u0442\u043e \u0448\u043e\u0443\n\u041d\u0430 \u0441\u0442\u0430\u0440\u0442, \u043c\u043e\u0442\u043e\u0440\n\u042f \u043d\u0435 \u0431\u044c\u044e \u0442\u0430\u0442\u0443, \u044f \u043d\u0435 fake, \u0430 true\n\u041d\u043e\u0432\u044b\u0439 \u0432\u043b\u043e\u0433 \u043a \u0443\u0442\u0440\u0443, \u043a\u043e\u0444\u0435, \u0442\u044b \u043c\u043e\u0439 \u0434\u0440\u0443\u0433\n\u0412\u043e\u0437\u0433\u043b\u0430\u0432\u043b\u044f\u0435\u043c \u0445\u0438\u0442 \u043f\u0430\u0440\u0430\u0434\n\u041a\u0430\u0436\u0434\u044b\u0439 \u043d\u0430\u0448 \u0432\u043e \u0432\u043b\u043e\u0433\u0430\u0445 \u0440\u0430\u0434\n\u041d\u0430\u0448\u0438 \u0436\u0438\u0437\u043d\u0438 \u0432 \u0433\u0438\u0433\u0430\u0431\u0430\u0439\u0442\u0430\u0445\n\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439, \u0411\u043e\u043d\u043d\u0438, \u044f \u0442\u0432\u043e\u0439 \u041a\u043b\u0430\u0439\u0434\n\u0416\u0432\u0430\u0447\u043a\u0443 \u0432 \u0446\u0432\u0435\u0442 \u0442\u0432\u043e\u0435\u0439 \u043f\u043e\u043c\u0430\u0434\u044b\n\u0411\u0430\u0431\u043b-\u0433\u0430\u043c \u043d\u0435 \u043f\u0440\u043e\u0441\u0442\u043e \u044f\u0434\n\u0412\u0441\u0435, \u0447\u0442\u043e \u043d\u0430\u043c \u0442\u0430\u043a \u0432 \u0436\u0438\u0437\u043d\u0438 \u043d\u0430\u0434\u043e\n\u041c\u044b \u0432\u043e\u0437\u044c\u043c\u0435\u043c \u043f\u043e\u043a\u0430 \u0432\u0441\u0435 \u0441\u043f\u044f\u0442\n\n\u0417\u0434\u0435\u0441\u044c \u0440\u0430\u043c\u043e\u043a \u0438 \u0437\u0430\u043f\u0440\u0435\u0442\u043e\u0432 \u0431\u043e\u043b\u044c\u0448\u0435 \u043d\u0435\u0442\n\u041c\u044b \u0441\u043e \u0432\u0441\u0435\u043b\u0435\u043d\u043d\u043e\u0439 \u043d\u0430 \u043e\u0434\u043d\u043e\u0439 \u0432\u043e\u043b\u043d\u0435\n\u0412\u043a\u0443\u0441 \u0436\u0438\u0437\u043d\u0438 \u043f\u043e\u0434\u043d\u0438\u043c\u0435\u0442 \u0434\u043e \u043d\u0435\u0431\u0435\u0441\n\u041c\u0430\u043c\u0430, \u043d\u0435 \u0432\u043e\u043b\u043d\u0443\u0439\u0441\u044f \u0437\u0440\u044f\n\u0412\u0441\u0435 \u043e\u043a\u0435\u0439 \u0432\u043d\u0443\u0442\u0440\u0438 \u043c\u0435\u043d\u044f\n\u042d\u0442\u043e\u0442 \u0433\u043e\u0440\u043e\u0434 \u043d\u0435 \u0434\u043b\u044f \u0441\u043d\u0430\n\u042d\u0442\u043e \u043f\u0440\u043e\u0441\u0442\u043e \u043c\u043e\u0439 life style\n\u0414\u0430, \u0438 \u0434\u043e \u0440\u0430\u0441\u0441\u0432\u0435\u0442\u0430 \u0432\u0441\u0435 \u0447\u0435\u0441\u0442\u043d\u043e\n\n\u042f \u043e\u043f\u044f\u0442\u044c \u043d\u0430\u0434\u0435\u043d\u0443 Prada, \u0435\u0441\u043b\u0438 \u044d\u0442\u043e \u043d\u0430\u0434\u043e\n\u041a\u0430\u043a \u043f\u043b\u0438\u0442\u043a\u0430 \u0448\u043e\u043a\u043e\u043b\u0430\u0434\u0430 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u043d\u0438\u043c\u0443\n\u041f\u0438\u043d\u0430\u044e \u0432 \u043c\u0430\u0439\u043a\u0435 Gucci, \u044f \u0440\u0430\u0437\u0433\u043e\u043d\u044f\u044e \u0442\u0443\u0447\u0438\n\u0417\u0430\u0431\u0435\u0439 \u043d\u0430 \u0432\u0441\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b, \u043d\u0438\u043a\u0442\u043e \u043d\u0430\u0441 \u043d\u0435 \u043a\u0440\u0443\u0447\u0435\n\u042f \u043a\u0430\u043a \u043e\u0433\u043e\u043d\u044c \u0437\u0430\u0433\u043e\u0440\u0430\u044e\u0441\u044c\n\u041f\u043e\u043a\u0430 \u0432\u0441\u0435 \u0432\u043e\u043a\u0440\u0443\u0433 \u0437\u0430\u0433\u043e\u0440\u0430\u044e\u0442\n\u042f \u0436\u0435 \u043a\u0430\u043a \u043e\u0433\u043e\u043d\u044c \u0437\u0430\u0436\u0438\u0433\u0430\u044e\n\u041c\u043d\u0435 \u043d\u0435 \u043d\u0443\u0436\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u0435, \u044f \u0437\u043d\u0430\u044e\n\n\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u0434\u0430\u0440\u044e \u0441\u0442\u0438\u043b\u044c\n\u0411\u0443\u0434\u0442\u043e \u0431\u0440\u0435\u043d\u0434!\nI got! I got! I got! I got it!\n\u042f \u0436\u0438\u0432\u0443, \u043a\u0430\u043a \u0445\u043e\u0447\u0443\n\u042d\u0442\u043e \u0442\u0440\u0435\u043d\u0434!\nI want! I want! I want it!\n\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u0434\u0430\u0440\u044e \u0441\u0442\u0438\u043b\u044c\n\u0411\u0443\u0434\u0442\u043e \u0431\u0440\u0435\u043d\u0434!\nI got! I got! I got! I got it!\n\u042f \u0436\u0438\u0432\u0443, \u043a\u0430\u043a \u0445\u043e\u0447\u0443\n\u042d\u0442\u043e \u0442\u0440\u0435\u043d\u0434!Embed"
+  },
+  {
+   "annotation_count": 0,
+   "api_path": "/songs/6637521",
+   "artist_names": "A4",
+   "full_title": "\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy) by\u00a0A4",
+   "header_image_thumbnail_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+   "id": 6637521,
+   "lyrics_owner_id": 13026353,
+   "lyrics_state": "complete",
+   "path": "/A4-casper-boy-lyrics",
+   "pyongs_count": null,
+   "song_art_image_thumbnail_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 2,
+    "iq_earners": 2,
+    "transcribers": 1,
+    "unreviewed_annotations": 0,
+    "verified_annotations": 0,
+    "hot": false
+   },
+   "title": "\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy)",
+   "title_with_featured": "\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy)",
+   "url": "https://genius.com/A4-casper-boy-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/1857449",
+    "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+    "id": 1857449,
+    "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A4",
+    "url": "https://genius.com/artists/A4"
+   },
+   "apple_music_id": null,
+   "apple_music_player_url": "https://genius.com/songs/6637521/apple_music_player",
+   "description": {
+    "plain": "?"
+   },
+   "embed_content": "<div id='rg_embed_link_6637521' class='rg_embed_link' data-song-id='6637521'>Read <a href='https://genius.com/A4-casper-boy-lyrics'>\u201c\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy)\u201d by A4</a> on Genius</div> <script crossorigin src='//genius.com/songs/6637521/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2019-05-30",
+   "release_date_for_display": "May 30, 2019",
+   "current_user_metadata": {
+    "permissions": [
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "see_pageviews",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": null,
+   "custom_performances": [],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 13026353,
+    "annotator_login": "f1l",
+    "api_path": "/referents/22562821",
+    "classification": "needs_exegesis",
+    "fragment": "\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy)",
+    "id": 22562821,
+    "is_description": true,
+    "path": "/22562821/A4-casper-boy/Casper-boy",
+    "range": {
+     "content": "\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy)"
+    },
+    "song_id": 6637521,
+    "url": "https://genius.com/22562821/A4-casper-boy/Casper-boy",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/6637521",
+     "client_timestamps": {
+      "updated_by_human_at": 1629752467,
+      "lyrics_updated_at": 1616758670
+     },
+     "context": "A4",
+     "id": 6637521,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "link_title": "\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy) by\u00a0A4",
+     "title": "\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy)",
+     "type": "Song",
+     "url": "https://genius.com/A4-casper-boy-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/22562821",
+      "body": {
+       "plain": ""
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": false,
+      "id": 22562821,
+      "pinned": false,
+      "share_url": "https://genius.com/22562821",
+      "source": null,
+      "state": "needs_exegesis",
+      "url": "https://genius.com/22562821/A4-casper-boy/Casper-boy",
+      "verified": false,
+      "votes_total": 0,
+      "current_user_metadata": {
+       "permissions": [],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview",
+        "create_comment"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/13026353",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/daec57c3d0b37a3dd5b29104f4addec4",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/daec57c3d0b37a3dd5b29104f4addec4",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/daec57c3d0b37a3dd5b29104f4addec4",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/daec57c3d0b37a3dd5b29104f4addec4",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/af1dcbe4a9540f0547e688ab38c20a96.1000x1000x1.jpg",
+         "human_readable_role_for_display": "Contributor",
+         "id": 13026353,
+         "iq": 545,
+         "login": "f1l",
+         "name": "F1l",
+         "role_for_display": "contributor",
+         "url": "https://genius.com/f1l",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=UxqLavkhZtc"
+    }
+   ],
+   "producer_artists": [
+    {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   ],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   ],
+   "artist": "A4",
+   "lyrics": "\u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439 (Casper Boy) Lyrics\u041d\u0430\u043f\u043b\u0435\u0432\u0430\u0442\u044c \u043d\u0430 \u0444\u0435\u0439\u043b\u044b\n\u0421\u0434\u0435\u043b\u0430\u043b \u0440\u0430\u0437, \u043f\u043e\u0442\u043e\u043c \u0432\u0442\u043e\u0440\u043e\u0439\n\u042f \u0431\u044b\u043b \u043d\u0435\u0432\u0438\u0434\u0438\u043c\u043a\u043e\u0439 \u0440\u0430\u043d\u044c\u0448\u0435\n\u041f\u0430\u0440\u0435\u043d\u044c \u0442\u0438\u043f\u0430 \u041a\u0430\u0441\u043f\u0435\u0440 \u0411\u043e\u0439\n\u0425\u0432\u0430\u0442\u0438\u0442 \u043e\u0431\u0441\u0443\u0436\u0434\u0430\u0442\u044c\n\u041a\u0442\u043e \u043b\u0435\u0442\u0430\u0435\u0442 \u0432\u044b\u0441\u043e\u043a\u043e\n\u041a\u0430\u0436\u0434\u044b\u0439 \u0434\u0435\u043d\u044c \u044f \u043c\u043d\u043e\u0433\u043e \u0434\u0435\u043b\u0430\u043b\n\u041f\u0440\u0438\u0432\u0438\u0434\u0435\u043d\u0438\u0435 \u043f\u0440\u044f\u043c\u043e \u0432 \u0442\u043e\u043f\n\u041d\u0430 \u0437\u0430\u043a\u0440\u044b\u0442\u043e\u0439 \u0442\u0443\u0441\u043e\u0432\u043a\u0435\n\u0418\u0433\u0440\u0430\u0435\u0442 \u0447\u0435\u0439-\u0442\u043e \u043c\u0443\u0437\u043e\u043d\u0447\u0438\u043a\n\u0422\u044b \u0441\u0445\u043e\u0434\u0438\u0448\u044c, \u0431\u0443\u0434\u0442\u043e \u0441 \u043e\u0431\u043b\u043e\u0436\u043a\u0438\n\u0418\u043b\u0438 \u044f \u0442\u0435\u0431\u044f \u0443\u0436\u0435 \u043b\u044e\u0431\u043b\u044e\n\u041f\u043e\u0434\u0430\u0440\u0438\u043b \u0442\u0435\u0431\u0435 \u0440\u043e\u0437\u044b\n\u0417\u043d\u0430\u0447\u0438\u0442, \u0431\u0443\u0434\u0443 \u0441\u0435\u0440\u044c\u0435\u0437\u043d\u044b\u043c\n\u0414\u0430\u0432\u043d\u043e \u043f\u043e\u0442\u0435\u0440\u044f\u043d \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\n\u0418 \u0441 \u0442\u043e\u0431\u043e\u0439 \u043c\u043e\u0439 \u043f\u0443\u0442\u044c \u043f\u0440\u044f\u043c\u043e \u0432 \u043a\u043e\u0441\u043c\u043e\u0441\n\u0422\u044b \u043f\u0438\u0448\u0435\u0448\u044c \u0447\u0442\u043e-\u0442\u043e \u0438 \u0441\u0442\u0438\u0440\u0430\u0435\u0448\u044c\n\u0411\u043e\u0438\u0448\u044c\u0441\u044f \u0438 \u043d\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0448\u044c\n\u041d\u043e \u043a\u0430\u0436\u0434\u044b\u0439 \u0440\u0430\u0437, \u043a\u043e\u0433\u0434\u0430 \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u0435\u0448\u044c\n\u041c\u0435\u043d\u044f, \u0442\u044b \u0441\u043a\u0440\u043e\u043c\u043d\u043e\u0441\u0442\u044c \u0443\u0434\u0430\u043b\u044f\u0435\u0448\u044c\n\u0422\u0430\u043a \u043f\u043e\u0447\u0435\u043c\u0443 \u0442\u044b \u043d\u0435 \u043e\u0442\u0432\u0435\u0442\u0438\u0448\u044c\n\u0418 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043d\u0435 \u0437\u0430\u043c\u0435\u0442\u0438\u0448\u044c\n\u042f \u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u044e \u0442\u0435\u0431\u0435 \u0441\u0435\u0440\u0434\u0446\u0435\n\u0422\u044b \u0441\u043e \u043c\u043d\u043e\u0439 \u0438\u043b\u0438 \u043d\u0435\u0442\n\u0421\u043d\u043e\u0432\u0430 \u0441\u043f\u0440\u043e\u0441\u0438\u0448\u044c \u043a\u0430\u043a \u043c\u043e\u0439 \u0434\u0435\u043d\u044c\n\u0412\u0441\u0435 \u041e.\u041a\n\u042f \u043d\u0435 \u0441\u0442\u0440\u0430\u0434\u0430\u044e \u043f\u043e \u0442\u0435\u0431\u0435\n\u0412\u0441\u0435 \u041e.\u041a\n\u042f \u0443 \u0434\u0440\u0443\u0437\u0435\u0439 \u0432\u0441\u0435 \u041e.\u041a\n\u041b\u044e\u0431\u0438\u043b \u0442\u0435\u0431\u044f, \u0432\u0441\u0435 \u043e\u043a\u0435\u0439\n\u041b\u0430\u0439\u043a\u0430\u043b \u0444\u043e\u0442\u043a\u0438, \u041e.\u041a\n\u0412\u0435\u0434\u044c \u0442\u044b \u0442\u0430\u043a \u043a\u0440\u0430\u0441\u0438\u0432\u0430, \u041e.\u041a\n\u0422\u0435\u043f\u0435\u0440\u044c \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u043e\u0432\u0435\u0440\u044c\n\u0412\u044b\u0431\u0440\u0430\u043b \u0438\u0437 \u0441\u043e\u0442\u043d\u0438 \u0434\u0432\u0435\u0440\u0435\u0439\n\u041e\u0434\u043d\u0443, \u0438 \u043d\u0435 \u043f\u043e\u0441\u0442\u0443\u0447\u0443\u0441\u044c\n\u0417\u0430\u043c\u0435\u0448\u0430\u043b \u043a\u043e\u043a\u0442\u0435\u0439\u043b\u044c \u0438\u0437 \u043d\u0430\u0448\u0438\u0445 \u0447\u0443\u0432\u0441\u0442\u0432\n\u042f \u0440\u0430\u0437\u0431\u0438\u0442, \u0441\u043e\u0431\u0435\u0440\u0443\u0441\u044c, \u043b\u0435\u0433\u043e, \u043d\u0430\u0438\u0437\u0443\u0441\u0442\u044c\n\u041b\u0435\u0433\u043a\u043e, \u0432\u0441\u0435 \u0432\u0435\u0440\u043d\u0443\u0442\u044c, \u043d\u0430\u0449\u0443\u043f\u0430\u0442\u044c \u043f\u0443\u043b\u044c\u0441\n\u0413\u043b\u0430\u0437\u0430 \u043a\u0430\u043a \u0442\u0432\u043e\u0438, \u0438\u0441\u043a\u0430\u043b, \u043d\u0435 \u043d\u0430\u0439\u0442\u0438\n\u0414\u0430\u0432\u0430\u0439 \u0437\u0430\u0445\u043e\u0434\u0438, \u044f \u0432 \u0441\u0435\u0442\u0438\n\u0422\u044b \u043f\u0438\u0448\u0435\u0448\u044c \u0447\u0442\u043e-\u0442\u043e \u0438 \u0441\u0442\u0438\u0440\u0430\u0435\u0448\u044c\n\u0411\u043e\u0438\u0448\u044c\u0441\u044f \u0438 \u043d\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0448\u044c\n\u041d\u043e \u043a\u0430\u0436\u0434\u044b\u0439 \u0440\u0430\u0437, \u043a\u043e\u0433\u0434\u0430 \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u0435\u0448\u044c\n\u041c\u0435\u043d\u044f, \u0442\u044b \u0441\u043a\u0440\u043e\u043c\u043d\u043e\u0441\u0442\u044c \u0443\u0434\u0430\u043b\u044f\u0435\u0448\u044c\n\u0422\u0430\u043a \u043f\u043e\u0447\u0435\u043c\u0443 \u0442\u044b \u043d\u0435 \u043e\u0442\u0432\u0435\u0442\u0438\u0448\u044c\n\u0418 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043d\u0435 \u0437\u0430\u043c\u0435\u0442\u0438\u0448\u044c\n\u042f \u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u044e \u0442\u0435\u0431\u0435 \u0441\u0435\u0440\u0434\u0446\u0435\n\u0422\u044b \u0441\u043e \u043c\u043d\u043e\u0439 \u0438\u043b\u0438 \u043d\u0435\u0442Embed"
+  },
+  {
+   "annotation_count": 0,
+   "api_path": "/songs/6634814",
+   "artist_names": "A4",
+   "full_title": "\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX) by\u00a0A4",
+   "header_image_thumbnail_url": "https://images.genius.com/bac437c9ccda8cfcc0e3d98d90df4b30.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/bac437c9ccda8cfcc0e3d98d90df4b30.1000x1000x1.jpg",
+   "id": 6634814,
+   "lyrics_owner_id": 13026353,
+   "lyrics_state": "complete",
+   "path": "/A4-officialex-lyrics",
+   "pyongs_count": null,
+   "song_art_image_thumbnail_url": "https://images.genius.com/bac437c9ccda8cfcc0e3d98d90df4b30.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/bac437c9ccda8cfcc0e3d98d90df4b30.1000x1000x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 2,
+    "iq_earners": 2,
+    "transcribers": 1,
+    "unreviewed_annotations": 0,
+    "verified_annotations": 0,
+    "hot": false
+   },
+   "title": "\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX)",
+   "title_with_featured": "\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX)",
+   "url": "https://genius.com/A4-officialex-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/1857449",
+    "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+    "id": 1857449,
+    "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A4",
+    "url": "https://genius.com/artists/A4"
+   },
+   "apple_music_id": null,
+   "apple_music_player_url": "https://genius.com/songs/6634814/apple_music_player",
+   "description": {
+    "plain": "?"
+   },
+   "embed_content": "<div id='rg_embed_link_6634814' class='rg_embed_link' data-song-id='6634814'>Read <a href='https://genius.com/A4-officialex-lyrics'>\u201c\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX)\u201d by A4</a> on Genius</div> <script crossorigin src='//genius.com/songs/6634814/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2019-08-08",
+   "release_date_for_display": "August 8, 2019",
+   "current_user_metadata": {
+    "permissions": [
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "see_pageviews",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": null,
+   "custom_performances": [],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 13026353,
+    "annotator_login": "f1l",
+    "api_path": "/referents/22555949",
+    "classification": "needs_exegesis",
+    "fragment": "\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX)",
+    "id": 22555949,
+    "is_description": true,
+    "path": "/22555949/A4-officialex/Officialex",
+    "range": {
+     "content": "\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX)"
+    },
+    "song_id": 6634814,
+    "url": "https://genius.com/22555949/A4-officialex/Officialex",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/6634814",
+     "client_timestamps": {
+      "updated_by_human_at": 1629752436,
+      "lyrics_updated_at": 1616703957
+     },
+     "context": "A4",
+     "id": 6634814,
+     "image_url": "https://images.genius.com/bac437c9ccda8cfcc0e3d98d90df4b30.1000x1000x1.jpg",
+     "link_title": "\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX) by\u00a0A4",
+     "title": "\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX)",
+     "type": "Song",
+     "url": "https://genius.com/A4-officialex-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/22555949",
+      "body": {
+       "plain": ""
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": false,
+      "id": 22555949,
+      "pinned": false,
+      "share_url": "https://genius.com/22555949",
+      "source": null,
+      "state": "needs_exegesis",
+      "url": "https://genius.com/22555949/A4-officialex/Officialex",
+      "verified": false,
+      "votes_total": 0,
+      "current_user_metadata": {
+       "permissions": [],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview",
+        "create_comment"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/13026353",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/daec57c3d0b37a3dd5b29104f4addec4",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/daec57c3d0b37a3dd5b29104f4addec4",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/daec57c3d0b37a3dd5b29104f4addec4",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/daec57c3d0b37a3dd5b29104f4addec4",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/af1dcbe4a9540f0547e688ab38c20a96.1000x1000x1.jpg",
+         "human_readable_role_for_display": "Contributor",
+         "id": 13026353,
+         "iq": 545,
+         "login": "f1l",
+         "name": "F1l",
+         "role_for_display": "contributor",
+         "url": "https://genius.com/f1l",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=BiXOYeRS4PU"
+    }
+   ],
+   "producer_artists": [
+    {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   ],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/1857449",
+     "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+     "id": 1857449,
+     "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A4",
+     "url": "https://genius.com/artists/A4"
+    }
+   ],
+   "artist": "A4",
+   "lyrics": "\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (OFFICIALEX) Lyrics\u0412 \u043c\u044b\u0441\u043b\u044f\u0445 \u043d\u0435\u043d\u0430\u0432\u0438\u0434\u0438\u0448\u044c, \u0441\u0440\u0430\u0437\u0443 \u0435\u0434\u0435\u0442 \u043a\u0440\u044b\u0448\u0430\n\u041f\u043e\u043a\u0435\u0440\u0444\u0435\u0439\u0441, \u043f\u043e\u0445\u043e\u0434\u043a\u0430 \u0431\u043b\u0435\u0441\u043a, \u0442\u0432\u043e\u0439 \u0441\u0442\u0430\u0442\u0443\u0441 - \u0431\u044b\u0432\u0448\u0430\u044f\n\u0420\u0430\u0441\u0441\u0442\u0430\u043b\u0430\u0441\u044c \u0438 \u0431\u0435\u0433\u043e\u043c \u043d\u0430 \u0441\u0442\u0440\u0438\u0436\u043a\u0443, \u0445\u043e\u0442\u044f \u043a\u0430\u0440\u0435 \u043a\u0430\u0437\u0430\u043b\u043e\u0441\u044c \u0441\u043b\u0438\u0448\u043a\u043e\u043c\n\u0410 \u043f\u043e\u0434\u0440\u0443\u0433\u0438 \u0442\u0432\u043e\u0438 - \u0431\u0443\u0434\u0442\u043e \u041d\u0438\u0446\u0448\u0435 \u043f\u043e\u0434 \u0432\u0438\u043d\u0438\u0448\u043a\u043e\u043c\n\u041f\u043e\u043f\u0430 \u0434\u043b\u044f instagram'a, \u0444\u043e\u0442\u043e, \u043a\u0430\u043a \u043f\u0440\u043e\u0432\u043e\u043a\u0430\u0442\u043e\u0440\n\u041d\u0430\u0434\u043e \u0432\u0435\u0434\u044c, \u0447\u0442\u043e\u0431\u044b \u043e\u043d \u043f\u043e\u043d\u044f\u043b, \u043a\u043e\u0433\u043e \u043f\u043e\u0442\u0435\u0440\u044f\u043b \u0438 \u0441\u0442\u043e\u043d\u0435\u0442\n\u0412\u0441\u044e \u043d\u043e\u0447\u044c \u043e\u043d \u0442\u0435\u0431\u0435 \u043f\u0438\u0448\u0435\u0442, \u043f\u0438\u0448\u0435\u0442\n\u0425\u043e\u0447\u0435\u0442 \u0431\u044b\u0442\u044c \u0441\u043d\u043e\u0432\u0430 \u0431\u043b\u0438\u0436\u0435, \u0431\u043b\u0438\u0436\u0435\n\u041d\u043e \u0442\u044b \u0443\u0436\u0435 \u0431\u044b\u043b\u0430 \u0442\u0440\u0438\u0436\u0434\u044b \u0441 \u043d\u0438\u043c \u0436\u0435\n\u0425\u044d\u0448\u0442\u044d\u0433 - \u043e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u0414\u0443\u043c\u0430\u043b\u0430 \u0434\u0430\u0442\u044c \u0435\u043c\u0443 \u0448\u0430\u043d\u0441, \u043d\u043e \u0445\u043e\u0442\u0435\u043b\u0430 \u0434\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0441\u0435\u0431\u0435\n\u0422\u0435\u0431\u044f \u0443\u0432\u0435\u043b \u043e\u043d \u043d\u0430 \u0442\u0430\u043d\u0446\u043f\u043e\u043b - \u0431\u0443\u0434\u0442\u043e \u0431\u044b \u043a\u0430\u0434\u0440\u044b slow mo\n\u0412\u0440\u0435\u043c\u044f \u0443\u0436\u0435 \u0432\u044b\u0448\u043b\u043e, \u043e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439\n\u041f\u0438\u0448\u0435\u0442, \u043f\u0438\u0448\u0435\u0442, \u043f\u0438\u0448\u0435\u0442 \u0438 \u043f\u0438\u0448\u0435\u0442\n\u0422\u044b \u0442\u0438\u043f\u0430 \u043d\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043c\u0430, \u0442\u0438\u043f\u0430 \u0442\u044b \u043d\u0435 \u0441 \u043d\u0438\u043c\n\u041d\u043e \u043d\u0430 \u0442\u0435\u0431\u0435 \u043e\u043d \u0437\u0430\u0432\u0438\u0441 \u0442\u0430\u043a, \u0434\u0430\n\u041f\u043e\u0434\u0440\u0443\u0433\u0438 \u0431\u043e\u043b\u0442\u0430\u044e\u0442, \u043d\u0435 \u0441\u043b\u0443\u0448\u0430\u0439\n\u041e\u043d\u0438 \u0433\u043e\u0432\u043e\u0440\u044f\u0442 \u043e\u043d \u043d\u0435 \u043d\u0443\u0436\u0435\u043d\n\u0412\u043d\u0443\u0448\u0430\u044e\u0442 \u0442\u0435\u0431\u0435, \u0447\u0442\u043e \u0437\u043d\u0430\u044e\u0442 \u0442\u0430\u043a\u0438\u0445, \u043a\u0430\u043a \u043e\u043d, \u0438 \u0447\u0442\u043e \u043d\u0435\u0442 \u0435\u0433\u043e \u0445\u0443\u0436\u0435\n\u0411\u0435\u0440\u0435\u0448\u044c \u0442\u0440\u0443\u0431\u043a\u0443, \u0438 \u0441\u0440\u0430\u0437\u0443 \u0432\u0441\u043f\u044b\u0448\u043a\u0430\n\u0421\u043a\u0430\u043d\u0434\u0430\u043b \u043d\u0435 \u0431\u044b\u0432\u0430\u0435\u0442 \u0437\u0434\u0435\u0441\u044c \u043b\u0438\u0448\u043d\u0438\u043c\n\u041e\u043d \u0431\u0435\u0441\u0438\u0442, \u043d\u043e \u0442\u044b \u0433\u043e\u0432\u043e\u0440\u0438\u0448\u044c \u0441 \u043d\u0438\u043c\n\u041f\u043e\u0442\u043e\u043c\u0443 \u0447\u0442\u043e \u0441\u043a\u0443\u0447\u0430\u0435\u0448\u044c \u043e \u0431\u044b\u0432\u0448\u0435\u043c\n\u041f\u043e\u043f\u0430 \u0434\u043b\u044f instagram'a, \u0444\u043e\u0442\u043e, \u043a\u0430\u043a \u043f\u0440\u043e\u0432\u043e\u043a\u0430\u0442\u043e\u0440\n\u041d\u0430\u0434\u043e \u0432\u0435\u0434\u044c, \u0447\u0442\u043e\u0431\u044b \u043e\u043d \u043f\u043e\u043d\u044f\u043b, \u043a\u043e\u0433\u043e \u043f\u043e\u0442\u0435\u0440\u044f\u043b \u0438 \u0441\u0442\u043e\u043d\u0435\u0442\n\u0412\u0441\u044e \u043d\u043e\u0447\u044c \u043e\u043d \u0442\u0435\u0431\u0435 \u043f\u0438\u0448\u0435\u0442, \u043f\u0438\u0448\u0435\u0442\n\u0425\u043e\u0447\u0435\u0442 \u0431\u044b\u0442\u044c \u0441\u043d\u043e\u0432\u0430 \u0431\u043b\u0438\u0436\u0435, \u0431\u043b\u0438\u0436\u0435\n\u041d\u043e \u0442\u044b \u0443\u0436\u0435 \u0431\u044b\u043b\u0430 \u0442\u0440\u0438\u0436\u0434\u044b \u0441 \u043d\u0438\u043c \u0436\u0435\n\u0425\u044d\u0448\u0442\u044d\u0433 - \u043e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u0414\u0440\u0443\u0433-\u0434\u0440\u0443\u0433\u0430 \u0442\u0435\u0440\u044f\u043b\u0438, \u0432\u0435\u0434\u044c \u043d\u0435 \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u044b\n\u041d\u043e \u0432 \u0441\u0430\u043c\u043e\u043c \u043d\u0430\u0447\u0430\u043b\u0435 \u0432\u0441\u0435 \u0437\u043d\u0430\u043b\u0438 \u043e\u0434\u043d\u043e\n\u0412 \u043b\u044e\u0431\u043e\u0432\u044c \u043d\u0435 \u0438\u0433\u0440\u0430\u044e\u0442, \u043e\u0442 \u0430\u0434\u0430 \u0434\u043e \u0440\u0430\u044f\n\u0412\u043e\u043a\u0440\u0443\u0433 \u0432\u0441\u0435 \u0441\u0433\u043e\u0440\u0430\u0435\u0442, \u043d\u043e \u043d\u0430\u043c \u0432\u0441\u0435 \u0440\u0430\u0432\u043d\u043e\n\u041a\u0440\u0438\u043a\u0438, \u0441\u043a\u0430\u043d\u0434\u0430\u043b\u044b - \u0431\u0435\u0437 \u043d\u0438\u0445 \u043b\u044e\u0431\u0438\u0442\u044c \u043d\u0435 \u0441\u0442\u0430\u043b \u0431\u044b\n\u0414\u0438\u043a\u0438\u0439 \u0442\u044b \u0437\u043d\u0430\u043b\u0430 \u0432\u0441\u0435 \u0441 \u0441\u0430\u043c\u043e\u0433\u043e \u043d\u0430\u0447\u0430\u043b\u0430\n\u041e\u0444\u0438\u0448\u043b \u0438 \u0431\u044b\u0432\u0448\u0438\u0439, \u043d\u043e \u0432\u0441\u0435 \u0436\u0435\n\u0422\u044b \u0432\u0438\u0434\u0438\u0448\u044c, \u043c\u0443\u0440\u0430\u0448\u043a\u0438 \u043f\u043e \u043a\u043e\u0436\u0435\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)\n\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439 (\u041e\u0444\u0438\u0448\u043b\u0431\u044b\u0432\u0448\u0438\u0439)Embed"
+  },
+  {
+   "annotation_count": 0,
+   "api_path": "/songs/7417569",
+   "artist_names": "A4",
+   "full_title": "\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked) by\u00a0A4",
+   "header_image_thumbnail_url": "https://images.genius.com/833629146415cd198cd55fb0c9784f1c.300x169x1.jpg",
+   "header_image_url": "https://images.genius.com/833629146415cd198cd55fb0c9784f1c.1000x563x1.jpg",
+   "id": 7417569,
+   "lyrics_owner_id": 8639632,
+   "lyrics_state": "complete",
+   "path": "/A4-cracked-lyrics",
+   "pyongs_count": null,
+   "song_art_image_thumbnail_url": "https://images.genius.com/833629146415cd198cd55fb0c9784f1c.300x169x1.jpg",
+   "song_art_image_url": "https://images.genius.com/833629146415cd198cd55fb0c9784f1c.1000x563x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 1,
+    "iq_earners": 1,
+    "transcribers": 1,
+    "unreviewed_annotations": 0,
+    "verified_annotations": 0,
+    "hot": false
+   },
+   "title": "\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked)",
+   "title_with_featured": "\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked)",
+   "url": "https://genius.com/A4-cracked-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/1857449",
+    "header_image_url": "https://images.genius.com/ef1c3b1d6f364ce7123d4e7b1871641e.1000x1000x1.jpg",
+    "id": 1857449,
+    "image_url": "https://images.genius.com/3371d705067e380e3a72ece5ed85cf14.1000x1000x1.jpg",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A4",
+    "url": "https://genius.com/artists/A4"
+   },
+   "apple_music_id": null,
+   "apple_music_player_url": "https://genius.com/songs/7417569/apple_music_player",
+   "description": {
+    "plain": "?"
+   },
+   "embed_content": "<div id='rg_embed_link_7417569' class='rg_embed_link' data-song-id='7417569'>Read <a href='https://genius.com/A4-cracked-lyrics'>\u201c\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked)\u201d by A4</a> on Genius</div> <script crossorigin src='//genius.com/songs/7417569/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2020-11-02",
+   "release_date_for_display": "November 2, 2020",
+   "current_user_metadata": {
+    "permissions": [
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "see_pageviews",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": null,
+   "custom_performances": [],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 8639632,
+    "annotator_login": "Zippest",
+    "api_path": "/referents/24472625",
+    "classification": "needs_exegesis",
+    "fragment": "\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked)",
+    "id": 24472625,
+    "is_description": true,
+    "path": "/24472625/A4-cracked/Cracked",
+    "range": {
+     "content": "\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked)"
+    },
+    "song_id": 7417569,
+    "url": "https://genius.com/24472625/A4-cracked/Cracked",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/7417569",
+     "client_timestamps": {
+      "updated_by_human_at": 1637616162,
+      "lyrics_updated_at": 1637616092
+     },
+     "context": "A4",
+     "id": 7417569,
+     "image_url": "https://images.genius.com/833629146415cd198cd55fb0c9784f1c.1000x563x1.jpg",
+     "link_title": "\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked) by\u00a0A4",
+     "title": "\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked)",
+     "type": "Song",
+     "url": "https://genius.com/A4-cracked-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/24472625",
+      "body": {
+       "plain": ""
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": false,
+      "id": 24472625,
+      "pinned": false,
+      "share_url": "https://genius.com/24472625",
+      "source": null,
+      "state": "needs_exegesis",
+      "url": "https://genius.com/24472625/A4-cracked/Cracked",
+      "verified": false,
+      "votes_total": 0,
+      "current_user_metadata": {
+       "permissions": [],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview",
+        "create_comment"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/8639632",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/dbf64ff28c7e34bf1672c205281e7883",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/dbf64ff28c7e34bf1672c205281e7883",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/dbf64ff28c7e34bf1672c205281e7883",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/dbf64ff28c7e34bf1672c205281e7883",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/avatars/medium/dbf64ff28c7e34bf1672c205281e7883",
+         "human_readable_role_for_display": "Contributor",
+         "id": 8639632,
+         "iq": 55032,
+         "login": "Zippest",
+         "name": "Zippest",
+         "role_for_display": "contributor",
+         "url": "https://genius.com/Zippest",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=4-4rm-aGSH8"
+    }
+   ],
+   "producer_artists": [],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [],
+   "artist": "A4",
+   "lyrics": "\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435 (Cracked) Lyrics\n\n\u041f\u0440\u0438\u0434\u0438 \u0432 \u00ab\u0414\u0438\u043a\u0441\u0438\u00bb, \u0437\u0430\u043a\u0443\u043f\u0438 \u0441\u0435\u0431\u0435 \u043f\u043e\u043a\u0443-\u043f\u043e\u043a\u0443\u043f\u043a\u0438\n\u041d\u0430 \u0448\u0435\u0441\u0442\u044c\u0441\u043e\u0442 \u0440\u0443\u0431\u043b\u0435\u0439 \u0431\u0435\u0440\u0438, bro, \u044d\u0442\u043e \u043d\u0435 \u0440\u0430\u0434\u0438 \u0448\u0443\u0442\u043a\u0438\n\u00ab\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435\u00bb \u043f\u043e\u0432\u0441\u044e\u0434\u0443, \u00ab\u0442\u0440\u0435\u0441-\u0442\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435\u00bb\n\u0417\u0430\u0431\u0435\u0440\u0438 \u043d\u0430 \u043a\u0430\u0441\u0441\u0435, \u0441\u043e\u0431\u0435\u0440\u0438 \u0432\u0441\u0435 \u0438\u0445 \u0441\u0435\u0431\u0435\n\u0417\u043b\u044b\u0435 \u0432 \u0442\u0440\u0435\u043d\u0434\u0435, \u0432 \u0442\u0440\u0435\u043d\u0434\u0435 \u0442\u0440\u0435\u0441\u043a, \u0442\u0440-\u0440, \u0442\u0440-\u0440, \u0442\u0440\u0435\u0441\u043a\n\u0412\u0441\u0435 \u043c\u0435\u0447\u0442\u0430\u044e\u0442 \u043e \u043a\u043e\u043b\u043b\u0435\u043a\u0446\u0438\u0438, \u043f\u043e\u043b\u043d\u044b\u0439 case\n\u041f\u0440\u0438\u0445\u043e\u0434\u0438 \u0442\u044b \u0432 \u00ab\u0414\u0438\u043a\u0441\u0438\u00bb \u0438 \u043d\u0430\u0439\u0434\u0438 \u0441\u0435\u0431\u0435 \u0438\u0433\u0440\u0443\u0448\u043a\u0438\n\u0427\u0442\u043e \u0442\u0430\u043a \u0445\u043e\u0447\u0435\u0448\u044c \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0434\u043b\u044f \u0434\u0440\u0443\u0433\u0430 \u0438 \u043f\u043e\u0434\u0440\u0443\u0436\u043a\u0438\n\u041a\u0430\u0436\u0434\u044b\u0439 \u043c\u0430\u043b\u044b\u0439 \u0437\u043b\u043e\u0439, \u043c\u0435\u0433\u0430-\u043c\u0435\u0433\u0430 brutal\n\u0417\u043d\u0430\u0435\u0442 \u043a\u0430\u043a \u0438\u043c\u0435\u0442\u044c \u00ab\u0422\u0440\u0435\u0441\u043d\u0443\u0442\u043e\u0433\u043e\u00bb \u0441\u0435\u0433\u043e\u0434\u043d\u044f \u043a\u0440\u0443\u0442\u043e\n\u0412\u0441\u0435\u0445 \u0437\u043b\u043e\u0434\u0435\u0435\u0432 \u043f\u043e\u043b\u044e\u0431\u0438\u043b\u0438, \u043f\u043e\u043b\u044e\u0431\u0438\u043b\u0438 \u0432\u0441\u0435\n\u0422\u044b \u043d\u0430 \u0441\u0442\u0438\u043b\u0435, \u0435\u0441\u043b\u0438 \u043f\u043e\u0434\u0430\u0440\u0438\u043b\u0438 \u0438\u0445 \u0442\u0435\u0431\u0435\nHype, hype, \u0442\u0440\u0435\u0441\u043a, \u0442\u0440\u0435\u0441\u043a\nHype, hype, \u0442\u0440\u0435\u0441\u043a, \u0442\u0440\u0435\u0441\u043a (\u041f\u0440-\u0440)\n\u0422\u0440\u0435\u0441\u043a, \u0442\u0440\u0435\u0441\u043a (\u0423)\n\n\u2014 \u0410 \u0432\u0441\u0451 \u0442\u0430\u043a\u0438 \u043c\u044b \u043a\u0440\u0443\u0442\u044b\u0435 \u044f\u0439\u0446\u0430\n\u2014 \u0422\u0440\u0435\u0441\u043d\u0443\u0442\u044b\u0435!\n\u0421\u043e \u0432\u0442\u043e\u0440\u043e\u0433\u043e \u043d\u043e\u044f\u0431\u0440\u044f \u0432 \u00ab\u0414\u0438\u043a\u0441\u0438\u00bbEmbed"
+  }
+ ]
+}

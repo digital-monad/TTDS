@@ -1,0 +1,173 @@
+{
+ "alternate_names": [],
+ "api_path": "/artists/2982142",
+ "description": {
+  "plain": "?"
+ },
+ "facebook_name": null,
+ "followers_count": 0,
+ "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+ "id": 2982142,
+ "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+ "instagram_name": null,
+ "is_meme_verified": false,
+ "is_verified": false,
+ "name": "Ankhal, Rauw Alejandro & Jhay Cortez",
+ "translation_artist": false,
+ "twitter_name": null,
+ "url": "https://genius.com/artists/Ankhal-rauw-alejandro-and-jhay-cortez",
+ "current_user_metadata": {
+  "permissions": [
+   "view_activity_stream"
+  ],
+  "excluded_permissions": [
+   "edit",
+   "edit_images",
+   "edit_names",
+   "edit_anything",
+   "merge",
+   "sort_artist_songs",
+   "follow",
+   "view_contribution_opportunities",
+   "edit_translation_artist",
+   "see_short_id"
+  ],
+  "interactions": {
+   "following": false
+  }
+ },
+ "description_annotation": {
+  "_type": "referent",
+  "annotator_id": 5529082,
+  "annotator_login": "Polka_DeLaMusic",
+  "api_path": "/referents/24602107",
+  "classification": "needs_exegesis",
+  "fragment": "Ankhal, Rauw Alejandro & Jhay Cortez",
+  "id": 24602107,
+  "is_description": true,
+  "path": "/24602107/Ankhal-rauw-alejandro-and-jhay-cortez/Ankhal-rauw-alejandro-and-jhay-cortez",
+  "range": {
+   "content": "Ankhal, Rauw Alejandro & Jhay Cortez"
+  },
+  "song_id": null,
+  "url": "https://genius.com/24602107/Ankhal-rauw-alejandro-and-jhay-cortez/Ankhal-rauw-alejandro-and-jhay-cortez",
+  "verified_annotator_ids": [],
+  "annotatable": {
+   "api_path": "/artists/2982142",
+   "context": null,
+   "id": 2982142,
+   "image_url": "https://assets.genius.com/images/default_avatar_32.png?1644528913",
+   "link_title": "Ankhal, Rauw Alejandro & Jhay Cortez",
+   "title": "Ankhal, Rauw Alejandro & Jhay Cortez",
+   "type": "Artist",
+   "url": "https://genius.com/artists/Ankhal-rauw-alejandro-and-jhay-cortez"
+  },
+  "annotations": [
+   {
+    "api_path": "/annotations/24602107",
+    "body": {
+     "plain": ""
+    },
+    "comment_count": 0,
+    "community": true,
+    "custom_preview": null,
+    "has_voters": false,
+    "id": 24602107,
+    "pinned": false,
+    "share_url": "https://genius.com/24602107",
+    "source": null,
+    "state": "needs_exegesis",
+    "url": "https://genius.com/24602107/Ankhal-rauw-alejandro-and-jhay-cortez/Ankhal-rauw-alejandro-and-jhay-cortez",
+    "verified": false,
+    "votes_total": 0,
+    "current_user_metadata": {
+     "permissions": [],
+     "excluded_permissions": [
+      "vote",
+      "edit",
+      "cosign",
+      "uncosign",
+      "destroy",
+      "accept",
+      "reject",
+      "see_unreviewed",
+      "clear_votes",
+      "propose_edit_to",
+      "pin_to_profile",
+      "unpin_from_profile",
+      "update_source",
+      "edit_custom_preview",
+      "create_comment"
+     ],
+     "interactions": {
+      "cosign": false,
+      "pyong": false,
+      "vote": null
+     },
+     "iq_by_action": {}
+    },
+    "authors": [
+     {
+      "attribution": 1.0,
+      "pinned_role": null,
+      "user": {
+       "api_path": "/users/5529082",
+       "avatar": {
+        "tiny": {
+         "url": "https://images.genius.com/avatars/tiny/bdd79742ba3069cdd6578141bd7d5664",
+         "bounding_box": {
+          "width": 16,
+          "height": 16
+         }
+        },
+        "thumb": {
+         "url": "https://images.genius.com/avatars/thumb/bdd79742ba3069cdd6578141bd7d5664",
+         "bounding_box": {
+          "width": 32,
+          "height": 32
+         }
+        },
+        "small": {
+         "url": "https://images.genius.com/avatars/small/bdd79742ba3069cdd6578141bd7d5664",
+         "bounding_box": {
+          "width": 100,
+          "height": 100
+         }
+        },
+        "medium": {
+         "url": "https://images.genius.com/avatars/medium/bdd79742ba3069cdd6578141bd7d5664",
+         "bounding_box": {
+          "width": 300,
+          "height": 400
+         }
+        }
+       },
+       "header_image_url": "https://images.genius.com/50d8aa24c9443397fc99bee0ec7b9440.970x722x1.jpg",
+       "human_readable_role_for_display": "Moderator",
+       "id": 5529082,
+       "iq": 1420830,
+       "login": "Polka_DeLaMusic",
+       "name": "Polka_DeLaMusic \u26a1",
+       "role_for_display": "moderator",
+       "url": "https://genius.com/Polka_DeLaMusic",
+       "current_user_metadata": {
+        "permissions": [],
+        "excluded_permissions": [
+         "follow"
+        ],
+        "interactions": {
+         "following": false
+        }
+       }
+      }
+     }
+    ],
+    "cosigned_by": [],
+    "rejection_comment": null,
+    "verified_by": null
+   }
+  ]
+ },
+ "user": null,
+ "songs": []
+}

@@ -1,0 +1,1234 @@
+{
+ "alternate_names": [],
+ "api_path": "/artists/991064",
+ "description": {
+  "plain": "?"
+ },
+ "facebook_name": null,
+ "followers_count": 3,
+ "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+ "id": 991064,
+ "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+ "instagram_name": null,
+ "is_meme_verified": false,
+ "is_verified": false,
+ "name": "A2M",
+ "translation_artist": false,
+ "twitter_name": null,
+ "url": "https://genius.com/artists/A2m",
+ "current_user_metadata": {
+  "permissions": [
+   "view_activity_stream"
+  ],
+  "excluded_permissions": [
+   "edit",
+   "edit_images",
+   "edit_names",
+   "edit_anything",
+   "merge",
+   "sort_artist_songs",
+   "follow",
+   "view_contribution_opportunities",
+   "edit_translation_artist",
+   "see_short_id"
+  ],
+  "interactions": {
+   "following": false
+  }
+ },
+ "description_annotation": {
+  "_type": "referent",
+  "annotator_id": 3613614,
+  "annotator_login": "TimHoge",
+  "api_path": "/referents/10250394",
+  "classification": "needs_exegesis",
+  "fragment": "A2M",
+  "id": 10250394,
+  "is_description": true,
+  "path": "/10250394/A2m/A2m",
+  "range": {
+   "content": "A2M"
+  },
+  "song_id": null,
+  "url": "https://genius.com/10250394/A2m/A2m",
+  "verified_annotator_ids": [],
+  "annotatable": {
+   "api_path": "/artists/991064",
+   "context": null,
+   "id": 991064,
+   "image_url": "https://assets.genius.com/images/default_avatar_32.png?1644528913",
+   "link_title": "A2M",
+   "title": "A2M",
+   "type": "Artist",
+   "url": "https://genius.com/artists/A2m"
+  },
+  "annotations": [
+   {
+    "api_path": "/annotations/10250394",
+    "body": {
+     "plain": ""
+    },
+    "comment_count": 0,
+    "community": true,
+    "custom_preview": null,
+    "has_voters": false,
+    "id": 10250394,
+    "pinned": false,
+    "share_url": "https://genius.com/10250394",
+    "source": null,
+    "state": "needs_exegesis",
+    "url": "https://genius.com/10250394/A2m/A2m",
+    "verified": false,
+    "votes_total": 0,
+    "current_user_metadata": {
+     "permissions": [],
+     "excluded_permissions": [
+      "vote",
+      "edit",
+      "cosign",
+      "uncosign",
+      "destroy",
+      "accept",
+      "reject",
+      "see_unreviewed",
+      "clear_votes",
+      "propose_edit_to",
+      "pin_to_profile",
+      "unpin_from_profile",
+      "update_source",
+      "edit_custom_preview",
+      "create_comment"
+     ],
+     "interactions": {
+      "cosign": false,
+      "pyong": false,
+      "vote": null
+     },
+     "iq_by_action": {}
+    },
+    "authors": [
+     {
+      "attribution": 1.0,
+      "pinned_role": null,
+      "user": {
+       "api_path": "/users/3613614",
+       "avatar": {
+        "tiny": {
+         "url": "https://images.genius.com/avatars/tiny/e1d4a28b451a23409f0de352b25f1386",
+         "bounding_box": {
+          "width": 16,
+          "height": 16
+         }
+        },
+        "thumb": {
+         "url": "https://images.genius.com/avatars/thumb/e1d4a28b451a23409f0de352b25f1386",
+         "bounding_box": {
+          "width": 32,
+          "height": 32
+         }
+        },
+        "small": {
+         "url": "https://images.genius.com/avatars/small/e1d4a28b451a23409f0de352b25f1386",
+         "bounding_box": {
+          "width": 100,
+          "height": 100
+         }
+        },
+        "medium": {
+         "url": "https://images.genius.com/avatars/medium/e1d4a28b451a23409f0de352b25f1386",
+         "bounding_box": {
+          "width": 300,
+          "height": 400
+         }
+        }
+       },
+       "header_image_url": "https://images.genius.com/avatars/medium/e1d4a28b451a23409f0de352b25f1386",
+       "human_readable_role_for_display": "Contributor",
+       "id": 3613614,
+       "iq": 924,
+       "login": "TimHoge",
+       "name": "TimHoge",
+       "role_for_display": "contributor",
+       "url": "https://genius.com/TimHoge",
+       "current_user_metadata": {
+        "permissions": [],
+        "excluded_permissions": [
+         "follow"
+        ],
+        "interactions": {
+         "following": false
+        }
+       }
+      }
+     }
+    ],
+    "cosigned_by": [],
+    "rejection_comment": null,
+    "verified_by": null
+   }
+  ]
+ },
+ "user": null,
+ "songs": [
+  {
+   "annotation_count": 5,
+   "api_path": "/songs/2840297",
+   "artist_names": "A2M",
+   "full_title": "I Got Bitches by\u00a0A2M",
+   "header_image_thumbnail_url": "https://images.genius.com/7c5a5fc0bd1fc062c297c4e4f1e1391e.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/7c5a5fc0bd1fc062c297c4e4f1e1391e.640x640x1.jpg",
+   "id": 2840297,
+   "lyrics_owner_id": 3613614,
+   "lyrics_state": "complete",
+   "path": "/A2m-i-got-bitches-lyrics",
+   "pyongs_count": 6,
+   "song_art_image_thumbnail_url": "https://images.genius.com/7c5a5fc0bd1fc062c297c4e4f1e1391e.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/7c5a5fc0bd1fc062c297c4e4f1e1391e.640x640x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 34,
+    "iq_earners": 32,
+    "transcribers": 4,
+    "unreviewed_annotations": 4,
+    "verified_annotations": 0,
+    "hot": false,
+    "pageviews": 552720
+   },
+   "title": "I Got Bitches",
+   "title_with_featured": "I Got Bitches",
+   "url": "https://genius.com/A2m-i-got-bitches-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/991064",
+    "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+    "id": 991064,
+    "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A2M",
+    "url": "https://genius.com/artists/A2m"
+   },
+   "apple_music_id": "1173246202",
+   "apple_music_player_url": "https://genius.com/songs/2840297/apple_music_player",
+   "description": {
+    "plain": "\u201cI Got Bitches\u201d received a lot of attention after it was featured in a bar mitzva meme that was highly criticized by the Jewish community.\n\nhttps://www.youtube.com/watch?v=gjhX4sOvUIw"
+   },
+   "embed_content": "<div id='rg_embed_link_2840297' class='rg_embed_link' data-song-id='2840297'>Read <a href='https://genius.com/A2m-i-got-bitches-lyrics'>\u201cI Got Bitches\u201d by A2M</a> on Genius</div> <script crossorigin src='//genius.com/songs/2840297/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2014-07-31",
+   "release_date_for_display": "July 31, 2014",
+   "current_user_metadata": {
+    "permissions": [
+     "see_pageviews",
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": {
+    "api_path": "/albums/597469",
+    "cover_art_url": "https://images.genius.com/770eb1e65afc749626f64de25c92f7be.500x500x1.jpg",
+    "full_title": "I Got Bitches by A2M",
+    "id": 597469,
+    "name": "I Got Bitches",
+    "url": "https://genius.com/albums/A2m/I-got-bitches",
+    "artist": {
+     "api_path": "/artists/991064",
+     "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "id": 991064,
+     "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A2M",
+     "url": "https://genius.com/artists/A2m"
+    }
+   },
+   "custom_performances": [],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 721779,
+    "annotator_login": "m4ths",
+    "api_path": "/referents/10250395",
+    "classification": "accepted",
+    "fragment": "I Got Bitches",
+    "id": 10250395,
+    "is_description": true,
+    "path": "/10250395/A2m-i-got-bitches/I-got-bitches",
+    "range": {
+     "content": "I Got Bitches"
+    },
+    "song_id": 2840297,
+    "url": "https://genius.com/10250395/A2m-i-got-bitches/I-got-bitches",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/2840297",
+     "client_timestamps": {
+      "updated_by_human_at": 1643637929,
+      "lyrics_updated_at": 1643637929
+     },
+     "context": "A2M",
+     "id": 2840297,
+     "image_url": "https://images.genius.com/7c5a5fc0bd1fc062c297c4e4f1e1391e.640x640x1.jpg",
+     "link_title": "I Got Bitches by\u00a0A2M",
+     "title": "I Got Bitches",
+     "type": "Song",
+     "url": "https://genius.com/A2m-i-got-bitches-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/10250395",
+      "body": {
+       "plain": "\u201cI Got Bitches\u201d received a lot of attention after it was featured in a bar mitzva meme that was highly criticized by the Jewish community.\n\nhttps://www.youtube.com/watch?v=gjhX4sOvUIw"
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": true,
+      "id": 10250395,
+      "pinned": false,
+      "share_url": "https://genius.com/10250395",
+      "source": null,
+      "state": "accepted",
+      "url": "https://genius.com/10250395/A2m-i-got-bitches/I-got-bitches",
+      "verified": false,
+      "votes_total": 36,
+      "current_user_metadata": {
+       "permissions": [
+        "create_comment"
+       ],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/721779",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/fdc6ec3683eb872c7a3da920306fad23",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/fdc6ec3683eb872c7a3da920306fad23",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/fdc6ec3683eb872c7a3da920306fad23",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/fdc6ec3683eb872c7a3da920306fad23",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://s3.amazonaws.com/filepicker-images-rapgenius/eM4MQGEISUGa5YyqrcwW_american%20psycho%20huey%20lewis%20and%20the%20news%201.jpg",
+         "human_readable_role_for_display": "Editor",
+         "id": 721779,
+         "iq": 108890,
+         "login": "m4ths",
+         "name": "m4ths",
+         "role_for_display": "editor",
+         "url": "https://genius.com/m4ths",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=mdqU6Erw3kk"
+    }
+   ],
+   "producer_artists": [],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/991064",
+     "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "id": 991064,
+     "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A2M",
+     "url": "https://genius.com/artists/A2m"
+    }
+   ],
+   "artist": "A2M",
+   "lyrics": "I Got Bitches Lyrics\nAyy yo, what it is\nEverybody report to the mothafuckin' dance floor\nWith they mothafuckin' drinks\nThey wet ass pussies, they big fat asses and the big brown titties\nWith the pepperoni nipples, \u2018cause I\u2019m comin' for ya\n(What the fuck was that)\n\nI got bitches all on my dick every day\nSuckin' on my balls, lickin' on my balls\nBitches, they know, stick it in their bootyhole\nMy balls, my balls, suck on my balls\n\n(C\u2019mon!) all up in that asshole, let me hit that booty raw\nLickin' the dick, suckin' the balls, swallow it all\nBeatin' down your pussy wall to the ground\nSpinnin' 'round and 'round\nAnd these stacks get down (Sheit)\nSwallow the nut, dick in the butt, beatin' it up and that\u2019s how I fuck (Bitch)\n\nI got bitches all on my dick every day\nSuckin' on my balls, lickin' on my balls\nBitches, they know, stick it in their bootyhole\nMy balls, my balls, suck on my balls\nYeah bitch, I, I don\u2019t know what to say I just love fuckin' bitches\nFuck 'em in they ass, fuck 'em in they face\nFuck 'em in they pussy hole\nThat\u2019s just how I get down\n\nSluts, bitches, know what I\u2019m about\nRoll my blunt up, ho, and keep this dick up in your mouth\nDon\u2019t be talkin' no shit 'cause I ain't takin no shit (Hell no)\nKeep your mouth on Mr. Big Stuff while I'm tokin' this here\nI said hoes (Uh huh) they give me dough (What up)\nWrap around my toe (Uh huh), and that\u2019s fo' sho (You know)\nI got iced out fingers (Icy), bitch, you better win 'em\nScoopin 'em like kitty litter, they call me Diggler\n\nI got bitches all on my dick every day\nSuckin' on my balls, lickin' on my balls\nBitches, they know, stick it in their bootyhole\nMy balls, my balls, suck on my balls\n\nYo check it, you nekkid, I\u2019m beatin' that ass\nEvery day suckin' my balls while I\u2019m countin' my cash\nI got cash flow, dick in yo' ass hole\nAnd every time you 'bout to blast I say \"You guess ho\"\n'Cause I don\u2019t fuck sluts, I just put it in they butt (They butt)\nAnd if they want the nut (Nut) it\u2019s ass to mouth what (Yeah)\nI be stuntin' like my daddy with some hoes all in they caddy\nAnd my dick ain\u2019t far from shabby that\u2019s why hoes all want it badly\nThey be blowin' up my celly beggin' for it on they belly\nI say \"Meet me at the telly, don\u2019t forget the KY jelly\"\nI\u2019m a nasty boss motherfucker, catch me at the Ruckers game\nHoppin out the caddy, hoes cling to my spaghetti chain\nCatch me in the parkin' lot, pimpin', hittin' switches\nI got girls, I got hoes, I got motherfuckin' bitches\nI got bitches all on my dick every day\nSuckin' on my balls, lickin' on my balls\nBitches, they know, stick it in their bootyhole\nMy balls, my balls, suck on my balls\nI got bitches all on my dick every day (C'mon)\nSuckin' on my balls (My balls), lickin' on my balls (My balls)\nBitches, they know (Yeah), stick it in their bootyhole\nMy balls, my balls, suck on my balls (Yeah)6Embed"
+  },
+  {
+   "annotation_count": 0,
+   "api_path": "/songs/5410986",
+   "artist_names": "A2M",
+   "full_title": "Nasty Boss by\u00a0A2M",
+   "header_image_thumbnail_url": "https://images.genius.com/08536f571e323d8087fd04d4e54ea3b0.300x300x1.jpg",
+   "header_image_url": "https://images.genius.com/08536f571e323d8087fd04d4e54ea3b0.500x500x1.jpg",
+   "id": 5410986,
+   "lyrics_owner_id": 3542600,
+   "lyrics_state": "complete",
+   "path": "/A2m-nasty-boss-lyrics",
+   "pyongs_count": 1,
+   "song_art_image_thumbnail_url": "https://images.genius.com/08536f571e323d8087fd04d4e54ea3b0.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/08536f571e323d8087fd04d4e54ea3b0.500x500x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 3,
+    "iq_earners": 3,
+    "transcribers": 1,
+    "unreviewed_annotations": 0,
+    "verified_annotations": 0,
+    "hot": false
+   },
+   "title": "Nasty Boss",
+   "title_with_featured": "Nasty Boss",
+   "url": "https://genius.com/A2m-nasty-boss-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/991064",
+    "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+    "id": 991064,
+    "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A2M",
+    "url": "https://genius.com/artists/A2m"
+   },
+   "apple_music_id": "1423427358",
+   "apple_music_player_url": "https://genius.com/songs/5410986/apple_music_player",
+   "description": {
+    "plain": "?"
+   },
+   "embed_content": "<div id='rg_embed_link_5410986' class='rg_embed_link' data-song-id='5410986'>Read <a href='https://genius.com/A2m-nasty-boss-lyrics'>\u201cNasty Boss\u201d by A2M</a> on Genius</div> <script crossorigin src='//genius.com/songs/5410986/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2018-07-17",
+   "release_date_for_display": "July 17, 2018",
+   "current_user_metadata": {
+    "permissions": [
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "see_pageviews",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": {
+    "api_path": "/albums/597469",
+    "cover_art_url": "https://images.genius.com/770eb1e65afc749626f64de25c92f7be.500x500x1.jpg",
+    "full_title": "I Got Bitches by A2M",
+    "id": 597469,
+    "name": "I Got Bitches",
+    "url": "https://genius.com/albums/A2m/I-got-bitches",
+    "artist": {
+     "api_path": "/artists/991064",
+     "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "id": 991064,
+     "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A2M",
+     "url": "https://genius.com/artists/A2m"
+    }
+   },
+   "custom_performances": [],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 3542600,
+    "annotator_login": "IdoBoker",
+    "api_path": "/referents/19440385",
+    "classification": "needs_exegesis",
+    "fragment": "Nasty Boss",
+    "id": 19440385,
+    "is_description": true,
+    "path": "/19440385/A2m-nasty-boss/Nasty-boss",
+    "range": {
+     "content": "Nasty Boss"
+    },
+    "song_id": 5410986,
+    "url": "https://genius.com/19440385/A2m-nasty-boss/Nasty-boss",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/5410986",
+     "client_timestamps": {
+      "updated_by_human_at": 1585716872,
+      "lyrics_updated_at": 1585716815
+     },
+     "context": "A2M",
+     "id": 5410986,
+     "image_url": "https://images.genius.com/08536f571e323d8087fd04d4e54ea3b0.500x500x1.jpg",
+     "link_title": "Nasty Boss by\u00a0A2M",
+     "title": "Nasty Boss",
+     "type": "Song",
+     "url": "https://genius.com/A2m-nasty-boss-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/19440385",
+      "body": {
+       "plain": ""
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": false,
+      "id": 19440385,
+      "pinned": false,
+      "share_url": "https://genius.com/19440385",
+      "source": null,
+      "state": "needs_exegesis",
+      "url": "https://genius.com/19440385/A2m-nasty-boss/Nasty-boss",
+      "verified": false,
+      "votes_total": 0,
+      "current_user_metadata": {
+       "permissions": [],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview",
+        "create_comment"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/3542600",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/5de20cdf46c8095d57486c09f6ee282e",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/5de20cdf46c8095d57486c09f6ee282e",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/5de20cdf46c8095d57486c09f6ee282e",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/5de20cdf46c8095d57486c09f6ee282e",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/avatars/medium/5de20cdf46c8095d57486c09f6ee282e",
+         "human_readable_role_for_display": null,
+         "id": 3542600,
+         "iq": 275,
+         "login": "IdoBoker",
+         "name": "IdoBoker",
+         "role_for_display": null,
+         "url": "https://genius.com/IdoBoker",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=N2LhD60oJvk"
+    }
+   ],
+   "producer_artists": [],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [
+    {
+     "api_path": "/artists/991064",
+     "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "id": 991064,
+     "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A2M",
+     "url": "https://genius.com/artists/A2m"
+    }
+   ],
+   "artist": "A2M",
+   "lyrics": "Nasty Boss LyricsI'm nasty yeah !\nI'm a motherfucking nasty boss\nNasty boss, cuz i'm a motherfucking nasty boss\nWhat's\u2005good\u2005bitch, you know\u2005what it is\nFace down ass up\u2005while I head to my bitch\nBetter touch them toes when i'm in them (Unknown)\n(Unknown) breeze on the line yo you down for trees ?\nDon't it sound fantastic\nHit that ass up with some sweeptic magic\nNever flasic, Come through get your ass licked\nMake the pussy snap back like elastic\nRedbone, I see you there talking on your cellphone\nAnd i'm just tryna throw it deep in your endzone\nBut you tryna keep a nigga in the friendzone ??\nOh hell nah\nCuz D, got stacks of hoes\nAnd they all wanna ride on my testicles\nBeat it up real fast like a (Unknown)\nCuz i'm a mothefucking nasty boss, Ya'll know the name\nI'm nasty, Nasty for sure\nStraight nasty, Nasty to the core\nI'm nasty, Nasty you know\nCuz i'm a mothefucking nasty boss, Ya'll know the name\nI'm nasty yeah !\nI'm a motherfucking nasty boss\nNasty boss, cuz i'm a motherfucking nasty boss\nTo be continue1Embed"
+  },
+  {
+   "annotation_count": 1,
+   "api_path": "/songs/3704700",
+   "artist_names": "A2M",
+   "full_title": "Scuba Dive by\u00a0A2M",
+   "header_image_thumbnail_url": "https://images.genius.com/f44593b8e4c9f5fdcfa24bf276615095.300x169x1.jpg",
+   "header_image_url": "https://images.genius.com/f44593b8e4c9f5fdcfa24bf276615095.1000x563x1.jpg",
+   "id": 3704700,
+   "lyrics_owner_id": 6367584,
+   "lyrics_state": "complete",
+   "path": "/A2m-scuba-dive-lyrics",
+   "pyongs_count": 1,
+   "song_art_image_thumbnail_url": "https://images.genius.com/ae1c9c22fb10e06d33412a53fe559232.300x300x1.jpg",
+   "song_art_image_url": "https://images.genius.com/ae1c9c22fb10e06d33412a53fe559232.640x640x1.jpg",
+   "stats": {
+    "accepted_annotations": 0,
+    "contributors": 3,
+    "iq_earners": 3,
+    "transcribers": 1,
+    "unreviewed_annotations": 1,
+    "verified_annotations": 0,
+    "hot": false
+   },
+   "title": "Scuba Dive",
+   "title_with_featured": "Scuba Dive",
+   "url": "https://genius.com/A2m-scuba-dive-lyrics",
+   "primary_artist": {
+    "api_path": "/artists/991064",
+    "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+    "id": 991064,
+    "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+    "is_meme_verified": false,
+    "is_verified": false,
+    "name": "A2M",
+    "url": "https://genius.com/artists/A2m"
+   },
+   "apple_music_id": "1276964602",
+   "apple_music_player_url": "https://genius.com/songs/3704700/apple_music_player",
+   "description": {
+    "plain": "https://open.spotify.com/album/7FjCUEJEWvSEqaRj2u8TEz"
+   },
+   "embed_content": "<div id='rg_embed_link_3704700' class='rg_embed_link' data-song-id='3704700'>Read <a href='https://genius.com/A2m-scuba-dive-lyrics'>\u201cScuba Dive\u201d by A2M</a> on Genius</div> <script crossorigin src='//genius.com/songs/3704700/embed.js'></script>",
+   "featured_video": false,
+   "lyrics_placeholder_reason": null,
+   "recording_location": null,
+   "release_date": "2017-08-29",
+   "release_date_for_display": "August 29, 2017",
+   "current_user_metadata": {
+    "permissions": [
+     "view_apple_music_player",
+     "create_comment",
+     "view_song_story_gallery"
+    ],
+    "excluded_permissions": [
+     "follow",
+     "award_transcription_iq",
+     "remove_transcription_iq",
+     "see_pageviews",
+     "pyong",
+     "edit_lyrics",
+     "view_annotation_engagement_data",
+     "publish",
+     "unpublish",
+     "edit_spotify_details",
+     "hide",
+     "unhide",
+     "toggle_featured_video",
+     "add_pinned_annotation_to",
+     "add_community_annotation_to",
+     "destroy",
+     "mark_as_not_spam",
+     "edit_spotify_annotations_for",
+     "verify_lyrics",
+     "unverify_lyrics",
+     "edit_anything",
+     "edit_any_media",
+     "edit",
+     "rename",
+     "edit_tags",
+     "reindex",
+     "view_lyrics_synchronization",
+     "enable_media",
+     "disable_media",
+     "edit_lyrics_or_annotation_brackets",
+     "see_editorial_indicators",
+     "view_attribution_visualization",
+     "edit_annotation_brackets",
+     "preview_lyrics_for_export",
+     "hide_apple_player",
+     "unhide_apple_player",
+     "trigger_apple_match",
+     "mark_lyrics_evaluation_as_approved",
+     "mark_lyrics_evaluation_as_staff_approved",
+     "mark_lyrics_evaluation_as_unapproved",
+     "mark_lyrics_evaluation_as_un_staff_approved",
+     "view_transcriber_media_player",
+     "override_apple_match",
+     "set_song_color_gradient",
+     "mark_as_hot",
+     "unmark_as_hot",
+     "edit_youtube_url",
+     "edit_soundcloud_url",
+     "edit_spotify_uuid",
+     "edit_vevo_url",
+     "moderate_annotations",
+     "create_annotation",
+     "see_short_id",
+     "manage_chart_item",
+     "create_tag",
+     "propose_lyrics_edit",
+     "view_lyrics_edit_proposals_on_song",
+     "preview_react_song_page"
+    ],
+    "interactions": {
+     "pyong": false,
+     "following": false
+    },
+    "relationships": {},
+    "iq_by_action": {}
+   },
+   "album": {
+    "api_path": "/albums/597469",
+    "cover_art_url": "https://images.genius.com/770eb1e65afc749626f64de25c92f7be.500x500x1.jpg",
+    "full_title": "I Got Bitches by A2M",
+    "id": 597469,
+    "name": "I Got Bitches",
+    "url": "https://genius.com/albums/A2m/I-got-bitches",
+    "artist": {
+     "api_path": "/artists/991064",
+     "header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "id": 991064,
+     "image_url": "https://assets.genius.com/images/default_avatar_300.png?1644528913",
+     "is_meme_verified": false,
+     "is_verified": false,
+     "name": "A2M",
+     "url": "https://genius.com/artists/A2m"
+    }
+   },
+   "custom_performances": [],
+   "description_annotation": {
+    "_type": "referent",
+    "annotator_id": 6367584,
+    "annotator_login": "swiggity-satan",
+    "api_path": "/referents/14513981",
+    "classification": "unreviewed",
+    "fragment": "Scuba Dive",
+    "id": 14513981,
+    "is_description": true,
+    "path": "/14513981/A2m-scuba-dive/Scuba-dive",
+    "range": {
+     "content": "Scuba Dive"
+    },
+    "song_id": 3704700,
+    "url": "https://genius.com/14513981/A2m-scuba-dive/Scuba-dive",
+    "verified_annotator_ids": [],
+    "annotatable": {
+     "api_path": "/songs/3704700",
+     "client_timestamps": {
+      "updated_by_human_at": 1595686029,
+      "lyrics_updated_at": 1595686029
+     },
+     "context": "A2M",
+     "id": 3704700,
+     "image_url": "https://images.genius.com/ae1c9c22fb10e06d33412a53fe559232.640x640x1.jpg",
+     "link_title": "Scuba Dive by\u00a0A2M",
+     "title": "Scuba Dive",
+     "type": "Song",
+     "url": "https://genius.com/A2m-scuba-dive-lyrics"
+    },
+    "annotations": [
+     {
+      "api_path": "/annotations/14513981",
+      "body": {
+       "plain": "https://open.spotify.com/album/7FjCUEJEWvSEqaRj2u8TEz"
+      },
+      "comment_count": 0,
+      "community": true,
+      "custom_preview": null,
+      "has_voters": true,
+      "id": 14513981,
+      "pinned": false,
+      "share_url": "https://genius.com/14513981",
+      "source": null,
+      "state": "pending",
+      "url": "https://genius.com/14513981/A2m-scuba-dive/Scuba-dive",
+      "verified": false,
+      "votes_total": -2,
+      "current_user_metadata": {
+       "permissions": [
+        "create_comment"
+       ],
+       "excluded_permissions": [
+        "vote",
+        "edit",
+        "cosign",
+        "uncosign",
+        "destroy",
+        "accept",
+        "reject",
+        "see_unreviewed",
+        "clear_votes",
+        "propose_edit_to",
+        "pin_to_profile",
+        "unpin_from_profile",
+        "update_source",
+        "edit_custom_preview"
+       ],
+       "interactions": {
+        "cosign": false,
+        "pyong": false,
+        "vote": null
+       },
+       "iq_by_action": {}
+      },
+      "authors": [
+       {
+        "attribution": 1.0,
+        "pinned_role": null,
+        "user": {
+         "api_path": "/users/6367584",
+         "avatar": {
+          "tiny": {
+           "url": "https://images.genius.com/avatars/tiny/474d603a476e2adf5af5382bd3b1296e",
+           "bounding_box": {
+            "width": 16,
+            "height": 16
+           }
+          },
+          "thumb": {
+           "url": "https://images.genius.com/avatars/thumb/474d603a476e2adf5af5382bd3b1296e",
+           "bounding_box": {
+            "width": 32,
+            "height": 32
+           }
+          },
+          "small": {
+           "url": "https://images.genius.com/avatars/small/474d603a476e2adf5af5382bd3b1296e",
+           "bounding_box": {
+            "width": 100,
+            "height": 100
+           }
+          },
+          "medium": {
+           "url": "https://images.genius.com/avatars/medium/474d603a476e2adf5af5382bd3b1296e",
+           "bounding_box": {
+            "width": 300,
+            "height": 400
+           }
+          }
+         },
+         "header_image_url": "https://images.genius.com/avatars/medium/474d603a476e2adf5af5382bd3b1296e",
+         "human_readable_role_for_display": null,
+         "id": 6367584,
+         "iq": 205,
+         "login": "swiggity-satan",
+         "name": "swiggity-satan",
+         "role_for_display": null,
+         "url": "https://genius.com/swiggity-satan",
+         "current_user_metadata": {
+          "permissions": [],
+          "excluded_permissions": [
+           "follow"
+          ],
+          "interactions": {
+           "following": false
+          }
+         }
+        }
+       }
+      ],
+      "cosigned_by": [],
+      "rejection_comment": null,
+      "verified_by": null
+     }
+    ]
+   },
+   "featured_artists": [],
+   "lyrics_marked_complete_by": null,
+   "media": [
+    {
+     "provider": "youtube",
+     "start": 0,
+     "type": "video",
+     "url": "http://www.youtube.com/watch?v=4Bif_yib1z0"
+    }
+   ],
+   "producer_artists": [],
+   "song_relationships": [
+    {
+     "relationship_type": "samples",
+     "type": "samples",
+     "songs": []
+    },
+    {
+     "relationship_type": "sampled_in",
+     "type": "sampled_in",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolates",
+     "type": "interpolates",
+     "songs": []
+    },
+    {
+     "relationship_type": "interpolated_by",
+     "type": "interpolated_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "cover_of",
+     "type": "cover_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "covered_by",
+     "type": "covered_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "remix_of",
+     "type": "remix_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "remixed_by",
+     "type": "remixed_by",
+     "songs": []
+    },
+    {
+     "relationship_type": "live_version_of",
+     "type": "live_version_of",
+     "songs": []
+    },
+    {
+     "relationship_type": "performed_live_as",
+     "type": "performed_live_as",
+     "songs": []
+    }
+   ],
+   "verified_annotations_by": [],
+   "verified_contributors": [],
+   "verified_lyrics_by": [],
+   "writer_artists": [],
+   "artist": "A2M",
+   "lyrics": "Scuba Dive LyricsYeah, A2M back up in this bitch\nBris Breeze, Deez Stacks\nBring the champagne along, motherfucker\nYou know what we about to do\nWe about to go deep on these hoes\nHow deep? Man, check it\n(Yeah)\nWe be stuntin' at the waffle house, fucking on your mama (Yeah)\nShe tell me not in her face, but she loves it in her mouth\nBitch you know what Bris about, cocaine get it stout\nPurple haze, roll this up, puff puff pass those trees around\nI be substituting bitches, switch 'em out\nFuck bus wipe it down and kick them out\nHoes loving A2M, that's without a doubt\nGoing deep in that pussy \nBe in my coupe with that stick shit\nGucci guess my business\nLouis Vuitton, Audemars, bet that's on your wishlist (Of course)\nListen why I kick this, Breezy flow so vicious\nBitches on my hitlist, that pussy look delicious\nOne look at the balls and that ass is mine\nAnus sucker motherfucker\nFuck her, wine and dine\nFor my pimp breed, I got that in my bloodline\nGet my dick sucked yelling \"fuck\" one time\nGet my wetsuit on and go scuba dive in that pussy\nGet my flippers on and go scuba dive in that pussy\nWatch me, get my goggles on and go scuba dive in that pussy\nScuba dive in that pussy\nWatch me scuba dive in that pussy\nEast Coast\nWatch me scuba dive in that pussy\nWest Coast\nWatch me scuba dive in that pussy\nMidwest\nYou know i'm gonna scuba dive in that pussy\nDirty South\nWatch me scuba dive in that pussy\nDeez Stacks! That's my fucking name\nYou can hold my dick and you can hold my chain\nIf you don't like that shit suck my fucking balls\nI got plenty nuts for each and every one of y'all\nDon't give me no back talk, that's that get you slapped talk\nSmack your ass while you suck my dick, that's what I call trash talk\nTell your boyfriend back up, bitch don't even act tough\nPussy made sweet lemonade, that boy's gonna hold my sack up\nGot that rocket in your pocket, pussy poppin'\nAll on the dick asking when the album dropping\nHoes thinking I'm their daddy, I take them shopping\nJumping in my pool of semen, belly flopping\nYou bound to drizz-own\nBitch go blow your floaties up, swimming in the deep section of my fucking nuts\nFucking bitches, getting money, what the fuck I do\nA2M and champagne, that's the fucking crew\nGet my wetsuit on and go scuba dive in that pussy\nGet my flippers on and go scuba dive in that pussy\nWatch me, get my goggles on and go scuba dive in that pussy\nScuba dive in that pussy\nWatch me scuba dive in that pussy\nEast Coast\nWatch me scuba dive in that pussy\nWest Coast\nWatch me scuba dive in that pussy\nMidwest\nYou know i'm gonna scuba dive in that pussy\nDirty South\nWatch me scuba dive in that pussy1Embed"
+  }
+ ]
+}

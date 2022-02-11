@@ -5,6 +5,4 @@ dependencies:
   - pymongo
   - dnspython
   - pandas
-  - spotipy
-  - bs4
-  - lyricsgenius
+  - beautifulsoup4
