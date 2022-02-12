@@ -7,14 +7,7 @@ import configparser, pymongo, os
 app = Flask(__name__)
 
 config = configparser.ConfigParser()
-# Handle Settings initialization file
-if not os.path.exists('settings.ini'):
-    config['mongodb'] = {'username': 'group37', 'password': 'ligmaballs-find-the-password-on-msteams-wiki'}
-    config.write(open('settings.ini', 'w'))
-    print('Please update the settings.ini file as accordingly')
-    quit() # Make sure you update settings file
-else:
-    config.read('settings.ini')
+config.read('settings.ini')
 
 base_uri = 'mongodb+srv://'
 username = config.get('mongodb', 'username')

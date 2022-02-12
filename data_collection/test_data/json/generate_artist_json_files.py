@@ -1,20 +1,29 @@
 # This file is used to search for artists with names starting with 'A'
-import lyricsgenius as lg
+import configparser, lyricsgenius as lg
 import os
 
+current_path = os.path.dirname(__file__)
+settings_file = os.path.normpath(
+    current_path + os.sep + os.pardir + os.sep + os.pardir + os.sep + os.pardir + os.sep + 'settings.ini'
+)
+config = configparser.ConfigParser()
+
+config.read(settings_file)
+
 # TBC: Client access token placed into `settings.ini`
-temporary_client_access_token = 'kmNyv2VqWAyRXKncF7_mayGvml4V7nmpxNXQW4yRq1jQE7Uo5YPOFDjdyeeRr-BT'
+genius_lyrics_client_access_token = config.get('geniuslyrics', 'genius_client_access_token')
 
 # TBC: Analyze timeout and retries attributes
-genius = lg.Genius(temporary_client_access_token, 
+genius = lg.Genius(genius_lyrics_client_access_token, 
                    skip_non_songs=True, 
                    excluded_terms=["(Remix)", "(Live)"], 
                    remove_section_headers=True,
                    timeout=600,
                    retries=10)
 
-current_path = os.path.dirname(__file__)
-file = os.path.normpath(current_path + os.sep + os.pardir + os.sep + 'albums_text' + os.sep + 'artists_b')
+artist_starting_initial_name = config.get('geniuslyrics_artists_name_letter', 'artist_name_letter')
+
+file = os.path.normpath(current_path + os.sep + os.pardir + os.sep + 'albums_text' + os.sep + artist_starting_initial_name)
 
 artist_list = list()
 
