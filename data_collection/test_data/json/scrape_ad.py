@@ -1,8 +1,6 @@
 import os, time, logging, configparser
 import lyricsgenius as lg
 
-lettersSet = [c for c in "abcde"]
-
 current_path = os.path.dirname(__file__)
 settings_file = os.path.normpath(
     current_path + os.pardir.join([os.sep]*4) + 'settings.ini'
@@ -13,6 +11,9 @@ logging.basicConfig(filename='data_collection.log', encoding='utf-8', level=logg
 config = configparser.ConfigParser()
 config.read(settings_file)
 genius_lyrics_client_access_token = config.get('geniuslyrics', 'genius_client_access_token')
+
+artists_name_initial_letters = config.get('geniuslyrics_artists_name_letters', 'artists_name_letters')
+lettersSet = [c for c in artists_name_initial_letters]
 
 def scrapeLetter(letter):
     artists_file = os.path.normpath(current_path + os.sep + os.pardir + os.sep + 'albums_text' + os.sep + "artists_" + l)

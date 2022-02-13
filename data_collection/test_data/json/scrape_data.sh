@@ -1,4 +1,4 @@
 #!/bin/bash
 
 conda activate ttds
-python generate_artist_json_files.py
+python scrape_ad.py
