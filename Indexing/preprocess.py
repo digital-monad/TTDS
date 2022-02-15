@@ -1,8 +1,8 @@
 
-import re
+import re, os
 from stemming.porter2 import stem
 
-sw_path = "./englishST.txt"
+sw_path = os.path.dirname(__file__) + os.sep + "englishST.txt"
 
 sw = []
 
@@ -61,3 +61,6 @@ def preprocessSongLyrics(songLyrics,stopping=False,stemming=True):
     
     return preprocessedLines
 
+test_lyrics = "22 Lyrics\nIt feels like a perfect night\nTo dress up like hipsters\nAnd make fun of our exes, uh-uh, uh-uh\nIt feels like a perfect night\nFor breakfast at midnight\nTo fall in love with strangers, uh-uh, uh-uh\n\nYeah\nWe're happy, free, confused, and lonely at the same time\nIt's miserable and magical, oh, yeah\nTonight's the night when we forget about the deadlines\nIt's time, oh-oh\n\nI don't know about you, but I'm feeling 22\nEverything will be alright if you keep me next to you\nYou don't know about me, but I'll bet you want to\nEverything will be alright if we just keep dancing like we're\n22, 22\n\nIt seems like one of those nights\nThis place is too crowded\nToo many cool kids, uh-uh, uh-uh\n(Who's Taylor Swift, anyway? Ew)\nIt seems like one of those nights\nWe ditch the whole scene\nAnd end up dreaming\nInstead of sleeping\nYeah\nWe're happy, free, confused, and lonely in the best way\nIt's miserable and magical, oh, yeah\nTonight's the night when we forget about the heartbreaks\nIt's time, oh-oh\n\n(Hey!)\nI don't know about you, but I'm feeling 22\nEverything will be alright (Ooh) if you keep me next to you\nYou don't know about me, but I'll bet you want to\nEverything will be alright if (Alright)\nWe just keep dancing like we're 22 (Oh, oh, oh, oh, oh)\n22 (I don't know about you)\n22, 22\n\nIt feels like one of those nights\nWe ditch the whole scene\nIt feels like one of those nights\nWe won't be sleeping\nIt feels like one of those nights\nYou look like bad news\nI gotta have you\nI gotta have you\nOoh, ooh, yeah\n(Hey!)\nI don't know about you, but I'm feeling 22\nEverything will be alright if (Ooh) you keep me next to you\nYou don't know about me, but I'll bet you want to\nEverything will be alright if we just keep dancing like we're\n22 (Whoa, oh)\n22 (Dancing like)\n22 (Yeah, yeah), 22, (Yeah, yeah, yeah)\n\nIt feels like one of those nights\nWe ditch the whole scene\nIt feels like one of those nights\nWe won't be sleeping\nIt feels like one of those nights\nYou look like bad news\nI gotta have you\nI gotta have you85Embed"
+for i in preprocessSongLyrics(test_lyrics):
+    print(i)
