@@ -6,7 +6,6 @@ settings_file = os.path.normpath(
     current_path + os.pardir.join([os.sep]*4) + 'settings.ini'
 )
 
-logging.basicConfig(filename='data_collection.log', encoding='utf-8', level=logging.INFO)
 
 config = configparser.ConfigParser()
 config.read(settings_file)
@@ -14,6 +13,9 @@ genius_lyrics_client_access_token = config.get('geniuslyrics', 'genius_client_ac
 
 artists_name_initial_letters = config.get('geniuslyrics_artists_name_letters', 'artists_name_letters')
 lettersSet = [c for c in artists_name_initial_letters]
+
+logging.basicConfig(filename='data_collection' + "".join(lettersSet) + '.log', encoding='utf-8', level=logging.INFO)
+
 
 def scrapeLetter(letter):
     artists_file = os.path.normpath(current_path + os.sep + os.pardir + os.sep + 'albums_text' + os.sep + "artists_" + l)
