@@ -19,18 +19,26 @@
 # For term in query 
 import math
 from numpy import average
+import pymongo
+from pymongo import MongoClient
+
+#this is how to connect
+#should be located in separate MongoDB class file
+#index created from here
+client = MongoClient('localhost', 27017, username='group37', password='VP7SbToaxRFcmUbd')
+ttds = client.ttds
+collection = ttds.group37
 
 class rank():
 
     def __init__(self):
         pass
 
-    def do_ranking(self, query, index, N, doc_lenths): # Assuming query is preprocesses into tokens
-        results_dict = {} 
-        rel_terms = {}
+    def BM25(self, query, index, avgdl): # Assuming query is preprocesses into tokens
+        results_dict = {}
         k1 = 1.5 # Constants
         b = 0.75 # Constants
-        avgdl = average(list(doc_lenths.values())) # Assuming doc_lengths is {song : int}
+        N = len(index)
 
         for term in query: # Itterates each term in query 
 
@@ -39,7 +47,7 @@ class rank():
             for song in index[term].keys(): # Itterates each song for this given term 
 
                 term_freq_in_doc = len(index[term][song]) # Number of instances of term in given song
-                dl = doc_lenths[song]
+                dl = index[term][song]['len']
 
                 # We are now calculating BM25 for a given term in query for a given song
                 score_term = self.calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
@@ -49,7 +57,6 @@ class rank():
                     results_dict[song]+=score_term
                 else:
                     results_dict[song] = score_term # First song for the term to apear in!
-
         return results_dict
 
     def calc_BM25(self, N, term_docs, term_freq_in_doc, k1, b, dl, avgdl):
@@ -62,17 +69,22 @@ class rank():
         return k1 * ((1-b) + b * (float(d)/float(avgdl)) )
 
 def main():
-
-    terms = ["hi", "bye", "good", "bad", "yes"]
-    index = {"hi": {'song1': [1,2,3], 'song2': [1, 2, 3]}, "bye": {'song1': [4,5,6], 'song2': [4, 5, 6]},
-             "good": {'song1': [7,8], 'song3': [1,2,3,4]}, "bad": {'song4': [1,2,3,4,5]},
-             "yes": {'song5': [1,2,3,4,5,6,7,8,9]}}
-    N = 5
-    doc_lengths = {'song1': 8, 'song2': 6, 'song3': 4, 'song4': 5, 'song5': 9}
-
-    
+    index = {"hi": {'song1': {'len':8, 'pos':[1,2,3]}, 'song2': {'len':6, 'pos':[1,2,3]}}, "bye": {'song1': {'len':8, 'pos':[4,5,6]}, 'song2': {'len':6, 'pos':[4,5,6]}},
+             "good": {'song1': {'len':8, 'pos':[7,8]}, 'song3': {'len':4, 'pos':[1,2,3,4]}}, "bad": {'song4': {'len':5, 'pos':[1,2,3,4,5]}},
+             "yes": {'song5': {'len':9, 'pos':[1,2,3,4,5,6,7,8,9]}}}
+    #this can probs be hardcoded somewhere
+    seen_songs = []
+    total_songs = 0
+    total_length = 0
+    for term in index:
+        for song in index[term].keys():
+            if song not in seen_songs:
+                total_songs+=1
+                total_length+=index[term][song]['len']
+                seen_songs.append(song)
+    avgdl = total_length/total_songs
     ranky = rank()
-    results = ranky.do_ranking(["good","bad"], index, 5, doc_lengths)
+    results = ranky.BM25(["good","bad"], index, avgdl)
     print(results)
 
 if __name__ == '__main__':
