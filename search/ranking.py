@@ -22,8 +22,8 @@ from numpy import average
 import pymongo
 from pymongo import MongoClient
 
-#this is how to connect
-#should be located in separate MongoDB class file
+#this is basics of how to connect to mongodb
+#should be located in separate script
 #index created from here
 client = MongoClient('localhost', 27017, username='group37', password='VP7SbToaxRFcmUbd')
 ttds = client.ttds
@@ -72,7 +72,7 @@ def main():
     index = {"hi": {'song1': {'len':8, 'pos':[1,2,3]}, 'song2': {'len':6, 'pos':[1,2,3]}}, "bye": {'song1': {'len':8, 'pos':[4,5,6]}, 'song2': {'len':6, 'pos':[4,5,6]}},
              "good": {'song1': {'len':8, 'pos':[7,8]}, 'song3': {'len':4, 'pos':[1,2,3,4]}}, "bad": {'song4': {'len':5, 'pos':[1,2,3,4,5]}},
              "yes": {'song5': {'len':9, 'pos':[1,2,3,4,5,6,7,8,9]}}}
-    #this can probs be hardcoded somewhere
+    #this can probs be hardcoded somewhere, or calculated elsewhere at index creation
     seen_songs = []
     total_songs = 0
     total_length = 0
