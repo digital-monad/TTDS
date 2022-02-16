@@ -32,7 +32,7 @@ def preprocessSongLyrics(songLyrics,stopping=False,stemming=True):
     Takes a string of lyrics line seperated by \n 
 
     Returns a 2D array of each line where each element array represents 
-    the preprocessed word and it's overall position for that line
+    the preprocessed word and it's overall position in the song for that line
     
     """
 
@@ -42,22 +42,37 @@ def preprocessSongLyrics(songLyrics,stopping=False,stemming=True):
     
     for line in songLyrics.split("\n"):
         
-        tokens = re.sub("\W+", " ",line)
+        stemmedLineTokens, pos = preprocess(line, pos, stopping, stemming)
 
-        caseTokens = tokens.casefold().split()
-
-        stemmedLineTokens = []
-
-        for word in caseTokens:
-            if (word not in sw or not stopping):
-                if stemming:
-                    stemmedLineTokens.append((stem(word),pos)) 
-                else:
-                    stemmedLineTokens.append((word,pos)) 
-                pos += 1
-        
         if len(stemmedLineTokens) > 0:
             preprocessedLines.append(stemmedLineTokens)
     
     return preprocessedLines
 
+def preprocess(sentence, pos=0, stopping=False, stemming=True):
+
+    """ 
+    Used for preprocessing queries in the same way as songs are preprocessed.
+    """
+
+    tokens = re.sub("\W+", " ",sentence)
+
+    caseTokens = tokens.casefold().split()
+
+    stemmedLineTokens = []
+
+    for word in caseTokens:
+        if (word not in sw or not stopping):
+            if stemming:
+                stemmedLineTokens.append((stem(word),pos)) 
+            else:
+                stemmedLineTokens.append((word,pos)) 
+            pos += 1
+
+    return stemmedLineTokens, pos
+
+
+# quick test
+# songs = {"song1" : "efaef ging faiefch pushing p\n ducker faiefch pushing p\n lkfm",
+#         "song2" : "help i need somebody\n help\n not just anybody"}
+# print(preprocessMultipleSongLyrics(songs))
