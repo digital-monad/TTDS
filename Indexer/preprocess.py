@@ -52,7 +52,7 @@ def preprocessSongLyrics(songLyrics,stopping=False,stemming=True):
 def preprocess(sentence, pos=0, stopping=False, stemming=True):
 
     """ 
-    Used for preprocessing queries in the same way as songs are preprocessed.
+    Used for preprocessing a line of text
     """
 
     tokens = re.sub("\W+", " ",sentence)
