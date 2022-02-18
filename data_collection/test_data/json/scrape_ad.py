@@ -38,8 +38,8 @@ def scrapeLetter(letter):
                 # If lyrics save successful
                 logging.info(f"Successfully wrote lyrics for {line}")
                 artists_scraped.add(artist)
-    except:
-        logging.warning("Ran into either HTTP error or Timeout")
+    except Exception as e:
+        logging.warning(e)
         # Remove the already scraped artists from the file
         with open(artists_file, 'w', encoding='utf-8') as file:
             for line in lines:
