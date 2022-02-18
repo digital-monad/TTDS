@@ -38,6 +38,12 @@ def scrapeLetter(letter):
                 # If lyrics save successful
                 logging.info(f"Successfully wrote lyrics for {line}")
                 artists_scraped.add(artist)
+
+    except IOError as e:
+        logging.warn(e)
+        os.system("y")
+        scrapeLetter(letter)
+    
     except Exception as e:
         logging.warning(e)
         # Remove the already scraped artists from the file
@@ -45,6 +51,7 @@ def scrapeLetter(letter):
             for line in lines:
                 if line.strip() not in artists_scraped:
                     file.write(line)
+
         time.sleep(30)
         logging.info("Pausing for 30 seconds before retrying")
         # Re-run the same logic with the refreshed file
