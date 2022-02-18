@@ -2,3 +2,4 @@
 /venv/
 settings.ini
 /data_collection/test_data/json/*.json
+*.pyc
