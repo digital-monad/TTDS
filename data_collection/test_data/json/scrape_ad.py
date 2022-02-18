@@ -1,4 +1,4 @@
-import os, time, logging, configparser
+import os, time, logging, configparser, requests
 import lyricsgenius as lg
 
 current_path = os.path.dirname(__file__)
@@ -37,14 +37,17 @@ def scrapeLetter(letter):
                 artist_data.save_lyrics()
                 # If lyrics save successful
                 logging.info(f"Successfully wrote lyrics for {line}")
+                print(f"Succesfully wrote lyrics for {line}")
                 artists_scraped.add(artist)
 
     except IOError as e:
+        print("Ran into IO error - attempting to type 'y'")
         logging.warn(e)
         os.system("y")
         scrapeLetter(letter)
     
-    except Exception as e:
+    except (requests.HTTPError, requests.Timeout) as e:
+        print("Ran into an HTTP or Timeout error - pausing and retrying")
         logging.warning(e)
         # Remove the already scraped artists from the file
         with open(artists_file, 'w', encoding='utf-8') as file:
