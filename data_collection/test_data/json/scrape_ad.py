@@ -34,17 +34,11 @@ def scrapeLetter(letter):
                 artist = line.strip()
                 artist_data = genius.search_artist(artist, include_features=True) # TODO: CHANGE THE MAX_SONGS
 
-                artist_data.save_lyrics()
+                artist_data.save_lyrics(overwrite=True)
                 # If lyrics save successful
                 logging.info(f"Successfully wrote lyrics for {line}")
                 print(f"Succesfully wrote lyrics for {line}")
                 artists_scraped.add(artist)
-
-    except IOError as e:
-        print("Ran into IO error - attempting to type 'y'")
-        logging.warn(e)
-        os.system("y")
-        scrapeLetter(letter)
     
     except (requests.HTTPError, requests.Timeout) as e:
         print("Ran into an HTTP or Timeout error - pausing and retrying")
