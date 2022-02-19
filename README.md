@@ -43,3 +43,11 @@ Group coursework for the Text Technologies for Data Science course.
 ## Executing Server
 1. Ensure your virtual environment is already setup properly
 2. Type the following in your console: `./run`
+
+## Data Collection
+
+### Translating JSON to CSV files
+1. Assuming `settings.ini` is already setup, go to the `geniuslyrics_datacollection` section
+and change `data_collection_type` option value along with `batch_starting_initial` option value
+- NOTE: `data_collection_type` can either be `sample_data` or `test_data`
+- NOTE: `batch_starting_initial` can be from folder a to z but the initial name must be clearly defined
