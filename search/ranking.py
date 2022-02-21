@@ -44,19 +44,12 @@
 
 """
 import math
-from pymongo import MongoClient
+from search.search import search # This we overused this word lol
 
-#this is basics of how to connect to mongodb
-#should be located in separate script
-#index created from here
-client = MongoClient('localhost', 27017, username='group37', password='VP7SbToaxRFcmUbd')
-ttds = client.ttds
-collection = ttds.group37
-
-class rank():
+class rank(search):
 
     def __init__(self):
-        pass
+        super()._init__()
 
     def BM25(self, query, index, avgdl, type): # Assuming query is preprocesses into tokens
         results_dict = {}
