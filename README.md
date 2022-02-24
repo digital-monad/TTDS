@@ -14,7 +14,7 @@ Group coursework for the Text Technologies for Data Science course.
 
 ## Local Host Setup (Anaconda)
 1. `conda env create -f environment.yml`
-2. Test run `python app.py`
+2. To configure settings file, type in: `python setup_settings.py`
 3. Go to `settings.ini` file and update password - refer to MSTeams Wiki if needed
     - This is absolutely needed to prevent freely exposing API keys and passwords
 4. Install MongoDB Compass for better visualization
@@ -36,10 +36,18 @@ Group coursework for the Text Technologies for Data Science course.
 4. Install following dependencies
     - [ ] `pip install pymongo`
     - [ ] `pip install dnspython`
-5. Test run on main Python file `py app.py`
-6. Go to `settings.ini` file and update - refer to MSTeams Wiki if needed
+5. To configure settings file, type in: `python setup_settings.py`
+6. Go to `settings.ini` file and update - please refer to MSTeams Wiki if needed
     - This is absolutely needed to prevent freely exposing API keys and passwords
 
 ## Executing Server
 1. Ensure your virtual environment is already setup properly
 2. Type the following in your console: `./run`
+
+## Data Collection
+
+### Translating JSON to CSV files
+1. Assuming `settings.ini` is already setup, go to the `geniuslyrics_datacollection` section
+and change `data_collection_type` option value along with `batch_starting_initial` option value
+- NOTE: `data_collection_type` can either be `sample_data` or `test_data`
+- NOTE: `batch_starting_initial` can be from folder a to z but the initial name must be clearly defined
