@@ -40,7 +40,7 @@ def scrapeLetter(letter):
                 print(f"Succesfully wrote lyrics for {line}")
                 artists_scraped.add(artist)
     
-    except (requests.HTTPError, requests.Timeout) as e:
+    except Exception as e:
         print("Ran into an HTTP or Timeout error - pausing and retrying")
         logging.warning(e)
         # Remove the already scraped artists from the file
