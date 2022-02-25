@@ -53,12 +53,13 @@ for index, file in enumerate(relevant_files, start=0):
                 count += 1
 
             song_id = count
-            artist = json_data['name']
+            artist = unidecode.unidecode(json_data['name'])
             title = unidecode.unidecode(song_data['title'])
             if song_data.get('album') == None:
                 album = None
             else:
                 album = song_data.get('album').get('name', None)
+                album = unidecode.unidecode(album)
             release_date = song_data.get('release_date', None)
             if release_date == None:
                 year = None
@@ -70,5 +71,7 @@ for index, file in enumerate(relevant_files, start=0):
 
             decoded_raw_lyrics = unidecode.unidecode(raw_lyrics)
 
-            csv_writer.writerow([song_id, artist, title, album, year, release_date, decoded_raw_lyrics])
+            if len(decoded_raw_lyrics) <= 20000:
+                csv_writer.writerow([song_id, artist, title, album, year, release_date, decoded_raw_lyrics])
+            
             count += 1

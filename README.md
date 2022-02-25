@@ -46,8 +46,15 @@ Group coursework for the Text Technologies for Data Science course.
 
 ## Data Collection
 
-### Translating JSON to CSV files
+### Translating JSON to CSV files]
+**NOTE**: Lyrics greater than 20000 characters will not be transferred - due to CSV ability to write up to 32k characters.
+In addition most likely a play rather than an actual song
+
 1. Assuming `settings.ini` is already setup, go to the `geniuslyrics_datacollection` section
 and change `data_collection_type` option value along with `batch_starting_initial` option value
 - NOTE: `data_collection_type` can either be `sample_data` or `test_data`
 - NOTE: `batch_starting_initial` can be from folder a to z but the initial name must be clearly defined
+2. Create a folder under `test_data` called `csv`
+3. Test_Data folder should not contain JSON files and should be stored in either local host or Microsoft Teams or OneDrive
+    - Reduce file transfer size
+4. CSVs however must be transferred and shown in GitHub repo

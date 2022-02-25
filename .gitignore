@@ -1,5 +1,6 @@
 /__pycache__/
 /venv/
 settings.ini
-/data_collection/test_data/json/*.json
 *.pyc
+
+/data_collection/test_data/json/*/*.json
