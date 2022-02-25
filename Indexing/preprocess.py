@@ -22,7 +22,10 @@ def preprocessMultipleSongLyrics(songs, stopping=False,stemming=True):
 
     for song in songs.keys():
 
-        preprocessedSongLyrics[song] = preprocessSongLyrics(songs[song], stopping, stemming)
+        songLines = preprocessSongLyrics(songs[song], stopping, stemming) 
+
+        if(len(songLines)):
+            preprocessedSongLyrics[song] = songLines
 
     return preprocessedSongLyrics
 
@@ -46,7 +49,7 @@ def preprocessSongLyrics(songLyrics,stopping=False,stemming=True):
 
         if len(stemmedLineTokens) > 0:
             preprocessedLines.append(stemmedLineTokens)
-    
+
     return preprocessedLines
 
 def preprocess(sentence, pos=0, stopping=False, stemming=True):
