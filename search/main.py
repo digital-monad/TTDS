@@ -1,7 +1,5 @@
 import json
 import pickle
-import sys
-from pathlib import Path
 import math
 import time
 from tracker import ScoreHeap
@@ -31,39 +29,41 @@ def BM25(query, avgdl, type): # Assuming query is preprocesses into tokens
         N = len(song_metadata)
         for term in query: # Iterates each term in query
             term_docs = len(list(index[term].keys())) # Number of songs term appears in
-            for song in index[term].keys(): # Iterates each song for this given term
-                term_freq_in_doc = 0
-                for line in index[term][song].keys():
-                    term_freq_in_doc += len(index[term][song][line]) # Number of instances of term in given song
-                dl = song_metadata[song]['len']
-                # We are now calculating BM25 for a given term in query for a given song
-                score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
-                # We now add this to 'results_dict'
-                if song in results_dict.keys():
-                    results_dict[song] += score_term
-                    tracky_track.add(song, score_term)
-                else:
-                    results_dict[song] = score_term # First song for the term to appear in!
-                    tracky_track.add(song, score_term)
+            if term_docs>0:
+                for song in index[term].keys(): # Iterates each song for this given term
+                    term_freq_in_doc = 0
+                    for line in index[term][song].keys():
+                        term_freq_in_doc += len(index[term][song][line]) # Number of instances of term in given song
+                    dl = song_metadata[song]['length']
+                    # We are now calculating BM25 for a given term in query for a given song
+                    score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
+                    # We now add this to 'results_dict'
+                    if song in results_dict.keys():
+                        results_dict[song] += score_term
+                        tracky_track.add(song, score_term)
+                    else:
+                        results_dict[song] = score_term # First song for the term to appear in!
+                        tracky_track.add(song, score_term)
     elif type == "lyric":
         N = len(lyric_metadata)
         for term in query:  # Iterates each term in query
             term_docs = 0
-            for song in index[term].keys():  # Iterates each song for this given term
-                term_docs += len(list(index[term][song].keys())) # Number of lyrics term appears ins
-            for song in index[term].keys():
-                for lyric in index[term][song].keys():
-                    term_freq_in_doc = len(index[term][song][lyric])
-                    dl = lyric_metadata[lyric]['len']
-                    # We are now calculating BM25 for a given term in query for a given song
-                    score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
-                    # We now add this to 'results_dict', which will already contain somevalue if previous term apeared in given song
-                    if lyric in results_dict.keys():
-                        results_dict[lyric] += score_term
-                        tracky_track.add(lyric, score_term)
-                    else:
-                        results_dict[lyric] = score_term  # First song for the term to appear in!
-                        tracky_track.add(lyric, score_term)
+            if term in index:
+                for song in index[term].keys():  # Iterates each song for this given term
+                    term_docs += len(list(index[term][song].keys())) # Number of lyrics term appears ins
+                for song in index[term].keys():
+                    for lyric in index[term][song].keys():
+                        term_freq_in_doc = len(index[term][song][lyric])
+                        dl = lyric_metadata[lyric]['length']
+                        # We are now calculating BM25 for a given term in query for a given song
+                        score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
+                        # We now add this to 'results_dict', which will already contain somevalue if previous term apeared in given song
+                        if lyric in results_dict.keys():
+                            results_dict[lyric] += score_term
+                            tracky_track.add(lyric, score_term)
+                        else:
+                            results_dict[lyric] = score_term  # First song for the term to appear in!
+                            tracky_track.add(lyric, score_term)
     return tracky_track
 
 def calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl):
@@ -82,13 +82,18 @@ def ranked_retrieval(query, type, show_results):
 
 if __name__ == '__main__':
     batch_size = 50
-
+    # comment this out if youve got pickle files
+    index = load_pickle("test_index")
+    song_metadata = load_pickle("test_song_metadata")
+    lyric_metadata = load_pickle("test_line_metadata")
     start = time.time()
-    index = {"hi": {'song1': {0: [1,2,3], 13: [1,2,3]}, 'song2':{1:[1]}}, "good": {'song1': {1: [2,3], 11: [1,2,3]}, 'song2':{2: [1,2,3], 14: [1,2,4,6,7,8]}}}
-    song_metadata = {"song1":{"genre": "pop", "artist": "adele", "len": 13,}, "song2":{"genre": "pop","artist": "adele", "len": 19,}}
-    lyric_metadata = {0:{"song": "song1", "len": 8,}, 1:{"song": "song1", "len": 8,}, 11:{"song": "song1", "len": 8,}, 13:{"song": "song1", "len": 8,}, 2:{"song": "song2", "len": 8,}, 3:{"song": "song2", "len": 8,}, 14:{"song": "song2", "len": 8,}, 17:{"song": "song2", "len": 8,} }
 
-    tracker = ranked_retrieval(['hi'], 'lyric', batch_size)
+    # uncomment this if you havent got pickle files
+    # index = {"hi": {'song1': {0: [1,2,3], 13: [1,2,3]}, 'song2':{1:[1]}}, "good": {'song1': {1: [2,3], 11: [1,2,3]}, 'song2':{2: [1,2,3], 14: [1,2,4,6,7,8]}}}
+    # song_metadata = {"song1":{"genre": "pop", "artist": "adele", "len": 13,}, "song2":{"genre": "pop","artist": "adele", "len": 19,}}
+    # lyric_metadata = {0:{"song": "song1", "len": 8,}, 1:{"song": "song1", "len": 8,}, 11:{"song": "song1", "len": 8,}, 13:{"song": "song1", "len": 8,}, 2:{"song": "song2", "len": 8,}, 3:{"song": "song2", "len": 8,}, 14:{"song": "song2", "len": 8,}, 17:{"song": "song2", "len": 8,} }
+
+    tracker = ranked_retrieval(['hurt'], 'song', batch_size)
     end = time.time()
     print(f'''Run time = {end-start}''')
     print(f'''Results = {tracker}''')
