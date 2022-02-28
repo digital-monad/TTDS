@@ -1,51 +1,29 @@
-""""" Progress so far assumes that we have a query Q and index I (stored as dictionary to work with!
-      We also assume that we can access the index which we are yet to implement as we have not decided
-      where and how it will be stored - thinking mongoDB """
-
-"""" Assuming the below index structure:
-
-    term1 : {
-        song1 : {
-            line0 : [pos1, pos2, pos3]
-            line1:  [pos1, pos4]
-        },
-        song2 : {
-            line0 : [pos3, pos7]
-            line1:  [pos1]
-        },
-        ...
-    }
-         """
-""" song_metadata: {
-        song1: {
-            length: 10,
-            genre: pop,
-            artist: adele
-        },
-        song2: {
-            length: 10,
-            genre: pop,
-            artist: adele
-        },
-        ...
-    }
-    
-    lyric_metadata: {
-        line1: {
-            length: 10,
-            song: song
-        },
-        line2: {
-            length: 10,
-            song: song
-        },
-        ...
-    }
-
-"""
+import json
+import pickle
+import sys
+from pathlib import Path
 import math
+import time
+from tracker import ScoreHeap
+
+N = 27358109
+batch_size = 20
+
+def load_json(path):
+    return json.load(open(path))
+
+def load_pickle(file_name):
+    with open(file_name + '.pickle', 'rb') as f:
+        return pickle.load(f)
+
+def idf(term_docs):
+    df = len(term_docs)
+    if df == 0:
+        return 0
+    return math.log10(N / df)
 
 def BM25(query, avgdl, type): # Assuming query is preprocesses into tokens
+    tracky_track = ScoreHeap()
     results_dict = {}
     k1 = 1.5 # Constants
     b = 0.75 # Constants
@@ -63,8 +41,10 @@ def BM25(query, avgdl, type): # Assuming query is preprocesses into tokens
                 # We now add this to 'results_dict'
                 if song in results_dict.keys():
                     results_dict[song] += score_term
+                    tracky_track.add(song, score_term)
                 else:
                     results_dict[song] = score_term # First song for the term to appear in!
+                    tracky_track.add(song, score_term)
     elif type == "lyric":
         N = len(lyric_metadata)
         for term in query:  # Iterates each term in query
@@ -80,9 +60,11 @@ def BM25(query, avgdl, type): # Assuming query is preprocesses into tokens
                     # We now add this to 'results_dict', which will already contain somevalue if previous term apeared in given song
                     if lyric in results_dict.keys():
                         results_dict[lyric] += score_term
+                        tracky_track.add(lyric, score_term)
                     else:
                         results_dict[lyric] = score_term  # First song for the term to appear in!
-    return results_dict
+                        tracky_track.add(lyric, score_term)
+    return tracky_track
 
 def calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl):
     third_term = K(k1, b, dl, avgdl)
@@ -93,54 +75,30 @@ def calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl):
 def K( k1, b, d, avgdl):
     return k1 * ((1-b) + b * (float(d)/float(avgdl)) )
 
-def ranked_search(type):
-    # this can just be hardcoded somewhere
-    if type == "song":
-        seen_songs = []
-        total_songs = 0
-        total_length = 0
-        for song in song_metadata.keys():
-                if song not in seen_songs:
-                    total_songs+=1
-                    total_length+=song_metadata[song]['len']
-                    seen_songs.append(song)
-        avgdl_song = total_length/total_songs
-        results = BM25(["hi"], avgdl_song, "song")
-    elif type == "lyric":
-        seen_lyrics = []
-        total_lyrics = 0
-        total_length = 0
-        for lyric in lyric_metadata.keys():
-                if lyric not in seen_lyrics:
-                    total_lyrics+=1
-                    total_length+=lyric_metadata[lyric]['len']
-                    seen_lyrics.append(lyric)
-        avgdl_lyric = total_length/total_lyrics
-        results = BM25(["hi"], avgdl_lyric, "lyric")
-    print(results)
+def ranked_retrieval(query, type, show_results):
+    results = BM25(query, batch_size,type)
+    result_ids = [item[0] for item in results.getTopN(show_results)]
+    return result_ids
 
-def proximity_search(term1,term2,proximity):
-    lyrics = []
-    for song in index[term1].keys():
-        term1_docs = list(index[term1][song].keys())
-    print(term1_docs)
-    for song in index[term2].keys():
-        term2_docs = list(index[term2][song].keys())
-    print(term2_docs)
-    for song in list(set(term1_docs) & set(term2_docs)):
-        term1_lyrics = list(index[term1][song].values())
-        term2_lyrics = list(index[term2][song].values())
-        for lyric in list(set(term1_lyrics) & set(term2_lyrics)):
-            for position1 in index[term1][song][lyric].values():
-                for position2 in index[term2][song][lyric].values():
-                    if position1 + proximity <= position2:
-                        lyrics = lyric_metadata[lyric]
-    return lyrics
+def score_BM25(doc_nums, doc_nums_term, term_freq, k1, b, dl, avgdl):
+    K = compute_K(k1, b, dl, avgdl)
+    idf_param = math.log( (doc_nums-doc_nums_term+0.5) / (doc_nums_term+0.5) )
+    next_param = ((k1 + 1) * term_freq) / (K + term_freq)
+    return float("{0:.4f}".format(next_param * idf_param))
+
+
+def compute_K(k1, b, dl, avgdl):
+    return k1 * ((1-b) + b * (float(dl)/float(avgdl)) )
 
 if __name__ == '__main__':
+    batch_size = 50
+
+    start = time.time()
     index = {"hi": {'song1': {0: [1,2,3], 13: [1,2,3]}, 'song2':{1:[1]}}, "good": {'song1': {1: [2,3], 11: [1,2,3]}, 'song2':{2: [1,2,3], 14: [1,2,4,6,7,8]}}}
     song_metadata = {"song1":{"genre": "pop", "artist": "adele", "len": 13,}, "song2":{"genre": "pop","artist": "adele", "len": 19,}}
     lyric_metadata = {0:{"song": "song1", "len": 8,}, 1:{"song": "song1", "len": 8,}, 11:{"song": "song1", "len": 8,}, 13:{"song": "song1", "len": 8,}, 2:{"song": "song2", "len": 8,}, 3:{"song": "song2", "len": 8,}, 14:{"song": "song2", "len": 8,}, 17:{"song": "song2", "len": 8,} }
-    # ranked_search("lyric")
-    results = proximity_search('hi', 'good', 100)
-    print(results)
+
+    tracker = ranked_retrieval(['hi'], 'lyric', batch_size)
+    end = time.time()
+    print(f'''Runtime = {end-start}''')
+    print(f'''Results = {tracker}''')
