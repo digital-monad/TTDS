@@ -48,7 +48,7 @@ for index, file in enumerate(relevant_files, start=0):
         for song_data in json_data['songs']:
             
             if count == 0:
-                header = ['Song ID','Artist','Title','Album', 'Year', 'Date','Raw Lyrics']
+                header = ['Song ID','Artist','Title','Album','Year','Date','Image Url','Description','Raw Lyrics']
                 csv_writer.writerow(header)
                 count += 1
 
@@ -65,13 +65,19 @@ for index, file in enumerate(relevant_files, start=0):
                 year = None
             else:
                 year = release_date.split("-")[0]
+            song_image_url = song_data['song_art_image_thumbnail_url']
+            if (song_data['description']['plain'].startswith('http') or song_data['description']['plain'] == '?'):
+                song_description = None
+            else:
+                song_description = unidecode.unidecode(song_data['description']['plain'])
+            
             raw_lyrics = song_data['lyrics']
             first_index = raw_lyrics.find('\n') # Remove 'lyrics by... section'
-            raw_lyrics = raw_lyrics[first_index+1:]
+            raw_lyrics = raw_lyrics[first_index+1:].lstrip()
 
             decoded_raw_lyrics = unidecode.unidecode(raw_lyrics)
 
             if len(decoded_raw_lyrics) <= 20000:
-                csv_writer.writerow([song_id, artist, title, album, year, release_date, decoded_raw_lyrics])
+                csv_writer.writerow([song_id, artist, title, album, year, release_date, song_image_url, song_description, decoded_raw_lyrics])
             
             count += 1
