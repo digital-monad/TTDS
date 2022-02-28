@@ -80,16 +80,6 @@ def ranked_retrieval(query, type, show_results):
     result_ids = [item[0] for item in results.getTopN(show_results)]
     return result_ids
 
-def score_BM25(doc_nums, doc_nums_term, term_freq, k1, b, dl, avgdl):
-    K = compute_K(k1, b, dl, avgdl)
-    idf_param = math.log( (doc_nums-doc_nums_term+0.5) / (doc_nums_term+0.5) )
-    next_param = ((k1 + 1) * term_freq) / (K + term_freq)
-    return float("{0:.4f}".format(next_param * idf_param))
-
-
-def compute_K(k1, b, dl, avgdl):
-    return k1 * ((1-b) + b * (float(dl)/float(avgdl)) )
-
 if __name__ == '__main__':
     batch_size = 50
 
@@ -100,5 +90,5 @@ if __name__ == '__main__':
 
     tracker = ranked_retrieval(['hi'], 'lyric', batch_size)
     end = time.time()
-    print(f'''Runtime = {end-start}''')
+    print(f'''Run time = {end-start}''')
     print(f'''Results = {tracker}''')
