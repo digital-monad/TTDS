@@ -1,0 +1,33 @@
+<!-- CURRENTLY SHOULD DISPLAY RESULTS -->
+
+{% extends 'base.html' %}
+{% block title %}Index{% endblock %}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<div>
+    {% for d in data %}
+    <div>
+        <h3>{{ d.id }}</h3>
+        <p>{{ d.song_lyrics }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- TODO: Find more efficient way for pagination especially with multiple docs :P -->
+<!-- TODO: Create page number text input label and then display number -->
+<div>
+    <ul class="pagination">
+        <li class="active"><a href="{{ url_for('display_search_results', page=1) }}">1</a></li>
+        <li class="active waves-effect"><a href="{{ url_for('display_search_results', page=2) }}">2</a></li>
+        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3) }}">3</a></li>
+        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4) }}">4</a></li>
+        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5) }}">5</a></li>
+    </ul>    
+</div>
+
+{% endblock %}
