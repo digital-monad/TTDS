@@ -3,7 +3,7 @@
 from os import listdir
 from os.path import isfile, join
 
-import csv, json, os, unidecode
+import csv, json, os, unidecode, re
 import configparser
 
 # Initialize configurations
@@ -76,8 +76,10 @@ for index, file in enumerate(relevant_files, start=0):
             raw_lyrics = raw_lyrics[first_index+1:].lstrip()
 
             decoded_raw_lyrics = unidecode.unidecode(raw_lyrics)
+            regex = "([0-9]+)*Embed" # To remove the weird 'embed' problem
+            decoded_raw_lyrics = re.sub(regex, '', decoded_raw_lyrics)
 
-            if len(decoded_raw_lyrics) <= 20000:
+            if (len(decoded_raw_lyrics) <= 20000) and (len(decoded_raw_lyrics) > 0):
                 csv_writer.writerow([song_id, artist, title, album, year, release_date, song_image_url, song_description, decoded_raw_lyrics])
             
             count += 1
