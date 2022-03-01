@@ -9,7 +9,11 @@
 }
 
 #search-text-input {
-    width: 80%;
+    width: 60%;
+}
+
+#search-by-songs-checkbox-label {
+    margin-left: 16px;
 }
 
 @media screen and (min-width: 768px) {

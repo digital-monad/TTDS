@@ -12,22 +12,31 @@
 
         <form id="search-song-lyrics-form" action="/search/page=1" method="POST">
             <div class="input-group">
-                <input id="search-text-input" type="text" name="q" class="form-control" placeholder="Search for a Song / Song Lyrics">
+                <input id="search-text-input" type="text" name="q" class="form-control" placeholder="Search by Song Lyrics">
                 <span class="input-group-append">
                     <button class="btn btn-primary" id="search-button" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
                 </span>
+                <label id="search-by-songs-checkbox-label">
+                    <input id="search-by-songs-checkbox" type="checkbox" onclick="searchBySongsCheckBox()" />
+                    <span>Search by Songs</span>
+                </label>
             </div>
 
-            <div class="input-group" id="advanced-filters-container">
-                <!-- Unsure what appropriate choices should there be (in form of checkboxes?) -->
-                <input type="text" name="" class="form-control" placeholder="Filter by Genre">
-                <input type="text" name="" class="form-control" placeholder="Filter by Artist">
-                <input type="text" name="" class="form-control" placeholder="Filter by Date of Release">
-                <input type="text" name="" class="form-control" placeholder="Filter by Popularity">
-
-
+            <div class="row" id="advanced-filters-container">
+                <div class="col m6">
+                    <input type="text" name="" class="form-control" placeholder="Filter by Genre">
+                </div>
+                <div class="col m6">
+                    <input type="text" name="" class="form-control" placeholder="Filter by Artist">
+                </div>
+                <div class="col m6">
+                    <input type="text" name="" class="form-control" placeholder="Filter by Date of Release">
+                </div>
+                <div class="col m6">
+                    <input type="text" name="" class="form-control" placeholder="Filter by Popularity">
+                </div>
             </div>
 
         </form>
@@ -35,5 +44,7 @@
         
     </div> 
  </div>
+
+ <script src="../static/js/index.js"></script>
 
 {% endblock %}

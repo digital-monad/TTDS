@@ -188,4 +188,4 @@ class BooleanSearchParser:
 
 x = BooleanSearchParser()
 
-print(x.query('"beef beeeeef beef" && ranked query && ("chicken") && #(fish) && (#(beans)) && (rice || "cheese")'))
+#print(x.query('"beef beeeeef beef" && ranked query && ("chicken") && #(fish) && (#(beans)) && (rice || "cheese")'))

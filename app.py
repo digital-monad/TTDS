@@ -1,8 +1,10 @@
-# Temporary setup for web application routing and Pymongo integration
+# Temporary main Python file for web application routing and Pymongo integration
 
 # Setup Flask and MongoDB - integration for backend and database
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import configparser, pymongo, os, requests
+import QueryParser.parser as qp
+import search.preprocess as pp
 
 app = Flask(__name__)
 
@@ -39,6 +41,18 @@ def display_search_first_results():
 ROWS_PER_PAGE = 1 # SHOULD BE CHANGED
 @app.route('/search/page=<int:page>', methods=['GET', 'POST'])
 def display_search_results(page):
+    query = request.form.get('q')
+
+    bs_parser = qp.BooleanSearchParser()
+    bs_parser.query(query) # Parse query - determine what algorithm to use
+    #print(bs_parser.query(query))
+
+    # TODO: obtain correct function for search by lyrics
+    #pre_processed_song_lyrics = pp.preprocessSongLyrics(query)
+    #print(pre_processed_song_lyrics)
+    
+    # TODO: get index from
+
     genius_lyrics_data = get_relevant_docs(ROWS_PER_PAGE, page)
     return render_template('search.html', data = genius_lyrics_data)
 
