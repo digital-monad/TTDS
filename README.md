@@ -46,7 +46,7 @@ Group coursework for the Text Technologies for Data Science course.
 
 ## Data Collection
 
-### Translating JSON to CSV files]
+### Translating JSON to CSV files
 **NOTE**: Lyrics greater than 20000 characters will not be transferred - due to CSV ability to write up to 32k characters.
 In addition most likely a play rather than an actual song
 
@@ -57,4 +57,4 @@ and change `data_collection_type` option value along with `batch_starting_initia
 2. Create a folder under `test_data` called `csv`
 3. Test_Data folder should not contain JSON files and should be stored in either local host or Microsoft Teams or OneDrive
     - Reduce file transfer size
-4. CSVs however must be transferred and shown in GitHub repo
+4. CSVs however must be transferred to Microsoft Teams and shown in GitHub repo
