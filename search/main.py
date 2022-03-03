@@ -83,9 +83,9 @@ def ranked_retrieval(query, type, show_results):
 if __name__ == '__main__':
     batch_size = 50
     # comment this out if youve got pickle files
-    index = load_pickle("test_index")
-    song_metadata = load_pickle("test_song_metadata")
-    lyric_metadata = load_pickle("test_line_metadata")
+    index = load_pickle("Test_Lyrics_Eminem_index")
+    song_metadata = load_pickle("Test_Lyrics_Eminem_song_metadata")
+    lyric_metadata = load_pickle("Test_Lyrics_Eminem_line_metadata")
     start = time.time()
 
     # uncomment this if you havent got pickle files
@@ -93,7 +93,7 @@ if __name__ == '__main__':
     # song_metadata = {"song1":{"genre": "pop", "artist": "adele", "len": 13,}, "song2":{"genre": "pop","artist": "adele", "len": 19,}}
     # lyric_metadata = {0:{"song": "song1", "len": 8,}, 1:{"song": "song1", "len": 8,}, 11:{"song": "song1", "len": 8,}, 13:{"song": "song1", "len": 8,}, 2:{"song": "song2", "len": 8,}, 3:{"song": "song2", "len": 8,}, 14:{"song": "song2", "len": 8,}, 17:{"song": "song2", "len": 8,} }
 
-    tracker = ranked_retrieval(['hurt'], 'song', batch_size)
+    tracker = ranked_retrieval(['hurt'], 'lyric', batch_size)
     end = time.time()
     print(f'''Run time = {end-start}''')
     print(f'''Results = {tracker}''')
