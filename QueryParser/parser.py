@@ -61,7 +61,7 @@ class BooleanSearchParser:
         )
 
         operatorProximity = (
-            Group(Suppress('#(') + operatorBooleanContent + Suppress(')')).setResultsName(
+            Group(Suppress('#(') + operatorBooleanContent + Suppress(',') + operatorBooleanContent +  Suppress(',') + operatorBooleanContent + Suppress(')')).setResultsName(
                 "proximity"
             )
             | operatorWord
@@ -101,6 +101,8 @@ class BooleanSearchParser:
         return operatorOr.parseString
 
     def evaluateAnd(self, argument):
+
+        print(argument)
 
         clause_results = [self.evaluate(arg) for arg in argument]
 
@@ -160,8 +162,8 @@ class BooleanSearchParser:
     def evaluateParenthesis(self, argument):
 
         if len(argument) > 1:
-            print("PARATHESSISSS")
             print(argument)
+            raise BaseException("?")
 
         return self.evaluate(argument[0])
 
@@ -176,9 +178,24 @@ class BooleanSearchParser:
 
     def evaluateProximity(self, argument):
         
-        # Phrase search 
+        # Proximity search 
+
         print("proximity")
-        print(argument)
+
+        try:
+            distance = int(argument[0][0])
+        except:
+            raise BaseException("Proximity distance is not an int")
+
+        term1 = argument[1][0].strip()
+        term2 = argument[2][0].strip()
+
+        if(any(term.count(' ') for term in [term1,term2])):
+            raise BaseException("Proximity terms must be single words")
+
+        print("distance : " + str(distance))
+        print("term1 : " + str(term1))
+        print("term2 : " + str(term2))
 
         return [(1,1)]
 
@@ -195,7 +212,10 @@ class BooleanSearchParser:
 
 
     def evaluate(self, argument):
-    
+        
+        print("evaluate")
+        print(argument)
+
         return self._methods[argument.getName()](argument)
 
     def Parse(self, query):
@@ -211,28 +231,9 @@ class BooleanSearchParser:
     def GetNot(self, not_set):
         return not not_set
 
-    def _split_words(self, text):
-        words = []
-        """
-        >>> import string
-        >>> string.punctuation
-        '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
-        """
-        # it will keep @, # and
-        # usernames and hashtags can contain dots, so a double check is done
-        r = re.compile(r"[\s{}]+".format(re.escape("!\"$%&'()*+,-/:;<=>?[\\]^`{|}~")))
-        _words = r.split(text)
-        for _w in _words:
-            if "." in _w and not _w.startswith("#") and not _w.startswith("@"):
-                for __w in _w.split("."):
-                    words.append(__w)
-                continue
-
-            words.append(_w)
-
-        return words
-
     def query(self, expr):
+
+        print(expr)
 
         # get top N results (skipping the first `skip` results)
         # return a list of (id, score) tuples, sorted from highest to lowest by score (e.g. [(19, 1.5), (6, 1.46), ...]
