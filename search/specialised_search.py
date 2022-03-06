@@ -91,7 +91,7 @@ class specialised():
     def boolean_search(self, terms, index):
         pass
 
-    def proximity_search(self, terms, proximity, index, song = False): # Two terms
+    def proximity_search(self, terms, proximity, index, song): # Two terms
 
         stemmer = PorterStemmer()
         terms = [stemmer.stem(term) for term in terms]
@@ -107,8 +107,9 @@ class specialised():
             common_lines = self.intersection(list(index[terms[0]][song].keys()), list(index[terms[1]][song].keys()))
             common_song_lines[song] = common_lines
 
-        if song:
+        if song == True:
 
+            print("Why")
             for song in common_songs:
 
                 ohyeah = True
@@ -121,10 +122,7 @@ class specialised():
 
                             what = [abs(x-y) for x in index[terms[0]][song][line1] for y in index[terms[1]][song][line2]]
 
-                            print(what)
-
                             if len([x for x in what if x <= proximity]) > 0:
-                                print(True)
                                 results[song] = 1
 
                                 ohyeah = False # Should break to next song!!!
@@ -135,23 +133,28 @@ class specialised():
 
         else: # Line search
 
+            print("Surely")
+
             for song in common_songs:
 
                 results[song] = []
     
                 for line1 in index[terms[0]][song].keys():
 
-                    wank = len([pos for pos in index[terms[0]][song][line1] if pos+proximity in index[terms[1]][song][line1]]) > 0
-                    wank2 = len([pos for pos in index[terms[0]][song][line1] if pos+proximity in index[terms[1]][song][line1]]) > 0
+                    if line1 in index[terms[1]][song].keys():
 
-                    if line1 in list(index[terms[1]][song].keys()) and wank:
+                        proxx = [abs(x-y) for x in index[terms[0]][song][line1] for y in index[terms[1]][song][line1] if abs(x-y) <= proximity]
 
+                    if line1 in list(index[terms[1]][song].keys()) and len(proxx) > 0:
+                        
+                        print("Append")
                         results[song].append(line1)
 
-            for song in results.keys():
+            for song in list(results.keys()):
                 if len(results[song]) == 0:
                     del results[song]   
 
+            print("return")
             return results                           
 
     def intersection(self, lst1, lst2):
