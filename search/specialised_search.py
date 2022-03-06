@@ -3,16 +3,17 @@
     The searches it can perform are - boolean, proximity and phrase search.
 """
 
+from re import S
 from search import search
 from preprocess import preprocess
 import numpy as np
 import pickle
 import time
+from nltk.stem.porter import *
 
-class specialised(search):
+class specialised():
 
     def __init__(self):
-        super().__init__()
         # self.index = super().getIndex() - Once getIndex() is implemented this should return index in agreed format?
 
         # Index format
@@ -21,6 +22,7 @@ class specialised(search):
         #         line : [positions]
         #     }
         # }
+        pass
 
     # For now we pass index as an argument but in future we will assign it to self.index via constructor?
     def phrase_search(self, phrase, index, song = False):
@@ -89,8 +91,72 @@ class specialised(search):
     def boolean_search(self, terms, index):
         pass
 
-    def proximity_search(self, terms, proximity, index):
-        pass
+    def proximity_search(self, terms, proximity, index, song = False): # Two terms
+
+        stemmer = PorterStemmer()
+        terms = [stemmer.stem(term) for term in terms]
+
+        assert terms[0] in list(index.keys()) and terms[1] in list(index.keys())
+
+        common_songs = self.intersection(list(index[terms[0]].keys()), list(index[terms[1]].keys()))
+        common_song_lines = {}
+        results = {}
+
+        for song in common_songs:
+
+            common_lines = self.intersection(list(index[terms[0]][song].keys()), list(index[terms[1]][song].keys()))
+            common_song_lines[song] = common_lines
+
+        if song:
+
+            for song in common_songs:
+
+                ohyeah = True
+
+                while ohyeah:
+
+                    for line1 in index[terms[0]][song].keys():
+
+                        for line2 in index[terms[1]][song].keys():
+
+                            what = [abs(x-y) for x in index[terms[0]][song][line1] for y in index[terms[1]][song][line2]]
+
+                            print(what)
+
+                            if len([x for x in what if x <= proximity]) > 0:
+                                print(True)
+                                results[song] = 1
+
+                                ohyeah = False # Should break to next song!!!
+
+                    ohyeah = False
+
+            return results
+
+        else: # Line search
+
+            for song in common_songs:
+
+                results[song] = []
+    
+                for line1 in index[terms[0]][song].keys():
+
+                    wank = len([pos for pos in index[terms[0]][song][line1] if pos+proximity in index[terms[1]][song][line1]]) > 0
+                    wank2 = len([pos for pos in index[terms[0]][song][line1] if pos+proximity in index[terms[1]][song][line1]]) > 0
+
+                    if line1 in list(index[terms[1]][song].keys()) and wank:
+
+                        results[song].append(line1)
+
+            for song in results.keys():
+                if len(results[song]) == 0:
+                    del results[song]   
+
+            return results                           
+
+    def intersection(self, lst1, lst2):
+
+        return [x for x in lst1 if x in lst2]
 
 def load_pickle(file_name):
     with open("search/" + file_name + '.pickle', 'rb') as f:
