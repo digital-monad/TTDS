@@ -33,7 +33,7 @@ class Indexer:
             pickle.dump(self.song_metadata, handle)
         with open(self.artist + "_line_metadata.pickle", 'wb') as handle:
             pickle.dump(self.line_metadata, handle)
-    
+
     def processSong(self, song_id, artist, title, album, year, date, lyrics):
         print(f"Processing song {title}")
         preprocessed_lyrics = preprocessSongLyrics(lyrics)
@@ -50,7 +50,8 @@ class Indexer:
             line_id = self.current_line_id
             self.line_metadata[line_id] = {
                 "song_id" : song_id,
-                "length" : len(line)
+                "length" : len(line),
+                "text" : line
             }
             # Update the index
             for term,pos in line:
@@ -63,7 +64,7 @@ class Indexer:
                 self.index[term][song_id][line_id].append(pos)
             # Increment the line id
             self.current_line_id += 1
-    
+
     def indexFile(self):
         for song in zip(*[self.lyrics[i] for i in self.lyrics.columns]):
             self.processSong(*song)
