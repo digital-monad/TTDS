@@ -57,3 +57,6 @@ def display_search_results(page):
     return render_template('search.html', data = genius_lyrics_data)
 
 #TODO: Get movie id - requires individual page
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

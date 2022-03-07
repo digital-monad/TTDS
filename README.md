@@ -60,6 +60,12 @@ and change `data_collection_type` option value along with `batch_starting_initia
 4. CSVs however must be transferred and shown in GitHub repo
 
 ## Google Cloud Deployment
+NOTE: Deployment and testing should be done directly on Google Development Branch
 
 1. Merge all modular branches including `search`, `frontend`, etc into `dev` branch
-2. Follow instructions for deployment
+
+Follow instructions for deployment on Google Cloud
+2. Execute `gcloud init`
+3. Remove `settings.ini` from .gitignore
+4. Execute `gcloud run deploy`
+5. Put `settings.ini` back into .gitignore
