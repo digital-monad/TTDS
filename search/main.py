@@ -1,8 +1,10 @@
 import json
+# from lib2to3.pytree import _Results
 import pickle
 import math
 import time
 from tracker import ScoreHeap
+from specialised_search import specialised
 
 N = 27358109
 batch_size = 20
@@ -83,17 +85,26 @@ def ranked_retrieval(query, type, show_results):
 if __name__ == '__main__':
     batch_size = 50
     # comment this out if youve got pickle files
-    index = load_pickle("test_index")
-    song_metadata = load_pickle("test_song_metadata")
-    lyric_metadata = load_pickle("test_line_metadata")
+    index = load_pickle("Test_Lyrics_Eminem_index")
+    song_metadata = load_pickle("Test_Lyrics_Eminem_song_metadata")
+    lyric_metadata = load_pickle("Test_Lyrics_Eminem_line_metadata")
     start = time.time()
-
     # uncomment this if you havent got pickle files
     # index = {"hi": {'song1': {0: [1,2,3], 13: [1,2,3]}, 'song2':{1:[1]}}, "good": {'song1': {1: [2,3], 11: [1,2,3]}, 'song2':{2: [1,2,3], 14: [1,2,4,6,7,8]}}}
     # song_metadata = {"song1":{"genre": "pop", "artist": "adele", "len": 13,}, "song2":{"genre": "pop","artist": "adele", "len": 19,}}
     # lyric_metadata = {0:{"song": "song1", "len": 8,}, 1:{"song": "song1", "len": 8,}, 11:{"song": "song1", "len": 8,}, 13:{"song": "song1", "len": 8,}, 2:{"song": "song2", "len": 8,}, 3:{"song": "song2", "len": 8,}, 14:{"song": "song2", "len": 8,}, 17:{"song": "song2", "len": 8,} }
 
-    tracker = ranked_retrieval(['hurt'], 'song', batch_size)
+    tracker = ranked_retrieval(['hurt'], 'lyric', batch_size)
     end = time.time()
     print(f'''Run time = {end-start}''')
     print(f'''Results = {tracker}''')
+
+    start = time.time()
+
+    spec = specialised()
+    results = spec.proximity_search(['we','are'], 20, index,song=False)
+
+    end = time.time()
+    print(f'''Run time = {end-start}''')
+    print(f'''Results = {results}''')
+

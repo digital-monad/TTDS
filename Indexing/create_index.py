@@ -51,7 +51,7 @@ class Indexer:
             self.line_metadata[line_id] = {
                 "song_id" : song_id,
                 "length" : len(line),
-                "text" : line
+                "text" : " ".join([token for token, pos in line])
             }
             # Update the index
             for term,pos in line:
