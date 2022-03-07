@@ -1,3 +1,4 @@
+from numpy import Infinity
 from pyparsing import (
     Word,
     alphanums,
@@ -8,6 +9,7 @@ from pyparsing import (
     OneOrMore,
     oneOf,
 )
+
 import re
 
 class BooleanSearchParser:
@@ -59,7 +61,7 @@ class BooleanSearchParser:
         )
 
         operatorProximity = (
-            Group(Suppress('#(') + operatorBooleanContent + Suppress(')')).setResultsName(
+            Group(Suppress('#(') + operatorBooleanContent + Suppress(',') + operatorBooleanContent +  Suppress(',') + operatorBooleanContent + Suppress(')')).setResultsName(
                 "proximity"
             )
             | operatorWord
@@ -99,18 +101,70 @@ class BooleanSearchParser:
         return operatorOr.parseString
 
     def evaluateAnd(self, argument):
-        return all(self.evaluate(arg) for arg in argument)
+
+        print(argument)
+
+        clause_results = [self.evaluate(arg) for arg in argument]
+
+        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+        
+        doc_ids = set.intersection(*map(set,clause_doc_ids))
+
+        scores = {doc_id : 0 for doc_id in doc_ids}
+
+        range_max = 0
+
+        for clause in clause_results:
+            for id, score in clause:
+                if id in doc_ids:
+
+                    scores[id] += score
+
+                    if(scores[id] > range_max):
+                        range_max = scores[id]
+
+        if (range_max) != 0:
+
+            return [(doc_id,scores[doc_id]/(range_max)) for doc_id in scores]
+        
+        else:
+
+            return [(doc_id,scores[doc_id]) for doc_id in scores]
 
     def evaluateOr(self, argument):
+      
+        clause_results = [self.evaluate(arg) for arg in argument]
 
-        print("OR")
-        print(argument)
-        return any(self.evaluate(arg) for arg in argument)
+        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+        
+        doc_ids = set.union(*map(set,clause_doc_ids))
+
+        scores = {doc_id : 0 for doc_id in doc_ids}
+
+        for clause in clause_results:
+            for id, score in clause:
+                if id in doc_ids and score > scores[id]:
+                    scores[id] = score
+
+        return [(doc_id,scores[doc_id]) for doc_id in scores]
 
     def evaluateNot(self, argument):
-        return self.GetNot(self.evaluate(argument[0]))
+        
+        clause_result = self.evaluate(argument[0])
+
+        # This will be the number of documents in the whole dataset. 
+        all_doc_ids = set(range(100))
+
+        clause_doc_ids = set([elm[1] for elm in clause_result])
+
+        return [(doc_id,clause_result[doc_id]) for doc_id in all_doc_ids - clause_doc_ids]
 
     def evaluateParenthesis(self, argument):
+
+        if len(argument) > 1:
+            print(argument)
+            raise BaseException("?")
+
         return self.evaluate(argument[0])
 
     def evaluatePhrase(self, argument):
@@ -120,16 +174,31 @@ class BooleanSearchParser:
         print("phrase")
         print(argument)
 
-        return True
+        return [(1,0.5),(2,0.8)]
 
     def evaluateProximity(self, argument):
         
-        # Phrase search 
+        # Proximity search 
 
         print("proximity")
-        print(argument)
 
-        return True
+        try:
+            distance = int(argument[0][0])
+        except:
+            raise BaseException("Proximity distance is not an int")
+
+        term1 = argument[1][0].strip()
+        term2 = argument[2][0].strip()
+
+        if(any(term.count(' ') for term in [term1,term2])):
+            raise BaseException("Proximity terms must be single words")
+
+        print("distance : " + str(distance))
+        print("term1 : " + str(term1))
+        print("term2 : " + str(term2))
+
+        return [(1,1)]
+
 
     def evaluateWord(self, argument):
 
@@ -139,53 +208,39 @@ class BooleanSearchParser:
         print("ranked search")
         print(argument)
 
-        return searchReturn
+        return [(1,0.25)]
 
-    def evaluateWordWildcardPrefix(self, argument):
-        return self.GetWordWildcard(argument[0], method="endswith")
-
-    def evaluateWordWildcardSufix(self, argument):
-        return self.GetWordWildcard(argument[0], method="startswith")
 
     def evaluate(self, argument):
-    
+        
+        print("evaluate")
+        print(argument)
+
         return self._methods[argument.getName()](argument)
 
     def Parse(self, query):
 
         parsed = self._parser(query)
 
+        print("--")
         print(parsed)
+        print("--")
+        
         return self.evaluate(self._parser(query)[0])
 
     def GetNot(self, not_set):
         return not not_set
 
-    def _split_words(self, text):
-        words = []
-        """
-        >>> import string
-        >>> string.punctuation
-        '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
-        """
-        # it will keep @, # and
-        # usernames and hashtags can contain dots, so a double check is done
-        r = re.compile(r"[\s{}]+".format(re.escape("!\"$%&'()*+,-/:;<=>?[\\]^`{|}~")))
-        _words = r.split(text)
-        for _w in _words:
-            if "." in _w and not _w.startswith("#") and not _w.startswith("@"):
-                for __w in _w.split("."):
-                    words.append(__w)
-                continue
-
-            words.append(_w)
-
-        return words
-
     def query(self, expr):
 
-        return self.Parse(expr)
+        print(expr)
 
-x = BooleanSearchParser()
+        # get top N results (skipping the first `skip` results)
+        # return a list of (id, score) tuples, sorted from highest to lowest by score (e.g. [(19, 1.5), (6, 1.46), ...]
+        unsorted_query_results = self.Parse(expr)
+
+        print("results")
+        print(unsorted_query_results)
+        
 
 #print(x.query('"beef beeeeef beef" && ranked query && ("chicken") && #(fish) && (#(beans)) && (rice || "cheese")'))
