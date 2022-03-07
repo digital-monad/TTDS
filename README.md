@@ -58,3 +58,8 @@ and change `data_collection_type` option value along with `batch_starting_initia
 3. Test_Data folder should not contain JSON files and should be stored in either local host or Microsoft Teams or OneDrive
     - Reduce file transfer size
 4. CSVs however must be transferred and shown in GitHub repo
+
+## Google Cloud Deployment
+
+1. Merge all modular branches including `search`, `frontend`, etc into `dev` branch
+2. Follow instructions for deployment
