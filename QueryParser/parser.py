@@ -256,9 +256,3 @@ class BooleanSearchParser:
         print("results")
         print(unsorted_query_results)
         
-
-<<<<<<< Updated upstream
-=======
-#print(x.query('"beef beeeeef beef" && ranked query && ("chicken") && #(fish) && (#(beans)) && (rice || "cheese")'))
-# [(docid,sc)]
->>>>>>> Stashed changes
