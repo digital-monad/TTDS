@@ -86,3 +86,6 @@ parser.add_argument('--batch-size', type=int, default=10000, help='Size of each 
 args = parser.parse_args()
 indexer = Indexer(args.file, args.batch_size)
 indexer.indexFile()
+
+
+# Run : python create_index.py --file {path to csv} --batch-size {number}
