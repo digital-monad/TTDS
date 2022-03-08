@@ -102,11 +102,19 @@ class BooleanSearchParser:
 
     def evaluateAnd(self, argument):
 
-        print(argument)
-
         clause_results = [self.evaluate(arg) for arg in argument]
 
-        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+        new_clause_results = []
+
+        not_set = set()
+
+        for clause in clause_results:
+            if(len(clause) == 1):
+                not_set.update([id for id, score in clause[0]])
+            else:
+                new_clause_results.append(clause)
+    
+        clause_doc_ids = [[elm[0] for elm in (clause - not_set)] for clause in new_clause_results]
         
         doc_ids = set.intersection(*map(set,clause_doc_ids))
 
@@ -114,7 +122,7 @@ class BooleanSearchParser:
 
         range_max = 0
 
-        for clause in clause_results:
+        for clause in new_clause_results:
             for id, score in clause:
                 if id in doc_ids:
 
@@ -135,13 +143,23 @@ class BooleanSearchParser:
       
         clause_results = [self.evaluate(arg) for arg in argument]
 
-        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+        new_clause_results = []
+
+        not_set = set()
+
+        for clause in clause_results:
+            if(len(clause) == 1):
+                not_set.update([id for id, score in clause[0]])
+            else:
+                new_clause_results.append(clause)
+    
+        clause_doc_ids = [[elm[0] for elm in (clause - not_set)] for clause in new_clause_results]
         
         doc_ids = set.union(*map(set,clause_doc_ids))
 
         scores = {doc_id : 0 for doc_id in doc_ids}
 
-        for clause in clause_results:
+        for clause in new_clause_results:
             for id, score in clause:
                 if id in doc_ids and score > scores[id]:
                     scores[id] = score
@@ -152,12 +170,8 @@ class BooleanSearchParser:
         
         clause_result = self.evaluate(argument[0])
 
-        # This will be the number of documents in the whole dataset. 
-        all_doc_ids = set(range(100))
-
-        clause_doc_ids = set([elm[1] for elm in clause_result])
-
-        return [(doc_id,clause_result[doc_id]) for doc_id in all_doc_ids - clause_doc_ids]
+        return [clause_result] 
+        
 
     def evaluateParenthesis(self, argument):
 
@@ -243,3 +257,8 @@ class BooleanSearchParser:
         print(unsorted_query_results)
         
 
+<<<<<<< Updated upstream
+=======
+#print(x.query('"beef beeeeef beef" && ranked query && ("chicken") && #(fish) && (#(beans)) && (rice || "cheese")'))
+# [(docid,sc)]
+>>>>>>> Stashed changes
