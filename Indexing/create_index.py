@@ -1,4 +1,4 @@
-import pickle, argparse
+import pickle, argparse, sys
 import pandas as pd
 from preprocess import preprocessSongLyrics
 
@@ -74,15 +74,18 @@ class Indexer:
 
     def indexFile(self):
         cols = zip(*[self.lyrics[i] for i in self.lyrics.columns])
-        for song in range(len(cols)):
-            self.processSong(*cols[song])
-            if song % self.batch_size == 0:
-                self.pickle(f"phatboi{song // self.batch_size}")
+        song_no = 0
+        for song in cols:
+            self.processSong(*song)
+            song_no += 1
+            if song_no % self.batch_size == 0:
+                print(f"Pickling batch {song_no // self.batch_size}")
+                self.pickle(f"phatboi{song_no // self.batch_size}")
         self.pickle("finalboi")
 
 parser = argparse.ArgumentParser(description='Convert CSV files to term positional inverted index.')
 parser.add_argument('--file', type=str, required=True, help='File path to CSV file for parsing')
-parser.add_argument('--batch-size', type=int, default=10000, help='Size of each pickle file')
+parser.add_argument('--batch_size', type=int, required=True, help='Size of each pickle file')
 args = parser.parse_args()
 indexer = Indexer(args.file, args.batch_size)
 indexer.indexFile()
