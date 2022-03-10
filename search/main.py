@@ -4,7 +4,7 @@ import math
 import time
 from tracker import ScoreHeap
 
-N = 27358109
+N = 5
 batch_size = 20
 
 def load_json(path):
@@ -93,7 +93,7 @@ if __name__ == '__main__':
     # song_metadata = {"song1":{"genre": "pop", "artist": "adele", "len": 13,}, "song2":{"genre": "pop","artist": "adele", "len": 19,}}
     # lyric_metadata = {0:{"song": "song1", "len": 8,}, 1:{"song": "song1", "len": 8,}, 11:{"song": "song1", "len": 8,}, 13:{"song": "song1", "len": 8,}, 2:{"song": "song2", "len": 8,}, 3:{"song": "song2", "len": 8,}, 14:{"song": "song2", "len": 8,}, 17:{"song": "song2", "len": 8,} }
 
-    tracker = ranked_retrieval(['hurt'], 'song', batch_size)
+    tracker = ranked_retrieval(['chorus'], 'song', batch_size)
     end = time.time()
     print(f'''Run time = {end-start}''')
     print(f'''Results = {tracker}''')
