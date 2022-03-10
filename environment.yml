@@ -4,3 +4,5 @@ dependencies:
   - flask
   - pymongo
   - dnspython
+  - pandas
+  - beautifulsoup4

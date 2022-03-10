@@ -49,7 +49,8 @@ class Indexer:
         for line in preprocessed_lyrics:
             # Update line metadata
             line_id = self.current_line_id
-            self.line_metadata[line_id] = {
+            line_id_str = str(line_id)
+            self.line_metadata[line_id_str] = {
                 "song_id": song_id,
                 "length": len(line)
             }
@@ -58,10 +59,12 @@ class Indexer:
                 if term not in self.index:
                     self.index[term] = {}
                 if song_id not in self.index[term]:
+                    song_id = str(song_id)
                     self.index[term][song_id] = {}
-                if line_id not in self.index[term][song_id]:
-                    self.index[term][song_id][line_id] = []
-                self.index[term][song_id][line_id].append(pos)
+                if line_id_str not in self.index[term][song_id]:
+                    song_id = str(song_id)
+                    self.index[term][song_id][line_id_str] = []
+                self.index[term][song_id][line_id_str].append(pos)
             # Increment the line id
             self.current_line_id += 1
 
