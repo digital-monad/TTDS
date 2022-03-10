@@ -10,9 +10,14 @@ from pyparsing import (
     oneOf,
 )
 
-import re
+import re 
 
-class BooleanSearchParser:
+from DBQuery import DBQuery
+
+# SONGCOUNT = 1200000
+# LYRICCOUNT = 60000000
+
+class QuerySearchParser:
     def __init__(self):
         self._methods = {
             "and": self.evaluateAnd,
@@ -23,9 +28,14 @@ class BooleanSearchParser:
             "proximity": self.evaluateProximity,
             "word": self.evaluateWord
         }
+
+        self.connection = DBQuery()
+        self.songCount = self.connection.countSongs()
+        self.lyricCount = self.connection.countLyrics()
         self._parser = self.parser()
         self.text = ""
         self.words = []
+        self.isSong = True
 
     def parser(self):
         """
@@ -103,18 +113,8 @@ class BooleanSearchParser:
     def evaluateAnd(self, argument):
 
         clause_results = [self.evaluate(arg) for arg in argument]
-
-        new_clause_results = []
-
-        not_set = set()
-
-        for clause in clause_results:
-            if(len(clause) == 1):
-                not_set.update([id for id, score in clause[0]])
-            else:
-                new_clause_results.append(clause)
     
-        clause_doc_ids = [[elm[0] for elm in (clause - not_set)] for clause in new_clause_results]
+        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
         
         doc_ids = set.intersection(*map(set,clause_doc_ids))
 
@@ -122,7 +122,7 @@ class BooleanSearchParser:
 
         range_max = 0
 
-        for clause in new_clause_results:
+        for clause in clause_results:
             for id, score in clause:
                 if id in doc_ids:
 
@@ -131,35 +131,23 @@ class BooleanSearchParser:
                     if(scores[id] > range_max):
                         range_max = scores[id]
 
-        if (range_max) != 0:
-
-            return [(doc_id,scores[doc_id]/(range_max)) for doc_id in scores]
-        
+        if (range_max) == 0:
+            return [(doc_id,scores[doc_id]) for doc_id in scores]        
         else:
+            return [(doc_id,scores[doc_id]/(range_max)) for doc_id in scores]
 
-            return [(doc_id,scores[doc_id]) for doc_id in scores]
 
     def evaluateOr(self, argument):
       
         clause_results = [self.evaluate(arg) for arg in argument]
-
-        new_clause_results = []
-
-        not_set = set()
-
-        for clause in clause_results:
-            if(len(clause) == 1):
-                not_set.update([id for id, score in clause[0]])
-            else:
-                new_clause_results.append(clause)
     
-        clause_doc_ids = [[elm[0] for elm in (clause - not_set)] for clause in new_clause_results]
+        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
         
         doc_ids = set.union(*map(set,clause_doc_ids))
 
         scores = {doc_id : 0 for doc_id in doc_ids}
 
-        for clause in new_clause_results:
+        for clause in clause_results:
             for id, score in clause:
                 if id in doc_ids and score > scores[id]:
                     scores[id] = score
@@ -168,9 +156,12 @@ class BooleanSearchParser:
 
     def evaluateNot(self, argument):
         
-        clause_result = self.evaluate(argument[0])
+        clause_result = map(list, zip(*self.evaluate(argument[0])))
 
-        return [clause_result] 
+        if(self.isSong):
+            return [(id,0) for id in (set(range(0,self.songCount)) - set(clause_result[0]))]
+        else:
+            return [(id,0) for id in (set(range(0,self.lyricCount)) - set(clause_result[0]))]
         
 
     def evaluateParenthesis(self, argument):
@@ -185,8 +176,8 @@ class BooleanSearchParser:
         
         # Phrase search 
 
-        print("phrase")
-        print(argument)
+        # print("phrase")
+        # print(argument)
 
         return [(1,0.5),(2,0.8)]
 
@@ -194,7 +185,7 @@ class BooleanSearchParser:
         
         # Proximity search 
 
-        print("proximity")
+        # print("proximity")
 
         try:
             distance = int(argument[0][0])
@@ -207,9 +198,9 @@ class BooleanSearchParser:
         if(any(term.count(' ') for term in [term1,term2])):
             raise BaseException("Proximity terms must be single words")
 
-        print("distance : " + str(distance))
-        print("term1 : " + str(term1))
-        print("term2 : " + str(term2))
+        # print("distance : " + str(distance))
+        # print("term1 : " + str(term1))
+        # print("term2 : " + str(term2))
 
         return [(1,1)]
 
@@ -219,35 +210,28 @@ class BooleanSearchParser:
         # Do search over argument
         searchReturn = True
 
-        print("ranked search")
-        print(argument)
+        # print("ranked search")
+        # print(argument)
 
         return [(1,0.25)]
 
 
     def evaluate(self, argument):
         
-        print("evaluate")
-        print(argument)
+        # print("evaluate")
+        # print(argument)
 
         return self._methods[argument.getName()](argument)
 
     def Parse(self, query):
 
-        parsed = self._parser(query)
-
-        print("--")
-        print(parsed)
-        print("--")
-        
         return self.evaluate(self._parser(query)[0])
 
-    def GetNot(self, not_set):
-        return not not_set
-
-    def query(self, expr):
+    def query(self, expr, isSong):
 
         print(expr)
+
+        self.isSong = isSong
 
         # get top N results (skipping the first `skip` results)
         # return a list of (id, score) tuples, sorted from highest to lowest by score (e.g. [(19, 1.5), (6, 1.46), ...]
@@ -256,9 +240,10 @@ class BooleanSearchParser:
         print("results")
         print(unsorted_query_results)
         
+x = QuerySearchParser()
 
-<<<<<<< Updated upstream
-=======
-#print(x.query('"beef beeeeef beef" && ranked query && ("chicken") && #(fish) && (#(beans)) && (rice || "cheese")'))
-# [(docid,sc)]
->>>>>>> Stashed changes
+x.query("Beef",True)
+
+print(x.songCount)
+print(list(x.connection.get_indexed_by_terms(["beans","super","god"])))
+print(x.lyricCount)
