@@ -240,10 +240,3 @@ class QuerySearchParser:
         print("results")
         print(unsorted_query_results)
         
-x = QuerySearchParser()
-
-x.query("Beef",True)
-
-print(x.songCount)
-print(list(x.connection.get_indexed_by_terms(["beans","super","god"])))
-print(x.lyricCount)
