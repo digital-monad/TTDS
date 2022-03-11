@@ -46,11 +46,11 @@
 
 <div>
     <ul class="pagination">
-        <li class="active waves-effect"><a href="{{ url_for('display_search_results', page=1) }}">1</a></li>
-        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2) }}">2</a></li>
-        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3) }}">3</a></li>
-        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4) }}">4</a></li>
-        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5) }}">5</a></li>
+        <li class="active waves-effect"><a href="{{ url_for('display_search_results', page=1, q='', artist=artist, album=album, year=year) }}">1</a></li>
+        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2, q='', artist=artist, album=album, year=year) }}">2</a></li>
+        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3, q='', artist=artist, album=album, year=year) }}">3</a></li>
+        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4, q='', artist=artist, album=album, year=year) }}">4</a></li>
+        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, q='', artist=artist, album=album, year=year) }}">5</a></li>
     </ul>    
 </div>
 

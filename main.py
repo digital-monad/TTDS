@@ -22,9 +22,10 @@ client = pymongo.MongoClient(uri)
 def show_main_page():
     return render_template('index.html')
 
+# Obtain list of relevant songs
 def get_songs(advanced_filters, page_size, page_num):
 
-    ids = [4,1,3,2,5,1,2] #TODO: This is a fixed set... Obtain list of ids from Andrew
+    ids = [4,5,3,2,1,5,2] #TODO: This is a fixed set... Obtain list of ids from Andrew
 
     try:
         songs_list = list(client.ttds.songMetaData.find(
@@ -34,15 +35,23 @@ def get_songs(advanced_filters, page_size, page_num):
         songs_list = list(client.ttds.songMetaData.find())
     
     sorted_song_dict = {d['song_id']: d for d in songs_list}  # sentence_id -> sentence_dict
-    sorted_song_list = [sorted_song_dict[i] for i in ids]
     
-    sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
+    # Obtain new list of ORDERED ids - allow advanced search
+    new_ids = []
+    for id in ids:
+        if id in sorted_song_dict:
+            new_ids.append(id)
 
-    return sorted_song_list
+    sorted_song_list = [sorted_song_dict[i] for i in new_ids]
+    
+    new_sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
 
-# Obtain list of relevant songs based on lyrics - TODO: Figure out runtime complexity
+    return new_sorted_song_list
+
+# Obtain list of relevant songs based on lyrics
 def get_songs_based_on_lyrics(advanced_filters, page_size, page_num):
-    ids = [4,1,3,2,5,1,2] #TODO: Obtain list of ids from Andrew
+
+    ids = [1,5,4,3,1,3,2] #TODO: Obtain list of ids from Andrew
 
     try:
         songs_list = list(client.ttds.songMetaData.find(
@@ -52,11 +61,18 @@ def get_songs_based_on_lyrics(advanced_filters, page_size, page_num):
         songs_list = list(client.ttds.songMetaData.find())
     
     sorted_song_dict = {d['song_id']: d for d in songs_list}  # sentence_id -> sentence_dict
-    sorted_song_list = [sorted_song_dict[i] for i in ids]
-    
-    sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
 
-    return sorted_song_list
+    # Obtain new list of ORDERED ids - allow advanced search
+    new_ids = []
+    for id in ids:
+        if id in sorted_song_dict:
+            new_ids.append(id)
+
+    sorted_song_list = [sorted_song_dict[i] for i in new_ids]
+    
+    new_sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
+
+    return new_sorted_song_list
 
 ROWS_PER_PAGE = 3 # TODO: SHOULD BE CHANGED
 
@@ -69,14 +85,19 @@ def display_search_first_results():
 @app.route('/search/page=<int:page>', methods=['GET', 'POST'])
 def display_search_results(page):
 
-    # TODO: Obtain query params for advanced search?
     advanced_filters = []
+    artist_str = ''
+    album_str = ''
+    year_str = ''
 
     if request.args.get('artist', False):
+        artist_str = request.args.get('artist')
         advanced_filters.append({'artist': request.args.get('artist')})
     if request.args.get('album', False):
-        advanced_filters.append({'album': request.args.get('artist')})
+        album_str = request.args.get('album')
+        advanced_filters.append({'album': request.args.get('album')})
     if request.args.get('year', False):
+        year_str = request.args.get('year')
         year_int = int(request.args.get('year'))
         advanced_filters.append({'year': year_int})
 
@@ -90,7 +111,7 @@ def display_search_results(page):
         relevant_docs = list()
         print('Error retrieving documents')
 
-    return render_template('search.html', data = relevant_docs)
+    return render_template('search.html', data = relevant_docs, artist = artist_str, album = album_str, year = year_str)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
