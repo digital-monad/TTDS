@@ -4,9 +4,9 @@ import pickle
 import math
 import time
 from tracker import ScoreHeap
-from specialised_search import specialised
+# from specialised_search import specialised
 
-N = 27358109
+N = 5
 batch_size = 20
 
 def load_json(path):
@@ -93,18 +93,12 @@ if __name__ == '__main__':
     # index = {"hi": {'song1': {0: [1,2,3], 13: [1,2,3]}, 'song2':{1:[1]}}, "good": {'song1': {1: [2,3], 11: [1,2,3]}, 'song2':{2: [1,2,3], 14: [1,2,4,6,7,8]}}}
     # song_metadata = {"song1":{"genre": "pop", "artist": "adele", "len": 13,}, "song2":{"genre": "pop","artist": "adele", "len": 19,}}
     # lyric_metadata = {0:{"song": "song1", "len": 8,}, 1:{"song": "song1", "len": 8,}, 11:{"song": "song1", "len": 8,}, 13:{"song": "song1", "len": 8,}, 2:{"song": "song2", "len": 8,}, 3:{"song": "song2", "len": 8,}, 14:{"song": "song2", "len": 8,}, 17:{"song": "song2", "len": 8,} }
-
+    
+    tracker = ranked_retrieval(['chorus','hurt','pain'], 'song', batch_size)
     tracker = ranked_retrieval(['hurt'], 'lyric', batch_size)
+    print(len(tracker))
     end = time.time()
     print(f'''Run time = {end-start}''')
     print(f'''Results = {tracker}''')
 
-    start = time.time()
-
-    spec = specialised()
-    results = spec.proximity_search(['we','are'], 20, index,song=False)
-
-    end = time.time()
-    print(f'''Run time = {end-start}''')
-    print(f'''Results = {results}''')
 
