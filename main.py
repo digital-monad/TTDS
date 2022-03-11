@@ -16,47 +16,81 @@ username = config.get('mongodb', 'username')
 password = config.get('mongodb', 'password')
 uri = base_uri + username + ':' + password + '@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority'
 
+client = pymongo.MongoClient(uri)
+
 @app.route("/", methods=['GET','POST'])
 def show_main_page():
     return render_template('index.html')
 
-# PyMongo Pagination - TODO: Figure out runtime complexity
-def get_relevant_docs(page_size, page_num):
-    skips = page_size * (page_num - 1) # Calculate num of docs to skip
+def get_songs(advanced_filters, page_size, page_num):
 
-    client = pymongo.MongoClient(uri)
-    genius_lyrics_data_documents = client.ttds.geniusLyrics.find().skip(skips).limit(page_size) # TODO - find more efficient way
+    ids = [4,1,3,2,5,1,2] #TODO: This is a fixed set... Obtain list of ids from Andrew
 
-    return genius_lyrics_data_documents
+    try:
+        songs_list = list(client.ttds.songMetaData.find(
+            {"$and": advanced_filters}
+        ))
+    except Exception:
+        songs_list = list(client.ttds.songMetaData.find())
+    
+    sorted_song_dict = {d['song_id']: d for d in songs_list}  # sentence_id -> sentence_dict
+    sorted_song_list = [sorted_song_dict[i] for i in ids]
+    
+    sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
 
-# SIMPLIFIED VERSION - must parse query and conduct ranking from python parsing module before rendering template
+    return sorted_song_list
 
-## TODO: Create default search which just shows first page
+# Obtain list of relevant songs based on lyrics - TODO: Figure out runtime complexity
+def get_songs_based_on_lyrics(advanced_filters, page_size, page_num):
+    ids = [4,1,3,2,5,1,2] #TODO: Obtain list of ids from Andrew
+
+    try:
+        songs_list = list(client.ttds.songMetaData.find(
+            {"$and": advanced_filters}
+        ))
+    except Exception:
+        songs_list = list(client.ttds.songMetaData.find())
+    
+    sorted_song_dict = {d['song_id']: d for d in songs_list}  # sentence_id -> sentence_dict
+    sorted_song_list = [sorted_song_dict[i] for i in ids]
+    
+    sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
+
+    return sorted_song_list
+
+ROWS_PER_PAGE = 3 # TODO: SHOULD BE CHANGED
+
 @app.route('/search', methods=['GET', 'POST'])
 def display_search_first_results():
-    client = pymongo.MongoClient(uri)
-    genius_lyrics_data_documents = client.ttds.geniusLyrics.find()
-    return render_template('search.html', data = genius_lyrics_data_documents)
+    advanced_filters = []
+    relevant_docs = get_songs(advanced_filters, ROWS_PER_PAGE, 1)
+    return render_template('search.html', data = relevant_docs)
 
-ROWS_PER_PAGE = 1 # SHOULD BE CHANGED
 @app.route('/search/page=<int:page>', methods=['GET', 'POST'])
 def display_search_results(page):
-    query = request.form.get('q')
 
-    bs_parser = qp.BooleanSearchParser()
-    bs_parser.query(query) # Parse query - determine what algorithm to use
-    #print(bs_parser.query(query))
+    # TODO: Obtain query params for advanced search?
+    advanced_filters = []
 
-    # TODO: obtain correct function for search by lyrics
-    #pre_processed_song_lyrics = pp.preprocessSongLyrics(query)
-    #print(pre_processed_song_lyrics)
-    
-    # TODO: get index from
+    if request.args.get('artist', False):
+        advanced_filters.append({'artist': request.args.get('artist')})
+    if request.args.get('album', False):
+        advanced_filters.append({'album': request.args.get('artist')})
+    if request.args.get('year', False):
+        year_int = int(request.args.get('year'))
+        advanced_filters.append({'year': year_int})
 
-    genius_lyrics_data = get_relevant_docs(ROWS_PER_PAGE, page)
-    return render_template('search.html', data = genius_lyrics_data)
+    # Checks if script should conduct song search or lyrics search
+    try:
+        if request.args.get('search-by-songs', False) == 'on':
+            relevant_docs = get_songs(advanced_filters, ROWS_PER_PAGE, page)
+        else:
+            relevant_docs = get_songs_based_on_lyrics(advanced_filters, ROWS_PER_PAGE, page)
+    except Exception:
+        relevant_docs = list()
+        print('Error retrieving documents')
 
-#TODO: Get movie id - requires individual page
+    return render_template('search.html', data = relevant_docs)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

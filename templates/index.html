@@ -10,7 +10,7 @@
     <div id="content">
         <h1 id="title">Song Lyrics Search Engine</h1>
 
-        <form id="search-song-lyrics-form" action="/search/page=1" method="POST">
+        <form id="search-song-lyrics-form" action="/search/page=1" method="GET">
             <div class="input-group">
                 <input id="search-text-input" type="text" name="q" class="form-control" placeholder="Search by Song Lyrics">
                 <span class="input-group-append">
@@ -19,23 +19,20 @@
                     </button>
                 </span>
                 <label id="search-by-songs-checkbox-label">
-                    <input id="search-by-songs-checkbox" type="checkbox" onclick="searchBySongsCheckBox()" />
+                    <input id="search-by-songs-checkbox" type="checkbox" name="search-by-songs" onclick="searchBySongsCheckBox()" />
                     <span>Search by Songs</span>
                 </label>
             </div>
 
             <div class="row" id="advanced-filters-container">
-                <div class="col m6">
-                    <input type="text" name="" class="form-control" placeholder="Filter by Genre">
+                <div class="col m4">
+                    <input type="text" name="artist" class="form-control" placeholder="Filter by Artist">
                 </div>
-                <div class="col m6">
-                    <input type="text" name="" class="form-control" placeholder="Filter by Artist">
+                <div class="col m4">
+                    <input type="text" name="album" class="form-control" placeholder="Filter by Album">
                 </div>
-                <div class="col m6">
-                    <input type="text" name="" class="form-control" placeholder="Filter by Date of Release">
-                </div>
-                <div class="col m6">
-                    <input type="text" name="" class="form-control" placeholder="Filter by Popularity">
+                <div class="col m4">
+                    <input type="text" name="year" class="form-control" placeholder="Filter by Year">
                 </div>
             </div>
 

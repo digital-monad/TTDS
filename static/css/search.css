@@ -1,0 +1,13 @@
+#back-button {
+    width: 48px;
+    height: 48px;
+}
+#search-results-title-header {
+    margin-left: 1rem;
+    font-size: 4rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}

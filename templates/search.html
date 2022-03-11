@@ -5,25 +5,49 @@
 
 {% block head %}
   {{ super() }}
+  <link rel="stylesheet" type="text/css" href="../static/css/search.css">
 {% endblock %}
 
 {% block content %}
 
-<div>
-    {% for d in data %}
-    <div>
-        <h3>{{ d.id }}</h3>
-        <p>{{ d.song_lyrics }}</p>
+<div class="container">
+    <div class="row">
+        <div class="input-group">
+            <a href="javascript:history.back()">
+                <img id="back-button" src="{{ url_for('static', filename='back_arrow.png') }}"/>
+            </a>
+            <span id="search-results-title-header" class="input-group-append">
+                Song Lyrics Search Engine
+            </span>
+        </div>
+        {% for d in data %}
+
+        <div class="col m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="{{ url_for('static', filename='default_song_image.jpg') }}">
+              <span class="card-title">#{{ d.song_id }}</span>
+            </div>
+            <div class="card-content">
+                <h5>Title: {{ d.title }}</h5>
+                <p>Artist: {{ d.artist }}</p>
+                <p>Album: {{ d.album }}</p>
+                <p>Release Year: {{ d.year }}</p>
+            </div>
+            <div class="card-action">
+              <a href="#">I don't know man</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
     </div>
-    {% endfor %}
 </div>
 
-<!-- TODO: Find more efficient way for pagination especially with multiple docs :P -->
-<!-- TODO: Create page number text input label and then display number -->
 <div>
     <ul class="pagination">
-        <li class="active"><a href="{{ url_for('display_search_results', page=1) }}">1</a></li>
-        <li class="active waves-effect"><a href="{{ url_for('display_search_results', page=2) }}">2</a></li>
+        <li class="active waves-effect"><a href="{{ url_for('display_search_results', page=1) }}">1</a></li>
+        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2) }}">2</a></li>
         <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3) }}">3</a></li>
         <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4) }}">4</a></li>
         <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5) }}">5</a></li>
