@@ -19,7 +19,7 @@ function add_score(id,score,heap,tracker)
     if id in keys(tracker)
         score += tracker[id]
     end
-    if length(heap) >= max_size && score <= tracker[heap[0]]
+    if length(heap) >= max_size && score <= tracker[first(heap)]
         # discarded
         return
     end
@@ -31,7 +31,7 @@ end
 
 function __remove_entry_if_exists(heap,tracker, id)
     if id in keys(tracker)
-        delete!(tracker[id])
+        delete!(tracker, id)
         delete!(heap, id)
     end
 end
@@ -44,7 +44,7 @@ function __cleanup(heap,tracker)
         end
         if length(heap) > max_size  # here we know that id is not removed, but we have exceeded the size limit
             id = pop!(heap)
-            delete!(tracker[id])
+            delete!(tracker, id)
             continue
         end
         break  # nothing was removed, so the cleanup has finished. Exit the loop
