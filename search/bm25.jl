@@ -12,10 +12,54 @@ def load_pickle(fpath):
 
 load_pickle = py"load_pickle"
 
+using DataStructures
+
+function add_score(id,score,heap,tracker)
+    max_size = 100000
+    if id in keys(tracker)
+        score += tracker[id]
+    end
+    if length(heap) >= max_size && score <= tracker[heap[0]]
+        # discarded
+        return
+    end
+    __remove_entry_if_exists(heap,tracker, id)
+    tracker[id] = score
+    push!(heap, id)
+    __cleanup(heap, tracker)
+end
+
+function __remove_entry_if_exists(heap,tracker, id)
+    if id in keys(tracker)
+        delete!(tracker[id])
+        delete!(heap, id)
+    end
+end
+
+function __cleanup(heap,tracker)
+    max_size = 100000
+    while true
+        if length(heap) == 0
+            break
+        end
+        if length(heap) > max_size  # here we know that id is not removed, but we have exceeded the size limit
+            id = pop!(heap)
+            delete!(tracker[id])
+            continue
+        end
+        break  # nothing was removed, so the cleanup has finished. Exit the loop
+    end
+end
+
+
+
+
+
+
 function BM25(query, avgdl, search_type,index,song_metadata,lyric_metadata) # Assuming query is preprocesses into tokens
     # batch_size = 50
-    results_dict = Dict{Int64,Float32}()
-    # tracky_track = ScoreHeap()
+    heap = MutableBinaryMinHeap{Int}()
+    tracker = Dict{Int, Float64}()
     k1 = 1.5 # Constants
     b = 0.75 # Constants
     if search_type == "song"
@@ -32,13 +76,8 @@ function BM25(query, avgdl, search_type,index,song_metadata,lyric_metadata) # As
                     # We are now calculating BM25 for a given term in query for a given song
                     score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
                     # We now add this to 'results_dict'
-                    if song in keys(results_dict)
-                        results_dict[song] += score_term
-                        # tracky_track.add(song, score_term)
-                    else
-                        results_dict[song] = score_term # First song for the term to appear in!
-                        # tracky_track.add(song, score_term)
-                    end
+                    results_dict[song] += score_term
+                    add_score(song,score_term,heap,tracker)
                 end
             end
         end
@@ -57,19 +96,13 @@ function BM25(query, avgdl, search_type,index,song_metadata,lyric_metadata) # As
                         # We are now calculating BM25 for a given term in query for a given song
                         score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
                         # We now add this to 'results_dict', which will already contain somevalue if previous term apeared in given song
-                        if lyric in keys(results_dict)
-                            results_dict[lyric] += score_term
-                            # tracky_track.add(lyric, score_term)
-                        else
-                            results_dict[lyric] = score_term  # First song for the term to appear in!
-                            # tracky_track.add(lyric, score_term)
-                        end
+                        add_score(lyric,score_term,heap,tracker)
                     end
                 end
             end
         end
     end
-    return results_dict
+    return heap
 end
 
 function calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
@@ -110,5 +143,5 @@ function main()
     tracker = @time ranked_retrieval(["hurt"], "lyric", batch_size,index,song_metadata,lyric_metadata)
 
     print("Results:\n")
-    print(keys(tracker))
+    print(tracker)
 end
