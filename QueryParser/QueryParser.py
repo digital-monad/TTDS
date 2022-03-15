@@ -14,10 +14,17 @@ import re
 
 from DBQuery import DBQuery
 
+from julia.api import Julia
+JL = Julia(compiled_modules=False)
+JL.eval('include("./setOperations.jl")')
+
+from julia import Main
+
+
 # SONGCOUNT = 1200000
 # LYRICCOUNT = 60000000
 
-class QuerySearchParser:
+class QueryParser:
     def __init__(self):
         self._methods = {
             "and": self.evaluateAnd,
@@ -51,7 +58,7 @@ class QuerySearchParser:
 
         alphabet = alphanums + ' '
 
-        notKeyword = Keyword("~") 
+        notKeyword = Keyword("!") 
 
         andKeyword = Keyword("&&")
 
@@ -112,24 +119,18 @@ class QuerySearchParser:
 
     def evaluateAnd(self, argument):
 
+        print(argument)
+
         clause_results = [self.evaluate(arg) for arg in argument]
-    
-        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+
+        assert(len(clause_results) == 2)
+
+        Main.df1 = clause_results[0]
+        Main.df2 = clause_results[1]
+
+        return JL.eval("and(df1,df2)")
         
-        doc_ids = set.intersection(*map(set,clause_doc_ids))
-
-        scores = {doc_id : 0 for doc_id in doc_ids}
-
-        range_max = 0
-
-        for clause in clause_results:
-            for id, score in clause:
-                if id in doc_ids:
-
-                    scores[id] += score
-
-                    if(scores[id] > range_max):
-                        range_max = scores[id]
+       
 
         if (range_max) == 0:
             return [(doc_id,scores[doc_id]) for doc_id in scores]        
@@ -140,29 +141,43 @@ class QuerySearchParser:
     def evaluateOr(self, argument):
       
         clause_results = [self.evaluate(arg) for arg in argument]
-    
-        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+
+        assert(len(clause_results) == 2)
+
+        Main.df1 = clause_results[0]
+        Main.df2 = clause_results[1]
+
+        return JL.eval("or(df1,df2)")
         
-        doc_ids = set.union(*map(set,clause_doc_ids))
+        # clause_results = [self.evaluate(arg) for arg in argument]
+    
+        # clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+        
+        # doc_ids = set.union(*map(set,clause_doc_ids))
 
-        scores = {doc_id : 0 for doc_id in doc_ids}
+        # scores = {doc_id : 0 for doc_id in doc_ids}
 
-        for clause in clause_results:
-            for id, score in clause:
-                if id in doc_ids and score > scores[id]:
-                    scores[id] = score
+        # for clause in clause_results:
+        #     for id, score in clause:
+        #         if id in doc_ids and score > scores[id]:
+        #             scores[id] = score
 
-        return [(doc_id,scores[doc_id]) for doc_id in scores]
+        # return [(doc_id,scores[doc_id]) for doc_id in scores]
 
     def evaluateNot(self, argument):
+
+        print(argument)
         
-        clause_result = map(list, zip(*self.evaluate(argument[0])))
+        Main.df = self.evaluate(argument[0])
+        
+        print("Pass2")
 
         if(self.isSong):
-            return [(id,0) for id in (set(range(0,self.songCount)) - set(clause_result[0]))]
+            Main.count = self.songCount
         else:
-            return [(id,0) for id in (set(range(0,self.lyricCount)) - set(clause_result[0]))]
-        
+            Main.count = self.lyricCount
+
+        return JL.eval("not(count,df)")
 
     def evaluateParenthesis(self, argument):
 
@@ -179,7 +194,7 @@ class QuerySearchParser:
         # print("phrase")
         # print(argument)
 
-        return [(1,0.5),(2,0.8)]
+        return JL.eval("getDf2()")
 
     def evaluateProximity(self, argument):
         
@@ -202,7 +217,7 @@ class QuerySearchParser:
         # print("term1 : " + str(term1))
         # print("term2 : " + str(term2))
 
-        return [(1,1)]
+        return [(1,1),(2,1),(3,1),(4,1)]
 
 
     def evaluateWord(self, argument):
@@ -213,7 +228,9 @@ class QuerySearchParser:
         # print("ranked search")
         # print(argument)
 
-        return [(1,0.25)]
+        print("Pass1")
+
+        return JL.eval("getDf1()")
 
 
     def evaluate(self, argument):
@@ -240,3 +257,7 @@ class QuerySearchParser:
         print("results")
         print(unsorted_query_results)
         
+x = QueryParser()
+
+# x.query('! bean', True)
+x.query('car || "car"', True)
