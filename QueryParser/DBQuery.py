@@ -15,13 +15,19 @@ class DBQuery():
         self.songMetaData = self.ttds.songMetaData    
             
     def get_indexed_by_terms(self, terms):
-        return self.inverted_index.find({"$or":[{"key":term} for term in terms]}, {"_id": 0}) 
+        return self.inverted_index.find({"$or":[{"_id":term} for term in terms]}) 
 
     def countSongs(self):
         return self.songMetaData.estimated_document_count()
         
     def countLyrics(self):
         return self.lyricMetaData.estimated_document_count()
+
+
+x = DBQuery()
+
+for res in x.get_indexed_by_terms(['bean']):
+    print(res)
 
 # print(x.countLyrics())
 # print(len(list(x.lyricMetaData.find())))
