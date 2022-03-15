@@ -20,6 +20,7 @@
                 Song Lyrics Search Engine
             </span>
         </div>
+        {% if data | length() > 0 %}
         {% for d in data %}
 
         <div class="col m4">
@@ -34,24 +35,28 @@
                 <p>Album: {{ d.album }}</p>
                 <p>Release Year: {{ d.year }}</p>
             </div>
-            <div class="card-action">
-              <a href="#">I don't know man</a>
-            </div>
           </div>
         </div>
         {% endfor %}
+        {% else %}
+        <div>
+          <h4>Song or Lyrics Not Found!</h4>
+          <h4>Please try a Different Search!</h4>
+        </div>
+        {% endif %}
 
     </div>
 </div>
 
-<div>
-    <ul class="pagination">
-        <li class="active waves-effect"><a href="{{ url_for('display_search_results', page=1, q='', artist=artist, album=album, year=year) }}">1</a></li>
-        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2, q='', artist=artist, album=album, year=year) }}">2</a></li>
-        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3, q='', artist=artist, album=album, year=year) }}">3</a></li>
-        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4, q='', artist=artist, album=album, year=year) }}">4</a></li>
-        <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, q='', artist=artist, album=album, year=year) }}">5</a></li>
-    </ul>    
+<div class="pagination-div">
+  <p id="pagination-text">Page: {{ page }}</p>
+  <ul class="pagination">
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=1, q='', artist=artist, album=album, year=year) }}">1</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2, q='', artist=artist, album=album, year=year) }}">2</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3, q='', artist=artist, album=album, year=year) }}">3</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4, q='', artist=artist, album=album, year=year) }}">4</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, q='', artist=artist, album=album, year=year) }}">5</a></li>
+  </ul>  
 </div>
 
 {% endblock %}

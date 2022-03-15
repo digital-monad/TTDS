@@ -111,7 +111,7 @@ def display_search_results(page):
         relevant_docs = list()
         print('Error retrieving documents')
 
-    return render_template('search.html', data = relevant_docs, artist = artist_str, album = album_str, year = year_str)
+    return render_template('search.html', data = relevant_docs, artist = artist_str, album = album_str, year = year_str, page = page)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

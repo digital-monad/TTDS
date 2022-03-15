@@ -6,8 +6,15 @@
     margin-left: 1rem;
     font-size: 4rem;
 }
-
-.pagination {
+.pagination-div {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+#pagination-text {
+    margin-right: 16px;
+}
+#pagination-div-group {
+    display: flex;
+    align-items: center;
 }
