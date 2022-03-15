@@ -64,10 +64,19 @@ class Indexer:
             for term,pos in line:
                 if term not in self.index:
                     self.index[term] = {}
+                    self.index[term]['song_df'] = 0
+                    self.index[term]['line_df'] = 0
                 if song_id not in self.index[term]:
                     self.index[term][song_id] = {}
+                    self.index[term][song_id]['tf'] = 0
+                    self.index[term]['song_df'] += 1
+                    
                 if  line_id not in self.index[term][song_id]:
                     self.index[term][song_id][line_id] = []
+                    self.index[term]['line_df'] += 1
+
+                 
+                self.index[term][song_id]['tf'] += 1 
                 self.index[term][song_id][line_id].append(pos)
             # Increment the line id
             self.current_line_id += 1
