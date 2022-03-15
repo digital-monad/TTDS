@@ -29,11 +29,11 @@ class Indexer:
 
     def pickle(self, file_name):
         with open(file_name + "_index.pickle", 'wb') as handle:
-            pickle.dump(self.index, handle)
+            pickle.dump([{**{"_id" : id}, **self.index[id]} for id in self.index], handle)
         with open(file_name + "_song_metadata.pickle", 'wb') as handle:
-            pickle.dump(self.song_metadata, handle)
+            pickle.dump([{**{"_id" : id}, **self.song_metadata[id]} for id in self.song_metadata], handle)
         with open(file_name + "_line_metadata.pickle", 'wb') as handle:
-            pickle.dump(self.line_metadata, handle)
+            pickle.dump([{**{"_id" : id}, **self.line_metadata[id]} for id in self.line_metadata], handle)
         # Clear memory
         self.index = {}
         self.song_metadata = {}
