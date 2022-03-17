@@ -106,10 +106,10 @@ function main()
     index = load_pickle("search/Test_Lyrics_Eminem_index")
     index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
     proximity = 3
-    song = true
+    song = false
     terms = ["on", "you"]
-    # @time prox(["on", "you"], 3, index, true)
-    # @benchmark prox($terms, $proximity, $index, $song)
-    @trace(prox(terms, proximity, index, song), modules=[Main])
+    # @time prox(["on", "you"], 3, index, false)
+    @benchmark prox($terms, $proximity, $index, $song)
+    # @trace(prox(terms, proximity, index, song), modules=[Main])
 end
 main()
