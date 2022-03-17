@@ -28,11 +28,11 @@ class Indexer:
         self.lyrics = pd.read_csv(csv_file)
 
     def pickle(self, file_name):
-        with open(file_name + "_index.pickle", 'wb') as handle:
+        with open("../../../../../../../../disk/scratch/s1827995-indexes/"+file_name + "_index.pickle", 'wb') as handle:
             pickle.dump([{**{"_id" : id}, **self.index[id]} for id in self.index], handle)
-        with open(file_name + "_song_metadata.pickle", 'wb') as handle:
+        with open("../../../../../../../../disk/scratch/s1827995-songs/"+file_name + "_song_metadata.pickle", 'wb') as handle:
             pickle.dump([{**{"_id" : id}, **self.song_metadata[id]} for id in self.song_metadata], handle)
-        with open(file_name + "_line_metadata.pickle", 'wb') as handle:
+        with open("../../../../../../../../disk/scratch/s1827995-lyrics/"+file_name + "_line_metadata.pickle", 'wb') as handle:
             pickle.dump([{**{"_id" : id}, **self.line_metadata[id]} for id in self.line_metadata], handle)
         # Clear memory
         self.index = {}
@@ -41,20 +41,24 @@ class Indexer:
 
 
 
-    def processSong(self, song_id, artist, title, album, year, date, lyrics):
+    def processSong(self, song_id, artist, title, album, year, date, url, description, lyrics):
         print(f"Processing song {title}")
         preprocessed_lyrics = preprocessSongLyrics(lyrics)
         # Update song metadata
+        song_id = str(song_id)
         self.song_metadata[song_id] = {
             "title" : title,
             "artist" : artist,
             "album" : album,
             "year" : year,
-            "length" : sum(map(len,preprocessed_lyrics))
+            "length" : sum(map(len,preprocessed_lyrics)),
+            "image_url" : url,
+            "description" : description
         }
         for line in preprocessed_lyrics:
             # Update line metadata
             line_id = self.current_line_id
+            line_id = str(line_id)
             self.line_metadata[line_id] = {
                 "song_id" : song_id,
                 "length" : len(line),
@@ -62,6 +66,7 @@ class Indexer:
             }
             # Update the index
             for term,pos in line:
+                term = str(term)
                 if term not in self.index:
                     self.index[term] = {}
                     self.index[term]['song_df'] = 0

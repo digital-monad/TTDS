@@ -6,6 +6,7 @@ import argparse
 import pickle
 import configparser
 from pymongo import MongoClient
+import ast
 
 config = configparser.ConfigParser()
 config.read('settings.ini')
@@ -14,7 +15,7 @@ base_uri = 'mongodb+srv://'
 username = config.get('mongodb', 'username')
 password = config.get('mongodb', 'password')
 uri = base_uri + username + ':' + password + '@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority'
-client = pymongo.MongoClient(uri)
+client = MongoClient(uri)
 
 index_collection = client.ttds.invertedIndex
 song_collection = client.ttds.songMetaData
@@ -23,6 +24,7 @@ lyric_collection = client.ttds.lyricMetaData
 class DBPopulate:
     def __init__(self, path, inserttype):
         self.dir = path
+        self.stored = set()
 
         if inserttype == 'index':
             self.collection = index_collection
@@ -33,7 +35,7 @@ class DBPopulate:
         else:
             raise BaseException("Type not valid!")
         
-        self.temp = dict()
+#        self.temp = dict()
 
     def __iterate_dir(self):
         """ It itertes all of the leaf files under the root path directory.
@@ -54,7 +56,14 @@ class DBPopulate:
 
     def __flush_db(self):
         logging.info('DB flushing...')
-        self.collection.insert_many(self.temp)
+        print("Processing...")
+        for data in self.temp:
+            if data['_id'] in self.stored:
+                self.collection.update_one({'_id': data['_id']}, {'$set': data})
+            else:
+                self.collection.insert_one(data)
+                self.stored.add(data['_id'])
+            
         self.temp.clear()
         logging.info("DB flushed!")
 
@@ -63,5 +72,5 @@ class DBPopulate:
             self.temp = self.__read_pickle(path)
             self.__flush_db()
 
-asd = DBPopulate("./","index")
+asd = DBPopulate("../../../../../../../../disk/scratch/s1827995-indexes/","index")
 asd.write_to_db()
