@@ -24,6 +24,7 @@ lyric_collection = client.ttds.lyricMetaData
 class DBPopulate:
     def __init__(self, path, inserttype):
         self.dir = path
+        self.stored = set()
 
         if inserttype == 'index':
             self.collection = index_collection
@@ -56,7 +57,13 @@ class DBPopulate:
     def __flush_db(self):
         logging.info('DB flushing...')
         print("Processing...")
-        self.collection.insert_many(self.temp)
+        for data in self.temp:
+            if data['_id'] in self.stored:
+                self.collection.update_one({'_id': data['_id']}, {'$set': data})
+            else:
+                self.collection.insert_one(data)
+                self.stored.add(data['_id'])
+            
         self.temp.clear()
         logging.info("DB flushed!")
 
