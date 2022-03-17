@@ -60,7 +60,7 @@ function prox(terms, proximity, index, song)
                     pos1, state1 = λ1
                     pos2, state2 = λ2
                     if abs(pos1 - pos2) <= proximity
-                        push!(results, song)
+                        push!(results, line)
                         break
                     end
                     if pos1 - pos2 > 0 # ptr1 is pointing at a larger position
@@ -74,8 +74,10 @@ function prox(terms, proximity, index, song)
     else
         for song in shorter
             if song ∈ longer
-                for line in keys(index[terms[1]][song])
-                    if line ∈ keys(index[terms[2]][song])
+                l1 = keys(index[terms[1]][song])
+                l2 = keys(index[terms[2]][song])
+                for line in l1
+                    if line ∈ l2
                         # Perform linear merge over line positions
                         positions1 = index[terms[1]][song][line]
                         positions2 = index[terms[2]][song][line]
