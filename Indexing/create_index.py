@@ -29,11 +29,11 @@ class Indexer:
 
     def pickle(self, file_name):
         with open(file_name + "_index.pickle", 'wb') as handle:
-            pickle.dump(self.index, handle)
+            pickle.dump([{**{"_id" : id}, **self.index[id]} for id in self.index], handle)
         with open(file_name + "_song_metadata.pickle", 'wb') as handle:
-            pickle.dump(self.song_metadata, handle)
+            pickle.dump([{**{"_id" : id}, **self.song_metadata[id]} for id in self.song_metadata], handle)
         with open(file_name + "_line_metadata.pickle", 'wb') as handle:
-            pickle.dump(self.line_metadata, handle)
+            pickle.dump([{**{"_id" : id}, **self.line_metadata[id]} for id in self.line_metadata], handle)
         # Clear memory
         self.index = {}
         self.song_metadata = {}
@@ -64,10 +64,19 @@ class Indexer:
             for term,pos in line:
                 if term not in self.index:
                     self.index[term] = {}
+                    self.index[term]['song_df'] = 0
+                    self.index[term]['line_df'] = 0
                 if song_id not in self.index[term]:
                     self.index[term][song_id] = {}
+                    self.index[term][song_id]['tf'] = 0
+                    self.index[term]['song_df'] += 1
+                    
                 if  line_id not in self.index[term][song_id]:
                     self.index[term][song_id][line_id] = []
+                    self.index[term]['line_df'] += 1
+
+                 
+                self.index[term][song_id]['tf'] += 1 
                 self.index[term][song_id][line_id].append(pos)
             # Increment the line id
             self.current_line_id += 1
