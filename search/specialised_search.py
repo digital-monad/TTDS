@@ -4,12 +4,10 @@
 """
 
 from re import S
-from search import search
 from preprocess import preprocess
 import numpy as np
 import pickle
 import time
-from nltk.stem.porter import *
 
 class specialised():
 
@@ -93,9 +91,6 @@ class specialised():
 
     def proximity_search(self, terms, proximity, index, song): # Two terms
 
-        stemmer = PorterStemmer()
-        terms = [stemmer.stem(term) for term in terms]
-
         assert terms[0] in list(index.keys()) and terms[1] in list(index.keys())
 
         common_songs = self.intersection(list(index[terms[0]].keys()), list(index[terms[1]].keys()))
@@ -109,7 +104,6 @@ class specialised():
 
         if song == True:
 
-            print("Why")
             for song in common_songs:
 
                 ohyeah = True
@@ -133,12 +127,11 @@ class specialised():
 
         else: # Line search
 
-            print("Surely")
 
             for song in common_songs:
 
                 results[song] = []
-    
+
                 for line1 in index[terms[0]][song].keys():
 
                     if line1 in index[terms[1]][song].keys():
@@ -146,16 +139,14 @@ class specialised():
                         proxx = [abs(x-y) for x in index[terms[0]][song][line1] for y in index[terms[1]][song][line1] if abs(x-y) <= proximity]
 
                     if line1 in list(index[terms[1]][song].keys()) and len(proxx) > 0:
-                        
-                        print("Append")
+
                         results[song].append(line1)
 
             for song in list(results.keys()):
                 if len(results[song]) == 0:
-                    del results[song]   
+                    del results[song]
 
-            print("return")
-            return results                           
+            return results
 
     def intersection(self, lst1, lst2):
 
@@ -167,18 +158,18 @@ def load_pickle(file_name):
 
 # TEST STUFF
 
-# index = load_pickle("Test_Lyrics_Eminem_index")
-# song_metadata = load_pickle("Test_Lyrics_Eminem_song_metadata")
-# lyric_metadata = load_pickle("Test_Lyrics_Eminem_line_metadata")
+index = load_pickle("Test_Lyrics_Eminem_index")
+song_metadata = load_pickle("Test_Lyrics_Eminem_song_metadata")
+lyric_metadata = load_pickle("Test_Lyrics_Eminem_line_metadata")
 
-# query = "office with monica"
-# phrase = [token for token, pos in preprocess(query)[0]]
+query = "on you"
+phrase = [token for token, pos in preprocess(query)[0]]
 
-# s = specialised()
-# t1 = time.time()
-# results = s.phrase_search(phrase, index, song = True)
+s = specialised()
+t1 = time.time()
+results = s.proximity_search(phrase, 3, index, song = True)
 # print(results)
-# print(f"Took {time.time() - t1} seconds")
+print(f"Took {time.time() - t1} seconds")
 
 # for line_id in results:
 #     print(song_metadata[line_id]['title'])

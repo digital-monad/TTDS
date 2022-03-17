@@ -76,7 +76,6 @@ end
 function main()
     index = load_pickle("search/Test_Lyrics_Eminem_index")
     index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
-    # @elapsed phraseSearch(["you"], index, false)
-    values(index["induct"])
+    @elapsed phraseSearch(["you"], index, true)
 end
 main()
