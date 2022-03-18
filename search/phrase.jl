@@ -77,6 +77,7 @@ function phraseSearch(phrase::Vector{String}, index::Dict, song::Bool)
 end
 
 function ps(phrase, index, song)
+    results = Vector{Int}()
     common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
     for song in common_songs
         postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
@@ -94,6 +95,7 @@ function ps(phrase, index, song)
             no_existo && break
             term_no += 1
             reduce_set = temp_set
+            term_no == length(phrase) && push!(results, song)
         end
     end
 end
@@ -107,5 +109,6 @@ function main()
     song = true
     terms = ["on", "you"]
     @benchmark ps($terms, $index, $song)
+    # ps(terms, index, song)
 end
 main()
