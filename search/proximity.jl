@@ -11,32 +11,6 @@ def load_pickle(file_name):
 
 load_pickle = py"load_pickle"
 
-
-function proximity(terms, proximity, index, song)
-    common_songs = keys(index[terms[1]]) ∩ keys(index[terms[2]])
-    results = Set{Int}()
-
-    if song
-        for song ∈ common_songs
-            ohyeah = true
-            while ohyeah
-                for line1 ∈ keys(index[terms[1]][song])
-                    for line2 ∈ keys(index[terms[2]][song])
-                        what = [abs(x-y) for x ∈ index[terms[1]][song][line1] for y ∈ index[terms[2]][song][line1]]
-                        if length(filter(x -> x <= proximity, what)) > 0
-                            push!(results, song)
-                            ohyeah = false
-                        end
-                    end
-                end
-                ohyeah = false
-            end
-        end
-        return results
-    end
-end
-
-
 function prox(terms, proximity, index, song)
 
     if length(keys(index[terms[1]])) > length(keys(index[terms[2]]))
@@ -46,28 +20,51 @@ function prox(terms, proximity, index, song)
         shorter = keys(index[terms[1]])
         longer = keys(index[terms[2]])
     end
-    results = Set{Int}()
+    results = Vector{Int}()
 
     if song
         for song in shorter
             if song ∈ longer
                 posting1 = Base.Iterators.flatten(values(index[terms[1]][song])) # Positions of term 1 in song
                 posting2 = Base.Iterators.flatten(values(index[terms[2]][song])) # Positions of term 2 in song
-                λ1 = iterate(posting1)
-                λ2 = iterate(posting2)
+                # λ1 = iterate(posting1)
                 # Linear merge postings
-                while λ1 !== nothing && λ2 !== nothing
-                    pos1, state1 = λ1
-                    pos2, state2 = λ2
+                # while λ1 !== nothing && λ2 !== nothing
+                #     pos1, state1 = λ1
+                #     pos2, state2 = λ2
+                #     if abs(pos1 - pos2) <= proximity
+                #         push!(results, song)
+                #         break
+                #     end
+                #     if pos1 - pos2 > 0 # ptr1 is pointing at a larger position
+                #         λ2 = iterate(posting2, state2)
+                #     else
+                #         λ1 = iterate(posting1, state1)
+                #     end
+                # end
+                finished = false
+                ℵ = Base.Iterators.peel(posting2)
+                pos2, posting2 = ℵ
+                for pos1 in posting1
                     if abs(pos1 - pos2) <= proximity
-                        push!(results, line)
+                        push!(results, song)
+                        finished = true
                         break
                     end
-                    if pos1 - pos2 > 0 # ptr1 is pointing at a larger position
-                        λ2 = iterate(posting2, state2)
-                    else
-                        λ1 = iterate(posting1, state1)
+                    while pos2 < pos1
+                        if ℵ === nothing
+                            finished = true
+                            break
+                        end
+                        pos2, posting2 = ℵ
+                        if abs(pos1 - pos2) <= proximity
+                            push!(results, song)
+                            finished = true
+                            break
+                        end
+                        ℵ = Base.Iterators.peel(posting2)
                     end
+                    finished && break
                 end
             end
         end
@@ -86,7 +83,7 @@ function prox(terms, proximity, index, song)
                             pos1 = positions1[ptr1]
                             pos2 = positions2[ptr2]
                             if abs(pos1 - pos2) <= proximity
-                                push!(results, song)
+                                push!(results, line)
                                 break
                             end
                             if pos1 - pos2 > 0 # ptr1 is pointing at a larger position
@@ -108,9 +105,9 @@ function main()
     index = load_pickle("search/Test_Lyrics_Eminem_index")
     index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
     proximity = 3
-    song = false
+    song = true
     terms = ["on", "you"]
-    # @time prox(["on", "you"], 3, index, false)
+    # @code_warntype prox(["on", "you"], 3, index, false)
     @benchmark prox($terms, $proximity, $index, $song)
     # @trace(prox(terms, proximity, index, song), modules=[Main])
 end
