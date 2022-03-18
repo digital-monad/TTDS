@@ -1,4 +1,7 @@
 using PyCall
+using BenchmarkTools
+using SparseArrays
+using DataStructures
 
 py"""
 import pickle
@@ -53,29 +56,56 @@ function phraseSearch(phrase::Vector{String}, index::Dict, song::Bool)
             posting = Dict{Int, Vector{Int}}(line_id => positions for song in values(index[phrase[i]]) for (line_id, positions) in song)
             sequenceMap[i] = i == 1 ? posting : Dict{Int,Vector{Int}}(line_id => listing for (line_id, listing) in posting if line_id ∈ keys(sequenceMap[i-1]))
         end
-        # matrixCount = Dict{Int,Int}()
-        # for line_id in keys(sequenceMap[length(phrase)]) # Go through each line for which all terms appear
-        #     matching = false
-        #     for i in 1:length(phrase) # For every term in the phrase
-        #         for position in sequenceMap[i][line_id]
-        #             updatedValue = get(matrixCount, position - i, 0) + 1
-        #             if updatedValue == length(phrase)
-        #                 push!(matchingDocs, line_id)
-        #                 matching = true
-        #                 break
-        #             end
-        #             matrixCount[position - i] = updatedValue
-        #         end
-        #         matching && break
-        #     end
-        # end
+        matrixCount = Dict{Int,Int}()
+        for line_id in keys(sequenceMap[length(phrase)]) # Go through each line for which all terms appear
+            matching = false
+            for i in 1:length(phrase) # For every term in the phrase
+                for position in sequenceMap[i][line_id]
+                    updatedValue = get(matrixCount, position - i, 0) + 1
+                    if updatedValue == length(phrase)
+                        push!(matchingDocs, line_id)
+                        matching = true
+                        break
+                    end
+                    matrixCount[position - i] = updatedValue
+                end
+                matching && break
+            end
+        end
     end
     matchingDocs
 end
 
+function ps(phrase, index, song)
+    common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
+    for song in common_songs
+        postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
+        term_no = 0
+        reduce_set = DataStructures.IntSet()
+        for term_positions in postings
+            no_existo = true
+            temp_set = DataStructures.IntSet()
+            for pos in term_positions
+                if pos - term_no ∈ reduce_set
+                    push!(pos - term_no, temp_set)
+                    no_existo = false
+                end
+            end
+            no_existo && break
+            term_no += 1
+            reduce_set = temp_set
+        end
+    end
+end
+
+# length(phrase) ∈ sum([sparsevec(pos, ones(Int, length(pos))) for pos in Base.Iterators.map(i -> index[phrase[i]][song][line] .- (i-1),1:length(phrase))]) && (push!(results, line))
+
+
 function main()
     index = load_pickle("search/Test_Lyrics_Eminem_index")
     index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
-    @elapsed phraseSearch(["you"], index, true)
+    song = true
+    terms = ["on", "you"]
+    @benchmark ps($terms, $index, $song)
 end
 main()
