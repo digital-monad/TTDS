@@ -79,34 +79,21 @@ end
 function ps(phrase, index, song)
     results = Vector{Int}()
     common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
-    reduceSet = spzeros(Int,5000)
+    reduceSet = zeros(Int,5000)
     for song in common_songs
         postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
         term_no = 0
-        # reduce_set = DataStructures.IntSet()
-        # for term_positions in postings
-        #     # no_existo = true
-        #     # temp_set = DataStructures.IntSet()
-        #     for pos in term_positions
-        #     #     # reduceSet[pos - term_no] = get(reduceSet, pos - term_no, 0) + 1
-        #     #     # if pos - term_no ∈ reduce_set || term_no == 0
-        #     #     #     push!(temp_set, pos - term_no)
-        #     #     #     no_existo = false
-        #     #     # end
-        #         pos - term_no < 0 && continue
-        #         reduceSet[pos - term_no + 1] += 1
-        #         if reduceSet[pos - term_no + 1] == length(phrase)
-        #             push!(results, song)
-        #             break
-        #         end
-        #     end
-        #     # intersect!(reduce_set, DataStructures.IntSet(term_positions))
-        #     # no_existo && break
-        #     # isempty(reduce_set) && break
-        #     # reduce_set = temp_set
-        #     # term_no == length(phrase) && push!(results, song)
-        #     term_no += 1
-        # end
+        for term_positions in postings
+            for pos in term_positions
+                pos - term_no < 0 && continue
+                reduceSet[pos - term_no + 1] += 1
+                if reduceSet[pos - term_no + 1] == length(phrase)
+                    push!(results, song)
+                    break
+                end
+            end
+            term_no += 1
+        end
         reduceSet .= zero(Int)
     end
     results
@@ -119,7 +106,7 @@ function main()
     index = load_pickle("search/Test_Lyrics_Eminem_index")
     index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
     song = true
-    terms = ["on", "you", "but"]
+    terms = ["record", "breaker"]
     @benchmark ps($terms, $index, $song)
     # ps(terms, index, song)
 end
