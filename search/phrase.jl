@@ -79,25 +79,37 @@ end
 function ps(phrase, index, song)
     results = Vector{Int}()
     common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
+    reduceSet = spzeros(Int,5000)
     for song in common_songs
         postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
         term_no = 0
-        reduce_set = DataStructures.IntSet()
-        for term_positions in postings
-            no_existo = true
-            temp_set = DataStructures.IntSet()
-            for pos in term_positions
-                if pos - term_no ∈ reduce_set
-                    push!(pos - term_no, temp_set)
-                    no_existo = false
-                end
-            end
-            no_existo && break
-            term_no += 1
-            reduce_set = temp_set
-            term_no == length(phrase) && push!(results, song)
-        end
+        # reduce_set = DataStructures.IntSet()
+        # for term_positions in postings
+        #     # no_existo = true
+        #     # temp_set = DataStructures.IntSet()
+        #     for pos in term_positions
+        #     #     # reduceSet[pos - term_no] = get(reduceSet, pos - term_no, 0) + 1
+        #     #     # if pos - term_no ∈ reduce_set || term_no == 0
+        #     #     #     push!(temp_set, pos - term_no)
+        #     #     #     no_existo = false
+        #     #     # end
+        #         pos - term_no < 0 && continue
+        #         reduceSet[pos - term_no + 1] += 1
+        #         if reduceSet[pos - term_no + 1] == length(phrase)
+        #             push!(results, song)
+        #             break
+        #         end
+        #     end
+        #     # intersect!(reduce_set, DataStructures.IntSet(term_positions))
+        #     # no_existo && break
+        #     # isempty(reduce_set) && break
+        #     # reduce_set = temp_set
+        #     # term_no == length(phrase) && push!(results, song)
+        #     term_no += 1
+        # end
+        reduceSet .= zero(Int)
     end
+    results
 end
 
 # length(phrase) ∈ sum([sparsevec(pos, ones(Int, length(pos))) for pos in Base.Iterators.map(i -> index[phrase[i]][song][line] .- (i-1),1:length(phrase))]) && (push!(results, line))
@@ -107,7 +119,7 @@ function main()
     index = load_pickle("search/Test_Lyrics_Eminem_index")
     index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
     song = true
-    terms = ["on", "you"]
+    terms = ["on", "you", "but"]
     @benchmark ps($terms, $index, $song)
     # ps(terms, index, song)
 end
