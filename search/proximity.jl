@@ -104,11 +104,17 @@ end
 function main()
     index = load_pickle("search/Test_Lyrics_Eminem_index")
     index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
-    proximity = 3
+    line_metadata = load_pickle("search/Test_Lyrics_Eminem_line_metadata")
+    song_metadata = load_pickle("search/Test_Lyrics_Eminem_song_metadata")
+    proximity = 6
     song = true
-    terms = ["on", "you"]
+    terms = ["hospit", "overdos"]
     # @code_warntype prox(["on", "you"], 3, index, false)
-    @benchmark prox($terms, $proximity, $index, $song)
+    # @benchmark prox($terms, $proximity, $index, $song)
+    for id in prox(terms, proximity, index, song)
+        # println(line_metadata[id]["text"])
+        println(song_metadata[id]["title"])
+    end
     # @trace(prox(terms, proximity, index, song), modules=[Main])
 end
 main()
