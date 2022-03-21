@@ -10,9 +10,21 @@ from pyparsing import (
     oneOf,
 )
 
-import re
+import re 
 
-class BooleanSearchParser:
+from DBQuery import DBQuery
+
+from julia.api import Julia
+JL = Julia(compiled_modules=False)
+JL.eval('include("./setOperations.jl")')
+
+from julia import Main
+
+
+# SONGCOUNT = 1200000
+# LYRICCOUNT = 60000000
+
+class QueryParser:
     def __init__(self):
         self._methods = {
             "and": self.evaluateAnd,
@@ -23,9 +35,14 @@ class BooleanSearchParser:
             "proximity": self.evaluateProximity,
             "word": self.evaluateWord
         }
+
+        self.connection = DBQuery()
+        self.songCount = self.connection.countSongs()
+        self.lyricCount = self.connection.countLyrics()
         self._parser = self.parser()
         self.text = ""
         self.words = []
+        self.isSong = True
 
     def parser(self):
         """
@@ -41,7 +58,7 @@ class BooleanSearchParser:
 
         alphabet = alphanums + ' '
 
-        notKeyword = Keyword("~") 
+        notKeyword = Keyword("!") 
 
         andKeyword = Keyword("&&")
 
@@ -106,58 +123,61 @@ class BooleanSearchParser:
 
         clause_results = [self.evaluate(arg) for arg in argument]
 
-        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+        assert(len(clause_results) == 2)
+
+        Main.df1 = clause_results[0]
+        Main.df2 = clause_results[1]
+
+        return JL.eval("and(df1,df2)")
         
-        doc_ids = set.intersection(*map(set,clause_doc_ids))
+       
 
-        scores = {doc_id : 0 for doc_id in doc_ids}
-
-        range_max = 0
-
-        for clause in clause_results:
-            for id, score in clause:
-                if id in doc_ids:
-
-                    scores[id] += score
-
-                    if(scores[id] > range_max):
-                        range_max = scores[id]
-
-        if (range_max) != 0:
-
-            return [(doc_id,scores[doc_id]/(range_max)) for doc_id in scores]
-        
+        if (range_max) == 0:
+            return [(doc_id,scores[doc_id]) for doc_id in scores]        
         else:
+            return [(doc_id,scores[doc_id]/(range_max)) for doc_id in scores]
 
-            return [(doc_id,scores[doc_id]) for doc_id in scores]
 
     def evaluateOr(self, argument):
       
         clause_results = [self.evaluate(arg) for arg in argument]
 
-        clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+        assert(len(clause_results) == 2)
+
+        Main.df1 = clause_results[0]
+        Main.df2 = clause_results[1]
+
+        return JL.eval("or(df1,df2)")
         
-        doc_ids = set.union(*map(set,clause_doc_ids))
+        # clause_results = [self.evaluate(arg) for arg in argument]
+    
+        # clause_doc_ids = [[elm[0] for elm in clause] for clause in clause_results]
+        
+        # doc_ids = set.union(*map(set,clause_doc_ids))
 
-        scores = {doc_id : 0 for doc_id in doc_ids}
+        # scores = {doc_id : 0 for doc_id in doc_ids}
 
-        for clause in clause_results:
-            for id, score in clause:
-                if id in doc_ids and score > scores[id]:
-                    scores[id] = score
+        # for clause in clause_results:
+        #     for id, score in clause:
+        #         if id in doc_ids and score > scores[id]:
+        #             scores[id] = score
 
-        return [(doc_id,scores[doc_id]) for doc_id in scores]
+        # return [(doc_id,scores[doc_id]) for doc_id in scores]
 
     def evaluateNot(self, argument):
+
+        print(argument)
         
-        clause_result = self.evaluate(argument[0])
+        Main.df = self.evaluate(argument[0])
+        
+        print("Pass2")
 
-        # This will be the number of documents in the whole dataset. 
-        all_doc_ids = set(range(100))
+        if(self.isSong):
+            Main.count = self.songCount
+        else:
+            Main.count = self.lyricCount
 
-        clause_doc_ids = set([elm[1] for elm in clause_result])
-
-        return [(doc_id,clause_result[doc_id]) for doc_id in all_doc_ids - clause_doc_ids]
+        return JL.eval("not(count,df)")
 
     def evaluateParenthesis(self, argument):
 
@@ -171,16 +191,16 @@ class BooleanSearchParser:
         
         # Phrase search 
 
-        print("phrase")
-        print(argument)
+        # print("phrase")
+        # print(argument)
 
-        return [(1,0.5),(2,0.8)]
+        return JL.eval("getDf2()")
 
     def evaluateProximity(self, argument):
         
         # Proximity search 
 
-        print("proximity")
+        # print("proximity")
 
         try:
             distance = int(argument[0][0])
@@ -193,11 +213,11 @@ class BooleanSearchParser:
         if(any(term.count(' ') for term in [term1,term2])):
             raise BaseException("Proximity terms must be single words")
 
-        print("distance : " + str(distance))
-        print("term1 : " + str(term1))
-        print("term2 : " + str(term2))
+        # print("distance : " + str(distance))
+        # print("term1 : " + str(term1))
+        # print("term2 : " + str(term2))
 
-        return [(1,1)]
+        return [(1,1),(2,1),(3,1),(4,1)]
 
 
     def evaluateWord(self, argument):
@@ -205,35 +225,30 @@ class BooleanSearchParser:
         # Do search over argument
         searchReturn = True
 
-        print("ranked search")
-        print(argument)
+        # print("ranked search")
+        # print(argument)
 
-        return [(1,0.25)]
+        print("Pass1")
+
+        return JL.eval("getDf1()")
 
 
     def evaluate(self, argument):
         
-        print("evaluate")
-        print(argument)
+        # print("evaluate")
+        # print(argument)
 
         return self._methods[argument.getName()](argument)
 
     def Parse(self, query):
 
-        parsed = self._parser(query)
-
-        print("--")
-        print(parsed)
-        print("--")
-        
         return self.evaluate(self._parser(query)[0])
 
-    def GetNot(self, not_set):
-        return not not_set
-
-    def query(self, expr):
+    def query(self, expr, isSong):
 
         print(expr)
+
+        self.isSong = isSong
 
         # get top N results (skipping the first `skip` results)
         # return a list of (id, score) tuples, sorted from highest to lowest by score (e.g. [(19, 1.5), (6, 1.46), ...]
@@ -242,5 +257,7 @@ class BooleanSearchParser:
         print("results")
         print(unsorted_query_results)
         
+x = QueryParser()
 
-#print(x.query('"beef beeeeef beef" && ranked query && ("chicken") && #(fish) && (#(beans)) && (rice || "cheese")'))
+# x.query('! bean', True)
+x.query('car || "car"', True)
