@@ -9,6 +9,8 @@ from pymongo import MongoClient
 import ast
 import pymongo
 
+from preprocess import preprocess
+
 config = configparser.ConfigParser()
 config.read('settings.ini')
 
@@ -24,7 +26,8 @@ sw = []
 
 with open(sw_path) as f:
     for line in f:
-        sw.append(line.split('\n')[0])
+        for token in preprocess(line.split('\n')[0]):
+            sw.append(token)
 
 index_collection = client.ttds.invertedIndexFinal
 song_collection = client.ttds.songMetaData
