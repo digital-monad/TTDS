@@ -18,6 +18,14 @@ password = config.get('mongodb', 'password')
 uri = base_uri + username + ':' + password + '@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority'
 client = MongoClient(uri)
 
+sw_path = os.path.dirname(__file__) + os.sep + "englishST.txt"
+
+sw = []
+
+with open(sw_path) as f:
+    for line in f:
+        sw.append(line.split('\n')[0])
+
 index_collection = client.ttds.invertedIndexFinal
 song_collection = client.ttds.songMetaData
 lyric_collection = client.ttds.lyricMetaData
@@ -59,17 +67,29 @@ class DBPopulate:
         logging.info('DB flushing...')
         print("Processing...")
         for data in self.temp:
+            
+            if data['_id'] in sw:
+                print("Stop word skipped : " +str(data['_id']))
+                continue 
+
             if data['_id'] in self.stored:
                 try:
                     self.collection.update_one({'_id': data['_id']}, {'$set': data})
                 except pymongo.errors.DuplicateKeyError:
+                    print("Duplicate key error! " + str(data['_id']))
                     continue
             else:
                 try:
                     self.collection.insert_one(data)
                     self.stored.add(data['_id'])
                 except pymongo.errors.DuplicateKeyError:
-                    continue
+                    try:
+                        self.collection.update_one({'_id': data['_id']}, {'$set': data})
+                        self.stored.add(data['_id'])
+                    except pymongo.errors.DuplicateKeyError:
+                        print("DOUBLE duplicate error :( " + str(data['_id']))
+                        continue
+                        
 
         self.temp.clear()
         logging.info("DB flushed!")
