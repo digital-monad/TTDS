@@ -1,5 +1,5 @@
 from ast import Raise
-import os 
+import os
 import sys
 import logging
 import argparse
@@ -7,6 +7,7 @@ import pickle
 import configparser
 from pymongo import MongoClient
 import ast
+import pymongo
 
 config = configparser.ConfigParser()
 config.read('settings.ini')
@@ -17,7 +18,7 @@ password = config.get('mongodb', 'password')
 uri = base_uri + username + ':' + password + '@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority'
 client = MongoClient(uri)
 
-index_collection = client.ttds.invertedIndex
+index_collection = client.ttds.invertedIndexFinal
 song_collection = client.ttds.songMetaData
 lyric_collection = client.ttds.lyricMetaData
 
@@ -34,18 +35,18 @@ class DBPopulate:
             self.collection = lyric_collection
         else:
             raise BaseException("Type not valid!")
-        
+
 #        self.temp = dict()
 
     def __iterate_dir(self):
         """ It itertes all of the leaf files under the root path directory.
-        
+
         Yields:
             string -- leaf path
         """
         for file in os.listdir(self.dir):
             filename = os.fsdecode(file)
-            if filename.endswith(".pickle"): 
+            if filename.endswith(".pickle"):
                 yield os.path.join(self.dir, filename), filename
 
     def __read_pickle(self, path):
@@ -59,11 +60,17 @@ class DBPopulate:
         print("Processing...")
         for data in self.temp:
             if data['_id'] in self.stored:
-                self.collection.update_one({'_id': data['_id']}, {'$set': data})
+                try:
+                    self.collection.update_one({'_id': data['_id']}, {'$set': data})
+                except pymongo.errors.DuplicateKeyError:
+                    continue
             else:
-                self.collection.insert_one(data)
-                self.stored.add(data['_id'])
-            
+                try:
+                    self.collection.insert_one(data)
+                    self.stored.add(data['_id'])
+                except pymongo.errors.DuplicateKeyError:
+                    continue
+
         self.temp.clear()
         logging.info("DB flushed!")
 
@@ -72,5 +79,6 @@ class DBPopulate:
             self.temp = self.__read_pickle(path)
             self.__flush_db()
 
-asd = DBPopulate("../../../../../../../../disk/scratch/s1827995-indexes/","index")
-asd.write_to_db()
+        asd = DBPopulate("../../../../../../../../disk/scratch/s1827995-indexes/small/", "index")
+        asd.write_to_db()
+
