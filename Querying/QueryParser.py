@@ -1,3 +1,4 @@
+from ast import arg
 from numpy import Infinity
 from pyparsing import (
     Word,
@@ -15,8 +16,12 @@ import re
 from DBQuery import DBQuery
 
 from julia.api import Julia
+
+from preprocess import preprocess
+
 JL = Julia(compiled_modules=False)
 JL.eval('include("./setOperations.jl")')
+JL.eval('include("./search.jl")')
 
 from julia import Main
 
@@ -191,10 +196,14 @@ class QueryParser:
         
         # Phrase search 
 
-        # print("phrase")
-        # print(argument)
+        print("phrase")
+        print(argument)
+        print(list(list(zip(*preprocess(argument[0][0])[0]))[0]))
 
-        return JL.eval("getDf2()")
+        Main.terms = list(list(zip(*preprocess(argument[0][0])[0]))[0])
+        Main.isSong = self.isSong
+
+        return JL.eval("call_ps(terms,isSong)")
 
     def evaluateProximity(self, argument):
         
@@ -225,12 +234,15 @@ class QueryParser:
         # Do search over argument
         searchReturn = True
 
-        # print("ranked search")
-        # print(argument)
+        print("ranked search")
+        print(argument)
+        print(list(list(zip(*preprocess(argument[0])[0]))[0]))
+        
+        
+        Main.terms = list(list(zip(*preprocess(argument[0])[0]))[0])
+        Main.isSong = self.isSong
 
-        print("Pass1")
-
-        return JL.eval("getDf1()")
+        return JL.eval("call_BM25(terms,isSong)")
 
 
     def evaluate(self, argument):
@@ -260,4 +272,4 @@ class QueryParser:
 x = QueryParser()
 
 # x.query('! bean', True)
-x.query('car || "car"', True)
+x.query('Norwegian || "octopus garden"', True)
