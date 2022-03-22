@@ -59,72 +59,34 @@ function __cleanup(heap,tracker)
 end
 
 
-function phraseSearch(phrase::Vector{String},index, song::Bool)
-    matchingDocs = Vector{Int}() # Set of all doc ids matching the query
-    if song
-        common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
-        irrelevant = Set{String}(["_id", "song_df", "tf"])
-        reduceSet = zeros(Int,5000)
-        for song in common_songs
-            song ∈ irrelevant && continue
-            postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
-            term_no = 0
-            for term_positions in postings
-                for pos in term_positions
-                    pos - term_no < 0 && continue
-                    reduceSet[pos - term_no + 1] += 1
-                    if reduceSet[pos - term_no + 1] == length(phrase)
-                        push!(matchingDocs, parse(Int,song))
-                        break
-                    end
-                end
-                term_no += 1
-            end
-            reduceSet .= zero(Int)
-        end
-    else
-        sequenceMap = Dict{Int, Dict{Int,Vector{Int}}}() # Dictionary mapping successive terms in the phrase to their view in the index
-        for i in 1:length(phrase)
-            posting = Dict{Int, Vector{Int}}(line_id => positions for song in values(index[phrase[i]]) for (line_id, positions) in song)
-            sequenceMap[i] = i == 1 ? posting : Dict{Int,Vector{Int}}(line_id => listing for (line_id, listing) in posting if line_id ∈ keys(sequenceMap[i-1]))
-        end
-        matrixCount = Dict{Int,Int}()
-        for line_id in keys(sequenceMap[length(phrase)]) # Go through each line for which all terms appear
-            matching = false
-            for i in 1:length(phrase) # For every term in the phrase
-                for position in sequenceMap[i][line_id]
-                    updatedValue = get(matrixCount, position - i, 0) + 1
-                    if updatedValue == length(phrase)
-                        push!(matchingDocs, parse(Int,line_id))
-                        matching = true
-                        break
-                    end
-                    matrixCount[position - i] = updatedValue
-                end
-                matching && break
-            end
-        end
-    end
-    matchingDocs
-end
+"""
+    phraseSearch(phrase::Vector{String}, index::Dict, song::Bool)
 
-function ps(phrase, index, song)
-    heap = MutableBinaryMinHeap{String}()
-    tracker = Dict{String, Float64}()
+Compute n-term phrase search through index. `song` determines whether to perform
+song level or line level search. Return set of document ids.
+
+# Examples
+````jldoctest
+julia> phraseSearch(["Teenage", "wasteland"], index, false)
+{24524,32889}
+````
+"""
+function phraseSearch(phrase, index, song)
+    results = Vector{Int}()
     common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
-    irrelevant = Set{String}(["_id", "song_df", "tf"])
+    irrelevant = Set{String}(["_id", "song_df", "tf", "line_df"])
     reduceSet = zeros(Int,5000)
     if song
         for song in common_songs
             song ∈ irrelevant && continue
-            postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
+            postings = (Base.Iterators.flatten(values(delete!(index[term][song], "tf"))) for term in phrase)
             term_no = 0
             for term_positions in postings
                 for pos in term_positions
                     pos - term_no < 0 && continue
                     reduceSet[pos - term_no + 1] += 1
                     if reduceSet[pos - term_no + 1] == length(phrase)
-                        add_score(song,0,heap,tracker)
+                        push!(results, parse(Int,song))
                         break
                     end
                 end
@@ -146,7 +108,7 @@ function ps(phrase, index, song)
                         pos - term_no < 0 && continue
                         reduceSet[pos - term_no + 1] += 1
                         if reduceSet[pos - term_no + 1] == length(phrase)
-                            add_score(line,0,heap,tracker)
+                            push!(results, parse(Int,line))
                             break
                         end
                     end
@@ -156,7 +118,7 @@ function ps(phrase, index, song)
             end
         end
     end
-    DataFrame(tracker)
+    results
 end
 
 function BM25(query,isSong,index,song_metadata,lyric_metadata)
@@ -166,11 +128,11 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
     b = 0.75
     if isSong
         N = 1307152
-        for term in query
+        for term in query # SIMD vectorisation
             songs = collect(keys(index[term]))
             filter!(e->e∉["song_df","line_df","_id"],songs) # Lazy filter
             metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
-            term_docs = length([i for i in keys(index[term])]) - 3
+            term_docs = length([i for i in keys(index[term])]) - 3 # Convert list comprehension to generator or just length(keys)
             if term_docs>0
                 for song in songs
                     term_freq_in_doc = index[term][song]["tf"]
@@ -211,6 +173,75 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
     DataFrame(tracker)
 end
 
+
+function proximity(terms, proximity, index, song)
+
+    irrelevant = Set{String}(["_id", "song_df", "tf", "line_df"])
+    if length(keys(index[terms[1]])) > length(keys(index[terms[2]]))
+        shorter = keys(index[terms[2]])
+        longer = keys(index[terms[1]])
+    else
+        shorter = keys(index[terms[1]])
+        longer = keys(index[terms[2]])
+    end
+    results = Vector{Int}()
+
+    if song
+        for song in shorter
+            song ∈ irrelevant && continue
+            if song ∈ longer
+                posting1 = Base.Iterators.Stateful(Base.Iterators.flatten(values(delete!(index[terms[1]][song], "tf")))) # Positions of term 1 in song
+                posting2 = Base.Iterators.Stateful(Base.Iterators.flatten(values(delete!(index[terms[2]][song], "tf")))) # Positions of term 2 in song
+
+                matching = false
+                for pos1 in posting1
+                    matching = false
+                    for pos2 in posting2
+                        if abs(pos2 - pos1) <= proximity
+                            push!(results, parse(Int,song))
+                            matching = true
+                            break
+                        end
+                        pos2 >= pos1 && break
+                    end
+                    matching && break
+                end
+            end
+        end
+    else
+        for song in shorter
+            song ∈ irrelevant && continue
+            if song ∈ longer
+                l1 = keys(index[terms[1]][song])
+                l2 = keys(index[terms[2]][song])
+                for line in l1
+                    line == "tf" && continue
+                    if line ∈ l2
+                        # Perform linear merge over line positions
+                        positions1 = index[terms[1]][song][line]
+                        positions2 = index[terms[2]][song][line]
+                        ptr1, ptr2 = (1,1)
+                        while ptr1 <= length(positions1) && ptr2 <= length(positions2)
+                            pos1 = positions1[ptr1]
+                            pos2 = positions2[ptr2]
+                            if abs(pos1 - pos2) <= proximity
+                                push!(results, parse(Int,line))
+                                break
+                            end
+                            if pos1 - pos2 > 0 # ptr1 is pointing at a larger position
+                                ptr2 += 1
+                            else
+                                ptr1 += 1
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    results
+end
+
 function calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
     third_term = k1 * ((1-b) + b * (float(dl)/float(avgdl)))
     idf_param = log( (N-term_docs+0.5) / (term_docs+0.5) ) # Wikipedia says + 1 before taking log
@@ -231,14 +262,17 @@ end
 function main()
     batch_size = 50
 
-    terms = ["hello", "there"]
+    terms = ["complexion", "baton"]
     collection = establishConnection()
     index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
 
     songMetaData = collection[2]
     lyricMetaData = collection[3]
 
-    tracker = @time BM25(terms, true, index, songMetaData, lyricMetaData)
+    # tracker = @time BM25(terms, true, index, songMetaData, lyricMetaData)
+    irrrelevant = Set{String}(["song_df","line_df","_id"])
+    # @time (querier(songMetaData, song_id) for song_id in Base.Iterators.filter!(e -> e ∉ irrrelevant, keys(index["complexion"]))) # Song ids
+    length(songMetaData)
 
     # tracker = @time ps(terms, index, true)
 

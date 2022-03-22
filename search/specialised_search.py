@@ -162,7 +162,7 @@ index = load_pickle("Test_Lyrics_Eminem_index")
 song_metadata = load_pickle("Test_Lyrics_Eminem_song_metadata")
 lyric_metadata = load_pickle("Test_Lyrics_Eminem_line_metadata")
 
-query = "ethan skateboard"
+query = "billie jean is not my lover she's just a girl"
 phrase = [token for token, pos in preprocess(query)[0]]
 print(phrase)
 s = specialised()

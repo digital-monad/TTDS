@@ -78,12 +78,12 @@ end
 function ps(phrase, index, song)
     results = Vector{Int}()
     common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
-    irrelevant = Set{String}(["_id", "song_df", "tf"])
+    irrelevant = Set{String}(["_id", "song_df", "tf", "line_df"])
     reduceSet = zeros(Int,5000)
     if song
         for song in common_songs
             song ∈ irrelevant && continue
-            postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
+            postings = (Base.Iterators.flatten(values(delete!(index[term][song], "tf"))) for term in phrase)
             term_no = 0
             for term_positions in postings
                 for pos in term_positions
@@ -142,15 +142,15 @@ end
 function main()
     # index = load_pickle("search/Test_Lyrics_Eminem_index")
     # index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
-    song = false
-    terms = ["help", "me"]
+    song = true
+    terms = ["billi", "jean", "is", "not", "my", "lover", "she", "s", "just", "a", "girl"]
     # @benchmark phraseSearch($terms, $index, $song)
 
     collection = establishConnection()
     index = Dict(term => Mongoc.as_dict(query(collection, term)) for term in terms)
     # index = convert(Dict{String, Dict{String, Dict{String,Vector{Int}}}}, index)
-    @benchmark ps($terms, $index, $song)
-    # ps(terms, index, song)
+    # @benchmark ps($terms, $index, $song)
+    ps(terms, index, song)
     # keys(Mongoc.as_dict(query(collection, "rain")))
 end
 main()

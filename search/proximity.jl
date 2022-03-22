@@ -30,19 +30,6 @@ function prox(terms, proximity, index, song)
             if song ∈ longer
                 posting1 = Base.Iterators.Stateful(Base.Iterators.flatten(values(delete!(index[terms[1]][song], "tf")))) # Positions of term 1 in song
                 posting2 = Base.Iterators.Stateful(Base.Iterators.flatten(values(delete!(index[terms[2]][song], "tf")))) # Positions of term 2 in song
-                # Given 2 lists of positions, determine whether song matches query
-                # println(song)
-                # println("Love")
-                # for i in posting1
-                #     println(i)
-                # end
-                # println("Complexion")
-                # for i in posting2
-                #     println(i)
-                # end
-                # println()
-
-
 
                 matching = false
                 for pos1 in posting1
@@ -57,48 +44,6 @@ function prox(terms, proximity, index, song)
                     end
                     matching && break
                 end
-
-                # λ1 = iterate(posting1)
-                # Linear merge postings
-                # while λ1 !== nothing && λ2 !== nothing
-                #     pos1, state1 = λ1
-                #     pos2, state2 = λ2
-                #     if abs(pos1 - pos2) <= proximity
-                #         push!(results, song)
-                #         break
-                #     end
-                #     if pos1 - pos2 > 0 # ptr1 is pointing at a larger position
-                #         λ2 = iterate(posting2, state2)
-                #     else
-                #         λ1 = iterate(posting1, state1)
-                #     end
-                # end
-                # ************************
-                # finished = false
-                # ℵ = Base.Iterators.peel(posting2)
-                # pos2, posting2 = ℵ
-                # for pos1 in posting1
-                #     if abs(pos1 - pos2) <= proximity
-                #         push!(results, parse(Int,song))
-                #         finished = true
-                #         break
-                #     end
-                #     while pos2 < pos1
-                #         if ℵ === nothing
-                #             finished = true
-                #             break
-                #         end
-                #         pos2, posting2 = ℵ
-                #         if abs(pos1 - pos2) <= proximity
-                #             push!(results, parse(Int,song))
-                #             finished = true
-                #             break
-                #         end
-                #         ℵ = Base.Iterators.peel(posting2)
-                #     end
-                #     finished && break
-                # end
-                # **************************
             end
         end
     else
@@ -108,7 +53,7 @@ function prox(terms, proximity, index, song)
                 l1 = keys(index[terms[1]][song])
                 l2 = keys(index[terms[2]][song])
                 for line in l1
-                    line ∈ irrelevant && continue
+                    line == "tf" && continue
                     if line ∈ l2
                         # Perform linear merge over line positions
                         positions1 = index[terms[1]][song][line]
