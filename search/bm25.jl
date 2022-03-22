@@ -5,6 +5,7 @@ using DataStructures
 using Traceur
 using Mongoc
 using BSON
+using DataFrames
 
 py"""
 import pickle
@@ -57,28 +58,124 @@ function __cleanup(heap,tracker)
     end
 end
 
-function songQuery(collection, term)
-    doc = Mongoc.find_one(collection, Mongoc.BSON("""{ "_id" : "$term" }"""))
+
+function phraseSearch(phrase::Vector{String},index, song::Bool)
+    matchingDocs = Vector{Int}() # Set of all doc ids matching the query
+    if song
+        common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
+        irrelevant = Set{String}(["_id", "song_df", "tf"])
+        reduceSet = zeros(Int,5000)
+        for song in common_songs
+            song ∈ irrelevant && continue
+            postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
+            term_no = 0
+            for term_positions in postings
+                for pos in term_positions
+                    pos - term_no < 0 && continue
+                    reduceSet[pos - term_no + 1] += 1
+                    if reduceSet[pos - term_no + 1] == length(phrase)
+                        push!(matchingDocs, parse(Int,song))
+                        break
+                    end
+                end
+                term_no += 1
+            end
+            reduceSet .= zero(Int)
+        end
+    else
+        sequenceMap = Dict{Int, Dict{Int,Vector{Int}}}() # Dictionary mapping successive terms in the phrase to their view in the index
+        for i in 1:length(phrase)
+            posting = Dict{Int, Vector{Int}}(line_id => positions for song in values(index[phrase[i]]) for (line_id, positions) in song)
+            sequenceMap[i] = i == 1 ? posting : Dict{Int,Vector{Int}}(line_id => listing for (line_id, listing) in posting if line_id ∈ keys(sequenceMap[i-1]))
+        end
+        matrixCount = Dict{Int,Int}()
+        for line_id in keys(sequenceMap[length(phrase)]) # Go through each line for which all terms appear
+            matching = false
+            for i in 1:length(phrase) # For every term in the phrase
+                for position in sequenceMap[i][line_id]
+                    updatedValue = get(matrixCount, position - i, 0) + 1
+                    if updatedValue == length(phrase)
+                        push!(matchingDocs, parse(Int,line_id))
+                        matching = true
+                        break
+                    end
+                    matrixCount[position - i] = updatedValue
+                end
+                matching && break
+            end
+        end
+    end
+    matchingDocs
 end
 
-function BM25(query, isSong,index,song_metadata,lyric_metadata)
+function ps(phrase, index, song)
     heap = MutableBinaryMinHeap{String}()
     tracker = Dict{String, Float64}()
-    k1 = 1.5 # Constants
-    b = 0.75 # Constants
+    common_songs = mapreduce(token -> keys(index[token]), ∩, phrase)
+    irrelevant = Set{String}(["_id", "song_df", "tf"])
+    reduceSet = zeros(Int,5000)
+    if song
+        for song in common_songs
+            song ∈ irrelevant && continue
+            postings = (Base.Iterators.flatten(values(index[term][song])) for term in phrase)
+            term_no = 0
+            for term_positions in postings
+                for pos in term_positions
+                    pos - term_no < 0 && continue
+                    reduceSet[pos - term_no + 1] += 1
+                    if reduceSet[pos - term_no + 1] == length(phrase)
+                        add_score(song,0,heap,tracker)
+                        break
+                    end
+                end
+                term_no += 1
+            end
+            reduceSet .= zero(Int)
+        end
+    else
+        for song in common_songs
+            song ∈ irrelevant && continue
+            # Go through the lines that are common within each song
+            common_lines = mapreduce(token -> keys(index[token][song]), ∩, phrase)
+            for line in common_lines
+                line == "tf" && continue
+                postings = (index[token][song][line] for token in phrase)
+                term_no = 0
+                for token in postings
+                    for pos in token
+                        pos - term_no < 0 && continue
+                        reduceSet[pos - term_no + 1] += 1
+                        if reduceSet[pos - term_no + 1] == length(phrase)
+                            add_score(line,0,heap,tracker)
+                            break
+                        end
+                    end
+                    term_no += 1
+                end
+                reduceSet .= zero(Int)
+            end
+        end
+    end
+    DataFrame(tracker)
+end
+
+function BM25(query,isSong,index,song_metadata,lyric_metadata)
+    heap = MutableBinaryMinHeap{String}()
+    tracker = Dict{String, Float64}()
+    k1 = 1.5
+    b = 0.75
     if isSong
         N = 1307152
         for term in query
             songs = collect(keys(index[term]))
             filter!(e->e∉["song_df","line_df","_id"],songs)
-            metadatas = Dict(song => Mongoc.as_dict(songQuery(song_metadata, song)) for song in songs)
+            metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
             term_docs = length([i for i in keys(index[term])]) - 3
             if term_docs>0
                 for song in songs
                     term_freq_in_doc = index[term][song]["tf"]
                     dl = metadatas[song]["length"]
-                    avgdl = 1000 #change this
-                    score = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
+                    score = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, 1000)
                     add_score(song,score,heap,tracker)
                 end
             end
@@ -101,8 +198,7 @@ function BM25(query, isSong,index,song_metadata,lyric_metadata)
                         term_freq_in_doc = length(index[term][song][lyric])
                         dl = lyric_metadata[lyric]["length"]
                         # We are now calculating BM25 for a given term in query for a given song
-                        avgdl = 10 #change this
-                        score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
+                        score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, 10)
                         # We now add this to 'results_dict', which will already contain somevalue if previous term apeared in given song
                         add_score(lyric,score_term,heap,tracker)
                     end
@@ -110,8 +206,7 @@ function BM25(query, isSong,index,song_metadata,lyric_metadata)
             end
         end
     end
-    #convert this to dataframe
-    return tracker
+    DataFrame(tracker)
 end
 
 function calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
@@ -127,7 +222,7 @@ function establishConnection()
     return database["invertedIndexFinal"],database["songMetaData"],database["lyricMetaData"]
 end
 
-function query(collection, term)
+function querier(collection, term)
     doc = Mongoc.find_one(collection, Mongoc.BSON("""{ "_id" : "$term" }"""))
 end
 
@@ -137,12 +232,14 @@ function main()
 
     terms = ["hello"]
     collection = establishConnection()
-    index = Dict(term => Mongoc.as_dict(query(collection[1], term)) for term in terms)
+    index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
 
     songMetaData = collection[2]
     lyricMetaData = collection[3]
 
-    tracker = @time BM25(terms, true,index,songMetaData,lyricMetaData)
+    tracker = @time BM25(terms, true, index, songMetaData, lyricMetaData)
+
+    tracker = @time ps(terms, index, true)
 
     # print("Results:\n")
     # print(tracker)
