@@ -21,42 +21,62 @@ load_pickle = py"load_pickle"
 
 using DataStructures
 
-function add_score(id,score,heap,tracker)
+function add_score(id,score,heap,tracker,handles,scores)
     max_size = 100000
-    if id in keys(tracker)
-        score += tracker[id]
+
+    if id in keys(handles)
+        score += scores[id]
     end
-    if length(heap) >= max_size && score <= tracker[first(heap)]
-        # discarded
-        return
+
+    scores[id] = score
+
+    if length(heap) >= max_size
+        # discarded attempt
+        if score <= first(heap)
+            return
+        end
+        # Then we remove the smallest thing in heap
+        ~, i = top_with_handle(heap)
+        delete!(heap,i)
+        delete!(tracker, handles[id])
+        delete!(handles, id)
+
     end
-    __remove_entry_if_exists(heap,tracker, id)
-    tracker[id] = score
-    push!(heap, id)
-    __cleanup(heap, tracker)
+
+    if id in keys(handles)
+        update!(heap, handles[id], score)
+
+    else
+        handles[id] = push!(heap, score)
+        tracker[handles[id]] = id
+    end
+
 end
 
-function __remove_entry_if_exists(heap,tracker, id)
-    if id in keys(tracker)
-        delete!(tracker, id)
-        delete!(heap, id)
-    end
-end
+# function __remove_entry_if_exists(heap,tracker, handles, id)
+#     if id in keys(tracker)
+#         delete!(heap, tracker[id][0])
+#         delete!(handles, tracker[id][0])
+#         delete!(tracker, id)
+#     end
+# end
 
-function __cleanup(heap,tracker)
-    max_size = 100000
-    while true
-        if length(heap) == 0
-            break
-        end
-        if length(heap) > max_size  # here we know that id is not removed, but we have exceeded the size limit
-            id = pop!(heap)
-            delete!(tracker, id)
-            continue
-        end
-        break  # nothing was removed, so the cleanup has finished. Exit the loop
-    end
-end
+# function __cleanup(heap,tracker,handles)
+#     max_size = 100000
+#     while true
+#         if length(heap) == 0
+#             break
+#         end
+#         if length(heap) > max_size  # here we know that id is not removed, but we have exceeded the size limit
+#             ~, i = top_with_handle(heap)
+#             delete!(heap,i)
+#             delete!(tracker, handles[i])
+#             delete!(handles, i)
+#             continue
+#         end
+#         break  # nothing was removed, so the cleanup has finished. Exit the loop
+#     end
+# end
 
 
 """
@@ -122,8 +142,12 @@ function phraseSearch(phrase, index, song)
 end
 
 function BM25(query,isSong,index,song_metadata,lyric_metadata)
-    heap = MutableBinaryMinHeap{String}()
-    tracker = Dict{String, Float64}()
+
+    heap = MutableBinaryMinHeap{Float64}()
+    tracker = Dict{Int64, String}()
+    scores = Dict{String, Float64}()
+    handles = Dict{String, Int64}()
+
     k1 = 1.5
     b = 0.75
     if isSong
@@ -138,7 +162,7 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
                     term_freq_in_doc = index[term][song]["tf"]
                     dl = metadatas[song]["length"]
                     score = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, 1000)
-                    add_score(song,score,heap,tracker)
+                    add_score(song,score,heap,tracker,handles,scores)
                 end
             end
         end
@@ -163,14 +187,24 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
                         term_freqs_in_doc = length(index[term][song][lyric])
                         dl = metadatas[lyric]["length"]
                         score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, 10)
-                        add_score(lyric,score_term,heap,tracker)
+                        add_score(lyric,score_term,heap,tracker,handles,scores)
                     end
                 end
             end
         end
     end
     print_timer()
-    DataFrame(tracker)
+
+    df = DataFrame(scores)
+
+    colnames = names(df)
+
+    dfl = stack(df, colnames)
+
+    # sort!(dfl, rev=true, :value)
+
+    dfl
+
 end
 
 
@@ -257,6 +291,12 @@ end
 
 function querier(collection, term)
     doc = Mongoc.find_one(collection, Mongoc.BSON("""{ "_id" : "$term" }"""))
+
+    if doc == nothing
+        return Mongoc.BSON("{}")
+    end
+
+    return doc
 end
 
 function main()
@@ -299,4 +339,3 @@ function main()
     # print("Results:\n")
     # print(tracker)
 end
-main()
