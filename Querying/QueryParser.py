@@ -63,7 +63,7 @@ class QueryParser:
 
         alphabet = alphanums + ' '
 
-        notKeyword = Keyword("!") 
+        notKeyword = Keyword("~") 
 
         andKeyword = Keyword("&&")
 
@@ -171,12 +171,11 @@ class QueryParser:
 
     def evaluateNot(self, argument):
 
+        print("NOT")
         print(argument)
         
         Main.df = self.evaluate(argument[0])
         
-        print("Pass2")
-
         if(self.isSong):
             Main.count = self.songCount
         else:
@@ -278,8 +277,17 @@ class QueryParser:
 
         print("results")
         print(unsorted_query_results)
-        
-x = QueryParser()
 
-# x.query('! bean', True)
-x.query('"bracket" && #(46, Ethan, Skateboard)', True)
+        Main.unsorted_query_results = unsorted_query_results
+
+        res = JL.eval("@time sort_and_convert(unsorted_query_results)")
+
+        print("IN PYTHON")
+        print(res)
+
+        return res
+        
+# x = QueryParser()
+
+# # x.query('! bean', True)
+# x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)

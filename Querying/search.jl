@@ -156,13 +156,14 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
             end
         end
     end
-    print_timer()
 
     df = DataFrame(scores)
 
     colnames = names(df)
 
     dfl = stack(df, colnames)
+
+    dfl = rename(dfl, :variable => :id, :value => :score)
 
     dfl
 

@@ -41,14 +41,11 @@ function not(size, df)
     return antijoin(new_df, df; on= :id)
 end 
 
-function getDf1()
-    df1 = DataFrame(id=[1,2,3],score=[0.1,0.2,0.3])
-    return df1
+function sort_and_convert(unsorted_query_results)
+    
+    sort!(unsorted_query_results, rev=true, :score)
+    
+    print(unsorted_query_results)
 
-end 
-
-function getDf2()
-    df1 = DataFrame(id=[3,4,5],score=[0.1,0.2,0.3])
-    return df1
-
+    return PyObject(unsorted_query_results[!,:id])
 end 
