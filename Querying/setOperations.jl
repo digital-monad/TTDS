@@ -8,9 +8,9 @@ function and(df1, df2)
     fullDf = innerjoin(rename(df1, :score => :z1), rename(df2, :score => :z2); on= :id) 
 
     if isempty(fullDf)
-        return DataFrame(id=nothing,score=nothing)
+        return DataFrame(id=[],score=[])
     end
-    
+
     fullDf.score = sum(eachcol(fullDf[!, r"z"]))
     
     max = maximum(fullDf[!,:score]) 
