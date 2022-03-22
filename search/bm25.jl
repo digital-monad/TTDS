@@ -6,6 +6,7 @@ using Traceur
 using Mongoc
 using BSON
 using DataFrames
+using TimerOutputs
 
 py"""
 import pickle
@@ -160,6 +161,7 @@ function ps(phrase, index, song)
 end
 
 function BM25(query,isSong,index,song_metadata,lyric_metadata)
+    reset_timer!()
     heap = MutableBinaryMinHeap{String}()
     tracker = Dict{String, Float64}()
     k1 = 1.5
@@ -169,7 +171,7 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
         for term in query
             songs = collect(keys(index[term]))
             filter!(e->e∉["song_df","line_df","_id"],songs)
-            metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
+            @timeit "1" metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
             term_docs = length([i for i in keys(index[term])]) - 3
             if term_docs>0
                 for song in songs
@@ -182,30 +184,32 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
         end
     else
         N = 60000000
-        for term in query  # Iterates each term in query
+        for term in query
             term_docs = 0
+            docs = Vector{String}()
+            metadatas = Dict{Any,Any}()
             if term in keys(index)
-                for song in keys(index[term]) # Iterates each song for this given term
-                    term_docs += length(keys(index[term][song])) # Number of lyrics term appears ins
+                for song in keys(index[term])
+                    term_docs += length(keys(index[term][song]))
+                    vcat(docs, collect(keys(index[term][song])))
                 end
             end
             if term_docs>0
-                for song in keys(index[term]) # Iterates each song for this given term
-                    term_docs += length(keys(index[term][song])) # Number of lyrics term appears ins
-                end
                 for song in keys(index[term])
+                    filter!(e->e∉["tf"],docs)
+                    @timeit "1" metadatas = Dict(lyric => Mongoc.as_dict(querier(lyric_metadata, lyric)) for lyric in docs)
                     for lyric in keys(index[term][song])
-                        term_freq_in_doc = length(index[term][song][lyric])
-                        dl = lyric_metadata[lyric]["length"]
-                        # We are now calculating BM25 for a given term in query for a given song
+                        docs = collect(keys(index[term][song]))
+                        term_freqs_in_doc = length(index[term][song][lyric])
+                        dl = metadatas[lyric]["length"]
                         score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, 10)
-                        # We now add this to 'results_dict', which will already contain somevalue if previous term apeared in given song
                         add_score(lyric,score_term,heap,tracker)
                     end
                 end
             end
         end
     end
+    print_timer()
     DataFrame(tracker)
 end
 
@@ -228,7 +232,6 @@ end
 
 function main()
     batch_size = 50
-    avgdl = 10
 
     terms = ["hello"]
     collection = establishConnection()
@@ -237,7 +240,7 @@ function main()
     songMetaData = collection[2]
     lyricMetaData = collection[3]
 
-    tracker = @time BM25(terms, true, index, songMetaData, lyricMetaData)
+    tracker = @time BM25(terms, false, index, songMetaData, lyricMetaData)
 
     tracker = @time ps(terms, index, true)
 
