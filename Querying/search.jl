@@ -245,10 +245,10 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
 
     dfl = stack(df, colnames)
 
-    colnames = ["id","score"]
+    print(dfl)
 
-    names!(dfl, Symbol.(colnames))
-
+    dfl = rename(dfl, :variable => :id, :value => :score)
+    
     # sort!(dfl, rev=true, :value)
 
     print(dfl)

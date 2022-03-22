@@ -272,4 +272,4 @@ class QueryParser:
 x = QueryParser()
 
 # x.query('! bean', True)
-x.query('Norwegian || "octopus garden"', True)
+x.query('"Grooving" && "Come Together"', True)
