@@ -13,6 +13,7 @@ load_pickle = py"load_pickle"
 
 function prox(terms, proximity, index, song)
 
+    irrelevant = Set{String}(["_id", "song_df", "tf", "line_df"])
     if length(keys(index[terms[1]])) > length(keys(index[terms[2]]))
         shorter = keys(index[terms[2]])
         longer = keys(index[terms[1]])
@@ -24,6 +25,7 @@ function prox(terms, proximity, index, song)
 
     if song
         for song in shorter
+            song ∈ irrelevant && continue
             if song ∈ longer
                 posting1 = Base.Iterators.flatten(values(index[terms[1]][song])) # Positions of term 1 in song
                 posting2 = Base.Iterators.flatten(values(index[terms[2]][song])) # Positions of term 2 in song
@@ -47,7 +49,7 @@ function prox(terms, proximity, index, song)
                 pos2, posting2 = ℵ
                 for pos1 in posting1
                     if abs(pos1 - pos2) <= proximity
-                        push!(results, song)
+                        push!(results, parse(Int,song))
                         finished = true
                         break
                     end
@@ -58,7 +60,7 @@ function prox(terms, proximity, index, song)
                         end
                         pos2, posting2 = ℵ
                         if abs(pos1 - pos2) <= proximity
-                            push!(results, song)
+                            push!(results, parse(Int,song))
                             finished = true
                             break
                         end
@@ -70,10 +72,12 @@ function prox(terms, proximity, index, song)
         end
     else
         for song in shorter
+            song ∈ irrelevant && continue
             if song ∈ longer
                 l1 = keys(index[terms[1]][song])
                 l2 = keys(index[terms[2]][song])
                 for line in l1
+                    line ∈ irrelevant && continue
                     if line ∈ l2
                         # Perform linear merge over line positions
                         positions1 = index[terms[1]][song][line]
@@ -83,7 +87,7 @@ function prox(terms, proximity, index, song)
                             pos1 = positions1[ptr1]
                             pos2 = positions2[ptr2]
                             if abs(pos1 - pos2) <= proximity
-                                push!(results, line)
+                                push!(results, parse(Int,line))
                                 break
                             end
                             if pos1 - pos2 > 0 # ptr1 is pointing at a larger position
@@ -101,20 +105,29 @@ function prox(terms, proximity, index, song)
 end
 
 
+function establishConnection()
+    client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority&tlsCAFile=/usr/local/etc/openssl@1.1/cert.pem")
+    database = client["ttds"]
+    database["invertedIndexFinal"]
+end
+
+
+function query(collection, term)
+    doc = Mongoc.find_one(collection, Mongoc.BSON("""{ "_id" : "$term" }"""))
+end
+
+
 function main()
-    index = load_pickle("search/Test_Lyrics_Eminem_index")
-    index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
-    line_metadata = load_pickle("search/Test_Lyrics_Eminem_line_metadata")
-    song_metadata = load_pickle("search/Test_Lyrics_Eminem_song_metadata")
-    proximity = 6
+    # index = load_pickle("search/Test_Lyrics_Eminem_index")
+    # index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
     song = true
-    terms = ["hospit", "overdos"]
-    # @code_warntype prox(["on", "you"], 3, index, false)
+    terms = ["the", "and"]
+    proximity = 2
+    # @benchmark phraseSearch($terms, $index, $song)
+
+    collection = establishConnection()
+    index = Dict(term => Mongoc.as_dict(query(collection, term)) for term in terms)
+    prox(terms, proximity, index, song)
     # @benchmark prox($terms, $proximity, $index, $song)
-    for id in prox(terms, proximity, index, song)
-        # println(line_metadata[id]["text"])
-        println(song_metadata[id]["title"])
-    end
-    # @trace(prox(terms, proximity, index, song), modules=[Main])
 end
 main()
