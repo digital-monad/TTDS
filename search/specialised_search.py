@@ -162,9 +162,9 @@ index = load_pickle("Test_Lyrics_Eminem_index")
 song_metadata = load_pickle("Test_Lyrics_Eminem_song_metadata")
 lyric_metadata = load_pickle("Test_Lyrics_Eminem_line_metadata")
 
-query = "on you"
+query = "good"
 phrase = [token for token, pos in preprocess(query)[0]]
-
+print(phrase)
 s = specialised()
 t1 = time.time()
 results = s.proximity_search(phrase, 3, index, song = True)
