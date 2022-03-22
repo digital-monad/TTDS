@@ -26,8 +26,12 @@
         <div class="col m4">
           <div class="card">
             <div class="card-image">
+              {% if d.image_url %}
+              <img src="{{ d.image_url }}">
+              {% else %}
               <img src="{{ url_for('static', filename='default_song_image.jpg') }}">
-              <span class="card-title">#{{ d.song_id }}</span>
+              {% endif %}
+              <span class="card-title">#{{ d._id }}</span>
             </div>
             <div class="card-content">
                 <h5>Title: {{ d.title }}</h5>
@@ -48,15 +52,21 @@
     </div>
 </div>
 
+<!-- Routing embedded for search by songs -->
+{% if search_by_songs_toggle == 'on' %}
 <div class="pagination-div">
   <p id="pagination-text">Page: {{ page }}</p>
   <ul class="pagination">
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=1, q='', artist=artist, album=album, year=year) }}">1</a></li>
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2, q='', artist=artist, album=album, year=year) }}">2</a></li>
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3, q='', artist=artist, album=album, year=year) }}">3</a></li>
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4, q='', artist=artist, album=album, year=year) }}">4</a></li>
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, q='', artist=artist, album=album, year=year) }}">5</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=1, sbs='on', q='', artist=artist, album=album, year=year) }}">1</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2, sbs='on', q='', artist=artist, album=album, year=year) }}">2</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3, sbs='on', q='', artist=artist, album=album, year=year) }}">3</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4, sbs='on', q='', artist=artist, album=album, year=year) }}">4</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, sbs='on', q='', artist=artist, album=album, year=year) }}">5</a></li>
   </ul>  
 </div>
+{% endif %}
+
+<!-- Routing embedded for search by lyrics -->
+
 
 {% endblock %}

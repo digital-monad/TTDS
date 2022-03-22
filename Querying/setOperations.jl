@@ -1,3 +1,6 @@
+using Pkg
+pkg"add DataFrames"
+
 using DataFrames
 
 function and(df1, df2)

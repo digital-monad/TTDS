@@ -11,9 +11,9 @@ from pyparsing import (
     oneOf,
 )
 
-import re 
-
-from DBQuery import DBQuery
+import re, os, sys
+sys.path.insert(0, './QueryParser') 
+import DBQuery as dbq
 
 from julia.api import Julia
 
@@ -41,7 +41,7 @@ class QueryParser:
             "word": self.evaluateWord
         }
 
-        self.connection = DBQuery()
+        self.connection = dbq.DBQuery()
         self.songCount = self.connection.countSongs()
         self.lyricCount = self.connection.countLyrics()
         self._parser = self.parser()
