@@ -61,12 +61,12 @@ function songQuery(collection, term)
     doc = Mongoc.find_one(collection, Mongoc.BSON("""{ "_id" : "$term" }"""))
 end
 
-function BM25(query, search_type,index,song_metadata,lyric_metadata)
+function BM25(query, isSong,index,song_metadata,lyric_metadata)
     heap = MutableBinaryMinHeap{String}()
     tracker = Dict{String, Float64}()
     k1 = 1.5 # Constants
     b = 0.75 # Constants
-    if search_type == "song"
+    if isSong
         N = 1307152
         for term in query
             songs = collect(keys(index[term]))
@@ -83,7 +83,7 @@ function BM25(query, search_type,index,song_metadata,lyric_metadata)
                 end
             end
         end
-    elseif search_type == "lyric"
+    else
         N = 60000000
         for term in query  # Iterates each term in query
             term_docs = 0
@@ -142,7 +142,7 @@ function main()
     songMetaData = collection[2]
     lyricMetaData = collection[3]
 
-    tracker = @time BM25(terms, "song",index,songMetaData,lyricMetaData)
+    tracker = @time BM25(terms, true,index,songMetaData,lyricMetaData)
 
     # print("Results:\n")
     # print(tracker)
