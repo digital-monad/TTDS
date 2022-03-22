@@ -1,6 +1,5 @@
 using PyCall
 using BenchmarkTools
-using SparseArrays
 using DataStructures
 using Traceur
 using Mongoc
@@ -161,7 +160,6 @@ function ps(phrase, index, song)
 end
 
 function BM25(query,isSong,index,song_metadata,lyric_metadata)
-    reset_timer!()
     heap = MutableBinaryMinHeap{String}()
     tracker = Dict{String, Float64}()
     k1 = 1.5
@@ -170,8 +168,8 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
         N = 1307152
         for term in query
             songs = collect(keys(index[term]))
-            filter!(e->e∉["song_df","line_df","_id"],songs)
-            @timeit "1" metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
+            filter!(e->e∉["song_df","line_df","_id"],songs) # Lazy filter
+            metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
             term_docs = length([i for i in keys(index[term])]) - 3
             if term_docs>0
                 for song in songs
@@ -233,16 +231,16 @@ end
 function main()
     batch_size = 50
 
-    terms = ["hello"]
+    terms = ["hello", "there"]
     collection = establishConnection()
     index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
 
     songMetaData = collection[2]
     lyricMetaData = collection[3]
 
-    tracker = @time BM25(terms, false, index, songMetaData, lyricMetaData)
+    tracker = @time BM25(terms, true, index, songMetaData, lyricMetaData)
 
-    tracker = @time ps(terms, index, true)
+    # tracker = @time ps(terms, index, true)
 
     # print("Results:\n")
     # print(tracker)
@@ -267,3 +265,4 @@ function main()
     # print("Results:\n")
     # print(tracker)
 end
+main()

@@ -1,6 +1,7 @@
 using PyCall
 using BenchmarkTools
 using Traceur
+using Mongoc
 
 py"""
 import pickle
@@ -27,8 +28,36 @@ function prox(terms, proximity, index, song)
         for song in shorter
             song ∈ irrelevant && continue
             if song ∈ longer
-                posting1 = Base.Iterators.flatten(values(index[terms[1]][song])) # Positions of term 1 in song
-                posting2 = Base.Iterators.flatten(values(index[terms[2]][song])) # Positions of term 2 in song
+                posting1 = Base.Iterators.Stateful(Base.Iterators.flatten(values(delete!(index[terms[1]][song], "tf")))) # Positions of term 1 in song
+                posting2 = Base.Iterators.Stateful(Base.Iterators.flatten(values(delete!(index[terms[2]][song], "tf")))) # Positions of term 2 in song
+                # Given 2 lists of positions, determine whether song matches query
+                # println(song)
+                # println("Love")
+                # for i in posting1
+                #     println(i)
+                # end
+                # println("Complexion")
+                # for i in posting2
+                #     println(i)
+                # end
+                # println()
+
+
+
+                matching = false
+                for pos1 in posting1
+                    matching = false
+                    for pos2 in posting2
+                        if abs(pos2 - pos1) <= proximity
+                            push!(results, parse(Int,song))
+                            matching = true
+                            break
+                        end
+                        pos2 >= pos1 && break
+                    end
+                    matching && break
+                end
+
                 # λ1 = iterate(posting1)
                 # Linear merge postings
                 # while λ1 !== nothing && λ2 !== nothing
@@ -44,30 +73,32 @@ function prox(terms, proximity, index, song)
                 #         λ1 = iterate(posting1, state1)
                 #     end
                 # end
-                finished = false
-                ℵ = Base.Iterators.peel(posting2)
-                pos2, posting2 = ℵ
-                for pos1 in posting1
-                    if abs(pos1 - pos2) <= proximity
-                        push!(results, parse(Int,song))
-                        finished = true
-                        break
-                    end
-                    while pos2 < pos1
-                        if ℵ === nothing
-                            finished = true
-                            break
-                        end
-                        pos2, posting2 = ℵ
-                        if abs(pos1 - pos2) <= proximity
-                            push!(results, parse(Int,song))
-                            finished = true
-                            break
-                        end
-                        ℵ = Base.Iterators.peel(posting2)
-                    end
-                    finished && break
-                end
+                # ************************
+                # finished = false
+                # ℵ = Base.Iterators.peel(posting2)
+                # pos2, posting2 = ℵ
+                # for pos1 in posting1
+                #     if abs(pos1 - pos2) <= proximity
+                #         push!(results, parse(Int,song))
+                #         finished = true
+                #         break
+                #     end
+                #     while pos2 < pos1
+                #         if ℵ === nothing
+                #             finished = true
+                #             break
+                #         end
+                #         pos2, posting2 = ℵ
+                #         if abs(pos1 - pos2) <= proximity
+                #             push!(results, parse(Int,song))
+                #             finished = true
+                #             break
+                #         end
+                #         ℵ = Base.Iterators.peel(posting2)
+                #     end
+                #     finished && break
+                # end
+                # **************************
             end
         end
     else
@@ -121,13 +152,14 @@ function main()
     # index = load_pickle("search/Test_Lyrics_Eminem_index")
     # index = convert(Dict{String, Dict{Int,Dict{Int,Vector{Int}}}}, index)
     song = true
-    terms = ["the", "and"]
-    proximity = 2
+    terms = ["ethan", "skateboard"]
+    proximity = 46
     # @benchmark phraseSearch($terms, $index, $song)
 
     collection = establishConnection()
     index = Dict(term => Mongoc.as_dict(query(collection, term)) for term in terms)
     prox(terms, proximity, index, song)
     # @benchmark prox($terms, $proximity, $index, $song)
+    # index["love"]["179650"]
 end
 main()
