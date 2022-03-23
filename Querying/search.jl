@@ -121,11 +121,7 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
         for term in query # SIMD vectorisation
             songs = collect(keys(index[term]))
             filter!(e->e∉["song_df","line_df","_id"],songs) # Lazy filter
-<<<<<<< HEAD
             metadatas = Dict(song => song_metadata[song] for song in songs)
-=======
-            metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
->>>>>>> dc7d791a3b67a117736f886822328016a0696ba3
             term_docs = length([i for i in keys(index[term])]) - 3 # Convert list comprehension to generator or just length(keys)
             if term_docs>0
                 for song in songs
