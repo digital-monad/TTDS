@@ -1,4 +1,4 @@
-<!-- CURRENTLY SHOULD DISPLAY RESULTS -->
+<!-- DISPLAYS SONG RESULTS -->
 
 {% extends 'base.html' %}
 {% block title %}Index{% endblock %}
@@ -53,7 +53,6 @@
 </div>
 
 <!-- Routing embedded for search by songs -->
-{% if search_by_songs_toggle == 'on' %}
 <div class="pagination-div">
   <p id="pagination-text">Page: {{ page }}</p>
   <ul class="pagination">
@@ -64,9 +63,5 @@
       <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, sbs='on', q='', artist=artist, album=album, year=year) }}">5</a></li>
   </ul>  
 </div>
-{% endif %}
-
-<!-- Routing embedded for search by lyrics -->
-
 
 {% endblock %}

@@ -292,3 +292,4 @@ x = QueryParser()
 # # x.query('! bean', True)
 #x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
 x.query("push",True)
+

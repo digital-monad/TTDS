@@ -1,0 +1,79 @@
+<!-- DISPLAYS SONGS BASED ON SONG LYRICS -->
+
+{% extends 'base.html' %}
+{% block title %}Index{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="../static/css/search.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="input-group">
+            <a href="javascript:history.back()">
+                <img id="back-button" src="{{ url_for('static', filename='back_arrow.png') }}"/>
+            </a>
+            <span id="search-results-title-header" class="input-group-append">
+                Song Lyrics Search Engine
+            </span>
+        </div>
+        {% if data | length() > 0 %}
+        {% for d in data %}
+
+        <div class="col m6">
+          <div class="card">
+            <div class="card-image">
+              {% if d.image_url %}
+              <img src="{{ d.image_url }}">
+              {% else %}
+              <img src="{{ url_for('static', filename='default_song_image.jpg') }}">
+              {% endif %}
+              <span class="card-title">Lyrics ID: #{{ d._id }}</span>
+            </div>
+            {% if d.song_details %}
+            <div class="card-content">
+                <p>Song Lyrics: {{ d.text }}</p>
+                <h5>Song ID: {{ d.song_id }}</h5>
+                <h5>Title: {{ d.song_details[0].title }}</h5>
+                <p>Artist: {{ d.song_details[0].artist }}</p>
+                <p>Album: {{ d.song_details[0].album }}</p>
+                <p>Release Year: {{ d.song_details[0].year }}</p>
+            </div>
+            {% else %}
+            <div class="card-content">
+              <p>Song Lyrics: {{ d.text }}</p>
+              <h5>Song ID: {{ d.song_id }}</h5>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div>
+          <h4>Song or Lyrics Not Found!</h4>
+          <h4>Please try a Different Search!</h4>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- Routing embedded for search by songs -->
+<div class="pagination-div">
+  <p id="pagination-text">Page: {{ page }}</p>
+  <ul class="pagination">
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=1, sbs='off', q='', artist=artist, album=album, year=year) }}">1</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2, sbs='off', q='', artist=artist, album=album, year=year) }}">2</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3, sbs='off', q='', artist=artist, album=album, year=year) }}">3</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4, sbs='off', q='', artist=artist, album=album, year=year) }}">4</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, sbs='off', q='', artist=artist, album=album, year=year) }}">5</a></li>
+  </ul>  
+</div>
+
+<!-- Routing embedded for search by lyrics -->
+
+
+{% endblock %}
