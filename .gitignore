@@ -5,3 +5,5 @@
 /data_collection/test_data/csv/*
 /data_collection/test_data/json/allJSONs/*
 settings.ini
+*.pickle
+*.csv
