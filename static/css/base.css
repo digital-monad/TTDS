@@ -9,15 +9,38 @@
 }
 
 #search-text-input {
-    width: 60%;
+    width: 80%;
+    justify-content: center;
 }
-
-#search-by-songs-checkbox-label {
-    margin-left: 16px;
+#advanced-filters-container {
+    margin: 16px auto;
+}
+#container-col-1, #container-col-2, #container-col-3 {
+    padding: 0px;
+    width: 95%;
+    justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
     #title {
         font-size: 4rem;
+    }
+    #search-by-songs-checkbox-label {
+        margin-left: 16px;
+    }
+    #search-text-input {
+        width: 50%;
+    }
+    #container-col-1, #container-col-2, #container-col-3 {
+        width: 33%;
+    }
+    #container-col-1 {
+        padding: 8px 8px 8px 0px;
+    }
+    #container-col-2 {
+        padding: 8px;
+    }
+    #container-col-3 {
+        padding: 8px 0px 8px 8px;
     }
 }

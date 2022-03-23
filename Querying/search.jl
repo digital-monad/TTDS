@@ -168,19 +168,28 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
 
     dfl = rename(dfl, :variable => :id, :value => :score)
 
+    max = maximum(dfl[!,:score]) 
+
+    if max == 0
+        max = 1 
+    end
+    
+    dfl.score = dfl.score / max
+    
     dfl
 
 end
 
-function proximitySearch(term1, term2, proximity, index, song)
+
+function proximitySearch(terms, proximity, index, song)
 
     irrelevant = Set{String}(["_id", "song_df", "tf", "line_df"])
-    if length(keys(index[term1])) > length(keys(index[term2]))
-        shorter = keys(index[term2])
-        longer = keys(index[term1])
+    if length(keys(index[terms[1]])) > length(keys(index[terms[2]]))
+        shorter = keys(index[terms[2]])
+        longer = keys(index[terms[1]])
     else
-        shorter = keys(index[term1])
-        longer = keys(index[term2])
+        shorter = keys(index[terms[1]])
+        longer = keys(index[terms[2]])
     end
     results = Vector{Int}()
 
@@ -188,21 +197,34 @@ function proximitySearch(term1, term2, proximity, index, song)
         for song in shorter
             song ∈ irrelevant && continue
             if song ∈ longer
-                posting1 = Base.Iterators.Stateful(Base.Iterators.flatten(values(delete!(index[term1][song], "tf")))) # Positions of term 1 in song
-                posting2 = Base.Iterators.Stateful(Base.Iterators.flatten(values(delete!(index[term2][song], "tf")))) # Positions of term 2 in song
+                orderedLines1 = sort!(OrderedDict(parse(Int, x) => y for (x,y) in delete!(index[terms[1]][song], "tf")))
+                orderedLines2 = sort!(OrderedDict(parse(Int, x) => y for (x,y) in delete!(index[terms[2]][song], "tf")))
+                posting1 = Base.Iterators.Stateful(Base.Iterators.flatten(values(orderedLines1))) # Positions of term 1 in song
+                posting2 = Base.Iterators.Stateful(Base.Iterators.flatten(values(orderedLines2))) # Positions of term 2 in song
 
                 matching = false
+                ϑ = Base.Iterators.peek(posting2)
                 for pos1 in posting1
+                    # println("Position of thriller : $pos1")
+                    # println("Position of fight : $ϑ")
                     matching = false
-                    for pos2 in posting2
-                        if abs(pos2 - pos1) <= proximity
-                            push!(results, parse(Int,song))
-                            matching = true
-                            break
-                        end
-                        pos2 >= pos1 && break
+                    if abs(ϑ - pos1) <= proximity
+                        push!(results, parse(Int,song))
+                        break
                     end
-                    matching && break
+                    if pos1 > ϑ
+                        for pos2 in posting2
+                            # println("Position of fight : $pos2")
+                            if abs(pos2 - pos1) <= proximity
+                                push!(results, parse(Int,song))
+                                matching = true
+                                break
+                            end
+                            ϑ = pos2
+                            pos2 >= pos1 && break
+                        end
+                        matching && break
+                    end
                 end
             end
         end
@@ -210,14 +232,14 @@ function proximitySearch(term1, term2, proximity, index, song)
         for song in shorter
             song ∈ irrelevant && continue
             if song ∈ longer
-                l1 = keys(index[term1][song])
-                l2 = keys(index[term2][song])
+                l1 = keys(index[terms[1]][song])
+                l2 = keys(index[terms[2]][song])
                 for line in l1
                     line == "tf" && continue
                     if line ∈ l2
                         # Perform linear merge over line positions
-                        positions1 = index[term1][song][line]
-                        positions2 = index[term2][song][line]
+                        positions1 = index[terms[1]][song][line]
+                        positions2 = index[terms[2]][song][line]
                         ptr1, ptr2 = (1,1)
                         while ptr1 <= length(positions1) && ptr2 <= length(positions2)
                             pos1 = positions1[ptr1]
@@ -237,14 +259,7 @@ function proximitySearch(term1, term2, proximity, index, song)
             end
         end
     end
-
-
     df = DataFrame(id=results, score=0)
-    print(df)
-
-    df
-
-
 end
 
 function calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
@@ -274,7 +289,7 @@ end
 
 
 function call_BM25(terms, isSong)
-    
+
     collection = establishConnection()
     index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
 
@@ -299,7 +314,7 @@ function call_ps(terms, isSong)
 
 
     results
-    
+
 end
 
 function call_prox(term1, term2, proximity, isSong)
@@ -316,5 +331,4 @@ function call_prox(term1, term2, proximity, isSong)
     results = @time proximitySearch(term1, term2, proximity, index, isSong)
 
     results
-    
 end
