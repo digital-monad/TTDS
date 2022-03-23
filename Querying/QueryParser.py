@@ -20,10 +20,11 @@ from julia.api import Julia
 from preprocess import preprocess
 
 JL = Julia(compiled_modules=False)
-JL.eval('include("./setOperations.jl")')
-JL.eval('include("./search.jl")')
+JL.eval('include("./Querying/setOperations.jl")')
+JL.eval('include("./Querying/search.jl")')
 
 from julia import Main
+import pickle
 
 
 # SONGCOUNT = 1200000
@@ -287,7 +288,14 @@ class QueryParser:
 
         return res
         
-# x = QueryParser()
+#x = QueryParser()
+# # x.query('! bean', True)
+#x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
+#x.query("push",True)
+
+# Test
+x = QueryParser()
+x.__init__()
 
 # # x.query('! bean', True)
-# x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
+x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
