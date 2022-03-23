@@ -181,15 +181,14 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
 end
 
 
-function proximitySearch(term1,term2, proximity, index, song)
-    terms = (term1,term2)
+function proximitySearch(term1, term2, proximity, index, song)
     irrelevant = Set{String}(["_id", "song_df", "tf", "line_df"])
-    if length(keys(index[terms[1]])) > length(keys(index[terms[2]]))
-        shorter = keys(index[terms[2]])
-        longer = keys(index[terms[1]])
+    if length(keys(index[term1])) > length(keys(index[term2]))
+        shorter = keys(index[term2])
+        longer = keys(index[term1])
     else
-        shorter = keys(index[terms[1]])
-        longer = keys(index[terms[2]])
+        shorter = keys(index[term1])
+        longer = keys(index[term2])
     end
     results = Vector{Int}()
 
@@ -197,8 +196,8 @@ function proximitySearch(term1,term2, proximity, index, song)
         for song in shorter
             song ∈ irrelevant && continue
             if song ∈ longer
-                orderedLines1 = sort!(OrderedDict(parse(Int, x) => y for (x,y) in delete!(index[terms[1]][song], "tf")))
-                orderedLines2 = sort!(OrderedDict(parse(Int, x) => y for (x,y) in delete!(index[terms[2]][song], "tf")))
+                orderedLines1 = sort!(OrderedDict(parse(Int, x) => y for (x,y) in delete!(index[term1][song], "tf")))
+                orderedLines2 = sort!(OrderedDict(parse(Int, x) => y for (x,y) in delete!(index[term2][song], "tf")))
                 posting1 = Base.Iterators.Stateful(Base.Iterators.flatten(values(orderedLines1))) # Positions of term 1 in song
                 posting2 = Base.Iterators.Stateful(Base.Iterators.flatten(values(orderedLines2))) # Positions of term 2 in song
 
@@ -232,14 +231,14 @@ function proximitySearch(term1,term2, proximity, index, song)
         for song in shorter
             song ∈ irrelevant && continue
             if song ∈ longer
-                l1 = keys(index[terms[1]][song])
-                l2 = keys(index[terms[2]][song])
+                l1 = keys(index[term1][song])
+                l2 = keys(index[term2][song])
                 for line in l1
                     line == "tf" && continue
                     if line ∈ l2
                         # Perform linear merge over line positions
-                        positions1 = index[terms[1]][song][line]
-                        positions2 = index[terms[2]][song][line]
+                        positions1 = index[term1][song][line]
+                        positions2 = index[term2][song][line]
                         ptr1, ptr2 = (1,1)
                         while ptr1 <= length(positions1) && ptr2 <= length(positions2)
                             pos1 = positions1[ptr1]

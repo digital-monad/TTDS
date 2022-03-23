@@ -21,7 +21,7 @@ function and(df1, df2)
     
     fullDf.score = fullDf.score / max
     
-    return hcat(fullDf[!, :id],fullDf[!, :score])
+    return DataFrame(id=fullDf[!, :id],score=fullDf[!, :score])
 
 end
 
@@ -31,7 +31,7 @@ function or(df1, df2)
         
     fullDf = transform(fullDf, [:z1, :z2] => ByRow((z1_elm,z2_elm) -> max(z1_elm,z2_elm)) => :score)
         
-    return hcat(fullDf[!, :id],fullDf[!, :score])
+    return DataFrame(id=fullDf[!, :id],score=fullDf[!, :score])
 
 end
 
