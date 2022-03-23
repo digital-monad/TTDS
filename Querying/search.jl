@@ -165,6 +165,14 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
 
     dfl = rename(dfl, :variable => :id, :value => :score)
 
+    max = maximum(dfl[!,:score]) 
+
+    if max == 0
+        max = 1 
+    end
+    
+    dfl.score = dfl.score / max
+    
     dfl
 
 end
