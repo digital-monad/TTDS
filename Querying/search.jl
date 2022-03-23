@@ -181,8 +181,8 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
 end
 
 
-function proximitySearch(terms, proximity, index, song)
-
+function proximitySearch(term1,term2, proximity, index, song)
+    terms = (term1,term2)
     irrelevant = Set{String}(["_id", "song_df", "tf", "line_df"])
     if length(keys(index[terms[1]])) > length(keys(index[terms[2]]))
         shorter = keys(index[terms[2]])
@@ -273,8 +273,8 @@ function establishConnection()
     client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority")
     database = client["ttds"]
     song_metadata = Pickle.load(open("../metadata/song_metadata.pickle"))
-    lyric_metadata = Pickle.load(open("../metadata/lyric_metadata.pickle"))
-    return database["invertedIndexFinal"],song_metadata, lyric_metadata
+    #lyric_metadata = Pickle.load(open("../metadata/lyric_metadata.pickle"))
+    return database["invertedIndexFinal"],song_metadata, database["songMetaData"]
 end
 
 function querier(collection, term)

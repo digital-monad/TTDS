@@ -20,8 +20,8 @@ from julia.api import Julia
 from preprocess import preprocess
 
 JL = Julia(compiled_modules=False)
-JL.eval('include("./Querying/setOperations.jl")')
-JL.eval('include("./Querying/search.jl")')
+JL.eval('include("./setOperations.jl")')
+JL.eval('include("./search.jl")')
 
 from julia import Main
 import pickle
