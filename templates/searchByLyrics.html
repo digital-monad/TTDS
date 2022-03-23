@@ -62,18 +62,16 @@
 </div>
 
 <!-- Routing embedded for search by songs -->
-{% if search_by_songs_toggle == 'on' %}
 <div class="pagination-div">
   <p id="pagination-text">Page: {{ page }}</p>
   <ul class="pagination">
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=1, sbs='on', q='', artist=artist, album=album, year=year) }}">1</a></li>
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2, sbs='on', q='', artist=artist, album=album, year=year) }}">2</a></li>
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3, sbs='on', q='', artist=artist, album=album, year=year) }}">3</a></li>
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4, sbs='on', q='', artist=artist, album=album, year=year) }}">4</a></li>
-      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, sbs='on', q='', artist=artist, album=album, year=year) }}">5</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=1, sbs='off', q='', artist=artist, album=album, year=year) }}">1</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=2, sbs='off', q='', artist=artist, album=album, year=year) }}">2</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=3, sbs='off', q='', artist=artist, album=album, year=year) }}">3</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=4, sbs='off', q='', artist=artist, album=album, year=year) }}">4</a></li>
+      <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, sbs='off', q='', artist=artist, album=album, year=year) }}">5</a></li>
   </ul>  
 </div>
-{% endif %}
 
 <!-- Routing embedded for search by lyrics -->
 

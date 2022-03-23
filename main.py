@@ -1,8 +1,11 @@
+# NOTE: THIS FILE DOES NOT INTEGRATE Python with Julia aka Andrew's code
+
 # Temporary main Python file for web application routing and Pymongo integration
 
 # Setup Flask and MongoDB - integration for backend and database
 from flask import Flask, render_template, request
-import configparser, pymongo, os, requests
+import configparser, pymongo, os
+
 # NOTE: QueryParser library to be fixed by Andrew
 #from Querying import QueryParser as qp 
 #from Querying import preprocess as pp
@@ -158,7 +161,7 @@ def display_search_results(page):
     # SEARCH BY SONG LYRICS
     else:
         relevant_docs = get_songs_based_on_lyrics(advanced_filters, ROWS_PER_PAGE, page)
-        return render_template('searchByLyrics.html', data = relevant_docs, sbs = 'on', artist = artist_str, album = album_str, year = year_str, page = page)
+        return render_template('searchByLyrics.html', data = relevant_docs, sbs = 'off', artist = artist_str, album = album_str, year = year_str, page = page)
 
 
 if __name__ == "__main__":
