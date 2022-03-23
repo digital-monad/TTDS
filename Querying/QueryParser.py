@@ -24,6 +24,7 @@ JL.eval('include("./setOperations.jl")')
 JL.eval('include("./search.jl")')
 
 from julia import Main
+import pickle
 
 
 # SONGCOUNT = 1200000
@@ -63,7 +64,7 @@ class QueryParser:
 
         alphabet = alphanums + ' '
 
-        notKeyword = Keyword("!") 
+        notKeyword = Keyword("~") 
 
         andKeyword = Keyword("&&")
 
@@ -133,7 +134,7 @@ class QueryParser:
         Main.df1 = clause_results[0]
         Main.df2 = clause_results[1]
 
-        return JL.eval("and(df1,df2)")
+        return JL.eval("@time and(df1,df2)")
         
        
 
@@ -152,7 +153,7 @@ class QueryParser:
         Main.df1 = clause_results[0]
         Main.df2 = clause_results[1]
 
-        return JL.eval("or(df1,df2)")
+        return JL.eval("@time or(df1,df2)")
         
         # clause_results = [self.evaluate(arg) for arg in argument]
     
@@ -171,18 +172,17 @@ class QueryParser:
 
     def evaluateNot(self, argument):
 
+        print("NOT")
         print(argument)
         
         Main.df = self.evaluate(argument[0])
         
-        print("Pass2")
-
         if(self.isSong):
             Main.count = self.songCount
         else:
             Main.count = self.lyricCount
 
-        return JL.eval("not(count,df)")
+        return JL.eval("@time not(count,df)")
 
     def evaluateParenthesis(self, argument):
 
@@ -211,6 +211,9 @@ class QueryParser:
 
         # print("proximity")
 
+        if(len(argument) != 3):
+            raise BaseException("??")
+
         try:
             distance = int(argument[0][0])
         except:
@@ -226,7 +229,14 @@ class QueryParser:
         # print("term1 : " + str(term1))
         # print("term2 : " + str(term2))
 
-        return [(1,1),(2,1),(3,1),(4,1)]
+        Main.term1 = preprocess(term1)[0][0][0]
+        Main.term2 = preprocess(term2)[0][0][0]
+        
+        Main.proximity = distance
+        Main.isSong = self.isSong
+
+        return JL.eval("call_prox(term1, term2, proximity, isSong)")
+
 
 
     def evaluateWord(self, argument):
@@ -268,8 +278,17 @@ class QueryParser:
 
         print("results")
         print(unsorted_query_results)
+
+        Main.unsorted_query_results = unsorted_query_results
+
+        res = JL.eval("@time sort_and_convert(unsorted_query_results)")
+
+        print("IN PYTHON")
+        print(res)
+
+        return res
         
 x = QueryParser()
-
-# x.query('! bean', True)
-x.query('"Grooving" && "Come Together"', True)
+# # x.query('! bean', True)
+#x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
+x.query("push",True)
