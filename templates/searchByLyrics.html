@@ -1,4 +1,4 @@
-<!-- DISPLAYS SONG RESULTS -->
+<!-- DISPLAYS SONGS BASED ON SONG LYRICS -->
 
 {% extends 'base.html' %}
 {% block title %}Index{% endblock %}
@@ -23,7 +23,7 @@
         {% if data | length() > 0 %}
         {% for d in data %}
 
-        <div class="col m4">
+        <div class="col m6">
           <div class="card">
             <div class="card-image">
               {% if d.image_url %}
@@ -31,14 +31,23 @@
               {% else %}
               <img src="{{ url_for('static', filename='default_song_image.jpg') }}">
               {% endif %}
-              <span class="card-title">#{{ d._id }}</span>
+              <span class="card-title">Lyrics ID: #{{ d._id }}</span>
             </div>
+            {% if d.song_details %}
             <div class="card-content">
-                <h5>Title: {{ d.title }}</h5>
-                <p>Artist: {{ d.artist }}</p>
-                <p>Album: {{ d.album }}</p>
-                <p>Release Year: {{ d.year }}</p>
+                <p>Song Lyrics: {{ d.text }}</p>
+                <h5>Song ID: {{ d.song_id }}</h5>
+                <h5>Title: {{ d.song_details[0].title }}</h5>
+                <p>Artist: {{ d.song_details[0].artist }}</p>
+                <p>Album: {{ d.song_details[0].album }}</p>
+                <p>Release Year: {{ d.song_details[0].year }}</p>
             </div>
+            {% else %}
+            <div class="card-content">
+              <p>Song Lyrics: {{ d.text }}</p>
+              <h5>Song ID: {{ d.song_id }}</h5>
+            </div>
+            {% endif %}
           </div>
         </div>
         {% endfor %}
@@ -53,6 +62,7 @@
 </div>
 
 <!-- Routing embedded for search by songs -->
+{% if search_by_songs_toggle == 'on' %}
 <div class="pagination-div">
   <p id="pagination-text">Page: {{ page }}</p>
   <ul class="pagination">
@@ -63,5 +73,9 @@
       <li class="waves-effect"><a href="{{ url_for('display_search_results', page=5, sbs='on', q='', artist=artist, album=album, year=year) }}">5</a></li>
   </ul>  
 </div>
+{% endif %}
+
+<!-- Routing embedded for search by lyrics -->
+
 
 {% endblock %}

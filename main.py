@@ -4,7 +4,7 @@
 from flask import Flask, render_template, request
 import configparser, pymongo, os, requests
 # NOTE: QueryParser library to be fixed by Andrew
-#from QueryParser import QueryParser as qp 
+#from Querying import QueryParser as qp 
 #from Querying import preprocess as pp
 
 app = Flask(__name__)
@@ -56,9 +56,6 @@ def get_songs(advanced_filters, page_size, page_num):
             .find({"_id": { "$in": song_ids }})
             .limit(100)
         )
-
-    #print("This is the songs list")
-    #print(songs_list)
     
     sorted_song_dict = {d['_id']: d for d in songs_list}  # sentence_id -> sentence_dict
     
@@ -86,48 +83,50 @@ def get_songs_based_on_lyrics(advanced_filters, page_size, page_num):
 
     #TODO: This is a fixed set from songs by Eminem made in 2013
     # Obtain list of lyrics line_ids ordered from Andrew
-    lyrics_ids = ["0", "1", "2", "3", "4", "5", "6"] # Currently no constraints
+    lyrics_ids = ["6", "1", "3", "2", "4", "5", "89"] # Currently no constraints
 
     # TODO: Aggregate lyricMetaData for songMetaData
     # Determine final limit for querying results back to front-end
-    try:
-        lyrics_list = list(client.ttds.lyricMetaData
-            .find(
-                    {"_id": { "$in": lyrics_ids }},
-                )
-            .limit(100)
-        )
+    lyrics = client.ttds.lyricMetaData.aggregate([
+        { "$match": {"_id": {"$in": lyrics_ids }} },
+        {
+            "$lookup": {
+                "from" : "songMetaData",
+                "localField" : "song_id", 
+                "foreignField" : "_id",
+                "as" : "song_details"
+            }
+        },
+        {
+            "$limit": 10
+        },
+    ])
+    lyrics_list = list(lyrics)
     
-    # Handle w/out advanced features included
-    except Exception:
-        lyrics_list = list(client.ttds.lyricMetaData
-            .find(
-                    {"_id": { "$in": lyrics_ids }},
-                )
-            .limit(100)
-        )
+    # Ensure ordered documents are conducted
+    sorted_lyrics_dict = {d['_id']: d for d in lyrics_list}  # sentence_id -> sentence_dict
     
-    sorted_lyric_dict = {d['_id']: d for d in lyrics_list}  # sentence_id -> sentence_dict
-
     # Obtain new list of ORDERED ids - allow advanced search
     new_ids = []
     for id in lyrics_ids:
-        if id in sorted_lyric_dict:
+        if id in sorted_lyrics_dict:
             new_ids.append(id)
 
-    sorted_lyrics_list = [sorted_lyric_dict[i] for i in new_ids]
+    sorted_song_list = [sorted_lyrics_dict[i] for i in new_ids]
     
-    new_sorted_lyrics_list = sorted_lyrics_list[(page_num - 1) * page_size : page_num * page_size]
+    new_sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
 
-    return new_sorted_lyrics_list
+    return new_sorted_song_list
 
-ROWS_PER_PAGE = 3 # TODO: SHOULD BE CHANGED
+ROWS_PER_PAGE = 6 # TODO: SHOULD BE CHANGED
 
+# UNNECESSARY? #
 @app.route('/search', methods=['GET', 'POST'])
 def display_search_first_results():
     advanced_filters = []
     relevant_docs = get_songs(advanced_filters, ROWS_PER_PAGE, 1)
     return render_template('search.html', data = relevant_docs)
+# UNNECESSARY? #
 
 @app.route('/search/page=<int:page>', methods=['GET', 'POST'])
 def display_search_results(page):
@@ -154,10 +153,13 @@ def display_search_results(page):
     print(search_by_songs_toggle)
     if search_by_songs_toggle == 'on':
         relevant_docs = get_songs(advanced_filters, ROWS_PER_PAGE, page)
+        return render_template('search.html', data = relevant_docs, sbs = 'on', artist = artist_str, album = album_str, year = year_str, page = page)
+
+    # SEARCH BY SONG LYRICS
     else:
         relevant_docs = get_songs_based_on_lyrics(advanced_filters, ROWS_PER_PAGE, page)
+        return render_template('searchByLyrics.html', data = relevant_docs, sbs = 'on', artist = artist_str, album = album_str, year = year_str, page = page)
 
-    return render_template('search.html', data = relevant_docs, sbs = 'on', artist = artist_str, album = album_str, year = year_str, page = page)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
