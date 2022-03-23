@@ -12,26 +12,20 @@ from pyparsing import (
 )
 
 import re, os, sys
-sys.path.insert(0, './QueryParser') 
-import DBQuery as dbq
+sys.path.insert(0, './QueryParser')
+from Querying import DBQuery as dbq
 
 from julia.api import Julia
 
-from preprocess import preprocess
-
-JL = Julia(compiled_modules=False)
-JL.eval('include("./Querying/setOperations.jl")')
-JL.eval('include("./Querying/search.jl")')
-
-from julia import Main
-import pickle
-
+from Querying.preprocess import preprocess
 
 # SONGCOUNT = 1200000
 # LYRICCOUNT = 60000000
 
 class QueryParser:
-    def __init__(self):
+    def __init__(self, JL, Main):
+        self.JL = JL
+        self.Main = Main
         self._methods = {
             "and": self.evaluateAnd,
             "or": self.evaluateOr,
@@ -131,10 +125,10 @@ class QueryParser:
 
         assert(len(clause_results) == 2)
 
-        Main.df1 = clause_results[0]
-        Main.df2 = clause_results[1]
+        self.Main.df1 = clause_results[0]
+        self.Main.df2 = clause_results[1]
 
-        return JL.eval("@time and(df1,df2)")
+        return self.JL.eval("@time and(df1,df2)")
         
        
 
@@ -150,10 +144,10 @@ class QueryParser:
 
         assert(len(clause_results) == 2)
 
-        Main.df1 = clause_results[0]
-        Main.df2 = clause_results[1]
+        self.Main.df1 = clause_results[0]
+        self.Main.df2 = clause_results[1]
 
-        return JL.eval("@time or(df1,df2)")
+        return self.JL.eval("@time or(df1,df2)")
         
         # clause_results = [self.evaluate(arg) for arg in argument]
     
@@ -175,14 +169,14 @@ class QueryParser:
         print("NOT")
         print(argument)
         
-        Main.df = self.evaluate(argument[0])
+        self.Main.df = self.evaluate(argument[0])
         
         if(self.isSong):
-            Main.count = self.songCount
+            self.Main.count = self.songCount
         else:
-            Main.count = self.lyricCount
+            self.Main.count = self.lyricCount
 
-        return JL.eval("@time not(count,df)")
+        return self.JL.eval("@time not(count,df)")
 
     def evaluateParenthesis(self, argument):
 
@@ -200,10 +194,10 @@ class QueryParser:
         print(argument)
         print(list(list(zip(*preprocess(argument[0][0])[0]))[0]))
 
-        Main.terms = list(list(zip(*preprocess(argument[0][0])[0]))[0])
-        Main.isSong = self.isSong
+        self.Main.terms = list(list(zip(*preprocess(argument[0][0])[0]))[0])
+        self.Main.isSong = self.isSong
 
-        return JL.eval("call_ps(terms,isSong)")
+        return self.JL.eval("call_ps(terms,isSong)")
 
     def evaluateProximity(self, argument):
         
@@ -229,13 +223,13 @@ class QueryParser:
         # print("term1 : " + str(term1))
         # print("term2 : " + str(term2))
 
-        Main.term1 = preprocess(term1)[0][0][0]
-        Main.term2 = preprocess(term2)[0][0][0]
+        self.Main.term1 = preprocess(term1)[0][0][0]
+        self.Main.term2 = preprocess(term2)[0][0][0]
         
-        Main.proximity = distance
-        Main.isSong = self.isSong
+        self.Main.proximity = distance
+        self.Main.isSong = self.isSong
 
-        return JL.eval("call_prox(term1, term2, proximity, isSong)")
+        return self.JL.eval("call_prox(term1, term2, proximity, isSong)")
 
 
 
@@ -249,10 +243,10 @@ class QueryParser:
         print(list(list(zip(*preprocess(argument[0])[0]))[0]))
         
         
-        Main.terms = list(list(zip(*preprocess(argument[0])[0]))[0])
-        Main.isSong = self.isSong
+        self.Main.terms = list(list(zip(*preprocess(argument[0])[0]))[0])
+        self.Main.isSong = self.isSong
 
-        return JL.eval("call_BM25(terms,isSong)")
+        return self.JL.eval("call_BM25(terms,isSong)")
 
 
     def evaluate(self, argument):
@@ -279,23 +273,21 @@ class QueryParser:
         print("results")
         print(unsorted_query_results)
 
-        Main.unsorted_query_results = unsorted_query_results
+        self.Main.unsorted_query_results = unsorted_query_results
 
-        res = JL.eval("@time sort_and_convert(unsorted_query_results)")
+        res = self.JL.eval("@time sort_and_convert(unsorted_query_results)")
 
         print("IN PYTHON")
         print(res)
 
         return res
         
+
+# NOTE: This is only used for testing the local file itself
 #x = QueryParser()
+
 # # x.query('! bean', True)
 #x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
 #x.query("push",True)
-
-# Test
-x = QueryParser()
-x.__init__()
-
 # # x.query('! bean', True)
-x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
+#x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
