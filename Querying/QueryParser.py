@@ -24,6 +24,7 @@ JL.eval('include("./setOperations.jl")')
 JL.eval('include("./search.jl")')
 
 from julia import Main
+import pickle
 
 
 # SONGCOUNT = 1200000
@@ -287,7 +288,8 @@ class QueryParser:
 
         return res
         
-# x = QueryParser()
-
+x = QueryParser()
 # # x.query('! bean', True)
-# x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
+#x.query('"nowhere left to run" && #(20, Thriller, Killer)', True)
+x.query("push",True)
+

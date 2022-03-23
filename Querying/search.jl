@@ -6,6 +6,7 @@ using Mongoc
 using BSON
 using DataFrames
 using TimerOutputs
+using Pickle
 
 function add_score(id,score,heap,tracker,handles,scores)
     max_size = 100000
@@ -41,6 +42,8 @@ end
 
 """
     phraseSearch(phrase::Vector{String}, index::Dict, song::Bool)
+Compute n-term phrase search through index. `song` determines whether to perform
+song level or line level search. Return set of document ids.
 
 Compute n-term phrase search through index. `song` determines whether to perform
 song level or line level search. Return set of document ids.
@@ -99,7 +102,7 @@ function phraseSearch(phrase, index, song)
         end
     end
     df = DataFrame(id=results, score=0)
-    print(df)
+    #print(df)
 
     df
 end
@@ -118,7 +121,7 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
         for term in query # SIMD vectorisation
             songs = collect(keys(index[term]))
             filter!(e->e∉["song_df","line_df","_id"],songs) # Lazy filter
-            metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
+            metadatas = Dict(song => song_metadata[song] for song in songs)
             term_docs = length([i for i in keys(index[term])]) - 3 # Convert list comprehension to generator or just length(keys)
             if term_docs>0
                 for song in songs
@@ -144,7 +147,7 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
             if term_docs>0
                 for song in keys(index[term])
                     filter!(e->e∉["tf"],docs)
-                    @timeit "1" metadatas = Dict(lyric => Mongoc.as_dict(querier(lyric_metadata, lyric)) for lyric in docs)
+                    @timeit "1" metadatas = Dict(lyric => lyric_metadata[lyric] for lyric in docs)
                     for lyric in keys(index[term][song])
                         docs = collect(keys(index[term][song]))
                         term_freqs_in_doc = length(index[term][song][lyric])
@@ -259,9 +262,11 @@ function calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
 end
 
 function establishConnection()
-    client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority&tlsCAFile=/usr/local/etc/openssl@1.1/cert.pem")
+    client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority")
     database = client["ttds"]
-    return database["invertedIndexFinal"],database["songMetaData"],database["lyricMetaData"]
+    song_metadata = Pickle.load(open("../metadata/song_metadata.pickle"))
+    lyric_metadata = Pickle.load(open("../metadata/lyric_metadata.pickle"))
+    return database["invertedIndexFinal"],song_metadata, lyric_metadata
 end
 
 function querier(collection, term)
@@ -318,5 +323,4 @@ function call_prox(term1, term2, proximity, isSong)
     results = @time proximitySearch(term1, term2, proximity, index, isSong)
 
     results
-
 end
