@@ -10,9 +10,6 @@ from Querying import QueryParser as qp
 
 app = Flask(__name__)
 
-QueryParserClass = qp.QueryParser()
-QueryParserClass.__init__()
-
 ####### TO BE REFACTORED? ##########
 config = configparser.ConfigParser()
 config.read('settings.ini')
@@ -24,6 +21,18 @@ client = pymongo.MongoClient(uri)
 ####### TO BE REFACTORED? ##########
 
 
+
+from julia.api import Julia
+JL = Julia(compiled_modules=False)
+JL.eval('include("./Querying/setOperations.jl")')
+JL.eval('include("./Querying/search.jl")')
+from julia import Main
+import julia
+julia.install()
+
+QueryParserClass = qp.QueryParser(JL, Main)
+
+
 @app.route("/", methods=['GET','POST'])
 def show_main_page():
     return render_template('index.html')
@@ -33,17 +42,15 @@ def get_songs(advanced_filters, page_size, page_num):
 
     # Obtain query
     song_name = ''
-    isSong = True
     if request.args.get('q'):
         song_name = request.args.get('q')
 
-    query = QueryParserClass.query(song_name, isSong)
+    query = QueryParserClass.query(song_name, True)
     print(query)
 
-    #TODO: This is a fixed set from songs by Eminem made in 2013
-    # Obtain list of song_ids ordered from Andrew???
-    song_ids = ["1158679", "1158688", "1158655", "1158651", "1158652", "1158664", "1158673"] 
-    
+    #song_ids = ["1158679", "1158688", "1158655", "1158651", "1158652", "1158664", "1158673"] 
+    song_ids = query
+
     # TODO: Determine final limit for querying results back to front-end
     try:
         songs_list = list(client.ttds.songMetaData
