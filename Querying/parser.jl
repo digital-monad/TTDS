@@ -55,7 +55,7 @@ include("./setOperations.jl")
 pushfirst!(pyimport("sys")."path", "")
 
 py"""
-from Querying import QueryParser
+import QueryParser
 x = QueryParser.QueryParser()
 def query(query,isSong):
     return x.query(query,isSong)

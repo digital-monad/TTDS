@@ -15,7 +15,7 @@ import re, os, sys
 sys.path.insert(0, './QueryParser')
 # from Querying import DBQuery as dbq
 
-from Querying import preprocess
+import preprocess
 
 import pickle
 

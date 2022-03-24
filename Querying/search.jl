@@ -269,7 +269,7 @@ function calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
 end
 
 function establishConnection()
-    client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority")
+    client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority&tlsCAFile=/usr/lib/ssl/certs/ca-certificates.crt")
     database = client["ttds"]
     song_metadata = Pickle.load(open("../metadata/song_metadata.pickle"))
     #lyric_metadata = Pickle.load(open("../metadata/lyric_metadata.pickle"))
@@ -290,6 +290,7 @@ end
 function call_BM25(terms, isSong)
 
     collection = establishConnection()
+
     index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
 
     songMetaData = collection[2]
