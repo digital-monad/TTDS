@@ -121,7 +121,6 @@ class QueryParser:
 
     def evaluateAnd(self, argument):
 
-        print(argument)
 
         clause_results = [self.evaluate(arg) for arg in argument]
 
@@ -158,9 +157,6 @@ class QueryParser:
 
     def evaluateNot(self, argument):
 
-        print("NOT")
-        print(argument)
-        
         if(self.isSong):
             count = self.songCount
         else:
@@ -171,7 +167,6 @@ class QueryParser:
     def evaluateParenthesis(self, argument):
 
         if len(argument) > 1:
-            print(argument)
             raise BaseException("?")
 
         return self.evaluate(argument[0])
@@ -179,10 +174,6 @@ class QueryParser:
     def evaluatePhrase(self, argument):
         
         # Phrase search 
-
-        print("phrase")
-        print(argument)
-        print(list(list(zip(*preprocess.preprocess(argument[0][0])[0]))[0]))
 
         terms = list(list(zip(*preprocess.preprocess(argument[0][0])[0]))[0])
 
@@ -227,11 +218,7 @@ class QueryParser:
         # Do search over argument
         searchReturn = True
 
-        print("ranked search")
-        print(argument)
-        print(list(list(zip(*preprocess.preprocess(argument[0])[0]))[0]))
-        
-        
+
         terms = list(list(zip(*preprocess.preprocess(argument[0])[0]))[0])
         isSong = self.isSong
 
@@ -251,13 +238,15 @@ class QueryParser:
 
     def query(self, expr, isSong):
 
-        print(expr)
+        # print(expr)
 
         self.isSong = isSong
 
-        # get top N results (skipping the first `skip` results)
-        # return a list of (id, score) tuples, sorted from highest to lowest by score (e.g. [(19, 1.5), (6, 1.46), ...]
-        print(self.Parse(expr))
+        # # get top N results (skipping the first `skip` results)
+        # # return a list of (id, score) tuples, sorted from highest to lowest by score (e.g. [(19, 1.5), (6, 1.46), ...]
+        # print(self.Parse(expr))
+
+        # print("qp done")
         
         return self.Parse(expr)
 

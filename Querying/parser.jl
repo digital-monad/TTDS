@@ -55,7 +55,7 @@ include("./setOperations.jl")
 pushfirst!(pyimport("sys")."path", "")
 
 py"""
-import QueryParser
+from Querying import QueryParser
 x = QueryParser.QueryParser()
 def query(query,isSong):
     return x.query(query,isSong)
@@ -63,6 +63,8 @@ def query(query,isSong):
 
 function query(query,isSong)
     parsed = py"query"(query,isSong)
+
+    print(parsed)
 
     return resovleQuery(parsed)
 end
@@ -75,7 +77,7 @@ function resovleQuery(clause)
         return call_prox(clause[2],clause[3],clause[4],clause[5])
     end 
     if clause[1] == "call_ps"
-        return call_BM25(clause[2],clause[3])
+        return call_ps(clause[2],clause[3])
     end 
     if clause[1] == "and"
         return and(resovleQuery(clause[2]),resovleQuery(clause[3]))
