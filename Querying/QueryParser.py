@@ -13,28 +13,18 @@ from pyparsing import (
 
 import re, os, sys
 sys.path.insert(0, './QueryParser')
-from Querying import DBQuery as dbq
+# from Querying import DBQuery as dbq
 
-from julia.api import Julia
+from Querying import preprocess
 
-from preprocess import preprocess
-
-JL = Julia(compiled_modules=False)
-JL.eval('include("./setOperations.jl")')
-JL.eval('include("./search.jl")')
-
-from julia import Main
 import pickle
-
-from preprocess import preprocess
 
 # SONGCOUNT = 1200000
 # LYRICCOUNT = 60000000
 
 class QueryParser:
-    def __init__(self, JL, Main):
-        self.JL = JL
-        self.Main = Main
+    def __init__(self):
+       
         self._methods = {
             "and": self.evaluateAnd,
             "or": self.evaluateOr,
@@ -45,9 +35,12 @@ class QueryParser:
             "word": self.evaluateWord
         }
 
-        self.connection = dbq.DBQuery()
-        self.songCount = self.connection.countSongs()
-        self.lyricCount = self.connection.countLyrics()
+        # self.connection = dbq.DBQuery()
+        # self.songCount = self.connection.countSongs()
+        # self.lyricCount = self.connection.countLyrics()
+
+        self.songCount = 1300000
+        self.lyricCount = 60000000
         self._parser = self.parser()
         self.text = ""
         self.words = []
@@ -134,17 +127,7 @@ class QueryParser:
 
         assert(len(clause_results) == 2)
 
-        self.Main.df1 = clause_results[0]
-        self.Main.df2 = clause_results[1]
-
-        return self.JL.eval("@time and(df1,df2)")
-        
-       
-
-        if (range_max) == 0:
-            return [(doc_id,scores[doc_id]) for doc_id in scores]        
-        else:
-            return [(doc_id,scores[doc_id]/(range_max)) for doc_id in scores]
+        return ['and',clause_results[0],clause_results[1]]
 
 
     def evaluateOr(self, argument):
@@ -153,10 +136,10 @@ class QueryParser:
 
         assert(len(clause_results) == 2)
 
-        self.Main.df1 = clause_results[0]
-        self.Main.df2 = clause_results[1]
+        return ['or',clause_results[0],clause_results[1]]
+        
 
-        return self.JL.eval("@time or(df1,df2)")
+        
         
         # clause_results = [self.evaluate(arg) for arg in argument]
     
@@ -178,14 +161,12 @@ class QueryParser:
         print("NOT")
         print(argument)
         
-        self.Main.df = self.evaluate(argument[0])
-        
         if(self.isSong):
-            self.Main.count = self.songCount
+            count = self.songCount
         else:
-            self.Main.count = self.lyricCount
+            count = self.lyricCount
 
-        return self.JL.eval("@time not(count,df)")
+        return ['not',count,self.evaluate(argument[0])]
 
     def evaluateParenthesis(self, argument):
 
@@ -201,12 +182,11 @@ class QueryParser:
 
         print("phrase")
         print(argument)
-        print(list(list(zip(*preprocess(argument[0][0])[0]))[0]))
+        print(list(list(zip(*preprocess.preprocess(argument[0][0])[0]))[0]))
 
-        self.Main.terms = list(list(zip(*preprocess(argument[0][0])[0]))[0])
-        self.Main.isSong = self.isSong
+        terms = list(list(zip(*preprocess.preprocess(argument[0][0])[0]))[0])
 
-        return self.JL.eval("call_ps(terms,isSong)")
+        return ["call_ps",terms,self.isSong]
 
     def evaluateProximity(self, argument):
         
@@ -232,13 +212,13 @@ class QueryParser:
         # print("term1 : " + str(term1))
         # print("term2 : " + str(term2))
 
-        self.Main.term1 = preprocess(term1)[0][0][0]
-        self.Main.term2 = preprocess(term2)[0][0][0]
+        term1 = preprocess.preprocess(term1)[0][0][0]
+        term2 = preprocess.preprocess(term2)[0][0][0]
         
-        self.Main.proximity = distance
-        self.Main.isSong = self.isSong
+        proximity = distance
+        isSong = self.isSong
 
-        return self.JL.eval("call_prox(term1, term2, proximity, isSong)")
+        return ["call_prox",term1, term2, proximity, isSong]
 
 
 
@@ -249,13 +229,13 @@ class QueryParser:
 
         print("ranked search")
         print(argument)
-        print(list(list(zip(*preprocess(argument[0])[0]))[0]))
+        print(list(list(zip(*preprocess.preprocess(argument[0])[0]))[0]))
         
         
-        self.Main.terms = list(list(zip(*preprocess(argument[0])[0]))[0])
-        self.Main.isSong = self.isSong
+        terms = list(list(zip(*preprocess.preprocess(argument[0])[0]))[0])
+        isSong = self.isSong
 
-        return self.JL.eval("call_BM25(terms,isSong)")
+        return ["call_BM25",terms,isSong]
 
 
     def evaluate(self, argument):
@@ -277,21 +257,11 @@ class QueryParser:
 
         # get top N results (skipping the first `skip` results)
         # return a list of (id, score) tuples, sorted from highest to lowest by score (e.g. [(19, 1.5), (6, 1.46), ...]
-        unsorted_query_results = self.Parse(expr)
-
-        print("results")
-        print(unsorted_query_results)
-
-        self.Main.unsorted_query_results = unsorted_query_results
-
-        res = self.JL.eval("@time sort_and_convert(unsorted_query_results)")
-
-        print("IN PYTHON")
-        print(res)
-
-        return res
+        print(self.Parse(expr))
         
+        return self.Parse(expr)
 
+        
 # NOTE: This is only used for testing the local file itself
 #x = QueryParser()
 
