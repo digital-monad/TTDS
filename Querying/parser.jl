@@ -66,7 +66,7 @@ function query(query,isSong)
 
     print(parsed)
 
-    return resovleQuery(parsed)
+    return sort_scores(resovleQuery(parsed))
 end
 
 function resovleQuery(clause)

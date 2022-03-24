@@ -41,11 +41,9 @@ function not(size, df)
     return antijoin(new_df, df; on= :id)
 end 
 
-function sort_and_convert(unsorted_query_results)
+function sort_scores(unsorted_query_results)
     
     sort!(unsorted_query_results, rev=true, :score)
-    
-    print(unsorted_query_results)
 
-    return PyObject(unsorted_query_results[!,:id])
+    return unsorted_query_results 
 end
