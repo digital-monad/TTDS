@@ -31,7 +31,11 @@ function runThisQuery(passedQuery)
     # julia indexing from 1 is a ball ache
     parsed = buildQuery(passedQuery)
 
-    return results
+
+    # Throws mongoc error
+    # return resolveQuery(parsed) 
+
+    return parsed
 
 end
 
