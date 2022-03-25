@@ -31,7 +31,6 @@ function runThisQuery(passedQuery)
     # julia indexing from 1 is a ball ache
     parsed = buildQuery(passedQuery)
 
-
     # Throws mongoc error
     # return resolveQuery(parsed) 
 
@@ -293,7 +292,10 @@ using Genie, Genie.Router
 using Genie.Requests
 
 route("/query") do
-    return sort_scores(runThisQuery("$(getpayload(:query, "querrrryy"))"))
+    # return sort_scores(runThisQuery("$(getpayload(:query, "querrrryy"))"))
+
+    return runThisQuery("$(getpayload(:query, "querrrryy"))")
+    
 end
 
 up()
