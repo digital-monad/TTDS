@@ -121,7 +121,7 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
         for term in query # SIMD vectorisation
             songs = collect(keys(index[term]))
             filter!(e->e∉["song_df","line_df","_id"],songs) # Lazy filter
-            metadatas = Dict(song => song_metadata[song] for song in songs)
+            metadatas = Dict(song => Mongoc.as_dict(querier(song_metadata, song)) for song in songs)
             term_docs = length([i for i in keys(index[term])]) - 3 # Convert list comprehension to generator or just length(keys)
             if term_docs>0
                 for song in songs
@@ -269,11 +269,11 @@ function calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
 end
 
 function establishConnection()
-    client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority&tlsCAFile=/usr/lib/ssl/certs/ca-certificates.crt")
+    client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority")
     database = client["ttds"]
-    song_metadata = Pickle.load(open("../metadata/song_metadata.pickle"))
+    # song_metadata = Pickle.load(open("../metadata/song_metadata.pickle"))
     #lyric_metadata = Pickle.load(open("../metadata/lyric_metadata.pickle"))
-    return database["invertedIndexFinal"],song_metadata, database["songMetaData"]
+    return database["invertedIndexFinal"], database["songMetaData"],database["lyricMetaData"]
 end
 
 function querier(collection, term)
@@ -288,6 +288,11 @@ end
 
 
 function call_BM25(terms, isSong)
+
+    println("--In Julia - ranked search --")
+    println(terms)
+    println(isSong)
+    
 
     collection = establishConnection()
 
@@ -304,6 +309,11 @@ end
 
 function call_ps(terms, isSong)
 
+    println("--In Julia - phrase search --")
+    println(terms)
+    println(isSong)
+
+
     collection = establishConnection()
     index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
 
@@ -319,8 +329,12 @@ end
 
 function call_prox(term1, term2, proximity, isSong)
 
-    print(term1)
-    print(term2)
+    println("--In Julia - proximity search --")
+    println(term1)
+    println(term2)
+    println(proximity)
+    println(isSong)
+    
 
     collection = establishConnection()
     index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in [term1, term2])

@@ -31,8 +31,6 @@ function runThisQuery(passedQuery)
     # julia indexing from 1 is a ball ache
     parsed = buildQuery(passedQuery)
 
-    results = resovleQuery(parsed)
-
     return results
 
 end
@@ -41,20 +39,127 @@ function buildQuery(query)
 
     clause = []
 
-    
+    println("--Query--")
+    println(query)
+    println("---")
+
+    # Skip to the identifying character 
     index = 3
 
-    # if query[index] == 'a'
+    if query[index] == 'a' || query[index] == 'o'
 
-    #     push!(clause, "and")
+        if query[index] == 'a'
+            push!(clause, "and")
+        else 
+            push!(clause, "or")
+        end
 
+        # Skip to the first open bracket
+        index = index + 4
         
+        if query[index] == '['
+        
+            indexstart = index
+            
+            index = index + 1
 
-    # elseif query[index] == 'o'
+            bracketcount = 1
 
-    # elseif query[index] == 'n'
+            while(bracketcount != 0 && index < 1000)
+                
+                if query[index] == '['
+                    bracketcount = bracketcount + 1     
+                elseif query[index] == ']'
+                    bracketcount = bracketcount - 1
+                end
 
-    if query[index] == 'x'
+                index = index + 1
+            end
+
+            clause1 = buildQuery(query[indexstart:index-1])
+
+            if query[index] != ','
+                print("HMMMM")
+            end
+
+            index = index + 2
+
+            if query[index] != '['
+                print("HMMMM2")
+            end
+            
+            indexstart = index
+
+            index = index + 1
+
+            bracketcount = 1
+
+            while(bracketcount != 0 && index < 1000)
+                
+                if query[index] == '['
+                    bracketcount = bracketcount + 1     
+                elseif query[index] == ']'
+                    bracketcount = bracketcount - 1
+                end
+
+                index = index + 1
+            end
+
+            clause2 = buildQuery(query[indexstart:index-1])
+            
+            push!(clause, clause1)
+            
+            push!(clause, clause2)
+
+        else 
+            print("Hmmmmm")
+        end
+
+    elseif query[index] == 'n'
+        
+        push!(clause, "not")
+
+        index = index + 3
+
+        idcount = ""
+
+        while(query[index] != ',')
+            if query[index] != ' '
+                idcount = idcount * query[index]
+            end
+            index = index + 1
+        end
+
+        push!(clause, parse(Int64, idcount))
+
+        index = index + 2
+
+        if query[index] != '['
+            print("hmmm not cool")
+        end
+
+        indexstart = index
+            
+        index = index + 1
+
+        bracketcount = 1
+
+        while(bracketcount != 0 && index < 1000)
+            
+            if query[index] == '['
+                bracketcount = bracketcount + 1     
+            elseif query[index] == ']'
+                bracketcount = bracketcount - 1
+            end
+
+            index = index + 1
+        end
+
+        clause1 = buildQuery(query[indexstart:index-1])
+
+        push!(clause, clause1)
+
+    elseif query[index] == 'x'
         println("prox")
         # prox 
         push!(clause, "call_prox")
@@ -119,8 +224,6 @@ function buildQuery(query)
             push!(clause, false)
         end
 
-        return clause
-
     elseif query[index] == 'p' || query[index] == 'b' 
         # bm25
         # phrase
@@ -133,8 +236,6 @@ function buildQuery(query)
 
         terms = []
         
-   
-
         while(index < 1000)
             term = ""
 
@@ -179,17 +280,6 @@ function buildQuery(query)
         end
 
     end
-
-    # if c == '['
-    #     newclause, index = buildQuery(query[index:end], index)
-    #     append!(clause, newclause)
-    # elseif c == ']'
-    #     break;
-    # else 
-    #     print("wrong")
-    # end
-
-    
 
     return clause
 end
