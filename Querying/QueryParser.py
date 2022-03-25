@@ -15,7 +15,7 @@ import re, os, sys
 sys.path.insert(0, './QueryParser')
 # from Querying import DBQuery as dbq
 
-import preprocess
+from Querying import preprocess
 
 import pickle
 
@@ -126,7 +126,7 @@ class QueryParser:
 
         assert(len(clause_results) == 2)
 
-        return ['and',clause_results[0],clause_results[1]]
+        return ['a',clause_results[0],clause_results[1]]
 
 
     def evaluateOr(self, argument):
@@ -135,7 +135,7 @@ class QueryParser:
 
         assert(len(clause_results) == 2)
 
-        return ['or',clause_results[0],clause_results[1]]
+        return ['o',clause_results[0],clause_results[1]]
         
 
         
@@ -162,7 +162,7 @@ class QueryParser:
         else:
             count = self.lyricCount
 
-        return ['not',count,self.evaluate(argument[0])]
+        return ['n',count,self.evaluate(argument[0])]
 
     def evaluateParenthesis(self, argument):
 
@@ -177,7 +177,7 @@ class QueryParser:
 
         terms = list(list(zip(*preprocess.preprocess(argument[0][0])[0]))[0])
 
-        return ["call_ps",terms,self.isSong]
+        return ["p",terms,self.isSong]
 
     def evaluateProximity(self, argument):
         
@@ -209,7 +209,7 @@ class QueryParser:
         proximity = distance
         isSong = self.isSong
 
-        return ["call_prox",term1, term2, proximity, isSong]
+        return ["x",term1, term2, proximity, isSong]
 
 
 
@@ -222,7 +222,7 @@ class QueryParser:
         terms = list(list(zip(*preprocess.preprocess(argument[0])[0]))[0])
         isSong = self.isSong
 
-        return ["call_BM25",terms,isSong]
+        return ["b",terms,isSong]
 
 
     def evaluate(self, argument):
@@ -236,9 +236,9 @@ class QueryParser:
 
         return self.evaluate(self._parser(query)[0])
 
-    def query(self, expr, isSong):
+    def parseQuery(self, expr, isSong):
 
-        # print(expr)
+        print("exprrr")
 
         self.isSong = isSong
 

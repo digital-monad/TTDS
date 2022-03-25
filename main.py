@@ -1,70 +1,87 @@
-# NOTE: THIS FILE DOES NOT INTEGRATE Python with Julia aka Andrew's code
-
 # Temporary main Python file for web application routing and Pymongo integration
 
 # Setup Flask and MongoDB - integration for backend and database
 from flask import Flask, render_template, request
-import configparser, pymongo, os
-
-# NOTE: QueryParser library to be fixed by Andrew
-#from Querying import QueryParser as qp 
-#from Querying import preprocess as pp
+import configparser, pymongo, os, requests
+import Querying.QueryParser as qp
+import Querying as preprocess
+import requests
 
 app = Flask(__name__)
 
-#QueryParserClass = qp.QueryParser()
+queryParser = qp.QueryParser()
 
-####### TO BE REFACTORED? ##########
 config = configparser.ConfigParser()
 config.read('settings.ini')
+
 base_uri = 'mongodb+srv://'
 username = config.get('mongodb', 'username')
 password = config.get('mongodb', 'password')
 uri = base_uri + username + ':' + password + '@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority'
-client = pymongo.MongoClient(uri)
-####### TO BE REFACTORED? ##########
 
+client = pymongo.MongoClient(uri)
 
 @app.route("/", methods=['GET','POST'])
 def show_main_page():
     return render_template('index.html')
 
-# Feature: SEARCH BY SONGS
+# Obtain list of relevant songs
 def get_songs(advanced_filters, page_size, page_num):
 
-    # Obtain query
-    song_name = ''
-    isSong = True
-    if request.args.get('q'):
-        song_name = request.args.get('q')
-    #query = QueryParserClass.query(song_name, isSong)
+    print("here")
+    parsed = str(queryParser.parseQuery('#(10,proximity,search)', True))
 
-    #TODO: This is a fixed set from songs by Eminem made in 2013
-    # Obtain list of song_ids ordered from Andrew
-    song_ids = ["1158679", "1158688", "1158655", "1158651", "1158652", "1158664", "1158673"] 
-    
-    # TODO: Determine final limit for querying results back to front-end
     try:
-        songs_list = list(client.ttds.songMetaData
-            .find(
-                    {"_id": { "$in": song_ids }},
-                    {"$and": advanced_filters}
-                )
-            .limit(100)
-        )
-    
-    # Handling w/out advanced features included
+
+        res = requests.get('http://127.0.0.1:8000/query?query='+str(parsed))
+
+    except:
+
+        print("exception")
+
+        raise BaseException("testing")
+
+    parsed = str(queryParser.parseQuery('"phrase"', True))
+
+    try:
+
+        res = requests.get('http://127.0.0.1:8000/query?query='+str(parsed))
+
+    except:
+
+        print("exception")
+
+        raise BaseException("testing")
+
+    parsed = str(queryParser.parseQuery('ranked', True))
+
+    try:
+
+        res = requests.get('http://127.0.0.1:8000/query?query='+str(parsed))
+
+    except:
+
+        print("exception")
+
+        raise BaseException("testing")
+
+    print(res.content)
+
+    raise BaseException("testing")
+
+
+    try:
+        songs_list = list(client.ttds.songMetaData.find(
+            {"$and": advanced_filters}
+        ))
     except Exception:
-        songs_list = list(client.ttds.songMetaData
-            .find({"_id": { "$in": song_ids }})
-            .limit(100)
-        )
+        songs_list = list(client.ttds.songMetaData.find())
     
-    sorted_song_dict = {d['_id']: d for d in songs_list}  # sentence_id -> sentence_dict
+    sorted_song_dict = {d['song_id']: d for d in songs_list}  # sentence_id -> sentence_dict
     
     # Obtain new list of ORDERED ids - allow advanced search
     new_ids = []
-    for id in song_ids:
+    for id in ids:
         if id in sorted_song_dict:
             new_ids.append(id)
 
@@ -74,62 +91,54 @@ def get_songs(advanced_filters, page_size, page_num):
 
     return new_sorted_song_list
 
-# Feature: SEARCH BY SONG LYRICS - join collections together
+# Obtain list of relevant songs based on lyrics
 def get_songs_based_on_lyrics(advanced_filters, page_size, page_num):
 
-    # Obtain query
-    lyrics_expr = ''
-    isSong = False
-    if request.args.get('q'):
-        lyrics_expr = request.args.get('q')
-    #query = QueryParserClass.query(song_name, isSong)
 
-    #TODO: This is a fixed set from songs by Eminem made in 2013
-    # Obtain list of lyrics line_ids ordered from Andrew
-    lyrics_ids = ["6", "1", "3", "2", "4", "5", "89"] # Currently no constraints
+    parsed = queryParser.parseQuery('"test" && spiderman')
 
-    # TODO: Aggregate lyricMetaData for songMetaData
-    # Determine final limit for querying results back to front-end
-    lyrics = client.ttds.lyricMetaData.aggregate([
-        { "$match": {"_id": {"$in": lyrics_ids }} },
-        {
-            "$lookup": {
-                "from" : "songMetaData",
-                "localField" : "song_id", 
-                "foreignField" : "_id",
-                "as" : "song_details"
-            }
-        },
-        {
-            "$limit": 10
-        },
-    ])
-    lyrics_list = list(lyrics)
+    try:
+
+        res = requests.get('http://127.0.0.1:8000/query?query='+str(parsed))
+
+    except:
+
+        print("exception")
+
+        return 
+
+    print(res.content)
+
+    return
+
+    try:
+        songs_list = list(client.ttds.songMetaData.find(
+            {"$and": advanced_filters}
+        ))
+    except Exception:
+        songs_list = list(client.ttds.songMetaData.find())
     
-    # Ensure ordered documents are conducted
-    sorted_lyrics_dict = {d['_id']: d for d in lyrics_list}  # sentence_id -> sentence_dict
-    
+    sorted_song_dict = {d['song_id']: d for d in songs_list}  # sentence_id -> sentence_dict
+
     # Obtain new list of ORDERED ids - allow advanced search
     new_ids = []
-    for id in lyrics_ids:
-        if id in sorted_lyrics_dict:
+    for id in ids:
+        if id in sorted_song_dict:
             new_ids.append(id)
 
-    sorted_song_list = [sorted_lyrics_dict[i] for i in new_ids]
+    sorted_song_list = [sorted_song_dict[i] for i in new_ids]
     
     new_sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
 
     return new_sorted_song_list
 
-ROWS_PER_PAGE = 6 # TODO: SHOULD BE CHANGED
+ROWS_PER_PAGE = 3 # TODO: SHOULD BE CHANGED
 
-# UNNECESSARY? #
 @app.route('/search', methods=['GET', 'POST'])
 def display_search_first_results():
     advanced_filters = []
     relevant_docs = get_songs(advanced_filters, ROWS_PER_PAGE, 1)
     return render_template('search.html', data = relevant_docs)
-# UNNECESSARY? #
 
 @app.route('/search/page=<int:page>', methods=['GET', 'POST'])
 def display_search_results(page):
@@ -150,19 +159,23 @@ def display_search_results(page):
         year_int = int(request.args.get('year'))
         advanced_filters.append({'year': year_int})
 
-    # TODO: Modify try/exception blocks to handle misfailures
     # Checks if script should conduct song search or lyrics search
-    search_by_songs_toggle = request.args.get('sbs', False)
-    print(search_by_songs_toggle)
-    if search_by_songs_toggle == 'on':
+    try:
+        
         relevant_docs = get_songs(advanced_filters, ROWS_PER_PAGE, page)
-        return render_template('search.html', data = relevant_docs, sbs = 'on', artist = artist_str, album = album_str, year = year_str, page = page)
 
-    # SEARCH BY SONG LYRICS
-    else:
-        relevant_docs = get_songs_based_on_lyrics(advanced_filters, ROWS_PER_PAGE, page)
-        return render_template('searchByLyrics.html', data = relevant_docs, sbs = 'off', artist = artist_str, album = album_str, year = year_str, page = page)
+        # Was getting an error so just checked over song search  \/
 
+        # if request.args.get('search-by-songs', False) == 'on':
+        #     relevant_docs = get_songs(advanced_filters, ROWS_PER_PAGE, page)
+        # else:
+        #     relevant_docs = get_songs_based_on_lyrics(advanced_filters, ROWS_PER_PAGE, page)
+    except Exception:
+
+        relevant_docs = list()
+        print('Error retrieving documents')
+
+    return render_template('search.html', data = relevant_docs, artist = artist_str, album = album_str, year = year_str, page = page)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
