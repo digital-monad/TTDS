@@ -8,6 +8,18 @@ using DataFrames
 using TimerOutputs
 using Pickle
 
+py"""
+import preprocess
+
+def get_lyric_metadata():
+
+return lyric_metadata
+
+
+"""
+
+get_lyric_metadata = py"get_lyric_metadata"
+
 function add_score(id,score,heap,tracker,handles,scores)
     max_size = 100000
 
@@ -271,9 +283,7 @@ end
 function establishConnection()
     client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority")
     database = client["ttds"]
-    # song_metadata = Pickle.load(open("../metadata/song_metadata.pickle"))
-    #lyric_metadata = Pickle.load(open("../metadata/lyric_metadata.pickle"))
-    return database["invertedIndexFinal"], database["songMetaData"],database["lyricMetaData"]
+    return database["invertedIndexFinal"]
 end
 
 function querier(collection, term)
@@ -286,6 +296,9 @@ function querier(collection, term)
     return doc
 end
 
+flag = true
+songMetaData = Dict{String, Dict{Any, Any}}
+connection = establishConnection()
 
 function call_BM25(terms, isSong)
 
@@ -293,13 +306,16 @@ function call_BM25(terms, isSong)
     println(terms)
     println(isSong)
     
+    global connection
+    global flag
+    global songMetaData
 
-    collection = establishConnection()
+    if flag
+        songMetaData = pickle.load(open("../metadata/song_metadata.pickle"))
+        #lyricMetaData
+    end
 
     index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
-
-    songMetaData = collection[2]
-    lyricMetaData = collection[3]
 
     results = @time BM25(terms, isSong, index, songMetaData, lyricMetaData)
 
@@ -313,15 +329,18 @@ function call_ps(terms, isSong)
     println(terms)
     println(isSong)
 
+    global connection
+    global flag
+    global songMetaData
 
-    collection = establishConnection()
-    index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
+    if flag
+        songMetaData = pickle.load(open("../metadata/song_metadata.pickle"))
+        #lyricMetaData
+    end
 
-    songMetaData = collection[2]
-    lyricMetaData = collection[3]
+    index = Dict(term => Mongoc.as_dict(querier(collection, term)) for term in terms)
 
     results = @time phraseSearch(terms, index, isSong)
-
 
     results
 
@@ -334,14 +353,20 @@ function call_prox(term1, term2, proximity, isSong)
     println(term2)
     println(proximity)
     println(isSong)
+
+    global connection
+    global flag
+    global songMetaData
+
+    terms = [term1,term2]
+
+    if flag
+        songMetaData = pickle.load(open("../metadata/song_metadata.pickle"))
+        #lyricMetaData
+    end
+
+    index = Dict(term => Mongoc.as_dict(querier(collection, term)) for term in terms)
     
-
-    collection = establishConnection()
-    index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in [term1, term2])
-
-    songMetaData = collection[2]
-    lyricMetaData = collection[3]
-
     results = @time proximitySearch(term1, term2, proximity, index, isSong)
 
     results
