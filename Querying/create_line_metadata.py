@@ -5,7 +5,6 @@ from preprocess import preprocessSongLyricsMetadata
 import bson
 import pickle
 import gc
-import pyarrow as pa 
 
 class Indexer:
 
@@ -19,9 +18,9 @@ class Indexer:
         self.lyrics = pd.read_csv(csv_file)
 
     def processSong(self, song_id, artist, title, album, year, date, url, description, lyrics):
-        preprocessed_lyrics_metadata = preprocessSongLyricsMetadata(lyrics)
         # Update song metadata
         song_id = str(song_id)
+        preprocessed_lyrics_metadata = preprocessSongLyricsMetadata(lyrics)
         for line in preprocessed_lyrics_metadata:
             # Update line metadata
             line_id = self.current_line_id
@@ -33,17 +32,19 @@ class Indexer:
             }
             # Increment the line id
             self.current_line_id += 1
-        del preprocessed_lyrics_metadata
-
 
     def indexFile(self):
         cols = zip(*[self.lyrics[i] for i in self.lyrics.columns])
-        song_no = 0
+        i = 0
         for song in cols:
-            print(song_no)
+            print(i)
+            print("\n")
             self.processSong(*song)
+            i+=1
         return self.line_metadata
 
-#pycall this
 indexer = Indexer("out.csv")
-line_metadata = indexer.indexFile()
+index = indexer.indexFile()
+outfile = open("dump","wb")
+pickle.dump(index,outfile)
+outfile.close()

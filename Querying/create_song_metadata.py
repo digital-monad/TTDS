@@ -28,13 +28,15 @@ class Indexer:
 
     def pickle(self, file_name):
         with open("song_metadata.pickle", 'wb') as handle:
-            pickle.dump([{**{"_id" : id}, **self.song_metadata[id]} for id in self.song_metadata], handle)
+            #pickle.dump([{**{"_id" : id}, **self.song_metadata[id]} for id in self.song_metadata], handle)
+            pickle.dump(self.song_metadata, handle)
 
     def processSong(self, song_id, artist, title, album, year, date, url, description, lyrics):
         print(f"Processing song {title}")
         preprocessed_lyrics = preprocessSongLyrics(lyrics)
         # Update song metadata
         song_id = str(song_id)
+        print(song_id)
         self.song_metadata[song_id] = {
             "title" : title,
             "artist" : artist,
