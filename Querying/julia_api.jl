@@ -288,15 +288,16 @@ function buildQuery(query)
 end
 
 using Genie, Genie.Router
-
 using Genie.Requests
 
-route("/query") do
+# NOTE: Original routing name is not 'query' but 'search'
+route("/search") do
     # return sort_scores(runThisQuery("$(getpayload(:query, "querrrryy"))"))
 
-    return runThisQuery("$(getpayload(:query, "querrrryy"))")
+    # Parameter q is for 'query'
+    return runThisQuery("$(getpayload(:q, "if no query is passed, this is passed"))")
     
 end
 
-up()
+up(async=false) # Run parameter `async=false` for Windows OS
 

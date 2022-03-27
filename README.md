@@ -59,7 +59,7 @@ and change `data_collection_type` option value along with `batch_starting_initia
     - Reduce file transfer size
 4. CSVs however must be transferred and shown in GitHub repo
 
-## Google Cloud Deployment
+## Google Cloud Deployment - OUTDATED
 NOTE: Deployment and testing should be done directly on `dev` Branch
 
 1. Merge all modular branches including `search`, `frontend`, etc into `dev` branch
@@ -70,3 +70,8 @@ Follow instructions for deployment on Google Cloud
 4. Execute `gcloud run deploy`
 5. Put `settings.ini` back into .gitignore
 6. Commit changes and deploy to Git
+
+# Server Execution
+1. On the main folder, type in console `julia Querying/julia_api.jl`
+    - It should run on port 8000
+2. In console, type: `py main.py`
