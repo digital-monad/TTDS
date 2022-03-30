@@ -5,6 +5,18 @@ import configparser, pymongo, os, requests
 import Querying.QueryParser as qp
 import requests
 
+songMetaData = None
+lineMetaData = None
+
+def fillSong(song):
+    global songMetaData
+    songMetaData = song
+
+def fillLine(line):
+    global lineMetaData
+    lineMetaData = line
+
+
 app = Flask(__name__)
 
 queryParser = qp.QueryParser()
@@ -38,9 +50,9 @@ def get_songs(advanced_filters, page_size, page_num):
     #parsed = str(queryParser.parseQuery('#(10,proximity,search)', True))
     parsed = str(queryParser.parseQuery(song_name, True)) # This is just default
     #parsed = queryParser.parseQuery('"test" && spiderman')
-    
+
     #TODO: This list of lyrics line_ids is fixed - make sure they are dynamic from Julia side
-    song_ids = ["1158679", "1158653", "1158688", "1158655", "1158651", "1158652", "1158664", "1158673"] 
+    song_ids = ["1158679", "1158653", "1158688", "1158655", "1158651", "1158652", "1158664", "1158673"]
 
     try:
         res = requests.get('http://127.0.0.1:8000/search?q='+str(parsed))
@@ -57,7 +69,7 @@ def get_songs(advanced_filters, page_size, page_num):
 
     and_query = list()
     and_query.append({"_id": { "$in": song_ids }})
-    
+
     # Integrate proper advanced search support
     if len(advanced_filters) > 0:
         if advanced_filters[0].get('artist'):
@@ -67,23 +79,25 @@ def get_songs(advanced_filters, page_size, page_num):
         if advanced_filters[0].get('year'):
             and_query.append({"year": advanced_filters[0].get('year')})
 
-    songs_list = list(client.ttds.songMetaData
-        .find(
-                {"$and": and_query}
-            )
-        .limit(50)
-    )
-    
-    sorted_song_dict = {d['_id']: d for d in songs_list}  # sentence_id -> sentence_dict
-    
-    # Obtain new list of ORDERED ids - allow advanced search
-    new_ids = []
-    for id in song_ids:
-        if id in sorted_song_dict:
-            new_ids.append(id)
+    # songs_list = list(client.ttds.songMetaData
+    #     .find(
+    #             {"$and": and_query}
+    #         )
+    #     .limit(50)
+    # )
 
-    sorted_song_list = [sorted_song_dict[i] for i in new_ids]
-    
+    sorted_song_list = [songMetaData[song] for song in song_ids]
+
+    # sorted_song_dict = {d['_id']: d for d in songs_list}  # sentence_id -> sentence_dict
+
+    # Obtain new list of ORDERED ids - allow advanced search
+    # new_ids = []
+    # for id in song_ids:
+    #     if id in sorted_song_dict:
+    #         new_ids.append(id)
+
+    # sorted_song_list = [sorted_song_dict[i] for i in new_ids]
+
     new_sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
 
     return new_sorted_song_list
@@ -122,48 +136,60 @@ def get_songs_based_on_lyrics(advanced_filters, page_size, page_num):
 
     # TODO: Aggregate lyricMetaData for songMetaData
     # Determine final limit for querying results back to front-end
-    lyrics = client.ttds.lyricMetaData.aggregate([
-        { "$match": {"_id": {"$in": lyrics_ids }} },
-        {
-            "$lookup": {
-                "from" : "songMetaData",
-                "localField" : "song_id", 
-                "foreignField" : "_id",
-                "as" : "song_details"
-            }
-        },
-        {
-            "$limit": 50
-        },
-    ])
-    lyrics_list = list(lyrics)
-    lyrics_list_filtered = list()
+    # lyrics = client.ttds.lyricMetaData.aggregate([
+    #     { "$match": {"_id": {"$in": lyrics_ids }} },
+    #     {
+    #         "$lookup": {
+    #             "from" : "songMetaData",
+    #             "localField" : "song_id",
+    #             "foreignField" : "_id",
+    #             "as" : "song_details"
+    #         }
+    #     },
+    #     {
+    #         "$limit": 50
+    #     },
+    # ])
+    lyrics_list = []
+    for lyric_id in lyrics_ids:
+        song_id = lineMetaData[lyric_id]["song_id"]
+        line_data = lineMetaData[lyric_id]
+        song_data = songMetaData[song_id]
+        data = {**line_data, **song_data}
+        lyrics_list.append(data)
+
+
+    # lyrics_list = list(lyrics)
+    # lyrics_list_filtered = list()
 
     # Use advanced search to remove songs in lyrics_ids list to filter
     for lyrics_object in lyrics_list:
-        artist = lyrics_object['song_details'][0].get('artist')
-        album = lyrics_object['song_details'][0].get('album')
-        year = int(lyrics_object['song_details'][0].get('year'))
+        # artist = lyrics_object['song_details'][0].get('artist')
+        # album = lyrics_object['song_details'][0].get('album')
+        # year = int(lyrics_object['song_details'][0].get('year'))
+        artist = lyrics_object['artist']
+        album = lyrics_object['album']
+        year = int(lyrics_object['year'])
 
         if len(advanced_filters) > 0:
             if artist == advanced_filters[0].get('artist', artist) and album == advanced_filters[0].get('album', album) and year == advanced_filters[0].get('year', year):
                 lyrics_list_filtered.append(lyrics_object)
         else:
             lyrics_list_filtered = lyrics_list
-        
 
-    # Ensure ordered documents are conducted
-    sorted_lyrics_dict = {d['_id']: d for d in lyrics_list_filtered}  # sentence_id -> sentence_dict
-    
-    # Obtain new list of ORDERED ids - allow advanced search
-    new_ids = []
-    for id in lyrics_ids:
-        if id in sorted_lyrics_dict:
-            new_ids.append(id)
 
-    sorted_song_list = [sorted_lyrics_dict[i] for i in new_ids]
-    
-    new_sorted_song_list = sorted_song_list[(page_num - 1) * page_size : page_num * page_size]
+    # # Ensure ordered documents are conducted
+    # sorted_lyrics_dict = {d['_id']: d for d in lyrics_list_filtered}  # sentence_id -> sentence_dict
+
+    # # Obtain new list of ORDERED ids - allow advanced search
+    # new_ids = []
+    # for id in lyrics_ids:
+    #     if id in sorted_lyrics_dict:
+    #         new_ids.append(id)
+
+    # sorted_song_list = [sorted_lyrics_dict[i] for i in new_ids]
+
+    new_sorted_song_list = lyrics_list_filtered[(page_num - 1) * page_size : page_num * page_size]
 
     return new_sorted_song_list
 
@@ -212,4 +238,4 @@ def display_search_results(page):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
