@@ -1,9 +1,10 @@
 
 # Setup Flask and MongoDB - integration for backend and database
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 import configparser, pymongo, os, requests
 import Querying.QueryParser as qp
 import requests
+import query_complete as qc
 
 app = Flask(__name__)
 
@@ -12,16 +13,29 @@ queryParser = qp.QueryParser()
 config = configparser.ConfigParser()
 config.read('settings.ini')
 
-base_uri = 'mongodb+srv://'
-username = config.get('mongodb', 'username')
-password = config.get('mongodb', 'password')
-uri = base_uri + username + ':' + password + '@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority'
+# NOTE: Make sure you have a local MongoDB db instance for lyricMetaData, songMetaData
+uri = 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false'
 
 client = pymongo.MongoClient(uri)
 
 @app.route("/", methods=['GET','POST'])
 def show_main_page():
     return render_template('index.html')
+
+# Integrates Python query_complete file
+# Cannot return a list from Flask View - must return Jsonify instead
+@app.route("/autocomplete", methods=['GET'])
+def autocomplete():
+    query_str = 'Ligma' # Default query - shouldn't affect autocomplete
+    if request.args.get('q'):
+        query_str = request.args.get('q')
+
+    outcomes_list = query_completion.query(query_str)
+
+    filtered_dict = [k for k in outcomes_list if query_str in k]
+
+    return jsonify(matching_results=filtered_dict)
+
 
 # Obtain list of relevant songs
 def get_songs(advanced_filters, page_size, page_num):
@@ -212,4 +226,12 @@ def display_search_results(page):
 
 
 if __name__ == "__main__":
+
+    # Initalize and trains query completion
+    directory = os.getcwd()
+    train_csv_file_path = directory + os.sep  + 'sample_lyrics.csv' # Ensure you have `sample_lyrics.csv`
+    query_completion = qc.Query_Completion()
+    query_completion.train(train_csv_file_path)
+
+    # Execute server
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

@@ -3,6 +3,7 @@
 
 {% block head %}
   {{ super() }}
+  <link rel="stylesheet" type="text/css" href="../static/css/index.css">
 {% endblock %}
 
 {% block content %}
@@ -43,5 +44,20 @@
  </div>
 
  <script src="../static/js/index.js"></script>
+ <script>
+    $(function() {
+        $("#search-text-input").autocomplete({
+            source:function(request, response) {
+                $.getJSON("{{url_for('autocomplete')}}",{
+                    q: request.term, // "q" is argument to look for using request.args
+                }, function(data) {
+                    response(data.matching_results); // Obtain `matching_results` attribute from jsonify
+                });
+            },
+            minLength: 2,
+        });
+    })
+ </script>
+
 
 {% endblock %}
