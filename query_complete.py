@@ -27,20 +27,21 @@ class Query_Completion():
         
         class TimeoutException(Exception): pass
 
-        @contextmanager
-        def time_limit(seconds):
-            def signal_handler(signum, frame):
-                raise TimeoutException("Timed out!")
-            signal.signal(signal.SIGALRM, signal_handler)
-            signal.alarm(seconds)
-            try:
-                yield
-            finally:
-                signal.alarm(0)
+        # NOTE: SIGALRM not supported for Windows
+        # @contextmanager
+        # def time_limit(seconds):
+        #     def signal_handler(signum, frame):
+        #         raise TimeoutException("Timed out!")
+        #     signal.signal(signal.SIGALRM, signal_handler)
+        #     signal.alarm(seconds)
+        #     try:
+        #         yield
+        #     finally:
+        #         signal.alarm(0)
         try:
-            with time_limit(1):
-                output = self.auto_complete.search(word=query, max_cost=10, size = 10)
-                return [' '.join(x) for x in output]
+            # with time_limit(1):
+            output = self.auto_complete.search(word=query, max_cost=10, size = 10)
+            return [' '.join(x) for x in output]
         except TimeoutException as e:
             print("Timed out!")
 
