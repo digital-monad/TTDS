@@ -6,6 +6,9 @@ import Querying.QueryParser as qp
 import requests
 import query_complete as qc
 
+import pandas as pd
+import io
+
 app = Flask(__name__)
 
 queryParser = qp.QueryParser()
@@ -14,7 +17,7 @@ config = configparser.ConfigParser()
 config.read('settings.ini')
 
 # NOTE: Make sure you have a local MongoDB db instance for lyricMetaData, songMetaData
-uri = 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false'
+uri = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.3.1'
 
 client = pymongo.MongoClient(uri)
 
@@ -54,16 +57,27 @@ def get_songs(advanced_filters, page_size, page_num):
     #parsed = queryParser.parseQuery('"test" && spiderman')
     
     #TODO: This list of lyrics line_ids is fixed - make sure they are dynamic from Julia side
-    song_ids = ["1158679", "1158653", "1158688", "1158655", "1158651", "1158652", "1158664", "1158673"] 
+    song_ids = list() 
 
     try:
         res = requests.get('http://127.0.0.1:8000/search?q='+str(parsed))
         # NOTE: Current response is 'call_BM25Any[query]false'
-        # Successful response should be something a string of list of lyrics ids
-        print(res.text)
+        # Successful response should be something a string of list of lyrics
+        #print(res.text)
 
-        # `song_ids` attribute should be updated...
-        # song_ids = res.text
+        ranked_ids_str = res.text[1:-1]
+        ranked_ids_list = [x.strip() for x in ranked_ids_str.split(',')]
+
+        ranked_ids_list_top_n = ranked_ids_list[:10] # Get Top 10 results
+        ranked_ids_list_top_n = [x.strip('"') for x in ranked_ids_list_top_n] #Remove double quotations within each string
+
+        print(ranked_ids_list_top_n[0])
+        print(ranked_ids_list_top_n[-1])
+        
+        # `song_ids` attribute should be now updated...
+        song_ids = ranked_ids_list_top_n
+        print(song_ids)
+
     except:
         print("Request Exception")
         print("Ensure Genie server is running?")
@@ -234,4 +248,4 @@ if __name__ == "__main__":
     query_completion.train(train_csv_file_path)
 
     # Execute server
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    app.run(host="0.0.0.0")

@@ -27,9 +27,8 @@ class Indexer:
         self.lyrics = pd.read_csv(csv_file)
 
     def pickle(self, file_name):
-        with open("song_metadata.pickle", 'wb') as handle:
-            #pickle.dump([{**{"_id" : id}, **self.song_metadata[id]} for id in self.song_metadata], handle)
-            pickle.dump(self.song_metadata, handle)
+        with open("./song/"+file_name+".pickle", 'wb') as handle:
+            pickle.dump([{**{"_id" : id}, **self.song_metadata[id]} for id in self.song_metadata], handle)
 
     def processSong(self, song_id, artist, title, album, year, date, url, description, lyrics):
         print(f"Processing song {title}")
@@ -49,8 +48,12 @@ class Indexer:
 
     def indexFile(self):
         cols = zip(*[self.lyrics[i] for i in self.lyrics.columns])
+        i = 0
         for song in cols:
             self.processSong(*song)
+            i += 1
+            if i % 1000 == 0:
+                self.pickle(f"{i}")
         self.pickle("finalboi")
 
 parser = argparse.ArgumentParser(description='Convert CSV files to term positional inverted index.')

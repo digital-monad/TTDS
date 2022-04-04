@@ -4,6 +4,13 @@
 include("./search.jl")
 include("./setOperations.jl")
 
+function sort_and_convert(unsorted_query_results)
+    
+    sort!(unsorted_query_results, rev=true, :score)
+    
+    return string(unsorted_query_results[!,:id])
+end
+
 function resovleQuery(clause)
     if clause[1] == "call_BM25"
         return call_BM25(clause[2],clause[3])
@@ -31,10 +38,8 @@ function runThisQuery(passedQuery)
     # julia indexing from 1 is a ball ache
     parsed = buildQuery(passedQuery)
 
-    # Throws mongoc error
-    # return resolveQuery(parsed) 
-
-    return parsed
+    # Integrate mongoc error
+    return sort_and_convert(resovleQuery(parsed)) 
 
 end
 
@@ -271,11 +276,14 @@ function buildQuery(query)
 
         while(query[index] != ']')
             if query[index] != ' '
-                isSong = isSong * query[index]
+                if query[index] != ','
+                    isSong = isSong * query[index]
+                end
             end
             index = index + 1
         end
-
+        
+        print(isSong)
         if isSong == "True"
             push!(clause, true)
         else

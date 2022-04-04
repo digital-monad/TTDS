@@ -184,7 +184,10 @@ function phraseSearch(phrase, index, song)
     df
 end
 
-function BM25(query,isSong,index,song_metadata,lyric_metadata)
+function BM25(query,isSong, index, lyric_metadata)
+
+    global songMetaData
+    global lyricMetaData
 
     heap = MutableBinaryMinHeap{Float64}()
     tracker = Dict{Int64, String}()
@@ -198,7 +201,7 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
         for term in query # SIMD vectorisation
             songs = collect(keys(index[term]))
             filter!(e->e∉["song_df","line_df","_id"],songs) # Lazy filter
-	    metadatas = Dict(song => song_metadata[song] for song in songs)
+	    metadatas = Dict(song => songMetaData[song] for song in songs)
             term_docs = length([i for i in keys(index[term])]) - 3 # Convert list
             if term_docs>0
                 for song in songs
@@ -214,23 +217,31 @@ function BM25(query,isSong,index,song_metadata,lyric_metadata)
         for term in query
             term_docs = 0
             docs = Vector{String}()
-            metadata = Dict{String, Dict{Any,Any}}
             if term in keys(index)
+                i = 0
                 for song in keys(index[term])
-                    term_docs += length(keys(index[term][song]))
-                    vcat(docs, collect(keys(index[term][song])))
+                    lyrics = index[term][song]
+                    if i < 3
+                        i += 1
+                        continue
+                    end
+                    term_docs += (length(keys(index[term][song]))-1)
+                    append!(docs, string.(collect(keys(lyrics))))
                 end
             end
             if term_docs>0
                 for song in keys(index[term])
                     filter!(e->e∉["tf"],docs)
-                    metadatas = Dict(lyric => lyric_metadata[string(lyric)] for lyric in docs)
+                    metadatas = Dict(lyric => Mongoc.as_dict(querier(lyric_metadata, lyric)) for lyric in docs)
+                    #metadatas = Dict(lyric => lyricMetaData[lyric] for lyric in docs)
                     for lyric in keys(index[term][song])
-                        docs = collect(keys(index[term][song]))
-                        term_freqs_in_doc = length(index[term][song][lyric])
-                        dl = metadatas[lyric]["length"]
-                        score_term = calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, 10)
-                        add_score(lyric,score_term,heap,tracker,handles,scores)
+                        if lyric in keys(metadatas)
+                            docs = collect(keys(index[term][song]))
+                            term_freqs_in_doc = length(index[term][song][lyric])
+                            dl = metadatas[lyric]["length"]
+                            score_term = calc_BM25(N, term_docs, term_freqs_in_doc, k1, b, dl, 10)
+                            add_score(lyric,score_term,heap,tracker,handles,scores)
+                        end
                     end
                 end
             end
@@ -346,9 +357,9 @@ function calc_BM25(N, term_docs, term_freq_in_doc, k1, b, dl, avgdl)
 end
 
 function establishConnection()
-    client = Mongoc.Client("mongodb+srv://group37:VP7SbToaxRFcmUbd@ttds-group-37.0n876.mongodb.net/ttds?retryWrites=true&w=majority&tlsCAFile=/usr/lib/ssl/certs/ca-certificates.crt")
+    client = Mongoc.Client("mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
     database = client["ttds"]
-    return database["invertedIndexFinal"]
+    return database["invertedIndexFinal"], database["lyricMetaData"]
 end
 
 function querier(collection, term)
@@ -368,15 +379,19 @@ function call_BM25(terms, isSong)
     global lyricMetaData
 
     if flag
-        indexFile()
+        #lyricMetaData = Pickle.load(open("./line_metadata.pickle"))
         songMetaData = Pickle.load(open("./song_metadata.pickle"))
         flag = false
     end
     
     collection = establishConnection()
-    index = Dict(term => Mongoc.as_dict(querier(collection, term)) for term in terms)
+    lyric_metadata = collection[2]
+    index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
+    open("test.txt", "w") do f
+        write(f, string(typeof(index)),string(typeof(terms)),string(isSong))
+    end
 
-    results = @time BM25(terms, isSong, index, songMetaData, lyricMetaData)
+    results = BM25(terms, isSong, index,lyric_metadata)
 
     results
 
@@ -384,36 +399,26 @@ end
 
 function call_ps(terms, isSong)
 
-    println("--In Julia - phrase search --")
-    println(terms)
-    println(isSong)
-
     global flag
     global songMetaData
     global lyricMetaData
 
     if flag
-        indexFile()
-        songMetaData = Pickle.load(open("../metadata/song_metadata.pickle"))
+        #lyricMetaData = Picle.load(open("../metadata/line_metadata.pickle"))
+        songMetaData = Pickle.load(open("song_metadata.pickle"))
         flag = false
     end
     
     collection = establishConnection()
-    index = Dict(term => Mongoc.as_dict(querier(collection, term)) for term in terms)
+    index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
 
-    results = @time phraseSearch(terms, index, isSong)
+    results = phraseSearch(terms, index, isSong)
 
     results
 
 end
 
 function call_prox(term1, term2, proximity, isSong)
-
-    println("--In Julia - proximity search --")
-    println(term1)
-    println(term2)
-    println(proximity)
-    println(isSong)
 
     global flag
     global songMetaData
@@ -422,15 +427,15 @@ function call_prox(term1, term2, proximity, isSong)
     terms = [term1,term2]
 
     if flag
-        indexFile()
-        songMetaData = Pickle.load(open("../metadata/song_metadata.pickle"))
+        #lyricMetaData = Pickle.load(open("../metadata/line_metadata.pickle"))
+        songMetaData = Pickle.load(open("song_metadata.pickle"))
         flag = false
     end
 
     collection = establishConnection()
-    index = Dict(term => Mongoc.as_dict(querier(collection, term)) for term in terms)
+    index = Dict(term => Mongoc.as_dict(querier(collection[1], term)) for term in terms)
     
-    results = @time proximitySearch(term1, term2, proximity, index, isSong)
+    results = proximitySearch(term1, term2, proximity, index, isSong)
 
     results
 end
